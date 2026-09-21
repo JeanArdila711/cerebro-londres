@@ -1,0 +1,218 @@
+{
+ "tema": "seguridad",
+ "probado": "2026-09-21",
+ "fuentes": [
+  {
+   "id": "police_uk",
+   "nombre": "data.police.uk · Street-level crimes API",
+   "entidad": "Home Office",
+   "url": "https://data.police.uk/docs/method/crime-street/",
+   "resolucion": "borough (polígono)",
+   "vigencia": "2025-09–2026-07",
+   "probado": "2026-09-21",
+   "estado": "vivo",
+   "licencia": "OGL-3.0",
+   "personas": "la API devuelve registros por delito con ubicación aproximada; al lago solo entran conteos agregados, nunca el registro individual",
+   "proteccion": "solo agregados",
+   "uso": "sección Seguridad",
+   "nota": "Ubicaciones desplazadas a puntos ancla por la propia fuente. Cuenta delitos REGISTRADOS, no delitos ocurridos: los cambios pueden venir de la denuncia o del registro, no del hecho."
+  }
+ ],
+ "cifras": {
+  "delitos_ultimo_mes": {
+   "valor": 9421,
+   "unidad": "delitos registrados",
+   "fuente": "police_uk",
+   "vigencia": "2026-07",
+   "nota": "Delitos registrados en City of Westminster",
+   "estado": "integrado"
+  },
+  "delitos_12m": {
+   "valor": 90008,
+   "unidad": "delitos registrados",
+   "fuente": "police_uk",
+   "vigencia": "2025-09–2026-07",
+   "nota": "Suma de los 10 meses descargados",
+   "estado": "integrado"
+  },
+  "categoria_mas_frecuente": {
+   "valor": "theft-from-the-person",
+   "unidad": "categoría",
+   "fuente": "police_uk",
+   "vigencia": "2025-09–2026-07",
+   "nota": "18,334 casos",
+   "estado": "integrado"
+  },
+  "pct_sin_resultado": {
+   "valor": 15.1,
+   "unidad": "%",
+   "fuente": "police_uk",
+   "vigencia": "2025-09–2026-07",
+   "nota": "Delitos sin resultado judicial registrado en el momento de la descarga",
+   "estado": "integrado"
+  }
+ },
+ "series": {
+  "delitos_mensuales": {
+   "fuente": "police_uk",
+   "unidad": "delitos registrados",
+   "puntos": [
+    [
+     "2025-09",
+     9438
+    ],
+    [
+     "2025-10",
+     9826
+    ],
+    [
+     "2025-11",
+     10554
+    ],
+    [
+     "2026-01",
+     8647
+    ],
+    [
+     "2026-02",
+     8180
+    ],
+    [
+     "2026-03",
+     8257
+    ],
+    [
+     "2026-04",
+     8571
+    ],
+    [
+     "2026-05",
+     8452
+    ],
+    [
+     "2026-06",
+     8662
+    ],
+    [
+     "2026-07",
+     9421
+    ]
+   ]
+  }
+ },
+ "listas": {
+  "por_categoria": [
+   [
+    "theft-from-the-person",
+    18334
+   ],
+   [
+    "other-theft",
+    16729
+   ],
+   [
+    "anti-social-behaviour",
+    13548
+   ],
+   [
+    "violent-crime",
+    13215
+   ],
+   [
+    "shoplifting",
+    9627
+   ],
+   [
+    "public-order",
+    4161
+   ],
+   [
+    "robbery",
+    2898
+   ],
+   [
+    "drugs",
+    2760
+   ],
+   [
+    "burglary",
+    2467
+   ],
+   [
+    "vehicle-crime",
+    2439
+   ],
+   [
+    "criminal-damage-arson",
+    1631
+   ],
+   [
+    "bicycle-theft",
+    1297
+   ],
+   [
+    "other-crime",
+    495
+   ],
+   [
+    "possession-of-weapons",
+    407
+   ]
+  ],
+  "por_resultado": [
+   [
+    "Investigation complete; no suspect identified",
+    48808
+   ],
+   [
+    "sin resultado registrado",
+    13548
+   ],
+   [
+    "Unable to prosecute suspect",
+    9874
+   ],
+   [
+    "Under investigation",
+    8346
+   ],
+   [
+    "Status update unavailable",
+    4178
+   ],
+   [
+    "Awaiting court outcome",
+    2544
+   ],
+   [
+    "Local resolution",
+    1128
+   ],
+   [
+    "Court result unavailable",
+    916
+   ],
+   [
+    "Formal action is not in the public interest",
+    180
+   ],
+   [
+    "Action to be taken by another organisation",
+    155
+   ],
+   [
+    "Offender given penalty notice",
+    143
+   ],
+   [
+    "Offender given a caution",
+    141
+   ]
+  ]
+ },
+ "distrito_foco": "City of Westminster",
+ "meses_sin_dato": [
+  "2025-12",
+  "2026-08"
+ ]
+}

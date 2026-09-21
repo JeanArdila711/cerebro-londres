@@ -1,0 +1,75 @@
+{
+ "tema": "geo",
+ "probado": "2026-09-21",
+ "fuentes": [
+  {
+   "id": "ons_geography",
+   "nombre": "ONS Open Geography Portal · Local Authority Districts (December 2025) and Wards (December 2024), generalised",
+   "entidad": "ONS",
+   "url": "https://geoportal.statistics.gov.uk/",
+   "resolucion": "borough y ward",
+   "vigencia": "boroughs 2025-12 · wards 2024-12",
+   "probado": "2026-09-21",
+   "estado": "vivo",
+   "licencia": "OGL-3.0",
+   "personas": "no",
+   "proteccion": "abierto",
+   "uso": "mapa · secciones Territorio y Atlas",
+   "nota": "Capas BGC (generalizadas, clipped) en WGS84. Las dos escalas no son de la misma cosecha: los wards de diciembre de 2025 solo están como MapServer, que devuelve 400 a la consulta, así que se usan los de diciembre de 2024. Contiene OS data © Crown copyright and database right 2024/2025; la atribución de OS va en la vista."
+  }
+ ],
+ "cifras": {
+  "boroughs_n": {
+   "valor": 33,
+   "unidad": "boroughs",
+   "fuente": "ons_geography",
+   "vigencia": "2025-12",
+   "nota": "Greater London",
+   "estado": "integrado"
+  },
+  "wards_westminster_n": {
+   "valor": 18,
+   "unidad": "wards",
+   "fuente": "ons_geography",
+   "vigencia": "2024-12",
+   "nota": "Divisiones electorales dentro de City of Westminster",
+   "estado": "integrado"
+  }
+ },
+ "series": {},
+ "listas": {
+  "wards": [
+   "Abbey Road",
+   "Bayswater",
+   "Church Street",
+   "Harrow Road",
+   "Hyde Park",
+   "Knightsbridge & Belgravia",
+   "Lancaster Gate",
+   "Little Venice",
+   "Maida Vale",
+   "Marylebone",
+   "Pimlico North",
+   "Pimlico South",
+   "Queen's Park",
+   "Regent's Park",
+   "St James's",
+   "Vincent Square",
+   "West End",
+   "Westbourne"
+  ]
+ },
+ "ambito": "Greater London · foco City of Westminster",
+ "capas": {
+  "boroughs": {
+   "archivo": "territorio/boroughs.geojson",
+   "features": 33,
+   "bytes": 134628
+  },
+  "wards_westminster": {
+   "archivo": "territorio/wards_westminster.geojson",
+   "features": 18,
+   "bytes": 10751
+  }
+ }
+}

@@ -1,0 +1,16 @@
+# Secretos: antes del primer commit, no después
+.env
+.env.*
+!.env.example
+
+# Los crudos nunca llegan al repositorio
+lago/raw/
+
+# Ruido
+__pycache__/
+*.pyc
+.venv/
+prueba/
+node_modules/
+.DS_Store
+.vercel

@@ -1,0 +1,128 @@
+{
+ "tema": "infraestructura",
+ "probado": "2026-09-21",
+ "fuentes": [
+  {
+   "id": "osm_transporte",
+   "nombre": "OpenStreetMap · Overpass API (transporte)",
+   "entidad": "OSM",
+   "url": "https://overpass-api.de/api/interpreter",
+   "resolucion": "punto (dentro del área oficial del borough)",
+   "vigencia": "2026-09-21",
+   "probado": "2026-09-21",
+   "estado": "vivo",
+   "licencia": "ODbL-1.0",
+   "personas": "no",
+   "proteccion": "abierto",
+   "uso": "sección Territorio · infraestructura",
+   "nota": "© OpenStreetMap contributors, ODbL. El área es la relación 51781, verificada por ref:gss=E09000033: se cruza por código, no por nombre. Cobertura voluntaria."
+  },
+  {
+   "id": "tfl_stoppoint",
+   "nombre": "TfL Unified API · StopPoint",
+   "entidad": "TfL",
+   "url": "https://api.tfl.gov.uk/StopPoint",
+   "resolucion": "parada",
+   "vigencia": "—",
+   "probado": "2026-09-21",
+   "estado": "caido",
+   "licencia": "terminos-del-servicio",
+   "personas": "no",
+   "proteccion": "abierto",
+   "uso": "descartada para esta sección",
+   "nota": "504 Gateway Timeout sostenido el 2026-09-21 en /StopPoint?lat,lon,radius y en /Line/Mode/*/StopPoints, con varios radios y reintentos. /AirQuality del mismo host respondía 200, así que la caída es del endpoint, no del servicio. Reemplazada por OpenStreetMap. Volver a probar."
+  }
+ ],
+ "cifras": {
+  "estaciones_n": {
+   "valor": 35,
+   "unidad": "estaciones",
+   "fuente": "osm_transporte",
+   "vigencia": "2026-09-21",
+   "nota": "Estaciones de metro y tren con nombre dentro de City of Westminster",
+   "estado": "integrado"
+  },
+  "paradas_bus_n": {
+   "valor": 536,
+   "unidad": "paradas",
+   "fuente": "osm_transporte",
+   "vigencia": "2026-09-21",
+   "nota": "Paradas de autobús mapeadas en OpenStreetMap",
+   "estado": "integrado"
+  },
+  "bicicleta_puntos_n": {
+   "valor": 182,
+   "unidad": "puntos",
+   "fuente": "osm_transporte",
+   "vigencia": "2026-09-21",
+   "nota": "Puntos de alquiler de bicicleta",
+   "estado": "integrado"
+  }
+ },
+ "series": {},
+ "listas": {
+  "estaciones": [
+   "Baker Street",
+   "Bayswater",
+   "Bond Street",
+   "Charing Cross",
+   "Covent Garden",
+   "Down Street",
+   "Edgware Road",
+   "Embankment",
+   "Great Portland Street",
+   "Green Park",
+   "Hyde Park Corner",
+   "Lancaster Gate",
+   "Leicester Square",
+   "London Marylebone",
+   "London Paddington",
+   "London Victoria",
+   "Maida Vale",
+   "Marble Arch",
+   "Marlborough Road",
+   "Marylebone",
+   "Oxford Circus",
+   "Paddington",
+   "Paddington (Circle and Hammersmith & City lines)",
+   "Piccadilly Circus",
+   "Pimlico",
+   "Queensway",
+   "Regent's Park",
+   "Royal Oak",
+   "St. James's Park",
+   "St. John's Wood",
+   "Temple",
+   "Tottenham Court Road",
+   "Victoria",
+   "Warwick Avenue",
+   "Westminster"
+  ],
+  "redes": [
+   [
+    "London Underground",
+    32
+   ],
+   [
+    "National Rail",
+    3
+   ],
+   [
+    "sin red declarada",
+    2
+   ],
+   [
+    "Elizabeth line",
+    2
+   ],
+   [
+    "National Rail\\;Elizabeth line",
+    1
+   ]
+  ]
+ },
+ "distrito_foco": "City of Westminster",
+ "salvedades": [
+  "TfL StopPoint caída (504) el 2026-09-21; el conteo viene de OpenStreetMap, cuya cobertura es voluntaria y puede diferir del registro oficial de TfL."
+ ]
+}

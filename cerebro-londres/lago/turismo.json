@@ -1,0 +1,230 @@
+{
+ "tema": "turismo",
+ "probado": "2026-09-21",
+ "fuentes": [
+  {
+   "id": "osm_overpass",
+   "nombre": "OpenStreetMap · Overpass API",
+   "entidad": "OSM",
+   "url": "https://overpass-api.de/api/interpreter",
+   "resolucion": "punto (dentro del borough)",
+   "vigencia": "2026-09-21",
+   "probado": "2026-09-21",
+   "estado": "vivo",
+   "licencia": "ODbL-1.0",
+   "personas": "no",
+   "proteccion": "abierto",
+   "uso": "sección Turismo · capa de puntos del mapa",
+   "nota": "© OpenStreetMap contributors, ODbL: obliga a compartir igual lo derivado de la base, no solo a citar. Cobertura voluntaria: complementa el registro oficial, no lo sustituye. Los espejos fallan bajo carga; el script los recorre."
+  }
+ ],
+ "cifras": {
+  "alojamientos_n": {
+   "valor": 521,
+   "unidad": "establecimientos",
+   "fuente": "osm_overpass",
+   "vigencia": "2026-09-21",
+   "nota": "Hoteles, hostales, casas de huéspedes y apartamentos en City of Westminster",
+   "estado": "integrado"
+  },
+  "hoteles_n": {
+   "valor": 465,
+   "unidad": "hoteles",
+   "fuente": "osm_overpass",
+   "vigencia": "2026-09-21",
+   "nota": "Etiquetados tourism=hotel",
+   "estado": "integrado"
+  },
+  "atracciones_n": {
+   "valor": 515,
+   "unidad": "puntos",
+   "fuente": "osm_overpass",
+   "vigencia": "2026-09-21",
+   "nota": "Atracciones, museos, galerías, obras de arte y miradores",
+   "estado": "integrado"
+  },
+  "museos_n": {
+   "valor": 33,
+   "unidad": "museos",
+   "fuente": "osm_overpass",
+   "vigencia": "2026-09-21",
+   "nota": "Etiquetados tourism=museum",
+   "estado": "integrado"
+  },
+  "habitaciones_declaradas": {
+   "valor": 20108,
+   "unidad": "habitaciones",
+   "fuente": "osm_overpass",
+   "vigencia": "2026-09-21",
+   "nota": "Cota INFERIOR: solo 233 de 521 alojamientos declaran «rooms» en OSM",
+   "estado": "integrado"
+  }
+ },
+ "series": {},
+ "listas": {
+  "alojamiento_por_tipo": [
+   [
+    "hotel",
+    465
+   ],
+   [
+    "apartment",
+    26
+   ],
+   [
+    "hostel",
+    24
+   ],
+   [
+    "guest_house",
+    6
+   ]
+  ],
+  "atracciones_por_tipo": [
+   [
+    "artwork",
+    255
+   ],
+   [
+    "attraction",
+    134
+   ],
+   [
+    "gallery",
+    90
+   ],
+   [
+    "museum",
+    33
+   ],
+   [
+    "viewpoint",
+    3
+   ]
+  ],
+  "atracciones_nombradas": [
+   "10 Downing Street",
+   "15 Bateman Street",
+   "18 Davies Street Gallery",
+   "221B Baker Street",
+   "54 The Gallery",
+   "A Conversation with Oscar Wilde",
+   "A&D Gallery",
+   "Abbey Road Crossing",
+   "Abbey Road Studios",
+   "Africa",
+   "African Pygmy Goat",
+   "African harrier-hawk",
+   "Agriculture",
+   "Albion Jeune",
+   "Alison Jacques Gallery",
+   "All Souls Church",
+   "Alon Zakaim Fine Art",
+   "Alpacas",
+   "America",
+   "Anaesthesia Heritage Centre",
+   "Apsley House",
+   "Arnrid Johnston Obelisk",
+   "Art and Science",
+   "Arthur Harris",
+   "Arthur Sullivan",
+   "Asia",
+   "Atlas Gallery",
+   "Attenborough Komodo Dragon House",
+   "Bactrian camels",
+   "Banksy - Shop till you drop",
+   "Banqueting House",
+   "Batman",
+   "Bearing Up (Paddington Bear)",
+   "Beaux Arts",
+   "Beetle art",
+   "Ben Brown Fine Arts",
+   "Benjamin Franklin House",
+   "Bernard Jacobson Gallery",
+   "Big Ben",
+   "Bird Safari",
+   "Blewcoat School",
+   "Blyth Gallery",
+   "Boudica",
+   "Bow Street Police Museum",
+   "Boy and Butterflies",
+   "Boy and Frog Statue",
+   "Brick Bear (Paddington Bear)",
+   "British Optical Association Museum",
+   "Buckingham Palace",
+   "Bugs Bunny",
+   "Burlington Arcade",
+   "Burlington House",
+   "Butterfly Paradise",
+   "Capital Art London",
+   "Carlton House Terrace",
+   "Carnaby Street",
+   "Caxton Hall",
+   "Cecil Court",
+   "Celebes crested macaques",
+   "Channel 4",
+   "Chapter House and Pyx Chamber",
+   "Charles George Gordon",
+   "Charles I",
+   "Charles II",
+   "Charles Portal",
+   "Charlie Chaplin",
+   "Chelsea Space",
+   "Chinatown",
+   "Chinatown Gate",
+   "Chindit Memorial",
+   "Chinese water deer",
+   "Christopher Columbus",
+   "Churchill War Rooms",
+   "Clarendon",
+   "Clarendon Fine Art",
+   "Cleopatra's Needle",
+   "Clifford the big red dog",
+   "Clove 2007",
+   "Coatis",
+   "Colin Campbell",
+   "Contemporary Applied Arts",
+   "Cortesi Gallery",
+   "Covent Garden Market",
+   "Covent Garden Piazza",
+   "Crouching Figure No. 4",
+   "Daniel Kaluuya",
+   "Debut Contemporary",
+   "Dellasposa Gallery",
+   "Diana monkeys",
+   "Don Lockwood",
+   "Dorothy Circus Gallery",
+   "Duke of York Column",
+   "Earl Mountbatten of Burma",
+   "Eclectic Gallery",
+   "Edith Cavell Memorial",
+   "Eisenhower Statue",
+   "Elephant",
+   "Elizabeth Tower",
+   "Emus",
+   "Endangered Species",
+   "Equestrian statue \"Physical Energy\"",
+   "Europe",
+   "Everyone I've Ever Known",
+   "Fake houses",
+   "Faraday Museum",
+   "Flags Of UK Overseas Territories",
+   "Flamingos",
+   "Fleet Air Arm Memorial",
+   "Florence Nightingale the 'Lady with the Lamp'",
+   "Flow Gallery",
+   "Foch",
+   "Four K6 Telephone Kiosks",
+   "Fourth Plinth",
+   "Fox and the Girl",
+   "Frameless",
+   "Francis Outred",
+   "Franklin Delano Roosevelt",
+   "Friary Court",
+   "Frieze of Parnassus",
+   "Frith Street Gallery"
+  ]
+ },
+ "distrito_foco": "City of Westminster",
+ "nota": "Conteos de OpenStreetMap, no de un registro oficial de turismo."
+}

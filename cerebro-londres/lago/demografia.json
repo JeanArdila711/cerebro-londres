@@ -1,0 +1,443 @@
+{
+ "tema": "demografia",
+ "probado": "2026-09-21",
+ "fuentes": [
+  {
+   "id": "ons_mye_nomis",
+   "nombre": "ONS · Population estimates - local authority based by five year age band (Nomis NM_31_1)",
+   "entidad": "ONS",
+   "url": "https://www.nomisweb.co.uk/datasets/pestsyoala",
+   "resolucion": "borough",
+   "vigencia": "2025",
+   "probado": "2026-09-21",
+   "estado": "vivo",
+   "licencia": "OGL-3.0",
+   "personas": "no",
+   "proteccion": "abierto",
+   "uso": "sección Gente · atlas de los 33 boroughs",
+   "nota": "Mid-year estimates. API sin llave. Se cruza por código GSS E09, no por nombre."
+  }
+ ],
+ "cifras": {
+  "poblacion_westminster": {
+   "valor": 212367,
+   "unidad": "personas",
+   "fuente": "ons_mye_nomis",
+   "vigencia": "2025",
+   "nota": "Estimación de mitad de año para City of Westminster (E09000033)",
+   "estado": "integrado"
+  },
+  "puesto_poblacion": {
+   "valor": 28,
+   "unidad": "puesto de 33",
+   "fuente": "ons_mye_nomis",
+   "vigencia": "2025",
+   "nota": "Entre los 33 boroughs de Greater London, de mayor a menor",
+   "estado": "integrado"
+  },
+  "poblacion_greater_london": {
+   "valor": 9122909,
+   "unidad": "personas",
+   "fuente": "ons_mye_nomis",
+   "vigencia": "2025",
+   "nota": "Suma de los 33 boroughs",
+   "estado": "integrado"
+  },
+  "pct_de_londres": {
+   "valor": 2.33,
+   "unidad": "%",
+   "fuente": "ons_mye_nomis",
+   "vigencia": "2025",
+   "nota": "Peso de Westminster en la población de Greater London",
+   "estado": "integrado"
+  },
+  "pct_menores_16": {
+   "valor": 11.37,
+   "unidad": "%",
+   "fuente": "ons_mye_nomis",
+   "vigencia": "2025",
+   "nota": "Menores de 16 años sobre el total del borough",
+   "estado": "integrado"
+  },
+  "pct_65_mas": {
+   "valor": 13.02,
+   "unidad": "%",
+   "fuente": "ons_mye_nomis",
+   "vigencia": "2025",
+   "nota": "De 65 años o más sobre el total del borough",
+   "estado": "integrado"
+  },
+  "hombres_westminster": {
+   "valor": 102734,
+   "unidad": "personas",
+   "fuente": "ons_mye_nomis",
+   "vigencia": "2025",
+   "nota": "Hombres en City of Westminster",
+   "estado": "integrado"
+  },
+  "mujeres_westminster": {
+   "valor": 109633,
+   "unidad": "personas",
+   "fuente": "ons_mye_nomis",
+   "vigencia": "2025",
+   "nota": "Mujeres en City of Westminster",
+   "estado": "integrado"
+  }
+ },
+ "series": {
+  "poblacion_westminster": {
+   "fuente": "ons_mye_nomis",
+   "unidad": "personas",
+   "puntos": [
+    [
+     "2001",
+     203329
+    ],
+    [
+     "2002",
+     208100
+    ],
+    [
+     "2003",
+     211009
+    ],
+    [
+     "2004",
+     214557
+    ],
+    [
+     "2005",
+     223132
+    ],
+    [
+     "2006",
+     222829
+    ],
+    [
+     "2007",
+     220619
+    ],
+    [
+     "2008",
+     218673
+    ],
+    [
+     "2009",
+     216980
+    ],
+    [
+     "2010",
+     217187
+    ],
+    [
+     "2011",
+     219582
+    ],
+    [
+     "2012",
+     219539
+    ],
+    [
+     "2013",
+     215907
+    ],
+    [
+     "2014",
+     214341
+    ],
+    [
+     "2015",
+     215876
+    ],
+    [
+     "2016",
+     213193
+    ],
+    [
+     "2017",
+     210459
+    ],
+    [
+     "2018",
+     209868
+    ],
+    [
+     "2019",
+     208415
+    ],
+    [
+     "2020",
+     205624
+    ],
+    [
+     "2021",
+     205759
+    ],
+    [
+     "2022",
+     213009
+    ],
+    [
+     "2023",
+     216343
+    ],
+    [
+     "2024",
+     215694
+    ],
+    [
+     "2025",
+     212367
+    ]
+   ]
+  }
+ },
+ "listas": {
+  "boroughs": [
+   {
+    "codigo": "E09000008",
+    "nombre": "Croydon",
+    "poblacion": 410085
+   },
+   {
+    "codigo": "E09000003",
+    "nombre": "Barnet",
+    "poblacion": 408087
+   },
+   {
+    "codigo": "E09000009",
+    "nombre": "Ealing",
+    "poblacion": 387072
+   },
+   {
+    "codigo": "E09000025",
+    "nombre": "Newham",
+    "poblacion": 376542
+   },
+   {
+    "codigo": "E09000005",
+    "nombre": "Brent",
+    "poblacion": 352201
+   },
+   {
+    "codigo": "E09000032",
+    "nombre": "Wandsworth",
+    "poblacion": 339859
+   },
+   {
+    "codigo": "E09000006",
+    "nombre": "Bromley",
+    "poblacion": 336048
+   },
+   {
+    "codigo": "E09000030",
+    "nombre": "Tower Hamlets",
+    "poblacion": 334240
+   },
+   {
+    "codigo": "E09000010",
+    "nombre": "Enfield",
+    "poblacion": 329400
+   },
+   {
+    "codigo": "E09000017",
+    "nombre": "Hillingdon",
+    "poblacion": 326671
+   },
+   {
+    "codigo": "E09000026",
+    "nombre": "Redbridge",
+    "poblacion": 321829
+   },
+   {
+    "codigo": "E09000022",
+    "nombre": "Lambeth",
+    "poblacion": 314298
+   },
+   {
+    "codigo": "E09000028",
+    "nombre": "Southwark",
+    "poblacion": 312366
+   },
+   {
+    "codigo": "E09000011",
+    "nombre": "Greenwich",
+    "poblacion": 301225
+   },
+   {
+    "codigo": "E09000023",
+    "nombre": "Lewisham",
+    "poblacion": 301037
+   },
+   {
+    "codigo": "E09000018",
+    "nombre": "Hounslow",
+    "poblacion": 299486
+   },
+   {
+    "codigo": "E09000031",
+    "nombre": "Waltham Forest",
+    "poblacion": 283713
+   },
+   {
+    "codigo": "E09000016",
+    "nombre": "Havering",
+    "poblacion": 280787
+   },
+   {
+    "codigo": "E09000015",
+    "nombre": "Harrow",
+    "poblacion": 272612
+   },
+   {
+    "codigo": "E09000012",
+    "nombre": "Hackney",
+    "poblacion": 266241
+   },
+   {
+    "codigo": "E09000014",
+    "nombre": "Haringey",
+    "poblacion": 266218
+   },
+   {
+    "codigo": "E09000004",
+    "nombre": "Bexley",
+    "poblacion": 257103
+   },
+   {
+    "codigo": "E09000002",
+    "nombre": "Barking and Dagenham",
+    "poblacion": 238295
+   },
+   {
+    "codigo": "E09000019",
+    "nombre": "Islington",
+    "poblacion": 224551
+   },
+   {
+    "codigo": "E09000024",
+    "nombre": "Merton",
+    "poblacion": 218891
+   },
+   {
+    "codigo": "E09000007",
+    "nombre": "Camden",
+    "poblacion": 216658
+   },
+   {
+    "codigo": "E09000029",
+    "nombre": "Sutton",
+    "poblacion": 213972
+   },
+   {
+    "codigo": "E09000033",
+    "nombre": "Westminster",
+    "poblacion": 212367
+   },
+   {
+    "codigo": "E09000027",
+    "nombre": "Richmond upon Thames",
+    "poblacion": 196713
+   },
+   {
+    "codigo": "E09000013",
+    "nombre": "Hammersmith and Fulham",
+    "poblacion": 190216
+   },
+   {
+    "codigo": "E09000021",
+    "nombre": "Kingston upon Thames",
+    "poblacion": 172761
+   },
+   {
+    "codigo": "E09000020",
+    "nombre": "Kensington and Chelsea",
+    "poblacion": 145734
+   },
+   {
+    "codigo": "E09000001",
+    "nombre": "City of London",
+    "poblacion": 15631
+   }
+  ],
+  "piramide_quinquenal": [
+   [
+    "Aged under 1 year",
+    1952
+   ],
+   [
+    "Aged 1 - 4 years",
+    7049
+   ],
+   [
+    "Aged 5 - 9 years",
+    6758
+   ],
+   [
+    "Aged 10 - 14 years",
+    6912
+   ],
+   [
+    "Aged 15 - 19 years",
+    9879
+   ],
+   [
+    "Aged 20 - 24 years",
+    21105
+   ],
+   [
+    "Aged 25 - 29 years",
+    27914
+   ],
+   [
+    "Aged 30 - 34 years",
+    21985
+   ],
+   [
+    "Aged 35 - 39 years",
+    16395
+   ],
+   [
+    "Aged 40 - 44 years",
+    13163
+   ],
+   [
+    "Aged 45 - 49 years",
+    12632
+   ],
+   [
+    "Aged 50 - 54 years",
+    13317
+   ],
+   [
+    "Aged 55 - 59 years",
+    14019
+   ],
+   [
+    "Aged 60 - 64 years",
+    11644
+   ],
+   [
+    "Aged 65 - 69 years",
+    8582
+   ],
+   [
+    "Aged 70 - 74 years",
+    6524
+   ],
+   [
+    "Aged 75 - 79 years",
+    5368
+   ],
+   [
+    "Aged 80 - 84 years",
+    3653
+   ],
+   [
+    "Aged 85 and over",
+    3516
+   ]
+  ]
+ },
+ "ambito": "Greater London · foco City of Westminster"
+}

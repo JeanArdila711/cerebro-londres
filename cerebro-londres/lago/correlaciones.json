@@ -1,0 +1,131 @@
+{
+ "tema": "correlaciones",
+ "probado": "2026-09-21",
+ "fuentes": [
+  {
+   "id": "correlaciones_derivado",
+   "nombre": "Correlaciones entre métricas de boroughs (derivado del lago)",
+   "entidad": "Cerebro Londres",
+   "url": "https://github.com/",
+   "resolucion": "borough",
+   "vigencia": "2026-09-21",
+   "probado": "2026-09-21",
+   "estado": "vivo",
+   "licencia": "derivado",
+   "personas": "no",
+   "proteccion": "abierto",
+   "uso": "sección Correlaciones",
+   "nota": "Pearson sobre los 33 boroughs. Describe asociación, no causa. El sistema publica cuántos pares compara y cuántos cabría esperar «significativos» por azar."
+  }
+ ],
+ "cifras": {
+  "metricas_n": {
+   "valor": 4,
+   "unidad": "métricas",
+   "fuente": "correlaciones_derivado",
+   "vigencia": "2026-09-21",
+   "nota": "Columnas numéricas comparadas",
+   "estado": "integrado"
+  },
+  "pares_n": {
+   "valor": 6,
+   "unidad": "pares",
+   "fuente": "correlaciones_derivado",
+   "vigencia": "2026-09-21",
+   "nota": "Todas las combinaciones de 4 métricas tomadas de a dos",
+   "estado": "integrado"
+  },
+  "esperados_por_azar": {
+   "valor": 0.3,
+   "unidad": "pares",
+   "fuente": "correlaciones_derivado",
+   "vigencia": "2026-09-21",
+   "nota": "Cuántos pares cabría esperar «significativos» al 5 % aunque nada tuviera que ver con nada. Se publica al lado de los hallazgos, no en una nota al pie.",
+   "estado": "integrado"
+  },
+  "asociaciones_fuertes": {
+   "valor": 3,
+   "unidad": "pares",
+   "fuente": "correlaciones_derivado",
+   "vigencia": "2026-09-21",
+   "nota": "Pares con |r| ≥ 0,5",
+   "estado": "integrado"
+  },
+  "asociacion_mas_fuerte": {
+   "valor": -0.726,
+   "unidad": "coeficiente r",
+   "fuente": "correlaciones_derivado",
+   "vigencia": "2026-09-21",
+   "nota": "Área (km²) ↔ Densidad (hab/km²) · asociación, no efecto",
+   "estado": "integrado"
+  }
+ },
+ "series": {},
+ "listas": {
+  "pares": [
+   {
+    "a": "area_km2",
+    "b": "densidad_hab_km2",
+    "etiqueta_a": "Área (km²)",
+    "etiqueta_b": "Densidad (hab/km²)",
+    "r": -0.726,
+    "n": 33,
+    "t": -5.87,
+    "fuerte": true
+   },
+   {
+    "a": "poblacion",
+    "b": "precio_medio_gbp",
+    "etiqueta_a": "Población",
+    "etiqueta_b": "Precio medio de vivienda (£)",
+    "r": -0.546,
+    "n": 33,
+    "t": -3.63,
+    "fuerte": true
+   },
+   {
+    "a": "poblacion",
+    "b": "area_km2",
+    "etiqueta_a": "Población",
+    "etiqueta_b": "Área (km²)",
+    "r": 0.504,
+    "n": 33,
+    "t": 3.25,
+    "fuerte": true
+   },
+   {
+    "a": "area_km2",
+    "b": "precio_medio_gbp",
+    "etiqueta_a": "Área (km²)",
+    "etiqueta_b": "Precio medio de vivienda (£)",
+    "r": -0.43,
+    "n": 33,
+    "t": -2.65,
+    "fuerte": false
+   },
+   {
+    "a": "densidad_hab_km2",
+    "b": "precio_medio_gbp",
+    "etiqueta_a": "Densidad (hab/km²)",
+    "etiqueta_b": "Precio medio de vivienda (£)",
+    "r": 0.323,
+    "n": 33,
+    "t": 1.9,
+    "fuerte": false
+   },
+   {
+    "a": "poblacion",
+    "b": "densidad_hab_km2",
+    "etiqueta_a": "Población",
+    "etiqueta_b": "Densidad (hab/km²)",
+    "r": -0.057,
+    "n": 33,
+    "t": -0.32,
+    "fuerte": false
+   }
+  ]
+ },
+ "ambito": "33 boroughs de Greater London",
+ "metodo": "Coeficiente de Pearson sobre los boroughs con dato en ambas métricas. Una correlación describe una asociación y nunca se publica como efecto causal.",
+ "ancla": "City of Westminster"
+}

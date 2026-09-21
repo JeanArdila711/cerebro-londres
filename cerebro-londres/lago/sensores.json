@@ -1,0 +1,286 @@
+{
+ "tema": "sensores",
+ "probado": "2026-09-21",
+ "fuentes": [
+  {
+   "id": "open_meteo_clima",
+   "nombre": "Open-Meteo · Weather Forecast API",
+   "entidad": "Open-Meteo",
+   "url": "https://open-meteo.com/en/docs",
+   "resolucion": "punto (centroide del borough)",
+   "vigencia": "2026-09-21T19:45",
+   "probado": "2026-09-21",
+   "estado": "vivo",
+   "licencia": "CC-BY-4.0",
+   "personas": "no",
+   "proteccion": "abierto",
+   "uso": "sección Ambiente",
+   "nota": "Modelo meteorológico interpolado al punto, no una estación física."
+  },
+  {
+   "id": "open_meteo_aire",
+   "nombre": "Open-Meteo · Air Quality API (CAMS)",
+   "entidad": "Open-Meteo",
+   "url": "https://open-meteo.com/en/docs/air-quality-api",
+   "resolucion": "punto (centroide del borough)",
+   "vigencia": "2026-09-21T19:00",
+   "probado": "2026-09-21",
+   "estado": "vivo",
+   "licencia": "CC-BY-4.0",
+   "personas": "no",
+   "proteccion": "abierto",
+   "uso": "sección Ambiente",
+   "nota": "Valores de modelo (CAMS), no lecturas de la red de monitoreo londinense."
+  },
+  {
+   "id": "tfl_airquality",
+   "nombre": "TfL · AirQuality API",
+   "entidad": "TfL",
+   "url": "https://api.tfl.gov.uk/AirQuality",
+   "resolucion": "Greater London",
+   "vigencia": "2026-09-21",
+   "probado": "2026-09-21",
+   "estado": "vivo",
+   "licencia": "terminos-del-servicio",
+   "personas": "no",
+   "proteccion": "abierto",
+   "uso": "sección Ambiente",
+   "nota": "Powered by TfL Open Data. Pronóstico cualitativo para toda la ciudad."
+  }
+ ],
+ "cifras": {
+  "temperatura_actual": {
+   "valor": 22.3,
+   "unidad": "°C",
+   "fuente": "open_meteo_clima",
+   "vigencia": "2026-09-21T19:45",
+   "nota": "Temperatura a 2 m",
+   "estado": "integrado"
+  },
+  "humedad_actual": {
+   "valor": 43,
+   "unidad": "%",
+   "fuente": "open_meteo_clima",
+   "vigencia": "2026-09-21T19:45",
+   "nota": "Humedad relativa",
+   "estado": "integrado"
+  },
+  "viento_actual": {
+   "valor": 6.5,
+   "unidad": "km/h",
+   "fuente": "open_meteo_clima",
+   "vigencia": "2026-09-21T19:45",
+   "nota": "Viento a 10 m",
+   "estado": "integrado"
+  },
+  "nubosidad_actual": {
+   "valor": 6,
+   "unidad": "%",
+   "fuente": "open_meteo_clima",
+   "vigencia": "2026-09-21T19:45",
+   "nota": "Cobertura de nubes",
+   "estado": "integrado"
+  },
+  "pm25_actual": {
+   "valor": 7.6,
+   "unidad": "µg/m³",
+   "fuente": "open_meteo_aire",
+   "vigencia": "2026-09-21T19:00",
+   "nota": "PM2.5 (modelo CAMS)",
+   "estado": "integrado"
+  },
+  "pm10_actual": {
+   "valor": 15.1,
+   "unidad": "µg/m³",
+   "fuente": "open_meteo_aire",
+   "vigencia": "2026-09-21T19:00",
+   "nota": "PM10 (modelo CAMS)",
+   "estado": "integrado"
+  },
+  "no2_actual": {
+   "valor": 43.7,
+   "unidad": "µg/m³",
+   "fuente": "open_meteo_aire",
+   "vigencia": "2026-09-21T19:00",
+   "nota": "Dióxido de nitrógeno (modelo CAMS)",
+   "estado": "integrado"
+  },
+  "aqi_europeo": {
+   "valor": 51,
+   "unidad": "índice",
+   "fuente": "open_meteo_aire",
+   "vigencia": "2026-09-21T19:00",
+   "nota": "Índice europeo de calidad del aire",
+   "estado": "integrado"
+  },
+  "banda_aire_londres": {
+   "valor": "Low",
+   "unidad": "banda",
+   "fuente": "tfl_airquality",
+   "vigencia": "2026-09-21",
+   "nota": "Low air pollution forecast valid from Monday 21 September to end of Monday 21 September GMT",
+   "estado": "integrado"
+  }
+ },
+ "series": {
+  "pronostico_max": {
+   "fuente": "open_meteo_clima",
+   "unidad": "°C",
+   "puntos": [
+    [
+     "2026-09-21",
+     23.4
+    ],
+    [
+     "2026-09-22",
+     24.9
+    ],
+    [
+     "2026-09-23",
+     23.1
+    ],
+    [
+     "2026-09-24",
+     18.1
+    ],
+    [
+     "2026-09-25",
+     22.2
+    ],
+    [
+     "2026-09-26",
+     18.0
+    ],
+    [
+     "2026-09-27",
+     19.6
+    ]
+   ]
+  },
+  "pronostico_min": {
+   "fuente": "open_meteo_clima",
+   "unidad": "°C",
+   "puntos": [
+    [
+     "2026-09-21",
+     11.2
+    ],
+    [
+     "2026-09-22",
+     16.7
+    ],
+    [
+     "2026-09-23",
+     12.9
+    ],
+    [
+     "2026-09-24",
+     10.0
+    ],
+    [
+     "2026-09-25",
+     12.0
+    ],
+    [
+     "2026-09-26",
+     13.5
+    ],
+    [
+     "2026-09-27",
+     14.2
+    ]
+   ]
+  },
+  "pronostico_lluvia": {
+   "fuente": "open_meteo_clima",
+   "unidad": "mm",
+   "puntos": [
+    [
+     "2026-09-21",
+     0.0
+    ],
+    [
+     "2026-09-22",
+     0.0
+    ],
+    [
+     "2026-09-23",
+     0.2
+    ],
+    [
+     "2026-09-24",
+     0.0
+    ],
+    [
+     "2026-09-25",
+     0.0
+    ],
+    [
+     "2026-09-26",
+     0.0
+    ],
+    [
+     "2026-09-27",
+     0.0
+    ]
+   ]
+  },
+  "pm25_diario": {
+   "fuente": "open_meteo_aire",
+   "unidad": "µg/m³",
+   "puntos": [
+    [
+     "2026-09-14",
+     4.4
+    ],
+    [
+     "2026-09-15",
+     4.3
+    ],
+    [
+     "2026-09-16",
+     3.5
+    ],
+    [
+     "2026-09-17",
+     4.6
+    ],
+    [
+     "2026-09-18",
+     7.3
+    ],
+    [
+     "2026-09-19",
+     5.1
+    ],
+    [
+     "2026-09-20",
+     5.5
+    ],
+    [
+     "2026-09-21",
+     11.2
+    ],
+    [
+     "2026-09-22",
+     12.9
+    ],
+    [
+     "2026-09-23",
+     10.8
+    ],
+    [
+     "2026-09-24",
+     6.0
+    ],
+    [
+     "2026-09-25",
+     13.3
+    ]
+   ]
+  }
+ },
+ "listas": {},
+ "territorio": "City of Westminster",
+ "salvedades": []
+}
