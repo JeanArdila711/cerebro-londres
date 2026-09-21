@@ -19,6 +19,7 @@ body{
 }
 h1,h2,h3{line-height:1.2; margin:0 0 .4em}
 a{color:inherit}
+[hidden]{display:none !important}
 button{font:inherit; cursor:pointer}
 
 /* --- Compuerta --- */
