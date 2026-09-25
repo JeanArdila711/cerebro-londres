@@ -126,5 +126,5048 @@
   "uso": "excluida por decisión de privacidad",
   "tema": "economia",
   "nota": "Responde 200 y la licencia permite reutilizarla. Se excluye igualmente: dirección, postcode, precio y fecha de una vivienda concreta identifican un hogar y lo que pagó por su casa. La pregunta del sistema —cuánto cuesta vivir aquí— se responde con el índice agregado (UK HPI), que no expone a nadie. Que un dato sea público y reutilizable no obliga a publicarlo."
+ },
+ {
+  "id": "nomis_censo2021_ts001",
+  "nombre": "Censo 2021 · TS001 residentes habituales (Nomis)",
+  "entidad": "ONS",
+  "familia": "Estadística oficial",
+  "tema": "demografia",
+  "url": "https://www.nomisweb.co.uk/datasets/nm_2021_1",
+  "prueba": "https://www.nomisweb.co.uk/api/v01/dataset/NM_2021_1.data.csv?date=latest&geography=E12000007&measures=20100",
+  "resolucion": "región de Londres (probado); Nomis publica también borough y escalas menores",
+  "vigencia": "Censo 2021 (21-mar-2021)",
+  "licencia": "OGL-3.0",
+  "personas": "no: conteos agregados con control de divulgación",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "población censal de Londres y sus boroughs",
+  "nota": "Londres: 8.799.728 residentes habituales (8.699.834 en hogares y 99.894 en establecimientos colectivos), consultado 2026-09-25. El censo de Inglaterra y Gales es decenal; no hay uno posterior a 2021.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://www.nomisweb.co.uk/home/copyright.asp",
+   "patron": "Open Government Licence"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "Open Government Licence",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "nomis_censo2021_ts004",
+  "nombre": "Censo 2021 · TS004 país de nacimiento",
+  "entidad": "ONS",
+  "familia": "Estadística oficial",
+  "tema": "demografia",
+  "url": "https://www.nomisweb.co.uk/datasets/nm_2024_1",
+  "prueba": "https://www.nomisweb.co.uk/api/v01/dataset/NM_2024_1.data.csv?date=latest&geography=E12000007&measures=20100",
+  "resolucion": "región de Londres (probado); Nomis publica también borough y escalas menores",
+  "vigencia": "Censo 2021",
+  "licencia": "OGL-3.0",
+  "personas": "no: conteos agregados con control de divulgación",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "población nacida fuera del Reino Unido por borough",
+  "nota": "Tabla TS004 del censo 2021.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://www.nomisweb.co.uk/home/copyright.asp",
+   "patron": "Open Government Licence"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "Open Government Licence",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "nomis_censo2021_ts021",
+  "nombre": "Censo 2021 · TS021 grupo étnico",
+  "entidad": "ONS",
+  "familia": "Estadística oficial",
+  "tema": "demografia",
+  "url": "https://www.nomisweb.co.uk/datasets/nm_2041_1",
+  "prueba": "https://www.nomisweb.co.uk/api/v01/dataset/NM_2041_1.data.csv?date=latest&geography=E12000007&measures=20100",
+  "resolucion": "región de Londres (probado); Nomis publica también borough y escalas menores",
+  "vigencia": "Censo 2021",
+  "licencia": "OGL-3.0",
+  "personas": "no: conteos agregados con control de divulgación",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "composición étnica por borough",
+  "nota": "Autodeclarado en el censo. Categorías del censo de Inglaterra y Gales.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://www.nomisweb.co.uk/home/copyright.asp",
+   "patron": "Open Government Licence"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "Open Government Licence",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "nomis_censo2021_ts024",
+  "nombre": "Censo 2021 · TS024 idioma principal (detallado)",
+  "entidad": "ONS",
+  "familia": "Estadística oficial",
+  "tema": "demografia",
+  "url": "https://www.nomisweb.co.uk/datasets/nm_2043_1",
+  "prueba": "https://www.nomisweb.co.uk/api/v01/dataset/NM_2043_1.data.csv?date=latest&geography=E12000007&measures=20100",
+  "resolucion": "región de Londres (probado); Nomis publica también borough y escalas menores",
+  "vigencia": "Censo 2021",
+  "licencia": "OGL-3.0",
+  "personas": "no: conteos agregados con control de divulgación",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "idiomas hablados en Londres; útil para una interfaz bilingüe",
+  "nota": "Tabla detallada TS024.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://www.nomisweb.co.uk/home/copyright.asp",
+   "patron": "Open Government Licence"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "Open Government Licence",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "nomis_censo2021_ts030",
+  "nombre": "Censo 2021 · TS030 religión",
+  "entidad": "ONS",
+  "familia": "Estadística oficial",
+  "tema": "demografia",
+  "url": "https://www.nomisweb.co.uk/datasets/nm_2049_1",
+  "prueba": "https://www.nomisweb.co.uk/api/v01/dataset/NM_2049_1.data.csv?date=latest&geography=E12000007&measures=20100",
+  "resolucion": "región de Londres (probado); Nomis publica también borough y escalas menores",
+  "vigencia": "Censo 2021",
+  "licencia": "OGL-3.0",
+  "personas": "no: conteos agregados con control de divulgación",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "religión declarada por borough",
+  "nota": "Pregunta voluntaria en el censo 2021.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://www.nomisweb.co.uk/home/copyright.asp",
+   "patron": "Open Government Licence"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "Open Government Licence",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "nomis_censo2021_ts037",
+  "nombre": "Censo 2021 · TS037 salud general",
+  "entidad": "ONS",
+  "familia": "Estadística oficial",
+  "tema": "demografia",
+  "url": "https://www.nomisweb.co.uk/datasets/nm_2055_1",
+  "prueba": "https://www.nomisweb.co.uk/api/v01/dataset/NM_2055_1.data.csv?date=latest&geography=E12000007&measures=20100",
+  "resolucion": "región de Londres (probado); Nomis publica también borough y escalas menores",
+  "vigencia": "Censo 2021",
+  "licencia": "OGL-3.0",
+  "personas": "no: conteos agregados con control de divulgación",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "salud autodeclarada",
+  "nota": "Existe también la versión estandarizada por edad (NM_2092_1, TS037ASP).",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://www.nomisweb.co.uk/home/copyright.asp",
+   "patron": "Open Government Licence"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "Open Government Licence",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "nomis_censo2021_ts054",
+  "nombre": "Censo 2021 · TS054 tenencia de la vivienda",
+  "entidad": "ONS",
+  "familia": "Estadística oficial",
+  "tema": "economia",
+  "url": "https://www.nomisweb.co.uk/datasets/nm_2072_1",
+  "prueba": "https://www.nomisweb.co.uk/api/v01/dataset/NM_2072_1.data.csv?date=latest&geography=E12000007&measures=20100",
+  "resolucion": "región de Londres (probado); Nomis publica también borough y escalas menores",
+  "vigencia": "Censo 2021",
+  "licencia": "OGL-3.0",
+  "personas": "no: conteos agregados con control de divulgación",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "propiedad frente a alquiler por borough",
+  "nota": "Complementa la pregunta de vivienda.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://www.nomisweb.co.uk/home/copyright.asp",
+   "patron": "Open Government Licence"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "Open Government Licence",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "nomis_censo2021_ts061",
+  "nombre": "Censo 2021 · TS061 modo de viaje al trabajo",
+  "entidad": "ONS",
+  "familia": "Estadística oficial",
+  "tema": "infraestructura",
+  "url": "https://www.nomisweb.co.uk/datasets/nm_2078_1",
+  "prueba": "https://www.nomisweb.co.uk/api/v01/dataset/NM_2078_1.data.csv?date=latest&geography=E12000007&measures=20100",
+  "resolucion": "región de Londres (probado); Nomis publica también borough y escalas menores",
+  "vigencia": "Censo 2021",
+  "licencia": "OGL-3.0",
+  "personas": "no: conteos agregados con control de divulgación",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "modo de transporte al trabajo",
+  "nota": "Censo levantado en marzo de 2021, con restricciones de la pandemia: el teletrabajo está sobrerrepresentado frente a otros años.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://www.nomisweb.co.uk/home/copyright.asp",
+   "patron": "Open Government Licence"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "Open Government Licence",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "nomis_censo2021_ts066",
+  "nombre": "Censo 2021 · TS066 situación de actividad económica",
+  "entidad": "ONS",
+  "familia": "Estadística oficial",
+  "tema": "economia",
+  "url": "https://www.nomisweb.co.uk/datasets/nm_2083_1",
+  "prueba": "https://www.nomisweb.co.uk/api/v01/dataset/NM_2083_1.data.csv?date=latest&geography=E12000007&measures=20100",
+  "resolucion": "región de Londres (probado); Nomis publica también borough y escalas menores",
+  "vigencia": "Censo 2021",
+  "licencia": "OGL-3.0",
+  "personas": "no: conteos agregados con control de divulgación",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "ocupados, desempleados e inactivos por borough",
+  "nota": "Tabla TS066.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://www.nomisweb.co.uk/home/copyright.asp",
+   "patron": "Open Government Licence"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "Open Government Licence",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "nomis_censo2021_ts067",
+  "nombre": "Censo 2021 · TS067 máximo nivel educativo",
+  "entidad": "ONS",
+  "familia": "Estadística oficial",
+  "tema": "demografia",
+  "url": "https://www.nomisweb.co.uk/datasets/nm_2084_1",
+  "prueba": "https://www.nomisweb.co.uk/api/v01/dataset/NM_2084_1.data.csv?date=latest&geography=E12000007&measures=20100",
+  "resolucion": "región de Londres (probado); Nomis publica también borough y escalas menores",
+  "vigencia": "Censo 2021",
+  "licencia": "OGL-3.0",
+  "personas": "no: conteos agregados con control de divulgación",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "nivel educativo de la población",
+  "nota": "Tabla TS067.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://www.nomisweb.co.uk/home/copyright.asp",
+   "patron": "Open Government Licence"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "Open Government Licence",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "nomis_aps",
+  "nombre": "Annual Population Survey · tasa de empleo (Nomis)",
+  "entidad": "ONS",
+  "familia": "Estadística oficial",
+  "tema": "economia",
+  "url": "https://www.nomisweb.co.uk/datasets/nm_17_5",
+  "prueba": "https://www.nomisweb.co.uk/api/v01/dataset/NM_17_5.data.csv?date=latest&geography=E12000007&measures=20599&variable=45",
+  "resolucion": "región de Londres (probado); Nomis publica también borough y escalas menores",
+  "vigencia": "abr-2025 a mar-2026",
+  "licencia": "OGL-3.0",
+  "personas": "no: conteos agregados con control de divulgación",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "empleo por borough",
+  "nota": "Tasa de empleo de 16 a 64 años en Londres: 74,8 % (abr-2025 a mar-2026), consultado 2026-09-25. Es una encuesta: a escala de borough los intervalos de confianza son amplios.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://www.nomisweb.co.uk/home/copyright.asp",
+   "patron": "Open Government Licence"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "Open Government Licence",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "nomis_claimant",
+  "nombre": "Claimant count (Nomis)",
+  "entidad": "ONS",
+  "familia": "Estadística oficial",
+  "tema": "economia",
+  "url": "https://www.nomisweb.co.uk/datasets/nm_162_1",
+  "prueba": "https://www.nomisweb.co.uk/api/v01/dataset/NM_162_1.data.csv?date=latest&geography=E12000007&measures=20100&gender=0&age=0&measure=1",
+  "resolucion": "región de Londres (probado); Nomis publica también borough y escalas menores",
+  "vigencia": "ago-2026",
+  "licencia": "OGL-3.0",
+  "personas": "no: conteos agregados con control de divulgación",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "personas que reciben prestaciones por desempleo, mensual",
+  "nota": "Londres: 347.135 en agosto de 2026, consultado 2026-09-25. No es la tasa de desempleo: cuenta solicitantes de prestaciones.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://www.nomisweb.co.uk/home/copyright.asp",
+   "patron": "Open Government Licence"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "Open Government Licence",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "nomis_ashe",
+  "nombre": "ASHE · ingresos anuales de residentes (Nomis)",
+  "entidad": "ONS",
+  "familia": "Estadística oficial",
+  "tema": "economia",
+  "url": "https://www.nomisweb.co.uk/datasets/nm_30_1",
+  "prueba": "https://www.nomisweb.co.uk/api/v01/dataset/NM_30_1.data.csv?date=latest&geography=E12000007&measures=20100&sex=8&item=2&pay=7",
+  "resolucion": "región de Londres (probado); Nomis publica también borough y escalas menores",
+  "vigencia": "2025",
+  "licencia": "OGL-3.0",
+  "personas": "no: conteos agregados con control de divulgación",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "salario mediano por borough de residencia",
+  "nota": "Mediana del salario bruto anual de trabajadores a tiempo completo residentes en Londres: £46.414 (2025), consultado 2026-09-25.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://www.nomisweb.co.uk/home/copyright.asp",
+   "patron": "Open Government Licence"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "Open Government Licence",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "nomis_ubc",
+  "nombre": "UK Business Counts · empresas (Nomis)",
+  "entidad": "ONS",
+  "familia": "Estadística oficial",
+  "tema": "economia",
+  "url": "https://www.nomisweb.co.uk/datasets/nm_142_1",
+  "prueba": "https://www.nomisweb.co.uk/api/v01/dataset/NM_142_1.data.csv?date=latest&geography=E12000007&measures=20100&industry=37748736&employment_sizeband=0&legal_status=0",
+  "resolucion": "región de Londres (probado); Nomis publica también borough y escalas menores",
+  "vigencia": "2026",
+  "licencia": "OGL-3.0",
+  "personas": "no: conteos agregados con control de divulgación",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "número de empresas por borough, sector y tamaño",
+  "nota": "Londres: 552.505 empresas en 2026, consultado 2026-09-25. Existe también la versión por unidad local (NM_141_1).",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://www.nomisweb.co.uk/home/copyright.asp",
+   "patron": "Open Government Licence"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "Open Government Licence",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "nomis_bres",
+  "nombre": "BRES · empleo por sector, acceso abierto (Nomis)",
+  "entidad": "ONS",
+  "familia": "Estadística oficial",
+  "tema": "economia",
+  "url": "https://www.nomisweb.co.uk/datasets/nm_189_1",
+  "prueba": "https://www.nomisweb.co.uk/api/v01/dataset/NM_189_1.data.csv?date=latest&geography=E12000007&measures=20100&industry=37748736&employment_status=1&measure=1",
+  "resolucion": "región de Londres (probado); Nomis publica también borough y escalas menores",
+  "vigencia": "2024",
+  "licencia": "OGL-3.0",
+  "personas": "no: conteos agregados con control de divulgación",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "empleo por sector y borough",
+  "nota": "Londres: 5.743.000 empleados en 2024 (versión de acceso abierto, redondeada), consultado 2026-09-25.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://www.nomisweb.co.uk/home/copyright.asp",
+   "patron": "Open Government Licence"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "Open Government Licence",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "ons_api_beta",
+  "nombre": "ONS API (api.beta.ons.gov.uk) · catálogo de conjuntos",
+  "entidad": "ONS",
+  "familia": "Estadística oficial",
+  "tema": "demografia",
+  "url": "https://developer.ons.gov.uk/",
+  "prueba": "https://api.beta.ons.gov.uk/v1/datasets?limit=2",
+  "resolucion": "variable según conjunto",
+  "vigencia": "continua",
+  "licencia": "OGL-3.0",
+  "personas": "no",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "api"
+  },
+  "uso": "descubrir conjuntos del ONS con filtros por dimensión",
+  "nota": "API pública sin llave. Complementa a Nomis: algunos conjuntos solo están aquí.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://www.ons.gov.uk/",
+   "patron": "Open Government Licence v3\\.0"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "Open Government Licence v3.0",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto"
+ },
+ {
+  "id": "ons_pipr",
+  "nombre": "Private rent and house prices, UK (boletín mensual)",
+  "entidad": "ONS",
+  "familia": "Economía y precios",
+  "tema": "economia",
+  "url": "https://www.ons.gov.uk/economy/inflationandpriceindices/bulletins/privaterentandhousepricesuk/latest",
+  "prueba": "https://www.ons.gov.uk/economy/inflationandpriceindices/bulletins/privaterentandhousepricesuk/latest",
+  "resolucion": "región y autoridad local",
+  "vigencia": "mensual",
+  "licencia": "OGL-3.0",
+  "personas": "no: estimaciones agregadas",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "alquiler privado y precio de vivienda",
+  "nota": "Boletín que acompaña al índice de alquileres privados (PIPR) y al UK HPI.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "Open Government Licence v3\\.0"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "Open Government Licence v3.0",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "ons_pib_regional",
+  "nombre": "Regional gross domestic product: all ITL regions",
+  "entidad": "ONS",
+  "familia": "Economía y precios",
+  "tema": "economia",
+  "url": "https://www.ons.gov.uk/economy/grossdomesticproductgdp/datasets/regionalgrossdomesticproductallnutslevelregions",
+  "prueba": "https://www.ons.gov.uk/economy/grossdomesticproductgdp/datasets/regionalgrossdomesticproductallnutslevelregions",
+  "resolucion": "ITL1 a ITL3 (incluye Londres y sus subregiones)",
+  "vigencia": "anual",
+  "licencia": "OGL-3.0",
+  "personas": "no: estimaciones agregadas",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "PIB y PIB per cápita de Londres",
+  "nota": "Conjunto en hoja de cálculo; hay que elegir la tabla al bajarlo.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "Open Government Licence v3\\.0"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "Open Government Licence v3.0",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "ons_asequibilidad",
+  "nombre": "House price to residence-based earnings ratio",
+  "entidad": "ONS",
+  "familia": "Economía y precios",
+  "tema": "economia",
+  "url": "https://www.ons.gov.uk/peoplepopulationandcommunity/housing/datasets/ratioofhousepricetoresidencebasedearningslowerquartileandmedian",
+  "prueba": "https://www.ons.gov.uk/peoplepopulationandcommunity/housing/datasets/ratioofhousepricetoresidencebasedearningslowerquartileandmedian",
+  "resolucion": "autoridad local",
+  "vigencia": "anual",
+  "licencia": "OGL-3.0",
+  "personas": "no: estimaciones agregadas",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "cuántos salarios cuesta una vivienda por borough",
+  "nota": "Cruza precios de vivienda con ASHE.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "Open Government Licence v3\\.0"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "Open Government Licence v3.0",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "ons_esperanza_vida",
+  "nombre": "Life expectancy estimates, all ages, UK",
+  "entidad": "ONS",
+  "familia": "Seguridad, salud y educación",
+  "tema": "demografia",
+  "url": "https://www.ons.gov.uk/peoplepopulationandcommunity/healthandsocialcare/healthandlifeexpectancies/datasets/lifeexpectancyestimatesallagesuk",
+  "prueba": "https://www.ons.gov.uk/peoplepopulationandcommunity/healthandsocialcare/healthandlifeexpectancies/datasets/lifeexpectancyestimatesallagesuk",
+  "resolucion": "autoridad local",
+  "vigencia": "periodos trienales",
+  "licencia": "OGL-3.0",
+  "personas": "no: estimaciones agregadas",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "esperanza de vida por borough",
+  "nota": "Equivalente a la esperanza de vida del PNUD que usa Lima, pero por borough.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "Open Government Licence v3\\.0"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "Open Government Licence v3.0",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "ons_turismo_anual",
+  "nombre": "Travel trends estimates: overseas residents in the UK",
+  "entidad": "ONS",
+  "familia": "Estadística oficial",
+  "tema": "turismo",
+  "url": "https://www.ons.gov.uk/peoplepopulationandcommunity/leisureandtourism/datasets/overseasresidentsvisitstotheuk",
+  "prueba": "https://www.ons.gov.uk/peoplepopulationandcommunity/leisureandtourism/datasets/overseasresidentsvisitstotheuk",
+  "resolucion": "región del Reino Unido visitada (incluye Londres)",
+  "vigencia": "anual",
+  "licencia": "OGL-3.0",
+  "personas": "no: estimaciones agregadas",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "visitas y gasto de turistas extranjeros en Londres",
+  "nota": "Sale de la International Passenger Survey (IPS). VisitBritain advierte que desde 2024 la serie es «Official Statistics in Development» y cambió de método.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "Open Government Licence v3\\.0"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "Open Government Licence v3.0",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "ons_turismo_trimestral",
+  "nombre": "Estimates of overseas residents' visits and spending",
+  "entidad": "ONS",
+  "familia": "Estadística oficial",
+  "tema": "turismo",
+  "url": "https://www.ons.gov.uk/peoplepopulationandcommunity/leisureandtourism/datasets/estimatesofoverseasresidentsvisitsandspendingintheuk",
+  "prueba": "https://www.ons.gov.uk/peoplepopulationandcommunity/leisureandtourism/datasets/estimatesofoverseasresidentsvisitsandspendingintheuk",
+  "resolucion": "región del Reino Unido visitada",
+  "vigencia": "trimestral",
+  "licencia": "OGL-3.0",
+  "personas": "no: estimaciones agregadas",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "estacionalidad del turismo internacional",
+  "nota": "Misma encuesta, periodicidad trimestral.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "Open Government Licence v3\\.0"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "Open Government Licence v3.0",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "imd_2025",
+  "nombre": "English indices of deprivation 2025",
+  "entidad": "MHCLG",
+  "familia": "Estadística oficial",
+  "tema": "demografia",
+  "url": "https://www.gov.uk/government/statistics/english-indices-of-deprivation-2025",
+  "prueba": "https://www.gov.uk/api/content/government/statistics/english-indices-of-deprivation-2025",
+  "resolucion": "LSOA 2021 y autoridad local",
+  "vigencia": "publicado 2025-10-30",
+  "licencia": "OGL-3.0",
+  "personas": "no: cifras agregadas por autoridad local",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "privación por barrio: el equivalente a la pobreza distrital que usa Lima",
+  "nota": "Reemplaza al IoD2019 (que el London Datastore todavía sirve como «Indices of Deprivation»). Rangos relativos: dicen qué zona está más privada que otra, no cuánto.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://www.gov.uk/government/statistics/english-indices-of-deprivation-2025",
+   "patron": "Open Government Licence v3\\.0"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "Open Government Licence v3.0",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "un_wup_2025",
+  "nombre": "World Urbanization Prospects 2025 Revision",
+  "entidad": "UN DESA",
+  "familia": "Estadística oficial",
+  "tema": "demografia",
+  "url": "https://population.un.org/wup/",
+  "prueba": "https://population.un.org/wup/",
+  "resolucion": "aglomeración urbana",
+  "vigencia": "revisión 2025",
+  "licencia": "sin-confirmar",
+  "personas": "no",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "pdf"
+  },
+  "uso": "tamaño de la aglomeración de Londres frente a otras ciudades del mundo",
+  "nota": "La página dice que presenta la revisión 2025, coherente con World Population Prospects 2024. No se encontró el texto de licencia en la página. No se revisó si la página ofrece una descarga tabular; mientras no se compruebe, se trata como declarado (se transcribe con documento y fecha). Ojo: el indicador EN.URB.LCTY del Banco Mundial todavía cita la revisión 2018.",
+  "rastreo": "2026-09-25",
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": false,
+  "veredicto": "declarado",
+  "estado": "declarado",
+  "proteccion": "abierto"
+ },
+ {
+  "id": "eurostat_urban_audit",
+  "nombre": "Eurostat · Urban Audit, población de Londres (urb_cpop1, UK001C)",
+  "entidad": "Eurostat",
+  "familia": "Estadística oficial",
+  "tema": "demografia",
+  "url": "https://ec.europa.eu/eurostat/databrowser/view/urb_cpop1/default/table",
+  "prueba": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/urb_cpop1?cities=UK001C&indic_ur=DE1001V&format=JSON",
+  "resolucion": "ciudad (definición Urban Audit)",
+  "vigencia": "último dato para Londres: 2018",
+  "licencia": "CC-BY-4.0",
+  "personas": "no",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "api",
+   "vida": "viejo"
+  },
+  "uso": "comparar Londres con ciudades europeas en una definición común",
+  "nota": "Último valor: 8.866.541 habitantes (2018). La serie de Londres se detiene en 2018: tras el Brexit el Reino Unido dejó de reportar. Sirve como histórico, no como cifra vigente.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://ec.europa.eu/eurostat/web/main/help/copyright-notice",
+   "patron": "Creative Commons Attribution 4\\.0 International"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "Creative Commons Attribution 4.0 International",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto"
+ },
+ {
+  "id": "wb_wdi_macro",
+  "nombre": "World Bank · World Development Indicators, macro (PIB, PIB per cápita, inflación, desempleo)",
+  "entidad": "World Bank",
+  "familia": "Economía y precios",
+  "tema": "economia",
+  "url": "https://data.worldbank.org/country/united-kingdom",
+  "prueba": "https://api.worldbank.org/v2/country/GBR;COL;PER/indicator/NY.GDP.PCAP.CD?format=json&mrv=1",
+  "resolucion": "país (Reino Unido; se compara con Colombia y Perú)",
+  "vigencia": "2025",
+  "licencia": "CC-BY-4.0",
+  "personas": "no",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "api"
+  },
+  "uso": "contexto nacional y comparación internacional («contra qué»)",
+  "nota": "PIB per cápita 2025 (US$ corrientes): Reino Unido 57.602, Perú 9.684, Colombia 8.562; inflación del Reino Unido 2025: 3,9 %; desempleo modelado OIT 2025: 4,7 %. Consultado 2026-09-25. Es escala país: no dice nada de Londres por sí sola.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://datacatalog.worldbank.org/public-licenses",
+   "patron": "Creative Commons Attribution 4\\.0"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "Creative Commons Attribution 4.0",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto"
+ },
+ {
+  "id": "wb_wdi_urbano",
+  "nombre": "World Bank · WDI, población y urbanización (incluye «population in largest city»)",
+  "entidad": "World Bank",
+  "familia": "Economía y precios",
+  "tema": "demografia",
+  "url": "https://data.worldbank.org/indicator/EN.URB.LCTY?locations=GB",
+  "prueba": "https://api.worldbank.org/v2/country/GBR/indicator/EN.URB.LCTY?format=json&mrv=1",
+  "resolucion": "país y área metropolitana más grande",
+  "vigencia": "2025 (proyección)",
+  "licencia": "CC-BY-4.0",
+  "personas": "no",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "api"
+  },
+  "uso": "comparar el peso de Londres dentro del país con Bogotá y Lima",
+  "nota": "EN.URB.LCTY para el Reino Unido 2025: 9.840.742, el 17,0 % de la población urbana. Según los metadatos del propio Banco Mundial mide la población urbana del área metropolitana más grande y su fuente es World Urbanization Prospects 2018: el valor 2025 es una proyección hecha en 2018, y no coincide con la ONS (9.122.909 para Greater London a mediados de 2025) porque el recorte territorial es otro. Hay que declararlo como estimado, no como observado.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://datacatalog.worldbank.org/public-licenses",
+   "patron": "Creative Commons Attribution 4\\.0"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "Creative Commons Attribution 4.0",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto"
+ },
+ {
+  "id": "wb_wgi",
+  "nombre": "World Bank · Worldwide Governance Indicators (API, fuente 3)",
+  "entidad": "World Bank",
+  "familia": "Economía y precios",
+  "tema": "municipio",
+  "url": "https://www.worldbank.org/en/publication/worldwide-governance-indicators",
+  "prueba": "https://api.worldbank.org/v2/country/GBR/indicator/GOV_WGI_GE.EST?source=3&format=json&mrv=1",
+  "resolucion": "país",
+  "vigencia": "2024",
+  "licencia": "CC-BY-4.0",
+  "personas": "no",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "api"
+  },
+  "uso": "contexto institucional nacional",
+  "nota": "Efectividad del gobierno del Reino Unido 2024: 1,18 (escala aprox. de -2,5 a +2,5). Los códigos llevan prefijo GOV_WGI_: la forma GE.EST devuelve vacío.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://datacatalog.worldbank.org/public-licenses",
+   "patron": "Creative Commons Attribution 4\\.0"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "Creative Commons Attribution 4.0",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto"
+ },
+ {
+  "id": "oecd_fua_londres",
+  "nombre": "OECD · Metropolitan areas (FUA) economy, London UK001F",
+  "entidad": "OECD",
+  "familia": "Economía y precios",
+  "tema": "economia",
+  "url": "https://data-explorer.oecd.org/",
+  "prueba": "https://sdmx.oecd.org/public/rest/data/OECD.CFE.EDS,DSD_FUA_ECO@DF_ECONOMY,/UK001F....?lastNObservations=1&format=csvfilewithlabels",
+  "resolucion": "área urbana funcional (FUA)",
+  "vigencia": "2020 a 2022 según la medida",
+  "licencia": "sin-confirmar",
+  "personas": "no",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "api"
+  },
+  "uso": "PIB y productividad del área metropolitana de Londres comparables entre países",
+  "nota": "Área funcional de Londres: 28,3 % del PIB del Reino Unido (2022), US$ 72.186 per cápita PPA (2020), 6.823.638 empleos en el lugar de trabajo (2021). Homónimo: el código CAN10F es London, Ontario. La página de términos de la OECD devolvió 403 al script; la licencia se confirma a mano.",
+  "rastreo": "2026-09-25",
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": false,
+  "veredicto": "candidato",
+  "estado": "candidato",
+  "proteccion": "por decidir"
+ },
+ {
+  "id": "imf_datamapper",
+  "nombre": "IMF DataMapper API",
+  "entidad": "IMF",
+  "familia": "Economía y precios",
+  "tema": "economia",
+  "url": "https://www.imf.org/external/datamapper/",
+  "prueba": "https://www.imf.org/external/datamapper/api/v1/NGDP_RPCH/GBR",
+  "resolucion": "país",
+  "vigencia": "—",
+  "licencia": "sin-confirmar",
+  "personas": "no",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "bloquea"
+  },
+  "uso": "proyecciones macro del FMI",
+  "nota": "Responde 403 «Access Denied» a peticiones de script (2026-09-25). No se esquiva: el Banco Mundial y la OECD cubren el contexto macro.",
+  "rastreo": "2026-09-25",
+  "esperado": [
+   403
+  ],
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 403,
+   "detalle": "Access Denied Access Denied You don't have permission to access \"http&#58;&#47;&#47;www&#46;imf&#46;org&#47;external&#47;datamapper&#47;api&#47;v1&#47;NGDP&#95"
+  },
+  "licencia_verificada": false,
+  "veredicto": "declarado",
+  "estado": "declarado",
+  "proteccion": "abierto"
+ },
+ {
+  "id": "boe_bank_rate",
+  "nombre": "Bank of England Database · Bank Rate (IUDBEDR)",
+  "entidad": "Bank of England",
+  "familia": "Economía y precios",
+  "tema": "economia",
+  "url": "https://www.bankofengland.co.uk/boeapps/database/",
+  "prueba": "https://www.bankofengland.co.uk/boeapps/database/_iadb-fromshowcolumns.asp?csv.x=yes&Datefrom=01/Jan/2025&Dateto=now&SeriesCodes=IUDBEDR&CSVF=TN&UsingCodes=Y&VPD=Y&VFD=N",
+  "resolucion": "país",
+  "vigencia": "diaria, al 24-sep-2026",
+  "licencia": "OGL-3.0",
+  "personas": "no",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "api"
+  },
+  "uso": "tasa de referencia, contexto de hipotecas",
+  "nota": "Bank Rate: 3,75 % al 24 de septiembre de 2026. CSV por URL sin llave; cualquier serie de la base cambia con SeriesCodes.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://www.bankofengland.co.uk/legal",
+   "patron": "Reproduction of data in the Database is subject to the terms of the UK Open Government Licence"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "Reproduction of data in the Database is subject to the terms of the UK Open Government Licence",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto"
+ },
+ {
+  "id": "ons_ipc",
+  "nombre": "ONS · CPI annual rate (D7G7)",
+  "entidad": "ONS",
+  "familia": "Economía y precios",
+  "tema": "economia",
+  "url": "https://www.ons.gov.uk/economy/inflationandpriceindices/timeseries/d7g7/mm23",
+  "prueba": "https://www.ons.gov.uk/economy/inflationandpriceindices/timeseries/d7g7/mm23/data",
+  "resolucion": "país",
+  "vigencia": "mensual, a ago-2026",
+  "licencia": "OGL-3.0",
+  "personas": "no",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "api"
+  },
+  "uso": "inflación",
+  "nota": "CPI interanual: 3,1 % en agosto de 2026, consultado 2026-09-25. Serie JSON sin llave.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://www.ons.gov.uk/economy/inflationandpriceindices/timeseries/d7g7/mm23",
+   "patron": "Open Government Licence v3\\.0"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "Open Government Licence v3.0",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto"
+ },
+ {
+  "id": "companies_house_basica",
+  "nombre": "Companies House · Free Company Data Product (datos básicos de empresas)",
+  "entidad": "Companies House",
+  "familia": "Economía y precios",
+  "tema": "economia",
+  "url": "https://download.companieshouse.gov.uk/en_output.html",
+  "prueba": "https://download.companieshouse.gov.uk/en_output.html",
+  "resolucion": "empresa (con dirección registrada)",
+  "vigencia": "mensual",
+  "licencia": "sin-confirmar",
+  "personas": "sí: razón social y dirección registrada; algunas razones sociales llevan nombres de personas",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "libre",
+   "acceso": "api"
+  },
+  "uso": "contar empresas activas por borough y sector (SIC)",
+  "nota": "No se encontró la licencia en la página de descarga. Archivo grande. Solo se publicarían conteos; UK Business Counts (Nomis) ya da conteos oficiales.",
+  "rastreo": "2026-09-25",
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": false,
+  "veredicto": "candidato",
+  "estado": "candidato",
+  "proteccion": "por decidir"
+ },
+ {
+  "id": "mhclg_revenue_outturn",
+  "nombre": "Local authority revenue expenditure and financing (MHCLG)",
+  "entidad": "MHCLG",
+  "familia": "La plata pública",
+  "tema": "municipio",
+  "url": "https://www.gov.uk/government/collections/local-authority-revenue-expenditure-and-financing",
+  "prueba": "https://www.gov.uk/api/content/government/collections/local-authority-revenue-expenditure-and-financing",
+  "resolucion": "autoridad local (33 de Londres)",
+  "vigencia": "anual",
+  "licencia": "OGL-3.0",
+  "personas": "no: cifras agregadas por autoridad local",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "gasto e ingresos de cada borough: el equivalente al MEF de Lima",
+  "nota": "Colección con el conjunto «Multi-year Revenue Outturn». Hojas de cálculo por año.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://www.gov.uk/government/collections/local-authority-revenue-expenditure-and-financing",
+   "patron": "Open Government Licence v3\\.0"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "Open Government Licence v3.0",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "mhclg_council_tax",
+  "nombre": "Council Tax statistics (MHCLG)",
+  "entidad": "MHCLG",
+  "familia": "La plata pública",
+  "tema": "municipio",
+  "url": "https://www.gov.uk/government/collections/council-tax-statistics",
+  "prueba": "https://www.gov.uk/api/content/government/collections/council-tax-statistics",
+  "resolucion": "autoridad local",
+  "vigencia": "anual",
+  "licencia": "OGL-3.0",
+  "personas": "no: cifras agregadas por autoridad local",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "impuesto local por borough (Band D)",
+  "nota": "Incluye «Council Tax levels set by local authorities». El equivalente al predial y los arbitrios de Lima.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://www.gov.uk/government/collections/council-tax-statistics",
+   "patron": "Open Government Licence v3\\.0"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "Open Government Licence v3.0",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "gla_presupuesto",
+  "nombre": "The Mayor's budget (GLA)",
+  "entidad": "GLA",
+  "familia": "La plata pública",
+  "tema": "municipio",
+  "url": "https://www.london.gov.uk/who-we-are/governance-and-spending/spending-money-wisely/mayors-budget",
+  "prueba": "https://www.london.gov.uk/who-we-are/governance-and-spending/spending-money-wisely/mayors-budget",
+  "resolucion": "Greater London Authority (nivel ciudad)",
+  "vigencia": "anual",
+  "licencia": "sin-confirmar",
+  "personas": "no",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "pdf"
+  },
+  "uso": "presupuesto de la autoridad metropolitana",
+  "nota": "La página responde; los boroughs tienen presupuestos propios (ver MHCLG). No se revisó si la página ofrece una descarga tabular; mientras no se compruebe, se trata como declarado (se transcribe con documento y fecha).",
+  "rastreo": "2026-09-25",
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": false,
+  "veredicto": "declarado",
+  "estado": "declarado",
+  "proteccion": "abierto"
+ },
+ {
+  "id": "contracts_finder",
+  "nombre": "Contracts Finder · API OCDS",
+  "entidad": "UK Government",
+  "familia": "La plata pública",
+  "tema": "municipio",
+  "url": "https://www.contractsfinder.service.gov.uk/apidocumentation/home",
+  "prueba": "https://www.contractsfinder.service.gov.uk/Published/Notices/OCDS/Search?limit=1",
+  "resolucion": "contrato",
+  "vigencia": "continua",
+  "licencia": "OGL-3.0",
+  "personas": "no: contratos entre organizaciones",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "api"
+  },
+  "uso": "contratación pública (el equivalente al SEACE de Lima)",
+  "nota": "Formato OCDS. Hay que filtrar compradores de Londres.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://www.contractsfinder.service.gov.uk/",
+   "patron": "Open Government Licence v3\\.0"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "Open Government Licence v3.0",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto"
+ },
+ {
+  "id": "find_a_tender",
+  "nombre": "Find a Tender · API OCDS",
+  "entidad": "UK Government",
+  "familia": "La plata pública",
+  "tema": "municipio",
+  "url": "https://www.find-tender.service.gov.uk/Developer/Documentation",
+  "prueba": "https://www.find-tender.service.gov.uk/api/1.0/ocdsReleasePackages?limit=1",
+  "resolucion": "contrato",
+  "vigencia": "continua",
+  "licencia": "OGL-3.0",
+  "personas": "no: contratos entre organizaciones",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "api"
+  },
+  "uso": "licitaciones de mayor cuantía",
+  "nota": "Complementa a Contracts Finder para contratos por encima de umbral.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://www.find-tender.service.gov.uk/",
+   "patron": "Open Government Licence v3\\.0"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "Open Government Licence v3.0",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto"
+ },
+ {
+  "id": "lds_council_tax_bandas",
+  "nombre": "Council Tax Charges - Bands, Borough",
+  "entidad": "MHCLG",
+  "familia": "La plata pública",
+  "tema": "municipio",
+  "url": "https://data.london.gov.uk/dataset/expnl",
+  "prueba": "https://data.london.gov.uk/api/action/package_show?id=expnl",
+  "resolucion": "borough",
+  "vigencia": "metadatos actualizados 2026-04-13 (el periodo de los datos se fija al bajarlos)",
+  "licencia": "OGL-2.0",
+  "personas": "no: conteos agregados",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "council tax por banda",
+  "nota": "Tabla por borough. Publicado en el London Datastore (GLA); la licencia es la que declara el propio conjunto.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "\"license_title\":\"Open\\ Government\\ Licence\\ v2\""
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "\"license_title\":\"Open Government Licence v2\"",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "lds_gasto_salud_publica",
+  "nombre": "Public Health Spending by London Boroughs",
+  "entidad": "GLA",
+  "familia": "La plata pública",
+  "tema": "municipio",
+  "url": "https://data.london.gov.uk/dataset/epqxr",
+  "prueba": "https://data.london.gov.uk/api/action/package_show?id=epqxr",
+  "resolucion": "borough",
+  "vigencia": "metadatos actualizados 2025-07-03 (el periodo de los datos se fija al bajarlos)",
+  "licencia": "OGL-3.0",
+  "personas": "no: conteos agregados",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "gasto en salud pública por borough",
+  "nota": " Publicado en el London Datastore (GLA); la licencia es la que declara el propio conjunto.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "\"license_title\":\"Open\\ Government\\ Licence\\ v3\""
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "\"license_title\":\"Open Government Licence v3\"",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "lds_lfb_pagos_250",
+  "nombre": "LFB Payments over £250",
+  "entidad": "London Fire Brigade",
+  "familia": "La plata pública",
+  "tema": "municipio",
+  "url": "https://data.london.gov.uk/dataset/2gqxr",
+  "prueba": "https://data.london.gov.uk/api/action/package_show?id=2gqxr",
+  "resolucion": "transacción",
+  "vigencia": "metadatos actualizados 2026-08-28 (el periodo de los datos se fija al bajarlos)",
+  "licencia": "OGL-3.0",
+  "personas": "posible: nombres de proveedores, que pueden ser personas naturales",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "libre",
+   "acceso": "api"
+  },
+  "uso": "transparencia del gasto",
+  "nota": "Pagos de más de £250. Publicado en el London Datastore (GLA); la licencia es la que declara el propio conjunto.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "\"license_title\":\"Open\\ Government\\ Licence\\ v3\""
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "\"license_title\":\"Open Government Licence v3\"",
+  "veredicto": "candidato",
+  "estado": "candidato",
+  "proteccion": "por decidir"
+ },
+ {
+  "id": "police_uk_stops",
+  "nombre": "data.police.uk · stop and search por fuerza (Metropolitan)",
+  "entidad": "Home Office",
+  "familia": "Seguridad, salud y educación",
+  "tema": "seguridad",
+  "url": "https://data.police.uk/docs/method/stops-force/",
+  "prueba": "https://data.police.uk/api/stops-force?force=metropolitan&date=2026-07",
+  "resolucion": "registro individual",
+  "vigencia": "mensual, a jul-2026",
+  "licencia": "OGL-3.0",
+  "personas": "sí: cada registro es una persona detenida, con edad, sexo, etnia y ubicación aproximada",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "identificable",
+   "acceso": "api"
+  },
+  "uso": "solo como conteo por borough y mes",
+  "nota": "La licencia permite reutilizar, pero el registro individual con fecha, lugar y etnia puede señalar a alguien. Entra solo agregado (el MPS ya publica un tablero agregado: lds_mps_stop_search).",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://data.police.uk/about/",
+   "patron": "Open Government Licence v3\\.0"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "Open Government Licence v3.0",
+  "veredicto": "excluido",
+  "estado": "excluido",
+  "proteccion": "no se publica"
+ },
+ {
+  "id": "lds_mps_delito_geo",
+  "nombre": "MPS Recorded Crime: Geographic Breakdown",
+  "entidad": "Metropolitan Police Service",
+  "familia": "Seguridad, salud y educación",
+  "tema": "seguridad",
+  "url": "https://data.london.gov.uk/dataset/exy3m",
+  "prueba": "https://data.london.gov.uk/api/action/package_show?id=exy3m",
+  "resolucion": "ward, LSOA y borough, mensual",
+  "vigencia": "metadatos actualizados 2026-09-15 (el periodo de los datos se fija al bajarlos)",
+  "licencia": "OGL-2.0",
+  "personas": "no: conteos de delitos por ward",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "delitos registrados por ward y mes",
+  "nota": "Cuenta delitos registrados, no víctimas. Cabecera verificada: grupo, subgrupo, ward y 24 columnas mensuales. Publicado en el London Datastore (GLA); la licencia es la que declara el propio conjunto.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "\"license_title\":\"Open\\ Government\\ Licence\\ v2\""
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "\"license_title\":\"Open Government Licence v2\"",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "lds_mps_tablero_mensual",
+  "nombre": "MPS Monthly Crime Dashboard Data",
+  "entidad": "Metropolitan Police Service",
+  "familia": "Seguridad, salud y educación",
+  "tema": "seguridad",
+  "url": "https://data.london.gov.uk/dataset/e5n6w",
+  "prueba": "https://data.london.gov.uk/api/action/package_show?id=e5n6w",
+  "resolucion": "borough, mensual",
+  "vigencia": "metadatos actualizados 2026-09-21 (el periodo de los datos se fija al bajarlos)",
+  "licencia": "sin-declarar",
+  "personas": "no: conteos agregados",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "tablero mensual de delitos del MPS",
+  "nota": "122 archivos CSV (arma blanca, total de delitos y otros). Publicado en el London Datastore (GLA); la licencia es la que declara el propio conjunto.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "\"license_title\":\"\""
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "\"license_title\":\"\"",
+  "veredicto": "candidato",
+  "estado": "candidato",
+  "proteccion": "por decidir"
+ },
+ {
+  "id": "lds_mps_stop_search",
+  "nombre": "MPS Stop and Search Dashboard Data",
+  "entidad": "Metropolitan Police Service",
+  "familia": "Seguridad, salud y educación",
+  "tema": "seguridad",
+  "url": "https://data.london.gov.uk/dataset/e6yjz",
+  "prueba": "https://data.london.gov.uk/api/action/package_show?id=e6yjz",
+  "resolucion": "borough, mensual",
+  "vigencia": "metadatos actualizados 2026-09-03 (el periodo de los datos se fija al bajarlos)",
+  "licencia": "sin-declarar",
+  "personas": "no: conteos agregados",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "stop and search agregado",
+  "nota": "Filas con fecha, borough, edad, sexo, etnia y Stop_Count: hay que revisar celdas pequeñas antes de publicar. Publicado en el London Datastore (GLA); la licencia es la que declara el propio conjunto.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "\"license_title\":\"\""
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "\"license_title\":\"\"",
+  "veredicto": "candidato",
+  "estado": "candidato",
+  "proteccion": "por decidir"
+ },
+ {
+  "id": "lds_mps_homicidios",
+  "nombre": "MPS Homicide dashboard data",
+  "entidad": "Metropolitan Police Service",
+  "familia": "Seguridad, salud y educación",
+  "tema": "seguridad",
+  "url": "https://data.london.gov.uk/dataset/2l1w8",
+  "prueba": "https://data.london.gov.uk/api/action/package_show?id=2l1w8",
+  "resolucion": "borough, por víctima",
+  "vigencia": "metadatos actualizados 2026-04-23 (el periodo de los datos se fija al bajarlos)",
+  "licencia": "OGL-2.0",
+  "personas": "sí: una fila por víctima con edad, sexo, etnia, fecha y borough",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "identificable",
+   "acceso": "api"
+  },
+  "uso": "homicidios por borough y año",
+  "nota": "Archivo «Homicide Victims 2003 - Dec 25» con grupo de edad, sexo, etnia, método, fecha y borough de cada víctima. Publicado en el London Datastore (GLA); la licencia es la que declara el propio conjunto.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "\"license_title\":\"Open\\ Government\\ Licence\\ v2\""
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "\"license_title\":\"Open Government Licence v2\"",
+  "veredicto": "excluido",
+  "estado": "excluido",
+  "proteccion": "no se publica"
+ },
+ {
+  "id": "lds_mopac_encuestas",
+  "nombre": "MOPAC Surveys",
+  "entidad": "MOPAC",
+  "familia": "Seguridad, salud y educación",
+  "tema": "seguridad",
+  "url": "https://data.london.gov.uk/dataset/236kk",
+  "prueba": "https://data.london.gov.uk/api/action/package_show?id=236kk",
+  "resolucion": "borough",
+  "vigencia": "metadatos actualizados 2026-08-14 (el periodo de los datos se fija al bajarlos)",
+  "licencia": "OGL-3.0",
+  "personas": "no: conteos agregados",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "confianza en la policía y percepción de seguridad",
+  "nota": "Encuestas de actitudes del público (Public Attitude Survey), 48 archivos en xlsx, docx y pdf. Publicado en el London Datastore (GLA); la licencia es la que declara el propio conjunto.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "\"license_title\":\"Open\\ Government\\ Licence\\ v3\""
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "\"license_title\":\"Open Government Licence v3\"",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "lds_lfb_incidentes",
+  "nombre": "London Fire Brigade Incident Records",
+  "entidad": "London Fire Brigade",
+  "familia": "Seguridad, salud y educación",
+  "tema": "seguridad",
+  "url": "https://data.london.gov.uk/dataset/em8xy",
+  "prueba": "https://data.london.gov.uk/api/action/package_show?id=em8xy",
+  "resolucion": "incidente (con coordenadas)",
+  "vigencia": "metadatos actualizados 2026-08-25 (el periodo de los datos se fija al bajarlos)",
+  "licencia": "OGL-2.0",
+  "personas": "sí: dirección exacta del incidente (código postal completo, UPRN, coordenadas)",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "identificable",
+   "acceso": "api"
+  },
+  "uso": "incendios e incidentes por ward",
+  "nota": "Cabecera verificada: trae Postcode_full, UPRN, USRN, latitud y longitud de cada incidente, es decir, identifica viviendas. Publicado en el London Datastore (GLA); la licencia es la que declara el propio conjunto.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "\"license_title\":\"Open\\ Government\\ Licence\\ v2\""
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "\"license_title\":\"Open Government Licence v2\"",
+  "veredicto": "excluido",
+  "estado": "excluido",
+  "proteccion": "no se publica"
+ },
+ {
+  "id": "dft_stats19",
+  "nombre": "DfT · Road Safety Data (STATS19)",
+  "entidad": "DfT",
+  "familia": "Seguridad, salud y educación",
+  "tema": "seguridad",
+  "url": "https://www.data.gov.uk/dataset/cb7ae6f0-4be6-4935-9277-47e5ce24a11f/road-safety-data",
+  "prueba": "https://www.data.gov.uk/dataset/cb7ae6f0-4be6-4935-9277-47e5ce24a11f/road-safety-data",
+  "resolucion": "siniestro (con coordenadas)",
+  "vigencia": "anual",
+  "licencia": "OGL-3.0",
+  "personas": "sí: víctimas con banda de edad y sexo, siniestro con fecha, hora y coordenadas",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "identificable",
+   "acceso": "api"
+  },
+  "uso": "siniestralidad vial por borough, solo agregada",
+  "nota": "El CSV directo no admite HEAD (405); se prueba la ficha del conjunto en data.gov.uk.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "Open Government Licence"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "Open Government Licence",
+  "veredicto": "excluido",
+  "estado": "excluido",
+  "proteccion": "no se publica"
+ },
+ {
+  "id": "fingertips",
+  "nombre": "OHID Fingertips · API de indicadores de salud pública",
+  "entidad": "OHID",
+  "familia": "Seguridad, salud y educación",
+  "tema": "demografia",
+  "url": "https://fingertips.phe.org.uk/",
+  "prueba": "https://fingertips.phe.org.uk/api/profiles",
+  "resolucion": "autoridad local",
+  "vigencia": "continua",
+  "licencia": "OGL-3.0",
+  "personas": "no: indicadores agregados",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "obesidad, mortalidad, tabaquismo por borough",
+  "nota": "38 perfiles temáticos; API sin llave.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://fingertips.phe.org.uk/",
+   "patron": "Open Government Licence"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "Open Government Licence",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "nhs_ods",
+  "nombre": "NHS ODS · Organisation Data Service (ORD API)",
+  "entidad": "NHS England",
+  "familia": "Seguridad, salud y educación",
+  "tema": "demografia",
+  "url": "https://digital.nhs.uk/services/organisation-data-service",
+  "prueba": "https://directory.spineservices.nhs.uk/ORD/2-0-0/organisations?PostCode=SW1A&Limit=1",
+  "resolucion": "organización (consultorios, hospitales, farmacias)",
+  "vigencia": "continua",
+  "licencia": "sin-confirmar",
+  "personas": "no: organizaciones",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "api"
+  },
+  "uso": "mapa de servicios de salud",
+  "nota": "La API responde sin llave. La página de digital.nhs.uk devuelve un desafío de Cloudflare al script, así que la licencia no se pudo leer.",
+  "rastreo": "2026-09-25",
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": false,
+  "veredicto": "candidato",
+  "estado": "candidato",
+  "proteccion": "por decidir"
+ },
+ {
+  "id": "nhs_digital_gp",
+  "nombre": "NHS Digital · Patients registered at a GP practice",
+  "entidad": "NHS England",
+  "familia": "Seguridad, salud y educación",
+  "tema": "demografia",
+  "url": "https://digital.nhs.uk/data-and-information/publications/statistical/patients-registered-at-a-gp-practice",
+  "prueba": "https://digital.nhs.uk/data-and-information/publications/statistical/patients-registered-at-a-gp-practice",
+  "resolucion": "consultorio",
+  "vigencia": "mensual",
+  "licencia": "sin-confirmar",
+  "personas": "no: conteos por consultorio",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "bloquea"
+  },
+  "uso": "población registrada en medicina general",
+  "nota": "Responde 403 con desafío de Cloudflare («Just a moment...») a peticiones de script. No se esquiva: se descarga a mano y se marca declarado.",
+  "rastreo": "2026-09-25",
+  "esperado": [
+   403
+  ],
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 403,
+   "detalle": "Just a moment... *{box-sizing:border-box;margin:0;padding:0}html{line-height:1.15;-webkit-text-size-adjust:100%;color:#313131;font-family:system-ui,-apple-syst"
+  },
+  "licencia_verificada": false,
+  "veredicto": "declarado",
+  "estado": "declarado",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "cqc_api",
+  "nombre": "CQC · API pública de establecimientos de salud y cuidado",
+  "entidad": "CQC",
+  "familia": "Seguridad, salud y educación",
+  "tema": "demografia",
+  "url": "https://www.cqc.org.uk/about-us/transparency/using-cqc-data",
+  "prueba": "https://api.service.cqc.org.uk/public/v1/locations?page=1&perPage=1",
+  "resolucion": "establecimiento",
+  "vigencia": "—",
+  "licencia": "sin-confirmar",
+  "personas": "no",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "api"
+  },
+  "uso": "inspecciones de hospitales y residencias",
+  "nota": "Devolvió 502 Bad Gateway en tres intentos del 2026-09-25. Se vuelve a probar antes de la entrega.",
+  "rastreo": "2026-09-25",
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 502,
+   "detalle": "502 Bad Gateway 502 Bad Gateway Microsoft-Azure-Application-Gateway/v2"
+  },
+  "licencia_verificada": false,
+  "veredicto": "caido",
+  "estado": "caido",
+  "proteccion": "—"
+ },
+ {
+  "id": "dfe_ees_api",
+  "nombre": "DfE · Explore education statistics API",
+  "entidad": "DfE",
+  "familia": "Seguridad, salud y educación",
+  "tema": "demografia",
+  "url": "https://api.education.gov.uk/statistics/docs/",
+  "prueba": "https://api.education.gov.uk/statistics/v1/publications?page=1&pageSize=2",
+  "resolucion": "variable (escuela, autoridad local)",
+  "vigencia": "continua",
+  "licencia": "OGL-3.0",
+  "personas": "no: estadísticas agregadas",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "alumnos, ausentismo, resultados",
+  "nota": "25 publicaciones expuestas en la API el 2026-09-25; el resto del catálogo de EES solo en la web.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://explore-education-statistics.service.gov.uk/",
+   "patron": "Open Government Licence v3\\.0"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "Open Government Licence v3.0",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "dfe_gias",
+  "nombre": "DfE · Get Information About Schools (descargas)",
+  "entidad": "DfE",
+  "familia": "Seguridad, salud y educación",
+  "tema": "demografia",
+  "url": "https://get-information-schools.service.gov.uk/Downloads",
+  "prueba": "https://get-information-schools.service.gov.uk/Downloads",
+  "resolucion": "escuela",
+  "vigencia": "diaria",
+  "licencia": "sin-confirmar",
+  "personas": "sin verificar (no se pudo abrir)",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "bloquea"
+  },
+  "uso": "directorio de escuelas con ubicación",
+  "nota": "La página de descargas devolvió 403 «Service unavailable» al script, y el archivo con fecha devolvió 500. Se descarga a mano; hay que revisar las columnas antes de usarlo.",
+  "rastreo": "2026-09-25",
+  "esperado": [
+   403
+  ],
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 403,
+   "detalle": "body { font-family: Arial; margin-left: 40px; } img { border: 0 none; } #content { margin-left: auto; margin-right: auto } #message h1 { font-size: 24px; font-"
+  },
+  "licencia_verificada": false,
+  "veredicto": "declarado",
+  "estado": "declarado",
+  "proteccion": "abierto"
+ },
+ {
+  "id": "lds_atlas_escuelas",
+  "nombre": "London Schools Atlas",
+  "entidad": "GLA",
+  "familia": "Seguridad, salud y educación",
+  "tema": "demografia",
+  "url": "https://data.london.gov.uk/dataset/29j4y",
+  "prueba": "https://data.london.gov.uk/api/action/package_show?id=29j4y",
+  "resolucion": "escuela y borough",
+  "vigencia": "metadatos actualizados 2024-05-02 (el periodo de los datos se fija al bajarlos)",
+  "licencia": "OGL-2.0",
+  "personas": "no: conteos agregados",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "mapa escolar de Londres",
+  "nota": " Publicado en el London Datastore (GLA); la licencia es la que declara el propio conjunto.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "\"license_title\":\"Open\\ Government\\ Licence\\ v2\""
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "\"license_title\":\"Open Government Licence v2\"",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "lds_proyeccion_alumnos",
+  "nombre": "Sub-regional Pupil Projections",
+  "entidad": "GLA",
+  "familia": "Seguridad, salud y educación",
+  "tema": "demografia",
+  "url": "https://data.london.gov.uk/dataset/e66jz",
+  "prueba": "https://data.london.gov.uk/api/action/package_show?id=e66jz",
+  "resolucion": "subregión",
+  "vigencia": "metadatos actualizados 2026-09-21 (el periodo de los datos se fija al bajarlos)",
+  "licencia": "sin-declarar",
+  "personas": "no: conteos agregados",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "demanda escolar futura",
+  "nota": " Publicado en el London Datastore (GLA); la licencia es la que declara el propio conjunto.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "\"license_title\":\"\""
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "\"license_title\":\"\"",
+  "veredicto": "candidato",
+  "estado": "candidato",
+  "proteccion": "por decidir"
+ },
+ {
+  "id": "lds_package_show",
+  "nombre": "London Datastore · package_show (un conjunto por id)",
+  "entidad": "GLA",
+  "familia": "El portal de la ciudad",
+  "tema": "municipio",
+  "url": "https://data.london.gov.uk/",
+  "prueba": "https://data.london.gov.uk/api/action/package_show?id=e5n6w",
+  "resolucion": "según conjunto",
+  "vigencia": "continua",
+  "licencia": "sin-confirmar",
+  "personas": "depende del conjunto",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "api"
+  },
+  "uso": "consultar un conjunto concreto con sus recursos y su licencia",
+  "nota": "Complementa la ficha london_datastore_ckan: package_search ignora q y rows y devuelve siempre los 1.303 conjuntos (probado con q=zzzzqqq), mientras que package_show sí respeta el id. La licencia va por conjunto: 476 declaran OGL v2, 396 OGL v3, 322 ninguna, 68 Creative Commons Attribution y 13 «All Rights Reserved».",
+  "rastreo": "2026-09-25",
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": false,
+  "veredicto": "candidato",
+  "estado": "candidato",
+  "proteccion": "por decidir"
+ },
+ {
+  "id": "camden_socrata",
+  "nombre": "Camden Open Data (Socrata, región UE)",
+  "entidad": "London Borough of Camden",
+  "familia": "El portal de la ciudad",
+  "tema": "municipio",
+  "url": "https://opendata.camden.gov.uk/",
+  "prueba": "https://api.eu.socrata.com/api/catalog/v1?domains=opendata.camden.gov.uk&limit=1",
+  "resolucion": "borough de Camden",
+  "vigencia": "continua",
+  "licencia": "sin-confirmar",
+  "personas": "depende del conjunto (hay registros de licencias HMO)",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "libre",
+   "acceso": "api"
+  },
+  "uso": "ejemplo de portal de borough con API SODA, como datos.gov.co",
+  "nota": "869 conjuntos. El catálogo está en la región UE de Socrata: la consulta a api.us.socrata.com responde «Domain not found». La licencia va por conjunto.",
+  "rastreo": "2026-09-25",
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": false,
+  "veredicto": "candidato",
+  "estado": "candidato",
+  "proteccion": "por decidir"
+ },
+ {
+  "id": "london_elects_2024",
+  "nombre": "London Elects · resultados 2024 (alcaldía y Asamblea)",
+  "entidad": "London Elects",
+  "familia": "El portal de la ciudad",
+  "tema": "municipio",
+  "url": "https://www.londonelects.org.uk/im-voter/election-results/results-2024",
+  "prueba": "https://www.londonelects.org.uk/im-voter/election-results/results-2024",
+  "resolucion": "circunscripción",
+  "vigencia": "mayo de 2024",
+  "licencia": "sin-confirmar",
+  "personas": "no: votos por candidatura",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "pdf"
+  },
+  "uso": "resultados electorales de la alcaldía",
+  "nota": "Página HTML; se transcribe y se marca declarado.",
+  "rastreo": "2026-09-25",
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": false,
+  "veredicto": "declarado",
+  "estado": "declarado",
+  "proteccion": "abierto"
+ },
+ {
+  "id": "lds_elecciones_boroughs_2022",
+  "nombre": "Borough Council Election Results 2022",
+  "entidad": "GLA",
+  "familia": "El portal de la ciudad",
+  "tema": "municipio",
+  "url": "https://data.london.gov.uk/dataset/e16o8",
+  "prueba": "https://data.london.gov.uk/api/action/package_show?id=e16o8",
+  "resolucion": "ward",
+  "vigencia": "metadatos actualizados 2024-10-18 (el periodo de los datos se fija al bajarlos)",
+  "licencia": "OGL-2.0",
+  "personas": "no: conteos agregados",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "elecciones municipales 2022",
+  "nota": " Publicado en el London Datastore (GLA); la licencia es la que declara el propio conjunto.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "\"license_title\":\"Open\\ Government\\ Licence\\ v2\""
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "\"license_title\":\"Open Government Licence v2\"",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "electoral_commission",
+  "nombre": "Electoral Commission · resultados de elecciones pasadas",
+  "entidad": "Electoral Commission",
+  "familia": "El portal de la ciudad",
+  "tema": "municipio",
+  "url": "https://www.electoralcommission.org.uk/research-reports-and-data/our-reports-and-data-past-elections-and-referendums",
+  "prueba": "https://www.electoralcommission.org.uk/research-reports-and-data/our-reports-and-data-past-elections-and-referendums",
+  "resolucion": "circunscripción",
+  "vigencia": "—",
+  "licencia": "sin-confirmar",
+  "personas": "no",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "bloquea"
+  },
+  "uso": "resultados electorales nacionales",
+  "nota": "Responde 403 con desafío de Cloudflare al script. No se esquiva.",
+  "rastreo": "2026-09-25",
+  "esperado": [
+   403
+  ],
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 403,
+   "detalle": "Just a moment... *{box-sizing:border-box;margin:0;padding:0}html{line-height:1.15;-webkit-text-size-adjust:100%;color:#313131;font-family:system-ui,-apple-syst"
+  },
+  "licencia_verificada": false,
+  "veredicto": "declarado",
+  "estado": "declarado",
+  "proteccion": "abierto"
+ },
+ {
+  "id": "laqn_api",
+  "nombre": "London Air Quality Network · API (Imperial College)",
+  "entidad": "Imperial College London",
+  "familia": "Ambiente y riesgo",
+  "tema": "sensores",
+  "url": "https://www.londonair.org.uk/LondonAir/API/",
+  "prueba": "https://api.erg.ic.ac.uk/AirQuality/Information/MonitoringSites/GroupName=London/Json",
+  "resolucion": "estación",
+  "vigencia": "horaria",
+  "licencia": "sin-confirmar",
+  "personas": "no",
+  "semaforo": {
+   "origen": "academia",
+   "personas": "no",
+   "acceso": "api"
+  },
+  "uso": "calidad del aire medida por estación (la red de monitoreo de Londres)",
+  "nota": "258 sitios en la lista, 73 sin fecha de cierre (2026-09-25). Distinta de tfl_airquality, que es un pronóstico. La página de la API remite a unos términos que no se pudieron abrir.",
+  "rastreo": "2026-09-25",
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": false,
+  "veredicto": "candidato",
+  "estado": "candidato",
+  "proteccion": "por decidir"
+ },
+ {
+  "id": "defra_ukair_sos",
+  "nombre": "Defra UK-AIR · Sensor Observation Service (red AURN)",
+  "entidad": "Defra",
+  "familia": "Ambiente y riesgo",
+  "tema": "sensores",
+  "url": "https://uk-air.defra.gov.uk/",
+  "prueba": "https://uk-air.defra.gov.uk/sos-ukair/api/v1/stations?limit=2",
+  "resolucion": "estación",
+  "vigencia": "—",
+  "licencia": "sin-confirmar",
+  "personas": "no",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "api"
+  },
+  "uso": "red oficial de calidad del aire",
+  "nota": "Se agotó el tiempo (40 s) en dos intentos del 2026-09-25.",
+  "rastreo": "2026-09-25",
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 504,
+   "detalle": "504 Gateway Timeout ERROR 504 Gateway Timeout We could not establish a connection to uk-air.defra.gov.uk You IP: 190.242.101.109 Cloud Edge Network uk-air.defr"
+  },
+  "licencia_verificada": false,
+  "veredicto": "caido",
+  "estado": "caido",
+  "proteccion": "—"
+ },
+ {
+  "id": "ea_inundaciones",
+  "nombre": "Environment Agency · Real-time flood monitoring API",
+  "entidad": "Environment Agency",
+  "familia": "Ambiente y riesgo",
+  "tema": "sensores",
+  "url": "https://environment.data.gov.uk/flood-monitoring/doc/reference",
+  "prueba": "https://environment.data.gov.uk/flood-monitoring/id/floods?county=London",
+  "resolucion": "estación y área de alerta",
+  "vigencia": "tiempo real",
+  "licencia": "OGL-3.0",
+  "personas": "no",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "api"
+  },
+  "uso": "alertas de inundación y niveles del Támesis",
+  "nota": "119 estaciones a menos de 15 km del centro (2026-09-25). El endpoint /floods sin filtro devolvió 503 dos veces; con county=London responde.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "open-government-licence/version/3"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "open-government-licence/version/3",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto"
+ },
+ {
+  "id": "ea_hidrologia",
+  "nombre": "Environment Agency · Hydrology API",
+  "entidad": "Environment Agency",
+  "familia": "Ambiente y riesgo",
+  "tema": "sensores",
+  "url": "https://environment.data.gov.uk/hydrology/doc/reference",
+  "prueba": "https://environment.data.gov.uk/hydrology/id/stations?_limit=1",
+  "resolucion": "estación",
+  "vigencia": "series históricas",
+  "licencia": "OGL-3.0",
+  "personas": "no",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "api"
+  },
+  "uso": "caudales y niveles históricos",
+  "nota": "",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "open-government-licence/version/3"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "open-government-licence/version/3",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto"
+ },
+ {
+  "id": "met_office_datahub",
+  "nombre": "Met Office · Weather DataHub",
+  "entidad": "Met Office",
+  "familia": "Ambiente y riesgo",
+  "tema": "sensores",
+  "url": "https://datahub.metoffice.gov.uk/",
+  "prueba": "https://data.hub.api.metoffice.gov.uk/sitespecific/v0/point/hourly?latitude=51.5&longitude=-0.12",
+  "resolucion": "punto",
+  "vigencia": "pronóstico horario",
+  "licencia": "sin-confirmar",
+  "personas": "no",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "llave"
+  },
+  "uso": "pronóstico oficial del Reino Unido",
+  "nota": "Responde 401 «Missing Credentials»: pide llave. Si es gratuita no se verificó. Open-Meteo, ya integrado, cubre el clima sin llave.",
+  "rastreo": "2026-09-25",
+  "esperado": [
+   401
+  ],
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 401,
+   "detalle": "{\"code\":\"900902\",\"message\":\"Missing Credentials\",\"description\":\"Invalid Credentials. Make sure your API invocation call has a header: 'null : Bearer ACCESS_TOKE"
+  },
+  "licencia_verificada": false,
+  "veredicto": "candidato",
+  "estado": "candidato",
+  "proteccion": "por decidir"
+ },
+ {
+  "id": "breathe_london",
+  "nombre": "Breathe London · API de sensores de bajo costo",
+  "entidad": "Breathe London",
+  "familia": "Ambiente y riesgo",
+  "tema": "sensores",
+  "url": "https://www.breathelondon.org/developers",
+  "prueba": "https://api.breathelondon-communities.org/api/ListSensors",
+  "resolucion": "sensor",
+  "vigencia": "—",
+  "licencia": "sin-confirmar",
+  "personas": "no",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "llave"
+  },
+  "uso": "calidad del aire a escala de barrio",
+  "nota": "El host antiguo (api.breathelondon.org) responde 403 y remite a api.breathelondon-communities.org, que contesta «Invalid API Key»: pide llave.",
+  "rastreo": "2026-09-25",
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": false,
+  "veredicto": "candidato",
+  "estado": "candidato",
+  "proteccion": "por decidir"
+ },
+ {
+  "id": "neso_carbono",
+  "nombre": "Carbon Intensity API · región London",
+  "entidad": "NESO",
+  "familia": "Ambiente y riesgo",
+  "tema": "infraestructura",
+  "url": "https://carbonintensity.org.uk/",
+  "prueba": "https://api.carbonintensity.org.uk/regional/regionid/13",
+  "resolucion": "región de distribución (UKPN London)",
+  "vigencia": "cada 30 minutos",
+  "licencia": "CC-BY-4.0",
+  "personas": "no",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "api"
+  },
+  "uso": "intensidad de carbono de la electricidad en Londres",
+  "nota": "La región 13 es «UKPN London». Ejemplo: 128 gCO2/kWh pronosticados, índice «moderate», 2026-09-25 12:00Z.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://carbonintensity.org.uk/",
+   "patron": "licensed under the CC BY 4\\.0 license"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "licensed under the CC BY 4.0 license",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto"
+ },
+ {
+  "id": "ukpn_subestaciones",
+  "nombre": "UK Power Networks · Grid and Primary Sites",
+  "entidad": "UK Power Networks",
+  "familia": "Ambiente y riesgo",
+  "tema": "infraestructura",
+  "url": "https://ukpowernetworks.opendatasoft.com/explore/dataset/grid-and-primary-sites/",
+  "prueba": "https://ukpowernetworks.opendatasoft.com/api/explore/v2.1/catalog/datasets/grid-and-primary-sites/records?limit=1",
+  "resolucion": "subestación",
+  "vigencia": "—",
+  "licencia": "CC-BY-4.0",
+  "personas": "no",
+  "semaforo": {
+   "origen": "empresa",
+   "personas": "no",
+   "acceso": "llave"
+  },
+  "uso": "subestaciones y demanda: el equivalente a OSINERGMIN en Lima",
+  "nota": "Los metadatos declaran CC BY 4.0, pero los registros responden 403 «ForbiddenAccess» sin sesión: hay que registrarse en el portal. Lo mismo pasa con ukpn-secondary-sites y la tabla LTDS 5.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://ukpowernetworks.opendatasoft.com/api/explore/v2.1/catalog/datasets/grid-and-primary-sites",
+   "patron": "\"license\": ?\"CC BY 4\\.0\""
+  },
+  "esperado": [
+   403
+  ],
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 403,
+   "detalle": "{ \"error_code\": \"ForbiddenAccess\", \"message\": \"You don't have permission to access the requested resource\" }"
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "\"license\": \"CC BY 4.0\"",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto"
+ },
+ {
+  "id": "desnz_electricidad",
+  "nombre": "Sub-national electricity consumption (DESNZ)",
+  "entidad": "DESNZ",
+  "familia": "Ambiente y riesgo",
+  "tema": "infraestructura",
+  "url": "https://www.gov.uk/government/collections/sub-national-electricity-consumption-data",
+  "prueba": "https://www.gov.uk/api/content/government/collections/sub-national-electricity-consumption-data",
+  "resolucion": "autoridad local, MSOA y LSOA",
+  "vigencia": "anual",
+  "licencia": "OGL-3.0",
+  "personas": "no: cifras agregadas por autoridad local",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "consumo eléctrico por borough",
+  "nota": "Serie anual oficial.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://www.gov.uk/government/collections/sub-national-electricity-consumption-data",
+   "patron": "Open Government Licence v3\\.0"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "Open Government Licence v3.0",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "desnz_gas",
+  "nombre": "Sub-national gas consumption (DESNZ)",
+  "entidad": "DESNZ",
+  "familia": "Ambiente y riesgo",
+  "tema": "infraestructura",
+  "url": "https://www.gov.uk/government/collections/sub-national-gas-consumption-data",
+  "prueba": "https://www.gov.uk/api/content/government/collections/sub-national-gas-consumption-data",
+  "resolucion": "autoridad local, MSOA y LSOA",
+  "vigencia": "anual",
+  "licencia": "OGL-3.0",
+  "personas": "no: cifras agregadas por autoridad local",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "consumo de gas por borough",
+  "nota": "",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://www.gov.uk/government/collections/sub-national-gas-consumption-data",
+   "patron": "Open Government Licence v3\\.0"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "Open Government Licence v3.0",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "epc_certificados",
+  "nombre": "Energy Performance of Buildings (EPC)",
+  "entidad": "MHCLG",
+  "familia": "Ambiente y riesgo",
+  "tema": "infraestructura",
+  "url": "https://get-energy-performance-data.communities.gov.uk/",
+  "prueba": "https://get-energy-performance-data.communities.gov.uk/",
+  "resolucion": "edificio (dirección)",
+  "vigencia": "—",
+  "licencia": "sin-confirmar",
+  "personas": "sí: certificado por dirección de vivienda",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "identificable",
+   "acceso": "api"
+  },
+  "uso": "eficiencia energética del parque edificado, solo agregada",
+  "nota": "El antiguo epc.opendatacommunities.org redirige a este servicio nuevo. No se verificó si la API pide cuenta.",
+  "rastreo": "2026-09-25",
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": false,
+  "veredicto": "excluido",
+  "estado": "excluido",
+  "proteccion": "no se publica"
+ },
+ {
+  "id": "lds_laei_2022",
+  "nombre": "London Atmospheric Emissions Inventory LAEI 2022",
+  "entidad": "TfL",
+  "familia": "Ambiente y riesgo",
+  "tema": "sensores",
+  "url": "https://data.london.gov.uk/dataset/2lg5g",
+  "prueba": "https://data.london.gov.uk/api/action/package_show?id=2lg5g",
+  "resolucion": "cuadrícula y borough",
+  "vigencia": "metadatos actualizados 2026-05-19 (el periodo de los datos se fija al bajarlos)",
+  "licencia": "sin-declarar",
+  "personas": "no: conteos agregados",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "emisiones atmosféricas por fuente",
+  "nota": "Inventario de emisiones de Londres. Publicado en el London Datastore (GLA); la licencia es la que declara el propio conjunto.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "\"license_title\":\"\""
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "\"license_title\":\"\"",
+  "veredicto": "candidato",
+  "estado": "candidato",
+  "proteccion": "por decidir"
+ },
+ {
+  "id": "lds_tubos_difusion",
+  "nombre": "Air Quality Monitoring - Diffusion Tube Results",
+  "entidad": "GLA",
+  "familia": "Ambiente y riesgo",
+  "tema": "sensores",
+  "url": "https://data.london.gov.uk/dataset/e66gp",
+  "prueba": "https://data.london.gov.uk/api/action/package_show?id=e66gp",
+  "resolucion": "punto de muestreo",
+  "vigencia": "metadatos actualizados 2025-12-18 (el periodo de los datos se fija al bajarlos)",
+  "licencia": "sin-declarar",
+  "personas": "no: conteos agregados",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "NO2 medido con tubos de difusión",
+  "nota": " Publicado en el London Datastore (GLA); la licencia es la que declara el propio conjunto.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "\"license_title\":\"\""
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "\"license_title\":\"\"",
+  "veredicto": "candidato",
+  "estado": "candidato",
+  "proteccion": "por decidir"
+ },
+ {
+  "id": "lds_embalses",
+  "nombre": "London Reservoir Levels",
+  "entidad": "Environment Agency",
+  "familia": "Ambiente y riesgo",
+  "tema": "sensores",
+  "url": "https://data.london.gov.uk/dataset/24ry5",
+  "prueba": "https://data.london.gov.uk/api/action/package_show?id=24ry5",
+  "resolucion": "embalse",
+  "vigencia": "metadatos actualizados 2026-09-02 (el periodo de los datos se fija al bajarlos)",
+  "licencia": "OGL-2.0",
+  "personas": "no: conteos agregados",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "niveles de embalses de Thames Water",
+  "nota": " Publicado en el London Datastore (GLA); la licencia es la que declara el propio conjunto.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "\"license_title\":\"Open\\ Government\\ Licence\\ v2\""
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "\"license_title\":\"Open Government Licence v2\"",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "lds_mapa_calor",
+  "nombre": "London Heat Map - Reports and Data",
+  "entidad": "GLA",
+  "familia": "Ambiente y riesgo",
+  "tema": "infraestructura",
+  "url": "https://data.london.gov.uk/dataset/2ogw5",
+  "prueba": "https://data.london.gov.uk/api/action/package_show?id=2ogw5",
+  "resolucion": "zona",
+  "vigencia": "metadatos actualizados 2026-08-26 (el periodo de los datos se fija al bajarlos)",
+  "licencia": "OGL-3.0",
+  "personas": "no: conteos agregados",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "redes de calor y demanda térmica",
+  "nota": " Publicado en el London Datastore (GLA); la licencia es la que declara el propio conjunto.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "\"license_title\":\"Open\\ Government\\ Licence\\ v3\""
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "\"license_title\":\"Open Government Licence v3\"",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "lds_riesgo_inundacion",
+  "nombre": "Flood Risk",
+  "entidad": "GLA",
+  "familia": "Ambiente y riesgo",
+  "tema": "sensores",
+  "url": "https://data.london.gov.uk/dataset/2w4wy",
+  "prueba": "https://data.london.gov.uk/api/action/package_show?id=2w4wy",
+  "resolucion": "zona",
+  "vigencia": "metadatos actualizados 2024-10-02 (el periodo de los datos se fija al bajarlos)",
+  "licencia": "OGL-3.0",
+  "personas": "no: conteos agregados",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "riesgo de inundación",
+  "nota": " Publicado en el London Datastore (GLA); la licencia es la que declara el propio conjunto.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "\"license_title\":\"Open\\ Government\\ Licence\\ v3\""
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "\"license_title\":\"Open Government Licence v3\"",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "lds_arboles_publicos",
+  "nombre": "London Public Realm Trees",
+  "entidad": "GLA",
+  "familia": "Ambiente y riesgo",
+  "tema": "geo",
+  "url": "https://data.london.gov.uk/dataset/2r45m",
+  "prueba": "https://data.london.gov.uk/api/action/package_show?id=2r45m",
+  "resolucion": "árbol (punto)",
+  "vigencia": "metadatos actualizados 2025-12-01 (el periodo de los datos se fija al bajarlos)",
+  "licencia": "OGL-3.0",
+  "personas": "no",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "api"
+  },
+  "uso": "arbolado urbano",
+  "nota": "Cabecera verificada: borough, lat, lon, especie, altura, copa. El CSV es de noviembre de 2025. Publicado en el London Datastore (GLA); la licencia es la que declara el propio conjunto.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "\"license_title\":\"Open\\ Government\\ Licence\\ v3\""
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "\"license_title\":\"Open Government Licence v3\"",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto"
+ },
+ {
+  "id": "lds_cobertura_arborea_2024",
+  "nombre": "Tree Canopy Cover 2024",
+  "entidad": "GLA",
+  "familia": "Ambiente y riesgo",
+  "tema": "geo",
+  "url": "https://data.london.gov.uk/dataset/2w4m3",
+  "prueba": "https://data.london.gov.uk/api/action/package_show?id=2w4m3",
+  "resolucion": "zona",
+  "vigencia": "metadatos actualizados 2024-12-13 (el periodo de los datos se fija al bajarlos)",
+  "licencia": "todos-los-derechos-reservados",
+  "personas": "no",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "api"
+  },
+  "uso": "cobertura arbórea",
+  "nota": "Declara «All Rights Reserved»: no se reutiliza. Caso de manual para el semáforo. Publicado en el London Datastore (GLA); la licencia es la que declara el propio conjunto.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "\"license_title\":\"All\\ Rights\\ Reserved\""
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "\"license_title\":\"All Rights Reserved\"",
+  "veredicto": "excluido",
+  "estado": "excluido",
+  "proteccion": "—"
+ },
+ {
+  "id": "lds_cobertura_verde_2024",
+  "nombre": "Green Cover 2024",
+  "entidad": "GLA",
+  "familia": "Ambiente y riesgo",
+  "tema": "geo",
+  "url": "https://data.london.gov.uk/dataset/e56n0",
+  "prueba": "https://data.london.gov.uk/api/action/package_show?id=e56n0",
+  "resolucion": "zona",
+  "vigencia": "metadatos actualizados 2024-12-13 (el periodo de los datos se fija al bajarlos)",
+  "licencia": "todos-los-derechos-reservados",
+  "personas": "no",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "api"
+  },
+  "uso": "cobertura verde",
+  "nota": "Declara «All Rights Reserved»: no se reutiliza. Publicado en el London Datastore (GLA); la licencia es la que declara el propio conjunto.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "\"license_title\":\"All\\ Rights\\ Reserved\""
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "\"license_title\":\"All Rights Reserved\"",
+  "veredicto": "excluido",
+  "estado": "excluido",
+  "proteccion": "—"
+ },
+ {
+  "id": "lds_acceso_espacio_verde",
+  "nombre": "Access to Public Open Space and Nature by Ward",
+  "entidad": "GiGL",
+  "familia": "Ambiente y riesgo",
+  "tema": "geo",
+  "url": "https://data.london.gov.uk/dataset/e1z0p",
+  "prueba": "https://data.london.gov.uk/api/action/package_show?id=e1z0p",
+  "resolucion": "ward",
+  "vigencia": "metadatos actualizados 2025-10-23 (el periodo de los datos se fija al bajarlos)",
+  "licencia": "OGL-2.0",
+  "personas": "no",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "api"
+  },
+  "uso": "acceso a espacio verde por ward",
+  "nota": "El conjunto existe pero tiene 0 recursos descargables (2026-09-25). Publicado en el London Datastore (GLA); la licencia es la que declara el propio conjunto.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "\"license_title\":\"Open\\ Government\\ Licence\\ v2\""
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "\"license_title\":\"Open Government Licence v2\"",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto"
+ },
+ {
+  "id": "lds_emisiones_consumo",
+  "nombre": "London’s consumption based greenhouse gas emissions",
+  "entidad": "GLA",
+  "familia": "Ambiente y riesgo",
+  "tema": "sensores",
+  "url": "https://data.london.gov.uk/dataset/2rqom",
+  "prueba": "https://data.london.gov.uk/api/action/package_show?id=2rqom",
+  "resolucion": "ciudad",
+  "vigencia": "metadatos actualizados 2026-03-20 (el periodo de los datos se fija al bajarlos)",
+  "licencia": "OGL-3.0",
+  "personas": "no: conteos agregados",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "emisiones basadas en consumo",
+  "nota": " Publicado en el London Datastore (GLA); la licencia es la que declara el propio conjunto.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "\"license_title\":\"Open\\ Government\\ Licence\\ v3\""
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "\"license_title\":\"Open Government Licence v3\"",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "lds_isla_calor",
+  "nombre": "London's Urban Heat Island - Average Summer",
+  "entidad": "GLA",
+  "familia": "Ambiente y riesgo",
+  "tema": "sensores",
+  "url": "https://data.london.gov.uk/dataset/2jxd0",
+  "prueba": "https://data.london.gov.uk/api/action/package_show?id=2jxd0",
+  "resolucion": "cuadrícula",
+  "vigencia": "metadatos actualizados 2017-02-14 (el periodo de los datos se fija al bajarlos)",
+  "licencia": "OGL-3.0",
+  "personas": "no",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "api",
+   "vida": "viejo"
+  },
+  "uso": "isla de calor urbana",
+  "nota": "Modelo de 2017. Publicado en el London Datastore (GLA); la licencia es la que declara el propio conjunto.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "\"license_title\":\"Open\\ Government\\ Licence\\ v3\""
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "\"license_title\":\"Open Government Licence v3\"",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto"
+ },
+ {
+  "id": "lds_ruido",
+  "nombre": "Noise Pollution in London",
+  "entidad": "Defra",
+  "familia": "Ambiente y riesgo",
+  "tema": "sensores",
+  "url": "https://data.london.gov.uk/dataset/2zwnk",
+  "prueba": "https://data.london.gov.uk/api/action/package_show?id=2zwnk",
+  "resolucion": "cuadrícula",
+  "vigencia": "metadatos actualizados 2018-03-29 (el periodo de los datos se fija al bajarlos)",
+  "licencia": "OGL-3.0",
+  "personas": "no",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "api",
+   "vida": "viejo"
+  },
+  "uso": "contaminación acústica",
+  "nota": "Actualizado por última vez en 2018. Publicado en el London Datastore (GLA); la licencia es la que declara el propio conjunto.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "\"license_title\":\"Open\\ Government\\ Licence\\ v3\""
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "\"license_title\":\"Open Government Licence v3\"",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto"
+ },
+ {
+  "id": "lds_energia_total_borough",
+  "nombre": "Total Energy Consumption, Borough",
+  "entidad": "DESNZ",
+  "familia": "Ambiente y riesgo",
+  "tema": "infraestructura",
+  "url": "https://data.london.gov.uk/dataset/2z0jy",
+  "prueba": "https://data.london.gov.uk/api/action/package_show?id=2z0jy",
+  "resolucion": "borough",
+  "vigencia": "metadatos actualizados 2017-12-14 (el periodo de los datos se fija al bajarlos)",
+  "licencia": "OGL-2.0",
+  "personas": "no: conteos agregados",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api",
+   "vida": "viejo"
+  },
+  "uso": "consumo energético total",
+  "nota": "Serie detenida en 2017: DESNZ publica la versión vigente (desnz_electricidad). Publicado en el London Datastore (GLA); la licencia es la que declara el propio conjunto.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "\"license_title\":\"Open\\ Government\\ Licence\\ v2\""
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "\"license_title\":\"Open Government Licence v2\"",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "esa_worldcover",
+  "nombre": "ESA WorldCover 2021 v200 (10 m)",
+  "entidad": "ESA",
+  "familia": "Ambiente y riesgo",
+  "tema": "geo",
+  "url": "https://esa-worldcover.org/",
+  "prueba": "https://esa-worldcover.s3.eu-central-1.amazonaws.com/v200/2021/map/ESA_WorldCover_10m_2021_v200_N51W003_Map.tif",
+  "resolucion": "10 m",
+  "vigencia": "2021",
+  "licencia": "CC-BY-4.0",
+  "personas": "no",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "api"
+  },
+  "uso": "cobertura del suelo (verde, construido, agua)",
+  "nota": "Londres cae entre dos teselas de 3°: N51W003 y N51E000.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://esa-worldcover.org/en/data-access",
+   "patron": "Creative Commons Attribution 4\\.0 International"
+  },
+  "metodo": "HEAD",
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "Creative Commons Attribution 4.0 International",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto"
+ },
+ {
+  "id": "ons_wards_dic2025",
+  "nombre": "ONS Open Geography · Wards (diciembre 2025, BGC)",
+  "entidad": "ONS",
+  "familia": "Territorio",
+  "tema": "geo",
+  "url": "https://geoportal.statistics.gov.uk/",
+  "prueba": "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/WD_DEC_2025_UK_BGC/FeatureServer/0/query?where=LAD25CD%20LIKE%20%27E09%25%27&returnCountOnly=true&f=json",
+  "resolucion": "ward",
+  "vigencia": "diciembre 2025",
+  "licencia": "OGL-3.0",
+  "personas": "no",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "api"
+  },
+  "uso": "escala fina del mapa",
+  "nota": "704 wards en los 33 boroughs (LAD25CD E09) el 2026-09-25. Es FeatureServer y responde a /query: resuelve la ficha ons_wards_2025, que anotaba que la capa de mayo de 2025 solo existía como MapServer.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://www.ons.gov.uk/methodology/geography/licences",
+   "patron": "Open Government Licence"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "Open Government Licence",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto"
+ },
+ {
+  "id": "ons_lad_may2025",
+  "nombre": "ONS Open Geography · Local Authority Districts (mayo 2025, BGC)",
+  "entidad": "ONS",
+  "familia": "Territorio",
+  "tema": "geo",
+  "url": "https://geoportal.statistics.gov.uk/",
+  "prueba": "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/LAD_MAY_2025_UK_BGC_V2/FeatureServer/0/query?where=LAD25CD%20LIKE%20%27E09%25%27&returnCountOnly=true&f=json",
+  "resolucion": "borough",
+  "vigencia": "mayo 2025",
+  "licencia": "OGL-3.0",
+  "personas": "no",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "api"
+  },
+  "uso": "límites de los 33 boroughs",
+  "nota": "33 autoridades con código E09 (32 boroughs y la City of London).",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://www.ons.gov.uk/methodology/geography/licences",
+   "patron": "Open Government Licence"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "Open Government Licence",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto"
+ },
+ {
+  "id": "ons_lsoa_2021",
+  "nombre": "ONS Open Geography · LSOA 2021 (BSC)",
+  "entidad": "ONS",
+  "familia": "Territorio",
+  "tema": "geo",
+  "url": "https://geoportal.statistics.gov.uk/",
+  "prueba": "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/LSOA_2021_EW_BSC_V4_RUC/FeatureServer/0/query?where=1%3D1&returnCountOnly=true&f=json",
+  "resolucion": "LSOA",
+  "vigencia": "2021",
+  "licencia": "OGL-3.0",
+  "personas": "no",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "api"
+  },
+  "uso": "unidad del índice de privación y del censo",
+  "nota": "35.672 LSOA en Inglaterra y Gales; hay que filtrar Londres.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://www.ons.gov.uk/methodology/geography/licences",
+   "patron": "Open Government Licence"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "Open Government Licence",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto"
+ },
+ {
+  "id": "ons_msoa_2021",
+  "nombre": "ONS Open Geography · MSOA 2021 (BSC)",
+  "entidad": "ONS",
+  "familia": "Territorio",
+  "tema": "geo",
+  "url": "https://geoportal.statistics.gov.uk/",
+  "prueba": "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/MSOA_2021_EW_BSC_V3_RUC/FeatureServer/0/query?where=1%3D1&returnCountOnly=true&f=json",
+  "resolucion": "MSOA",
+  "vigencia": "2021",
+  "licencia": "OGL-3.0",
+  "personas": "no",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "api"
+  },
+  "uso": "escala intermedia para consumo energético y censo",
+  "nota": "7.264 MSOA en Inglaterra y Gales.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://www.ons.gov.uk/methodology/geography/licences",
+   "patron": "Open Government Licence"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "Open Government Licence",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto"
+ },
+ {
+  "id": "ons_lookup_lsoa_ward",
+  "nombre": "ONS · correspondencia LSOA 2021 → ward → autoridad local (mayo 2022)",
+  "entidad": "ONS",
+  "familia": "Territorio",
+  "tema": "geo",
+  "url": "https://geoportal.statistics.gov.uk/",
+  "prueba": "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/LSOA_2021_to_Ward_to_Lower_Tier_Local_Authority_May_2022_Lookup_for_England_2022/FeatureServer/0/query?where=1%3D1&returnCountOnly=true&f=json",
+  "resolucion": "LSOA",
+  "vigencia": "mayo 2022",
+  "licencia": "OGL-3.0",
+  "personas": "no",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "api"
+  },
+  "uso": "agregar población de LSOA a ward",
+  "nota": "Es la tabla que la ficha nomis_pop_smallarea echaba en falta. Ojo: los wards son de 2022, no de 2025.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://www.ons.gov.uk/methodology/geography/licences",
+   "patron": "Open Government Licence"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "Open Government Licence",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto"
+ },
+ {
+  "id": "os_open_data",
+  "nombre": "Ordnance Survey · OS Downloads API (productos abiertos)",
+  "entidad": "Ordnance Survey",
+  "familia": "Territorio",
+  "tema": "geo",
+  "url": "https://osdatahub.os.uk/downloads/open",
+  "prueba": "https://api.os.uk/downloads/v1/products",
+  "resolucion": "variable",
+  "vigencia": "según producto",
+  "licencia": "sin-confirmar",
+  "personas": "no",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "api"
+  },
+  "uso": "Boundary-Line, OS Open Roads, Open Greenspace, Open Zoomstack, Open Names",
+  "nota": "La API lista 26 productos sin llave. No se encontró el texto de la licencia en las páginas probadas (son aplicaciones JavaScript).",
+  "rastreo": "2026-09-25",
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": false,
+  "veredicto": "candidato",
+  "estado": "candidato",
+  "proteccion": "por decidir"
+ },
+ {
+  "id": "postcodes_io",
+  "nombre": "postcodes.io · API de códigos postales",
+  "entidad": "postcodes.io",
+  "familia": "Territorio",
+  "tema": "geo",
+  "url": "https://postcodes.io/",
+  "prueba": "https://api.postcodes.io/postcodes/SW1A1AA",
+  "resolucion": "código postal",
+  "vigencia": "continua",
+  "licencia": "sin-confirmar",
+  "personas": "no: el código postal describe una zona, no a una persona",
+  "semaforo": {
+   "origen": "colab",
+   "personas": "no",
+   "acceso": "api"
+  },
+  "uso": "geocodificar direcciones a borough, ward y LSOA",
+  "nota": "El código es MIT; la página dice que los datos vienen de Royal Mail, Ordnance Survey y otros proveedores. Falta leer la licencia de los datos.",
+  "rastreo": "2026-09-25",
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": false,
+  "veredicto": "candidato",
+  "estado": "candidato",
+  "proteccion": "por decidir"
+ },
+ {
+  "id": "planning_areas_conservacion",
+  "nombre": "Planning Data · conservation areas",
+  "entidad": "MHCLG",
+  "familia": "Territorio",
+  "tema": "geo",
+  "url": "https://www.planning.data.gov.uk/dataset/conservation-area",
+  "prueba": "https://www.planning.data.gov.uk/entity.json?dataset=conservation-area&limit=1",
+  "resolucion": "polígono o punto (Inglaterra; filtrar Londres por organización o geometría)",
+  "vigencia": "continua (la plataforma fecha cada entidad con entry-date)",
+  "licencia": "OGL-3.0",
+  "personas": "no",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "api"
+  },
+  "uso": "zonas de conservación patrimonial",
+  "nota": "Plataforma de datos de planificación del MHCLG, sin llave.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://www.planning.data.gov.uk/dataset.json",
+   "patron": "\"dataset\":\"conservation-area\"(?:(?!\"dataset\":).)*?\"licence\":\"ogl3\""
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "\"dataset\":\"conservation-area\",\"description\":\"areas of special architectural or historic interest, the character or appearance of which it is",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto"
+ },
+ {
+  "id": "planning_edificios_protegidos",
+  "nombre": "Planning Data · listed buildings",
+  "entidad": "MHCLG",
+  "familia": "Territorio",
+  "tema": "geo",
+  "url": "https://www.planning.data.gov.uk/dataset/listed-building",
+  "prueba": "https://www.planning.data.gov.uk/entity.json?dataset=listed-building&limit=1",
+  "resolucion": "polígono o punto (Inglaterra; filtrar Londres por organización o geometría)",
+  "vigencia": "continua (la plataforma fecha cada entidad con entry-date)",
+  "licencia": "OGL-3.0",
+  "personas": "no",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "api"
+  },
+  "uso": "edificios protegidos (el equivalente al patrimonio del MINCUL)",
+  "nota": "La lista viene de Historic England.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://www.planning.data.gov.uk/dataset.json",
+   "patron": "\"dataset\":\"listed-building\"(?:(?!\"dataset\":).)*?\"licence\":\"ogl3\""
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "\"dataset\":\"listed-building\",\"description\":\"\",\"name\":\"Listed building\",\"plural\":\"Listed buildings\",\"prefix\":\"\",\"text\":\"This dataset contains ",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto"
+ },
+ {
+  "id": "planning_cinturon_verde",
+  "nombre": "Planning Data · green belt",
+  "entidad": "MHCLG",
+  "familia": "Territorio",
+  "tema": "geo",
+  "url": "https://www.planning.data.gov.uk/dataset/green-belt",
+  "prueba": "https://www.planning.data.gov.uk/entity.json?dataset=green-belt&limit=1",
+  "resolucion": "polígono o punto (Inglaterra; filtrar Londres por organización o geometría)",
+  "vigencia": "continua (la plataforma fecha cada entidad con entry-date)",
+  "licencia": "OGL-3.0",
+  "personas": "no",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "api"
+  },
+  "uso": "cinturón verde",
+  "nota": "",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://www.planning.data.gov.uk/dataset.json",
+   "patron": "\"dataset\":\"green-belt\"(?:(?!\"dataset\":).)*?\"licence\":\"ogl3\""
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "\"dataset\":\"green-belt\",\"description\":\"\",\"name\":\"Green belt\",\"plural\":\"Green belt\",\"prefix\":\"\",\"text\":\"This dataset contains boundaries for l",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto"
+ },
+ {
+  "id": "planning_zonas_inundables",
+  "nombre": "Planning Data · flood risk zones",
+  "entidad": "MHCLG",
+  "familia": "Territorio",
+  "tema": "geo",
+  "url": "https://www.planning.data.gov.uk/dataset/flood-risk-zone",
+  "prueba": "https://www.planning.data.gov.uk/entity.json?dataset=flood-risk-zone&limit=1",
+  "resolucion": "polígono o punto (Inglaterra; filtrar Londres por organización o geometría)",
+  "vigencia": "continua (la plataforma fecha cada entidad con entry-date)",
+  "licencia": "OGL-3.0",
+  "personas": "no",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "api"
+  },
+  "uso": "zonas inundables (Environment Agency)",
+  "nota": "",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://www.planning.data.gov.uk/dataset.json",
+   "patron": "\"dataset\":\"flood-risk-zone\"(?:(?!\"dataset\":).)*?\"licence\":\"ogl3\""
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "\"dataset\":\"flood-risk-zone\",\"description\":\"Area identified as being at risk of flooding from rivers or the sea\",\"name\":\"Flood risk zone\",\"pl",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto"
+ },
+ {
+  "id": "planning_suelo_baldio",
+  "nombre": "Planning Data · brownfield land",
+  "entidad": "MHCLG",
+  "familia": "Territorio",
+  "tema": "geo",
+  "url": "https://www.planning.data.gov.uk/dataset/brownfield-land",
+  "prueba": "https://www.planning.data.gov.uk/entity.json?dataset=brownfield-land&limit=1",
+  "resolucion": "polígono o punto (Inglaterra; filtrar Londres por organización o geometría)",
+  "vigencia": "continua (la plataforma fecha cada entidad con entry-date)",
+  "licencia": "OGL-3.0",
+  "personas": "no",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "api"
+  },
+  "uso": "suelo apto para vivienda",
+  "nota": "",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://www.planning.data.gov.uk/dataset.json",
+   "patron": "\"dataset\":\"brownfield-land\"(?:(?!\"dataset\":).)*?\"licence\":\"ogl3\""
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "\"dataset\":\"brownfield-land\",\"description\":\"land that has been previously been developed\",\"name\":\"Brownfield land\",\"plural\":\"Brownfield land\"",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto"
+ },
+ {
+  "id": "planning_arboles_protegidos",
+  "nombre": "Planning Data · tree preservation zones",
+  "entidad": "MHCLG",
+  "familia": "Territorio",
+  "tema": "geo",
+  "url": "https://www.planning.data.gov.uk/dataset/tree-preservation-zone",
+  "prueba": "https://www.planning.data.gov.uk/entity.json?dataset=tree-preservation-zone&limit=1",
+  "resolucion": "polígono o punto (Inglaterra; filtrar Londres por organización o geometría)",
+  "vigencia": "continua (la plataforma fecha cada entidad con entry-date)",
+  "licencia": "OGL-3.0",
+  "personas": "no",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "api"
+  },
+  "uso": "arbolado protegido",
+  "nota": "",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://www.planning.data.gov.uk/dataset.json",
+   "patron": "\"dataset\":\"tree-preservation-zone\"(?:(?!\"dataset\":).)*?\"licence\":\"ogl3\""
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "\"dataset\":\"tree-preservation-zone\",\"description\":\"An area covered by a tree preservation order\",\"name\":\"Tree preservation zone\",\"plural\":\"Tr",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto"
+ },
+ {
+  "id": "planning_articulo4",
+  "nombre": "Planning Data · article 4 direction areas",
+  "entidad": "MHCLG",
+  "familia": "Territorio",
+  "tema": "geo",
+  "url": "https://www.planning.data.gov.uk/dataset/article-4-direction-area",
+  "prueba": "https://www.planning.data.gov.uk/entity.json?dataset=article-4-direction-area&limit=1",
+  "resolucion": "polígono o punto (Inglaterra; filtrar Londres por organización o geometría)",
+  "vigencia": "continua (la plataforma fecha cada entidad con entry-date)",
+  "licencia": "OGL-3.0",
+  "personas": "no",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "api"
+  },
+  "uso": "restricciones de uso del suelo",
+  "nota": "",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://www.planning.data.gov.uk/dataset.json",
+   "patron": "\"dataset\":\"article-4-direction-area\"(?:(?!\"dataset\":).)*?\"licence\":\"ogl3\""
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "\"dataset\":\"article-4-direction-area\",\"description\":\"Orders made by the local planning authority to remove all or some of the permitted devel",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto"
+ },
+ {
+  "id": "lds_limites_estadisticos",
+  "nombre": "Statistical GIS Boundary Files for London",
+  "entidad": "GLA",
+  "familia": "Territorio",
+  "tema": "geo",
+  "url": "https://data.london.gov.uk/dataset/20od9",
+  "prueba": "https://data.london.gov.uk/api/action/package_show?id=20od9",
+  "resolucion": "OA a borough",
+  "vigencia": "metadatos actualizados 2025-03-13 (el periodo de los datos se fija al bajarlos)",
+  "licencia": "OGL-2.0",
+  "personas": "no: conteos agregados",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "límites estadísticos de Londres en un paquete",
+  "nota": " Publicado en el London Datastore (GLA); la licencia es la que declara el propio conjunto.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "\"license_title\":\"Open\\ Government\\ Licence\\ v2\""
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "\"license_title\":\"Open Government Licence v2\"",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "lds_centros_urbanos",
+  "nombre": "Town Centre Boundaries",
+  "entidad": "GLA",
+  "familia": "Territorio",
+  "tema": "geo",
+  "url": "https://data.london.gov.uk/dataset/e55z7",
+  "prueba": "https://data.london.gov.uk/api/action/package_show?id=e55z7",
+  "resolucion": "polígono",
+  "vigencia": "metadatos actualizados 2025-12-23 (el periodo de los datos se fija al bajarlos)",
+  "licencia": "OGL-3.0",
+  "personas": "no: conteos agregados",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "centros urbanos de la London Plan",
+  "nota": " Publicado en el London Datastore (GLA); la licencia es la que declara el propio conjunto.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "\"license_title\":\"Open\\ Government\\ Licence\\ v3\""
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "\"license_title\":\"Open Government Licence v3\"",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "overture_maps",
+  "nombre": "Overture Maps · catálogo STAC de publicaciones",
+  "entidad": "Overture Maps Foundation",
+  "familia": "Territorio",
+  "tema": "geo",
+  "url": "https://docs.overturemaps.org/",
+  "prueba": "https://stac.overturemaps.org/catalog.json",
+  "resolucion": "edificio, lugar, vía",
+  "vigencia": "publicación 2026-09-23.0",
+  "licencia": "ODbL-1.0",
+  "personas": "no",
+  "semaforo": {
+   "origen": "colab",
+   "personas": "no",
+   "acceso": "api"
+  },
+  "uso": "edificios y lugares complementarios a OSM",
+  "nota": "La licencia cambia por tema: la página de atribución cita ODbL y CDLA Permissive 2.0. Se registra ODbL por los edificios; los lugares van con CDLA.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://docs.overturemaps.org/attribution/",
+   "patron": "CDLA Permissive 2\\.0"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "CDLA Permissive 2.0",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto"
+ },
+ {
+  "id": "tfl_estado_lineas",
+  "nombre": "TfL Unified API · estado de líneas",
+  "entidad": "TfL",
+  "familia": "Territorio",
+  "tema": "infraestructura",
+  "url": "https://api-portal.tfl.gov.uk/",
+  "prueba": "https://api.tfl.gov.uk/Line/Mode/tube/Status",
+  "resolucion": "línea",
+  "vigencia": "tiempo real",
+  "licencia": "terminos-del-servicio",
+  "personas": "no",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "api",
+   "licencia": "abierta"
+  },
+  "uso": "estado del metro en vivo",
+  "nota": "11 líneas de tube (2026-09-25). Sin llave, con límite de peticiones.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://tfl.gov.uk/corporate/terms-and-conditions/transport-data-service",
+   "patron": "Open Government Licence with specific amendments for Transport for London"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "Open Government Licence with specific amendments for Transport for London",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto"
+ },
+ {
+  "id": "tfl_bicicletas",
+  "nombre": "TfL Unified API · BikePoint (Santander Cycles)",
+  "entidad": "TfL",
+  "familia": "Territorio",
+  "tema": "infraestructura",
+  "url": "https://api-portal.tfl.gov.uk/",
+  "prueba": "https://api.tfl.gov.uk/BikePoint",
+  "resolucion": "estación de bicicletas",
+  "vigencia": "tiempo real",
+  "licencia": "terminos-del-servicio",
+  "personas": "no",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "api",
+   "licencia": "abierta"
+  },
+  "uso": "red de bicicletas públicas",
+  "nota": "801 estaciones (2026-09-25).",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://tfl.gov.uk/corporate/terms-and-conditions/transport-data-service",
+   "patron": "Open Government Licence with specific amendments for Transport for London"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "Open Government Licence with specific amendments for Transport for London",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto"
+ },
+ {
+  "id": "tfl_paradas_radio",
+  "nombre": "TfL Unified API · StopPoint por lat/lon/radius",
+  "entidad": "TfL",
+  "familia": "Territorio",
+  "tema": "infraestructura",
+  "url": "https://api-portal.tfl.gov.uk/",
+  "prueba": "https://api.tfl.gov.uk/StopPoint?lat=51.5074&lon=-0.1278&stopTypes=NaptanMetroStation&radius=1000",
+  "resolucion": "estación",
+  "vigencia": "continua",
+  "licencia": "terminos-del-servicio",
+  "personas": "no",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "api",
+   "licencia": "abierta"
+  },
+  "uso": "estaciones cercanas a un punto",
+  "nota": "La forma por radio sí responde (a diferencia de la caja envolvente de tfl_stoppoint_bbox).",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://tfl.gov.uk/corporate/terms-and-conditions/transport-data-service",
+   "patron": "Open Government Licence with specific amendments for Transport for London"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "Open Government Licence with specific amendments for Transport for London",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto"
+ },
+ {
+  "id": "tfl_datos_ciclismo",
+  "nombre": "TfL · cycling.data.tfl.gov.uk (bucket S3)",
+  "entidad": "TfL",
+  "familia": "Territorio",
+  "tema": "infraestructura",
+  "url": "https://cycling.data.tfl.gov.uk/",
+  "prueba": "https://s3-eu-west-1.amazonaws.com/cycling.data.tfl.gov.uk/?list-type=2&max-keys=3",
+  "resolucion": "viaje y punto de conteo",
+  "vigencia": "continua",
+  "licencia": "terminos-del-servicio",
+  "personas": "no",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "api",
+   "licencia": "abierta"
+  },
+  "uso": "uso de bicicletas públicas y conteos de ciclismo",
+  "nota": "La página es una aplicación JavaScript; el listado del bucket responde en XML (carpetas como ActiveTravelCountsProgramme/).",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://tfl.gov.uk/corporate/terms-and-conditions/transport-data-service",
+   "patron": "Open Government Licence with specific amendments for Transport for London"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "Open Government Licence with specific amendments for Transport for London",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto"
+ },
+ {
+  "id": "tfl_datos_afluencia",
+  "nombre": "TfL · crowding.data.tfl.gov.uk (bucket S3)",
+  "entidad": "TfL",
+  "familia": "Territorio",
+  "tema": "infraestructura",
+  "url": "https://crowding.data.tfl.gov.uk/",
+  "prueba": "https://s3-eu-west-1.amazonaws.com/crowding.data.tfl.gov.uk/?list-type=2&max-keys=3",
+  "resolucion": "estación",
+  "vigencia": "anual",
+  "licencia": "terminos-del-servicio",
+  "personas": "no",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "api",
+   "licencia": "abierta"
+  },
+  "uso": "entradas y salidas por estación",
+  "nota": "Carpeta «Annual Station Counts/».",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://tfl.gov.uk/corporate/terms-and-conditions/transport-data-service",
+   "patron": "Open Government Licence with specific amendments for Transport for London"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "Open Government Licence with specific amendments for Transport for London",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto"
+ },
+ {
+  "id": "dft_trafico",
+  "nombre": "DfT · Road traffic statistics API",
+  "entidad": "DfT",
+  "familia": "Territorio",
+  "tema": "infraestructura",
+  "url": "https://roadtraffic.dft.gov.uk/",
+  "prueba": "https://roadtraffic.dft.gov.uk/api/local-authorities",
+  "resolucion": "punto de conteo y autoridad local",
+  "vigencia": "anual",
+  "licencia": "OGL-3.0",
+  "personas": "no",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "api"
+  },
+  "uso": "volumen de tráfico por borough",
+  "nota": "API sin llave.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://roadtraffic.dft.gov.uk/about",
+   "patron": "Open Government Licence v3\\.0"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "Open Government Licence v3.0",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto"
+ },
+ {
+  "id": "dft_naptan",
+  "nombre": "DfT · NaPTAN (paradas de transporte público), área 490 Londres",
+  "entidad": "DfT",
+  "familia": "Territorio",
+  "tema": "infraestructura",
+  "url": "https://beta-naptan.dft.gov.uk/",
+  "prueba": "https://naptan.api.dft.gov.uk/v1/access-nodes?dataFormat=csv&atcoAreaCodes=490",
+  "resolucion": "parada",
+  "vigencia": "continua",
+  "licencia": "OGL-3.0",
+  "personas": "no",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "api"
+  },
+  "uso": "paradas de bus, metro y tren (el equivalente a los paraderos de la ATU)",
+  "nota": "21.288 filas para el área 490 (2026-09-25).",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://www.data.gov.uk/dataset/ff93ffc1-6656-47d8-9155-85ea0b8f2251/national-public-transport-access-nodes-naptan",
+   "patron": "Open Government Licence"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "Open Government Licence",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto"
+ },
+ {
+  "id": "dft_bods",
+  "nombre": "DfT · Bus Open Data Service",
+  "entidad": "DfT",
+  "familia": "Territorio",
+  "tema": "infraestructura",
+  "url": "https://data.bus-data.dft.gov.uk/",
+  "prueba": "https://data.bus-data.dft.gov.uk/api/v1/dataset/?limit=1",
+  "resolucion": "ruta y vehículo",
+  "vigencia": "tiempo real",
+  "licencia": "sin-confirmar",
+  "personas": "no",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "llave"
+  },
+  "uso": "horarios y posición de buses",
+  "nota": "Responde 401 «Authentication credentials were not provided»: pide llave.",
+  "rastreo": "2026-09-25",
+  "esperado": [
+   401
+  ],
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 401,
+   "detalle": "{\"detail\":\"Authentication credentials were not provided.\"}"
+  },
+  "licencia_verificada": false,
+  "veredicto": "candidato",
+  "estado": "candidato",
+  "proteccion": "por decidir"
+ },
+ {
+  "id": "orr_uso_estaciones",
+  "nombre": "ORR · Estimates of station usage",
+  "entidad": "ORR",
+  "familia": "Territorio",
+  "tema": "infraestructura",
+  "url": "https://dataportal.orr.gov.uk/statistics/usage/estimates-of-station-usage/",
+  "prueba": "https://dataportal.orr.gov.uk/statistics/usage/estimates-of-station-usage/",
+  "resolucion": "estación de tren",
+  "vigencia": "anual",
+  "licencia": "sin-confirmar",
+  "personas": "no",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "pdf"
+  },
+  "uso": "pasajeros por estación de tren",
+  "nota": "No se encontró el texto de licencia en el portal. No se revisó si la página ofrece una descarga tabular; mientras no se compruebe, se trata como declarado (se transcribe con documento y fecha).",
+  "rastreo": "2026-09-25",
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": false,
+  "veredicto": "declarado",
+  "estado": "declarado",
+  "proteccion": "abierto"
+ },
+ {
+  "id": "caa_aeropuertos",
+  "nombre": "CAA · UK airport data",
+  "entidad": "CAA",
+  "familia": "Territorio",
+  "tema": "turismo",
+  "url": "https://www.caa.co.uk/data-and-analysis/uk-aviation-market/airports/uk-airport-data/",
+  "prueba": "https://www.caa.co.uk/data-and-analysis/uk-aviation-market/airports/uk-airport-data/",
+  "resolucion": "aeropuerto",
+  "vigencia": "mensual y anual",
+  "licencia": "sin-confirmar",
+  "personas": "no",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "pdf"
+  },
+  "uso": "pasajeros de Heathrow, Gatwick, Stansted, Luton, City y Southend",
+  "nota": "El equivalente a la entrada por el Jorge Chávez. No se encontró el texto de licencia. No se revisó si la página ofrece una descarga tabular; mientras no se compruebe, se trata como declarado (se transcribe con documento y fecha).",
+  "rastreo": "2026-09-25",
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": false,
+  "veredicto": "declarado",
+  "estado": "declarado",
+  "proteccion": "abierto"
+ },
+ {
+  "id": "lds_alquiler_bicicletas",
+  "nombre": "Number of Bicycle Hires",
+  "entidad": "TfL",
+  "familia": "Territorio",
+  "tema": "infraestructura",
+  "url": "https://data.london.gov.uk/dataset/2r84d",
+  "prueba": "https://data.london.gov.uk/api/action/package_show?id=2r84d",
+  "resolucion": "ciudad, diaria",
+  "vigencia": "metadatos actualizados 2026-09-17 (el periodo de los datos se fija al bajarlos)",
+  "licencia": "OGL-2.0",
+  "personas": "no: conteos agregados",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "uso diario de Santander Cycles",
+  "nota": " Publicado en el London Datastore (GLA); la licencia es la que declara el propio conjunto.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "\"license_title\":\"Open\\ Government\\ Licence\\ v2\""
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "\"license_title\":\"Open Government Licence v2\"",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "lds_flujos_trafico",
+  "nombre": "Traffic Flows, Borough",
+  "entidad": "DfT",
+  "familia": "Territorio",
+  "tema": "infraestructura",
+  "url": "https://data.london.gov.uk/dataset/v8pow",
+  "prueba": "https://data.london.gov.uk/api/action/package_show?id=v8pow",
+  "resolucion": "borough",
+  "vigencia": "metadatos actualizados 2026-09-16 (el periodo de los datos se fija al bajarlos)",
+  "licencia": "OGL-2.0",
+  "personas": "no: conteos agregados",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "tráfico por borough",
+  "nota": " Publicado en el London Datastore (GLA); la licencia es la que declara el propio conjunto.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "\"license_title\":\"Open\\ Government\\ Licence\\ v2\""
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "\"license_title\":\"Open Government Licence v2\"",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "lds_viajes_transporte",
+  "nombre": "Public Transport Journeys by Type of Transport",
+  "entidad": "TfL",
+  "familia": "Territorio",
+  "tema": "infraestructura",
+  "url": "https://data.london.gov.uk/dataset/ep8ow",
+  "prueba": "https://data.london.gov.uk/api/action/package_show?id=ep8ow",
+  "resolucion": "ciudad",
+  "vigencia": "metadatos actualizados 2026-08-19 (el periodo de los datos se fija al bajarlos)",
+  "licencia": "OGL-2.0",
+  "personas": "no: conteos agregados",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "viajes por modo de transporte",
+  "nota": " Publicado en el London Datastore (GLA); la licencia es la que declara el propio conjunto.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "\"license_title\":\"Open\\ Government\\ Licence\\ v2\""
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "\"license_title\":\"Open Government Licence v2\"",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "lds_ptal",
+  "nombre": "Public Transport Accessibility Levels",
+  "entidad": "TfL",
+  "familia": "Territorio",
+  "tema": "infraestructura",
+  "url": "https://data.london.gov.uk/dataset/24rz6",
+  "prueba": "https://data.london.gov.uk/api/action/package_show?id=24rz6",
+  "resolucion": "cuadrícula 100 m",
+  "vigencia": "metadatos actualizados 2017-03-07 (el periodo de los datos se fija al bajarlos)",
+  "licencia": "OGL-2.0",
+  "personas": "no",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "api",
+   "vida": "viejo"
+  },
+  "uso": "accesibilidad al transporte público",
+  "nota": "Actualizado por última vez en 2017. Publicado en el London Datastore (GLA); la licencia es la que declara el propio conjunto.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "\"license_title\":\"Open\\ Government\\ Licence\\ v2\""
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "\"license_title\":\"Open Government Licence v2\"",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto"
+ },
+ {
+  "id": "lds_congestion_capturas",
+  "nombre": "Camera Captures and Confirmed Vehicles seen in the Congestion Charge Zone by Month",
+  "entidad": "TfL",
+  "familia": "Territorio",
+  "tema": "infraestructura",
+  "url": "https://data.london.gov.uk/dataset/2r88d",
+  "prueba": "https://data.london.gov.uk/api/action/package_show?id=2r88d",
+  "resolucion": "ciudad",
+  "vigencia": "metadatos actualizados 2026-08-17 (el periodo de los datos se fija al bajarlos)",
+  "licencia": "OGL-2.0",
+  "personas": "no: conteos agregados",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "vehículos en la zona de congestión",
+  "nota": " Publicado en el London Datastore (GLA); la licencia es la que declara el propio conjunto.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "\"license_title\":\"Open\\ Government\\ Licence\\ v2\""
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "\"license_title\":\"Open Government Licence v2\"",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "tomtom_indice",
+  "nombre": "TomTom Traffic Index · London",
+  "entidad": "TomTom",
+  "familia": "Territorio",
+  "tema": "infraestructura",
+  "url": "https://www.tomtom.com/traffic-index/city/london/",
+  "prueba": "https://www.tomtom.com/traffic-index/city/london/",
+  "resolucion": "ciudad",
+  "vigencia": "anual",
+  "licencia": "sin-confirmar",
+  "personas": "no",
+  "semaforo": {
+   "origen": "empresa",
+   "personas": "no",
+   "acceso": "pdf"
+  },
+  "uso": "congestión (el Traffic Index que usa Lima)",
+  "nota": "Página de una empresa (©TomTom). Se cita como declarado, sin copiar el conjunto.",
+  "rastreo": "2026-09-25",
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": false,
+  "veredicto": "declarado",
+  "estado": "declarado",
+  "proteccion": "abierto"
+ },
+ {
+  "id": "sentinel2_earthsearch",
+  "nombre": "Sentinel-2 L2A (Earth Search, STAC)",
+  "entidad": "ESA",
+  "familia": "Desde arriba",
+  "tema": "sensores",
+  "url": "https://earth-search.aws.element84.com/v1/",
+  "prueba": "https://earth-search.aws.element84.com/v1/search?collections=sentinel-2-l2a&bbox=-0.51,51.28,0.33,51.69&limit=1",
+  "resolucion": "10 m",
+  "vigencia": "cada pocos días",
+  "licencia": "terminos-del-servicio",
+  "personas": "no",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "api",
+   "licencia": "nada"
+  },
+  "uso": "imágenes de satélite con fecha",
+  "nota": "11.323 escenas para la caja de Londres (2026-09-25). El STAC declara license «proprietary»: son los términos de datos Sentinel de Copernicus, que falta leer.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://earth-search.aws.element84.com/v1/collections/sentinel-2-l2a",
+   "patron": "\"license\":\\s*\"proprietary\""
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "\"license\":\"proprietary\"",
+  "veredicto": "candidato",
+  "estado": "candidato",
+  "proteccion": "por decidir"
+ },
+ {
+  "id": "copernicus_dataspace",
+  "nombre": "Copernicus Data Space Ecosystem · STAC",
+  "entidad": "Copernicus (UE)",
+  "familia": "Desde arriba",
+  "tema": "sensores",
+  "url": "https://dataspace.copernicus.eu/",
+  "prueba": "https://catalogue.dataspace.copernicus.eu/stac/collections",
+  "resolucion": "según colección",
+  "vigencia": "continua",
+  "licencia": "sin-confirmar",
+  "personas": "no",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "api"
+  },
+  "uso": "catálogo oficial de Copernicus",
+  "nota": "El catálogo responde sin llave; la descarga no se probó.",
+  "rastreo": "2026-09-25",
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": false,
+  "veredicto": "candidato",
+  "estado": "candidato",
+  "proteccion": "por decidir"
+ },
+ {
+  "id": "aws_terrain",
+  "nombre": "AWS Terrain Tiles (Terrarium)",
+  "entidad": "Mapzen",
+  "familia": "Desde arriba",
+  "tema": "geo",
+  "url": "https://registry.opendata.aws/terrain-tiles/",
+  "prueba": "https://s3.amazonaws.com/elevation-tiles-prod/terrarium/10/511/340.png",
+  "resolucion": "tesela (≈10 m en z14)",
+  "vigencia": "fija",
+  "licencia": "terminos-del-servicio",
+  "personas": "no",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "api",
+   "licencia": "cita"
+  },
+  "uso": "relieve del gemelo 3D",
+  "nota": "La licencia es un documento de atribución de fuentes mixtas (tilezen/joerd attribution.md).",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://registry.opendata.aws/terrain-tiles/",
+   "patron": "tilezen/joerd/blob/master/docs/attribution\\.md"
+  },
+  "metodo": "HEAD",
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "tilezen/joerd/blob/master/docs/attribution.md",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto"
+ },
+ {
+  "id": "google_news_rss",
+  "nombre": "Google News RSS · «London» (en-GB)",
+  "entidad": "Google",
+  "familia": "Lo que se dice",
+  "tema": "escucha",
+  "url": "https://news.google.com/",
+  "prueba": "https://news.google.com/rss/search?q=London&hl=en-GB&gl=GB&ceid=GB:en",
+  "resolucion": "titular",
+  "vigencia": "ventana móvil",
+  "licencia": "uso-personal",
+  "personas": "no",
+  "semaforo": {
+   "origen": "empresa",
+   "personas": "no",
+   "acceso": "api"
+  },
+  "uso": "titulares por tema",
+  "nota": "El propio feed dice que se ofrece solo para mostrar resultados de Google News en un lector personal. Igual que en Lima: entra solo detrás de una compuerta, sin republicar el contenido.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "made available solely for the purpose of rendering Google News results within a person"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "made available solely for the purpose of rendering Google News results within a person",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "detrás de una compuerta real"
+ },
+ {
+  "id": "mastodon_london",
+  "nombre": "Mastodon · etiqueta #london (mastodon.social)",
+  "entidad": "Mastodon",
+  "familia": "Lo que se dice",
+  "tema": "escucha",
+  "url": "https://mastodon.social/tags/london",
+  "prueba": "https://mastodon.social/api/v1/timelines/tag/london?limit=3",
+  "resolucion": "publicación",
+  "vigencia": "últimas publicaciones",
+  "licencia": "sin-confirmar",
+  "personas": "sí: publicaciones de personas con su usuario",
+  "semaforo": {
+   "origen": "colab",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "conteo de publicaciones por mes",
+  "nota": "Solo conteos, sin texto ni usuarios, como en Lima.",
+  "rastreo": "2026-09-25",
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": false,
+  "veredicto": "candidato",
+  "estado": "candidato",
+  "proteccion": "por decidir"
+ },
+ {
+  "id": "bluesky_busqueda",
+  "nombre": "Bluesky · searchPosts (API pública)",
+  "entidad": "Bluesky",
+  "familia": "Lo que se dice",
+  "tema": "escucha",
+  "url": "https://docs.bsky.app/",
+  "prueba": "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=London&limit=3",
+  "resolucion": "publicación",
+  "vigencia": "—",
+  "licencia": "sin-confirmar",
+  "personas": "sí: publicaciones de personas",
+  "semaforo": {
+   "origen": "empresa",
+   "personas": "agregado",
+   "acceso": "bloquea"
+  },
+  "uso": "conteo de menciones",
+  "nota": "Responde 403 al script (2026-09-25).",
+  "rastreo": "2026-09-25",
+  "esperado": [
+   403
+  ],
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 403,
+   "detalle": "403 Forbidden html, body { width: 100%; margin: 0; padding: 0; text-align: center; font-family: 'Rubik'; background-image: url('data:image/svg+xml;base64,PD94b"
+  },
+  "licencia_verificada": false,
+  "veredicto": "declarado",
+  "estado": "declarado",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "reddit_london",
+  "nombre": "Reddit · r/london (JSON)",
+  "entidad": "Reddit",
+  "familia": "Lo que se dice",
+  "tema": "escucha",
+  "url": "https://www.reddit.com/r/london/",
+  "prueba": "https://www.reddit.com/r/london/new.json?limit=3",
+  "resolucion": "publicación",
+  "vigencia": "—",
+  "licencia": "sin-confirmar",
+  "personas": "sí: publicaciones de personas",
+  "semaforo": {
+   "origen": "empresa",
+   "personas": "agregado",
+   "acceso": "bloquea"
+  },
+  "uso": "conteo de publicaciones",
+  "nota": "403 sin OAuth, igual que r/PERU en Lima.",
+  "rastreo": "2026-09-25",
+  "esperado": [
+   403
+  ],
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 403,
+   "detalle": ".theme-light,:root{--rem360:22.5rem;--rem320:20rem;--rem192:12rem;--rem144:9rem;--rem128:8rem;--rem96:6rem;--rem90:5.625rem;--rem88:5.5rem;--rem64:4rem;--rem56"
+  },
+  "licencia_verificada": false,
+  "veredicto": "declarado",
+  "estado": "declarado",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "visitbritain_ciudades",
+  "nombre": "VisitBritain · Inbound visits and spend: trends by UK town",
+  "entidad": "VisitBritain",
+  "familia": "Estadística oficial",
+  "tema": "turismo",
+  "url": "https://www.visitbritain.org/research-insights/inbound-visits-and-spend-trends-uk-town",
+  "prueba": "https://www.visitbritain.org/research-insights/inbound-visits-and-spend-trends-uk-town",
+  "resolucion": "ciudad",
+  "vigencia": "anual",
+  "licencia": "sin-confirmar",
+  "personas": "no",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "pdf"
+  },
+  "uso": "visitas y gasto internacional en Londres frente a otras ciudades",
+  "nota": "Se basa en la IPS del ONS. No se encontró la licencia en la página. No se revisó si la página ofrece una descarga tabular; mientras no se compruebe, se trata como declarado (se transcribe con documento y fecha).",
+  "rastreo": "2026-09-25",
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": false,
+  "veredicto": "declarado",
+  "estado": "declarado",
+  "proteccion": "abierto"
+ },
+ {
+  "id": "visitbritain_regional",
+  "nombre": "VisitBritain · Inbound visits and spend: annual, regional",
+  "entidad": "VisitBritain",
+  "familia": "Estadística oficial",
+  "tema": "turismo",
+  "url": "https://www.visitbritain.org/research-insights/inbound-visits-and-spend-annual-regional",
+  "prueba": "https://www.visitbritain.org/research-insights/inbound-visits-and-spend-annual-regional",
+  "resolucion": "región",
+  "vigencia": "anual",
+  "licencia": "sin-confirmar",
+  "personas": "no",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "no",
+   "acceso": "pdf"
+  },
+  "uso": "turismo internacional por región",
+  "nota": "No se encontró la licencia en la página. No se revisó si la página ofrece una descarga tabular; mientras no se compruebe, se trata como declarado (se transcribe con documento y fecha).",
+  "rastreo": "2026-09-25",
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": false,
+  "veredicto": "declarado",
+  "estado": "declarado",
+  "proteccion": "abierto"
+ },
+ {
+  "id": "alva_visitas",
+  "nombre": "ALVA · visitas a atracciones (miembros de la asociación)",
+  "entidad": "ALVA",
+  "familia": "Economía y precios",
+  "tema": "turismo",
+  "url": "https://www.alva.org.uk/details.cfm?p=423",
+  "prueba": "https://www.alva.org.uk/details.cfm?p=403",
+  "resolucion": "atracción",
+  "vigencia": "anual",
+  "licencia": "sin-confirmar",
+  "personas": "no",
+  "semaforo": {
+   "origen": "empresa",
+   "personas": "no",
+   "acceso": "pdf"
+  },
+  "uso": "visitas al British Museum, la Tate y otras atracciones",
+  "nota": "Asociación privada: cifras que reportan sus miembros. Se cita como declarado. El equivalente a los visitantes a la Huaca Pucllana. No se revisó si la página ofrece una descarga tabular; mientras no se compruebe, se trata como declarado (se transcribe con documento y fecha).",
+  "rastreo": "2026-09-25",
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": false,
+  "veredicto": "declarado",
+  "estado": "declarado",
+  "proteccion": "abierto"
+ },
+ {
+  "id": "inside_airbnb_london",
+  "nombre": "Inside Airbnb · London (listings)",
+  "entidad": "Inside Airbnb",
+  "familia": "Economía y precios",
+  "tema": "turismo",
+  "url": "https://insideairbnb.com/get-the-data/",
+  "prueba": "https://insideairbnb.com/get-the-data/",
+  "resolucion": "anuncio (con coordenadas aproximadas)",
+  "vigencia": "extracción 2026-06-19",
+  "licencia": "CC-BY-4.0",
+  "personas": "sí: nombre de pila del anfitrión y anuncio con ubicación",
+  "semaforo": {
+   "origen": "academia",
+   "personas": "identificable",
+   "acceso": "api"
+  },
+  "uso": "oferta de alquiler turístico, solo como conteo por borough",
+  "nota": "La página declara CC BY 4.0. El crudo trae datos de anfitriones: entra solo agregado.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "licensed under a Creative Commons Attribution 4\\.0 International License"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "licensed under a Creative Commons Attribution 4.0 International License",
+  "veredicto": "excluido",
+  "estado": "excluido",
+  "proteccion": "no se publica"
+ },
+ {
+  "id": "lds_turismo_tendencias",
+  "nombre": "Tourism in London - Recent Trends",
+  "entidad": "GLA",
+  "familia": "Economía y precios",
+  "tema": "turismo",
+  "url": "https://data.london.gov.uk/dataset/2j81l",
+  "prueba": "https://data.london.gov.uk/api/action/package_show?id=2j81l",
+  "resolucion": "ciudad",
+  "vigencia": "metadatos actualizados 2026-02-25 (el periodo de los datos se fija al bajarlos)",
+  "licencia": "sin-declarar",
+  "personas": "no: conteos agregados",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "tendencias recientes del turismo",
+  "nota": " Publicado en el London Datastore (GLA); la licencia es la que declara el propio conjunto.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "\"license_title\":\"\""
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "\"license_title\":\"\"",
+  "veredicto": "candidato",
+  "estado": "candidato",
+  "proteccion": "por decidir"
+ },
+ {
+  "id": "lds_turismo_pronosticos",
+  "nombre": "London Tourism Forecasts",
+  "entidad": "GLA",
+  "familia": "Economía y precios",
+  "tema": "turismo",
+  "url": "https://data.london.gov.uk/dataset/e56r7",
+  "prueba": "https://data.london.gov.uk/api/action/package_show?id=e56r7",
+  "resolucion": "ciudad",
+  "vigencia": "metadatos actualizados 2025-10-07 (el periodo de los datos se fija al bajarlos)",
+  "licencia": "sin-declarar",
+  "personas": "no: conteos agregados",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "pronóstico de visitantes",
+  "nota": " Publicado en el London Datastore (GLA); la licencia es la que declara el propio conjunto.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "\"license_title\":\"\""
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "\"license_title\":\"\"",
+  "veredicto": "candidato",
+  "estado": "candidato",
+  "proteccion": "por decidir"
+ },
+ {
+  "id": "lds_infraestructura_cultural_2025",
+  "nombre": "Cultural Infrastructure Map 2025",
+  "entidad": "GLA",
+  "familia": "Economía y precios",
+  "tema": "turismo",
+  "url": "https://data.london.gov.uk/dataset/2rj5o",
+  "prueba": "https://data.london.gov.uk/api/action/package_show?id=2rj5o",
+  "resolucion": "punto",
+  "vigencia": "metadatos actualizados 2026-06-22 (el periodo de los datos se fija al bajarlos)",
+  "licencia": "sin-declarar",
+  "personas": "no: conteos agregados",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "museos, teatros, pubs y espacios culturales",
+  "nota": " Publicado en el London Datastore (GLA); la licencia es la que declara el propio conjunto.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "\"license_title\":\"\""
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "\"license_title\":\"\"",
+  "veredicto": "candidato",
+  "estado": "candidato",
+  "proteccion": "por decidir"
+ },
+ {
+  "id": "lds_pubs",
+  "nombre": "London pubs audit",
+  "entidad": "GLA",
+  "familia": "Economía y precios",
+  "tema": "turismo",
+  "url": "https://data.london.gov.uk/dataset/2yp45",
+  "prueba": "https://data.london.gov.uk/api/action/package_show?id=2yp45",
+  "resolucion": "borough",
+  "vigencia": "metadatos actualizados 2026-07-20 (el periodo de los datos se fija al bajarlos)",
+  "licencia": "sin-declarar",
+  "personas": "no: conteos agregados",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "auditoría de pubs",
+  "nota": " Publicado en el London Datastore (GLA); la licencia es la que declara el propio conjunto.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "\"license_title\":\"\""
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "\"license_title\":\"\"",
+  "veredicto": "candidato",
+  "estado": "candidato",
+  "proteccion": "por decidir"
+ },
+ {
+  "id": "lds_economia_hoy",
+  "nombre": "London's Economy Today",
+  "entidad": "GLA",
+  "familia": "Economía y precios",
+  "tema": "economia",
+  "url": "https://data.london.gov.uk/dataset/29jl1",
+  "prueba": "https://data.london.gov.uk/api/action/package_show?id=29jl1",
+  "resolucion": "ciudad",
+  "vigencia": "metadatos actualizados 2026-09-24 (el periodo de los datos se fija al bajarlos)",
+  "licencia": "OGL-2.0",
+  "personas": "no: conteos agregados",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "boletín económico mensual de la GLA",
+  "nota": " Publicado en el London Datastore (GLA); la licencia es la que declara el propio conjunto.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "\"license_title\":\"Open\\ Government\\ Licence\\ v2\""
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "\"license_title\":\"Open Government Licence v2\"",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "lds_ingreso_contribuyentes",
+  "nombre": "Average Income of Tax Payers, Borough",
+  "entidad": "HMRC",
+  "familia": "Economía y precios",
+  "tema": "economia",
+  "url": "https://data.london.gov.uk/dataset/2g1nq",
+  "prueba": "https://data.london.gov.uk/api/action/package_show?id=2g1nq",
+  "resolucion": "borough",
+  "vigencia": "metadatos actualizados 2026-05-05 (el periodo de los datos se fija al bajarlos)",
+  "licencia": "OGL-2.0",
+  "personas": "no: conteos agregados",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "ingreso medio de contribuyentes",
+  "nota": " Publicado en el London Datastore (GLA); la licencia es la que declara el propio conjunto.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "\"license_title\":\"Open\\ Government\\ Licence\\ v2\""
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "\"license_title\":\"Open Government Licence v2\"",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "lds_precio_vs_salario",
+  "nombre": "Ratio of House Prices to Earnings, Borough",
+  "entidad": "MHCLG",
+  "familia": "Economía y precios",
+  "tema": "economia",
+  "url": "https://data.london.gov.uk/dataset/2z04n",
+  "prueba": "https://data.london.gov.uk/api/action/package_show?id=2z04n",
+  "resolucion": "borough",
+  "vigencia": "metadatos actualizados 2026-04-13 (el periodo de los datos se fija al bajarlos)",
+  "licencia": "OGL-2.0",
+  "personas": "no: conteos agregados",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "asequibilidad de la vivienda",
+  "nota": " Publicado en el London Datastore (GLA); la licencia es la que declara el propio conjunto.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "\"license_title\":\"Open\\ Government\\ Licence\\ v2\""
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "\"license_title\":\"Open Government Licence v2\"",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "lds_vivienda_evidencia",
+  "nombre": "Housing in London - The evidence base for the Mayor's Housing Strategy",
+  "entidad": "GLA",
+  "familia": "Economía y precios",
+  "tema": "economia",
+  "url": "https://data.london.gov.uk/dataset/24rpx",
+  "prueba": "https://data.london.gov.uk/api/action/package_show?id=24rpx",
+  "resolucion": "ciudad y borough",
+  "vigencia": "metadatos actualizados 2026-04-23 (el periodo de los datos se fija al bajarlos)",
+  "licencia": "OGL-2.0",
+  "personas": "no: conteos agregados",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "base de evidencia de la estrategia de vivienda",
+  "nota": " Publicado en el London Datastore (GLA); la licencia es la que declara el propio conjunto.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "\"license_title\":\"Open\\ Government\\ Licence\\ v2\""
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "\"license_title\":\"Open Government Licence v2\"",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "lds_viviendas_vacias",
+  "nombre": "Vacant Dwellings",
+  "entidad": "MHCLG",
+  "familia": "Economía y precios",
+  "tema": "economia",
+  "url": "https://data.london.gov.uk/dataset/e79gj",
+  "prueba": "https://data.london.gov.uk/api/action/package_show?id=e79gj",
+  "resolucion": "borough",
+  "vigencia": "metadatos actualizados 2026-05-05 (el periodo de los datos se fija al bajarlos)",
+  "licencia": "OGL-2.0",
+  "personas": "no: conteos agregados",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "viviendas vacías",
+  "nota": " Publicado en el London Datastore (GLA); la licencia es la que declara el propio conjunto.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "\"license_title\":\"Open\\ Government\\ Licence\\ v2\""
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "\"license_title\":\"Open Government Licence v2\"",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "lds_alquileres_municipales",
+  "nombre": "Local Authority Average Rents",
+  "entidad": "MHCLG",
+  "familia": "Economía y precios",
+  "tema": "economia",
+  "url": "https://data.london.gov.uk/dataset/2g1k1",
+  "prueba": "https://data.london.gov.uk/api/action/package_show?id=2g1k1",
+  "resolucion": "borough",
+  "vigencia": "metadatos actualizados 2025-04-29 (el periodo de los datos se fija al bajarlos)",
+  "licencia": "OGL-2.0",
+  "personas": "no: conteos agregados",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "alquiler medio de vivienda municipal",
+  "nota": " Publicado en el London Datastore (GLA); la licencia es la que declara el propio conjunto.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "\"license_title\":\"Open\\ Government\\ Licence\\ v2\""
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "\"license_title\":\"Open Government Licence v2\"",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "mhclg_parque_viviendas",
+  "nombre": "Live tables on dwelling stock (Table 100)",
+  "entidad": "MHCLG",
+  "familia": "Economía y precios",
+  "tema": "economia",
+  "url": "https://www.gov.uk/government/statistical-data-sets/live-tables-on-dwelling-stock-including-vacants",
+  "prueba": "https://www.gov.uk/api/content/government/statistical-data-sets/live-tables-on-dwelling-stock-including-vacants",
+  "resolucion": "autoridad local",
+  "vigencia": "anual",
+  "licencia": "OGL-3.0",
+  "personas": "no: cifras agregadas por autoridad local",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "número de viviendas por tenencia y borough",
+  "nota": "",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://www.gov.uk/government/statistical-data-sets/live-tables-on-dwelling-stock-including-vacants",
+   "patron": "Open Government Licence v3\\.0"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "Open Government Licence v3.0",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "mhclg_sin_hogar",
+  "nombre": "Homelessness statistics (MHCLG)",
+  "entidad": "MHCLG",
+  "familia": "Seguridad, salud y educación",
+  "tema": "demografia",
+  "url": "https://www.gov.uk/government/collections/homelessness-statistics",
+  "prueba": "https://www.gov.uk/api/content/government/collections/homelessness-statistics",
+  "resolucion": "autoridad local",
+  "vigencia": "trimestral",
+  "licencia": "OGL-3.0",
+  "personas": "no: conteos agregados",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "hogares sin vivienda por borough",
+  "nota": "Conteos por autoridad local; el registro individual (H-CLIC) no es público.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://www.gov.uk/government/collections/homelessness-statistics",
+   "patron": "Open Government Licence v3\\.0"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "Open Government Licence v3.0",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "mhclg_vivienda_asequible",
+  "nombre": "Live tables on affordable housing supply (Table 1000)",
+  "entidad": "MHCLG",
+  "familia": "Economía y precios",
+  "tema": "economia",
+  "url": "https://www.gov.uk/government/statistical-data-sets/live-tables-on-affordable-housing-supply",
+  "prueba": "https://www.gov.uk/api/content/government/statistical-data-sets/live-tables-on-affordable-housing-supply",
+  "resolucion": "autoridad local",
+  "vigencia": "anual",
+  "licencia": "OGL-3.0",
+  "personas": "no: cifras agregadas por autoridad local",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "vivienda asequible entregada",
+  "nota": "",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "url": "https://www.gov.uk/government/statistical-data-sets/live-tables-on-affordable-housing-supply",
+   "patron": "Open Government Licence v3\\.0"
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "Open Government Licence v3.0",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "lds_proyecciones_vivienda",
+  "nombre": "Housing-led population projections",
+  "entidad": "GLA",
+  "familia": "Estadística oficial",
+  "tema": "demografia",
+  "url": "https://data.london.gov.uk/dataset/2zp76",
+  "prueba": "https://data.london.gov.uk/api/action/package_show?id=2zp76",
+  "resolucion": "borough y ward",
+  "vigencia": "metadatos actualizados 2026-08-29 (el periodo de los datos se fija al bajarlos)",
+  "licencia": "CC-BY",
+  "personas": "no: conteos agregados",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "proyección de población basada en vivienda",
+  "nota": " Publicado en el London Datastore (GLA); la licencia es la que declara el propio conjunto.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "\"license_title\":\"Creative\\ Commons\\ Attribution\""
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "\"license_title\":\"Creative Commons Attribution\"",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "lds_proyecciones_2024_interinas",
+  "nombre": "Interim 2024-based housing-led population projections",
+  "entidad": "GLA",
+  "familia": "Estadística oficial",
+  "tema": "demografia",
+  "url": "https://data.london.gov.uk/dataset/2wwq4",
+  "prueba": "https://data.london.gov.uk/api/action/package_show?id=2wwq4",
+  "resolucion": "borough",
+  "vigencia": "metadatos actualizados 2026-07-16 (el periodo de los datos se fija al bajarlos)",
+  "licencia": "ODC-BY",
+  "personas": "no: conteos agregados",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "proyecciones interinas base 2024",
+  "nota": " Publicado en el London Datastore (GLA); la licencia es la que declara el propio conjunto.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "\"license_title\":\"Open\\ Data\\ Commons\\ Attribution\\ License\""
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "\"license_title\":\"Open Data Commons Attribution License\"",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "lds_proyecciones_tendencia",
+  "nombre": "Trend-based population projections",
+  "entidad": "GLA",
+  "familia": "Estadística oficial",
+  "tema": "demografia",
+  "url": "https://data.london.gov.uk/dataset/vqzo7",
+  "prueba": "https://data.london.gov.uk/api/action/package_show?id=vqzo7",
+  "resolucion": "borough",
+  "vigencia": "metadatos actualizados 2026-08-23 (el periodo de los datos se fija al bajarlos)",
+  "licencia": "CC-BY",
+  "personas": "no: conteos agregados",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "proyecciones por tendencia",
+  "nota": " Publicado en el London Datastore (GLA); la licencia es la que declara el propio conjunto.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "\"license_title\":\"Creative\\ Commons\\ Attribution\""
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "\"license_title\":\"Creative Commons Attribution\"",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "lds_censo_historico",
+  "nombre": "Historical Census Population",
+  "entidad": "ONS",
+  "familia": "Estadística oficial",
+  "tema": "demografia",
+  "url": "https://data.london.gov.uk/dataset/expjm",
+  "prueba": "https://data.london.gov.uk/api/action/package_show?id=expjm",
+  "resolucion": "borough",
+  "vigencia": "metadatos actualizados 2026-09-02 (el periodo de los datos se fija al bajarlos)",
+  "licencia": "OGL-2.0",
+  "personas": "no: conteos agregados",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "población censal desde 1801",
+  "nota": " Publicado en el London Datastore (GLA); la licencia es la que declara el propio conjunto.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "\"license_title\":\"Open\\ Government\\ Licence\\ v2\""
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "\"license_title\":\"Open Government Licence v2\"",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
+ },
+ {
+  "id": "lds_censo2021_lsoa_etnia",
+  "nombre": "2021 census lsoa ethnicity language identity",
+  "entidad": "GLA",
+  "familia": "Estadística oficial",
+  "tema": "demografia",
+  "url": "https://data.london.gov.uk/dataset/2r7om",
+  "prueba": "https://data.london.gov.uk/api/action/package_show?id=2r7om",
+  "resolucion": "LSOA",
+  "vigencia": "metadatos actualizados 2023-07-24 (el periodo de los datos se fija al bajarlos)",
+  "licencia": "OGL-3.0",
+  "personas": "no: conteos agregados",
+  "semaforo": {
+   "origen": "estado",
+   "personas": "agregado",
+   "acceso": "api"
+  },
+  "uso": "etnia, idioma e identidad por LSOA",
+  "nota": " Publicado en el London Datastore (GLA); la licencia es la que declara el propio conjunto.",
+  "rastreo": "2026-09-25",
+  "evidencia": {
+   "patron": "\"license_title\":\"Open\\ Government\\ Licence\\ v3\""
+  },
+  "probado": "2026-09-25",
+  "respuesta": {
+   "codigo": 200,
+   "detalle": ""
+  },
+  "licencia_verificada": true,
+  "licencia_evidencia": "\"license_title\":\"Open Government Licence v3\"",
+  "veredicto": "integrado",
+  "estado": "candidato",
+  "proteccion": "abierto, solo agregados"
  }
 ]

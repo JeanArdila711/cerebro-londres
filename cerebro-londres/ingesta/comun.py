@@ -14,9 +14,22 @@ UA = {"User-Agent": "taller-sistemas-de-informacion/1.0 (curso universitario)"}
 
 # Listas cerradas desde la primera ficha. El enunciado advierte que el catálogo
 # de Lima escribe la licencia de 34 maneras y el MEF como dos entidades.
-LICENCIAS = {"OGL-3.0", "ODbL-1.0", "CC0-1.0", "CC-BY-4.0", "derivado", "terminos-del-servicio"}
+LICENCIAS = {"OGL-3.0", "ODbL-1.0", "CC0-1.0", "CC-BY-4.0", "derivado", "terminos-del-servicio",
+             # rastreo 2026-09-25: el código dice lo que declara la fuente, sin inventar versiones
+             "OGL-2.0", "CC-BY", "CC-BY-SA", "ODC-BY", "uso-personal",
+             "todos-los-derechos-reservados", "sin-declarar", "sin-confirmar"}
 ENTIDADES = {"ONS", "HM Land Registry", "Home Office", "TfL", "GLA", "OSM",
-             "Wikimedia", "Open-Meteo", "NASA", "Cerebro Londres"}
+             "Wikimedia", "Open-Meteo", "NASA", "Cerebro Londres",
+             # rastreo 2026-09-25
+             "World Bank", "OECD", "Eurostat", "UN DESA", "IMF", "Bank of England",
+             "MHCLG", "DfT", "DfE", "DESNZ", "Environment Agency", "Defra", "Met Office",
+             "Imperial College London", "UK Power Networks", "NESO", "Ordnance Survey",
+             "ORR", "CAA", "NHS England", "OHID", "CQC", "UK Government", "Companies House",
+             "Metropolitan Police Service", "MOPAC", "London Fire Brigade", "HMRC", "GiGL",
+             "London Borough of Camden", "London Elects", "Electoral Commission",
+             "VisitBritain", "ALVA", "Inside Airbnb", "TomTom", "Google", "Mastodon",
+             "Reddit", "Bluesky", "ESA", "Copernicus (UE)", "Mapzen", "Overture Maps Foundation",
+             "postcodes.io", "Breathe London"}
 
 
 def hoy():
