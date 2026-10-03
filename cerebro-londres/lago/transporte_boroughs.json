@@ -1,0 +1,741 @@
+{
+ "tema": "transporte_boroughs",
+ "probado": "2026-10-02",
+ "fuentes": [
+  {
+   "id": "dft_naptan",
+   "nombre": "NaPTAN · National Public Transport Access Nodes (área 490, Londres)",
+   "entidad": "DfT",
+   "url": "https://www.gov.uk/government/publications/national-public-transport-access-node-schema",
+   "resolucion": "parada, clasificada por borough contra el polígono oficial",
+   "vigencia": "continua",
+   "probado": "2026-10-02",
+   "estado": "vivo",
+   "licencia": "OGL-3.0",
+   "personas": "no",
+   "proteccion": "abierto",
+   "uso": "sección Infraestructura · transporte en los 33 boroughs",
+   "nota": "Registro oficial, no mapeo voluntario: complementa a osm_transporte (solo Westminster). El borough de cada parada se calculó por punto dentro de polígono, no viene en el archivo original."
+  }
+ ],
+ "cifras": {
+  "paradas_londres_n": {
+   "valor": 21252,
+   "unidad": "paradas",
+   "fuente": "dft_naptan",
+   "vigencia": "2026-10-02",
+   "nota": "Activas y clasificadas en uno de los 33 boroughs",
+   "estado": "integrado"
+  },
+  "paradas_westminster": {
+   "valor": 673,
+   "unidad": "paradas",
+   "fuente": "dft_naptan",
+   "vigencia": "2026-10-02",
+   "nota": "",
+   "estado": "integrado"
+  },
+  "puesto_paradas_westminster": {
+   "valor": 13,
+   "unidad": "puesto de 33",
+   "fuente": "dft_naptan",
+   "vigencia": "2026-10-02",
+   "nota": "1 = el borough con más paradas",
+   "estado": "integrado"
+  },
+  "borough_mas_paradas": {
+   "valor": "Bromley",
+   "unidad": "borough",
+   "fuente": "dft_naptan",
+   "vigencia": "2026-10-02",
+   "nota": "1317 paradas",
+   "estado": "integrado"
+  },
+  "borough_menos_paradas": {
+   "valor": "City of London",
+   "unidad": "borough",
+   "fuente": "dft_naptan",
+   "vigencia": "2026-10-02",
+   "nota": "176 paradas",
+   "estado": "integrado"
+  }
+ },
+ "series": {},
+ "listas": {
+  "boroughs": [
+   {
+    "nombre": "Bromley",
+    "paradas_n": 1317,
+    "por_modo": [
+     {
+      "modo": "bus (en calle)",
+      "n": 1275
+     },
+     {
+      "modo": "entrada de estación de tren",
+      "n": 37
+     },
+     {
+      "modo": "metro o tranvía",
+      "n": 5
+     }
+    ],
+    "puesto": 1
+   },
+   {
+    "nombre": "Croydon",
+    "paradas_n": 1168,
+    "por_modo": [
+     {
+      "modo": "bus (en calle)",
+      "n": 1102
+     },
+     {
+      "modo": "entrada de estación de tren",
+      "n": 34
+     },
+     {
+      "modo": "metro o tranvía",
+      "n": 32
+     }
+    ],
+    "puesto": 2
+   },
+   {
+    "nombre": "Barnet",
+    "paradas_n": 1156,
+    "por_modo": [
+     {
+      "modo": "bus (en calle)",
+      "n": 1124
+     },
+     {
+      "modo": "metro o tranvía",
+      "n": 21
+     },
+     {
+      "modo": "entrada de estación de tren",
+      "n": 11
+     }
+    ],
+    "puesto": 3
+   },
+   {
+    "nombre": "Hillingdon",
+    "paradas_n": 940,
+    "por_modo": [
+     {
+      "modo": "bus (en calle)",
+      "n": 903
+     },
+     {
+      "modo": "metro o tranvía",
+      "n": 25
+     },
+     {
+      "modo": "entrada de estación de tren",
+      "n": 12
+     }
+    ],
+    "puesto": 4
+   },
+   {
+    "nombre": "Enfield",
+    "paradas_n": 850,
+    "por_modo": [
+     {
+      "modo": "bus (en calle)",
+      "n": 821
+     },
+     {
+      "modo": "entrada de estación de tren",
+      "n": 21
+     },
+     {
+      "modo": "metro o tranvía",
+      "n": 8
+     }
+    ],
+    "puesto": 5
+   },
+   {
+    "nombre": "Ealing",
+    "paradas_n": 807,
+    "por_modo": [
+     {
+      "modo": "bus (en calle)",
+      "n": 755
+     },
+     {
+      "modo": "metro o tranvía",
+      "n": 22
+     },
+     {
+      "modo": "entrada de estación de tren",
+      "n": 16
+     },
+     {
+      "modo": "bus (bahía)",
+      "n": 14
+     }
+    ],
+    "puesto": 6
+   },
+   {
+    "nombre": "Greenwich",
+    "paradas_n": 774,
+    "por_modo": [
+     {
+      "modo": "bus (en calle)",
+      "n": 737
+     },
+     {
+      "modo": "entrada de estación de tren",
+      "n": 23
+     },
+     {
+      "modo": "metro o tranvía",
+      "n": 11
+     },
+     {
+      "modo": "ferri",
+      "n": 3
+     }
+    ],
+    "puesto": 7
+   },
+   {
+    "nombre": "Havering",
+    "paradas_n": 736,
+    "por_modo": [
+     {
+      "modo": "bus (en calle)",
+      "n": 723
+     },
+     {
+      "modo": "entrada de estación de tren",
+      "n": 10
+     },
+     {
+      "modo": "metro o tranvía",
+      "n": 3
+     }
+    ],
+    "puesto": 8
+   },
+   {
+    "nombre": "Bexley",
+    "paradas_n": 726,
+    "por_modo": [
+     {
+      "modo": "bus (en calle)",
+      "n": 707
+     },
+     {
+      "modo": "entrada de estación de tren",
+      "n": 19
+     }
+    ],
+    "puesto": 9
+   },
+   {
+    "nombre": "Hounslow",
+    "paradas_n": 724,
+    "por_modo": [
+     {
+      "modo": "bus (en calle)",
+      "n": 702
+     },
+     {
+      "modo": "entrada de estación de tren",
+      "n": 13
+     },
+     {
+      "modo": "metro o tranvía",
+      "n": 9
+     }
+    ],
+    "puesto": 10
+   },
+   {
+    "nombre": "Lewisham",
+    "paradas_n": 714,
+    "por_modo": [
+     {
+      "modo": "bus (en calle)",
+      "n": 676
+     },
+     {
+      "modo": "entrada de estación de tren",
+      "n": 34
+     },
+     {
+      "modo": "metro o tranvía",
+      "n": 4
+     }
+    ],
+    "puesto": 11
+   },
+   {
+    "nombre": "Brent",
+    "paradas_n": 682,
+    "por_modo": [
+     {
+      "modo": "bus (en calle)",
+      "n": 647
+     },
+     {
+      "modo": "entrada de estación de tren",
+      "n": 18
+     },
+     {
+      "modo": "metro o tranvía",
+      "n": 17
+     }
+    ],
+    "puesto": 12
+   },
+   {
+    "nombre": "Westminster",
+    "paradas_n": 673,
+    "por_modo": [
+     {
+      "modo": "bus (en calle)",
+      "n": 536
+     },
+     {
+      "modo": "metro o tranvía",
+      "n": 120
+     },
+     {
+      "modo": "entrada de estación de tren",
+      "n": 10
+     },
+     {
+      "modo": "ferri",
+      "n": 6
+     },
+     {
+      "modo": "bus (bahía)",
+      "n": 1
+     }
+    ],
+    "puesto": 13
+   },
+   {
+    "nombre": "Southwark",
+    "paradas_n": 670,
+    "por_modo": [
+     {
+      "modo": "bus (en calle)",
+      "n": 637
+     },
+     {
+      "modo": "entrada de estación de tren",
+      "n": 20
+     },
+     {
+      "modo": "metro o tranvía",
+      "n": 11
+     },
+     {
+      "modo": "ferri",
+      "n": 2
+     }
+    ],
+    "puesto": 14
+   },
+   {
+    "nombre": "Lambeth",
+    "paradas_n": 658,
+    "por_modo": [
+     {
+      "modo": "bus (en calle)",
+      "n": 609
+     },
+     {
+      "modo": "entrada de estación de tren",
+      "n": 25
+     },
+     {
+      "modo": "metro o tranvía",
+      "n": 21
+     },
+     {
+      "modo": "ferri",
+      "n": 3
+     }
+    ],
+    "puesto": 15
+   },
+   {
+    "nombre": "Newham",
+    "paradas_n": 634,
+    "por_modo": [
+     {
+      "modo": "bus (en calle)",
+      "n": 576
+     },
+     {
+      "modo": "metro o tranvía",
+      "n": 42
+     },
+     {
+      "modo": "entrada de estación de tren",
+      "n": 16
+     }
+    ],
+    "puesto": 16
+   },
+   {
+    "nombre": "Wandsworth",
+    "paradas_n": 597,
+    "por_modo": [
+     {
+      "modo": "bus (en calle)",
+      "n": 568
+     },
+     {
+      "modo": "metro o tranvía",
+      "n": 17
+     },
+     {
+      "modo": "entrada de estación de tren",
+      "n": 10
+     },
+     {
+      "modo": "ferri",
+      "n": 2
+     }
+    ],
+    "puesto": 17
+   },
+   {
+    "nombre": "Redbridge",
+    "paradas_n": 590,
+    "por_modo": [
+     {
+      "modo": "bus (en calle)",
+      "n": 557
+     },
+     {
+      "modo": "metro o tranvía",
+      "n": 27
+     },
+     {
+      "modo": "entrada de estación de tren",
+      "n": 6
+     }
+    ],
+    "puesto": 18
+   },
+   {
+    "nombre": "Waltham Forest",
+    "paradas_n": 564,
+    "por_modo": [
+     {
+      "modo": "bus (en calle)",
+      "n": 544
+     },
+     {
+      "modo": "entrada de estación de tren",
+      "n": 17
+     },
+     {
+      "modo": "metro o tranvía",
+      "n": 3
+     }
+    ],
+    "puesto": 19
+   },
+   {
+    "nombre": "Richmond upon Thames",
+    "paradas_n": 561,
+    "por_modo": [
+     {
+      "modo": "bus (en calle)",
+      "n": 540
+     },
+     {
+      "modo": "entrada de estación de tren",
+      "n": 19
+     },
+     {
+      "modo": "ferri",
+      "n": 2
+     }
+    ],
+    "puesto": 20
+   },
+   {
+    "nombre": "Haringey",
+    "paradas_n": 544,
+    "por_modo": [
+     {
+      "modo": "bus (en calle)",
+      "n": 511
+     },
+     {
+      "modo": "entrada de estación de tren",
+      "n": 16
+     },
+     {
+      "modo": "metro o tranvía",
+      "n": 16
+     },
+     {
+      "modo": "bus (bahía)",
+      "n": 1
+     }
+    ],
+    "puesto": 21
+   },
+   {
+    "nombre": "Merton",
+    "paradas_n": 521,
+    "por_modo": [
+     {
+      "modo": "bus (en calle)",
+      "n": 487
+     },
+     {
+      "modo": "entrada de estación de tren",
+      "n": 20
+     },
+     {
+      "modo": "metro o tranvía",
+      "n": 14
+     }
+    ],
+    "puesto": 22
+   },
+   {
+    "nombre": "Camden",
+    "paradas_n": 521,
+    "por_modo": [
+     {
+      "modo": "bus (en calle)",
+      "n": 454
+     },
+     {
+      "modo": "metro o tranvía",
+      "n": 41
+     },
+     {
+      "modo": "entrada de estación de tren",
+      "n": 25
+     },
+     {
+      "modo": "ferri",
+      "n": 1
+     }
+    ],
+    "puesto": 23
+   },
+   {
+    "nombre": "Tower Hamlets",
+    "paradas_n": 517,
+    "por_modo": [
+     {
+      "modo": "bus (en calle)",
+      "n": 449
+     },
+     {
+      "modo": "metro o tranvía",
+      "n": 52
+     },
+     {
+      "modo": "entrada de estación de tren",
+      "n": 13
+     },
+     {
+      "modo": "ferri",
+      "n": 3
+     }
+    ],
+    "puesto": 24
+   },
+   {
+    "nombre": "Hackney",
+    "paradas_n": 501,
+    "por_modo": [
+     {
+      "modo": "bus (en calle)",
+      "n": 475
+     },
+     {
+      "modo": "entrada de estación de tren",
+      "n": 20
+     },
+     {
+      "modo": "metro o tranvía",
+      "n": 6
+     }
+    ],
+    "puesto": 25
+   },
+   {
+    "nombre": "Harrow",
+    "paradas_n": 487,
+    "por_modo": [
+     {
+      "modo": "bus (en calle)",
+      "n": 464
+     },
+     {
+      "modo": "metro o tranvía",
+      "n": 15
+     },
+     {
+      "modo": "entrada de estación de tren",
+      "n": 8
+     }
+    ],
+    "puesto": 26
+   },
+   {
+    "nombre": "Sutton",
+    "paradas_n": 484,
+    "por_modo": [
+     {
+      "modo": "bus (en calle)",
+      "n": 468
+     },
+     {
+      "modo": "entrada de estación de tren",
+      "n": 15
+     },
+     {
+      "modo": "metro o tranvía",
+      "n": 1
+     }
+    ],
+    "puesto": 27
+   },
+   {
+    "nombre": "Kingston upon Thames",
+    "paradas_n": 457,
+    "por_modo": [
+     {
+      "modo": "bus (en calle)",
+      "n": 429
+     },
+     {
+      "modo": "entrada de estación de tren",
+      "n": 14
+     },
+     {
+      "modo": "bus (bahía)",
+      "n": 12
+     },
+     {
+      "modo": "ferri",
+      "n": 2
+     }
+    ],
+    "puesto": 28
+   },
+   {
+    "nombre": "Islington",
+    "paradas_n": 430,
+    "por_modo": [
+     {
+      "modo": "bus (en calle)",
+      "n": 399
+     },
+     {
+      "modo": "metro o tranvía",
+      "n": 16
+     },
+     {
+      "modo": "entrada de estación de tren",
+      "n": 15
+     }
+    ],
+    "puesto": 29
+   },
+   {
+    "nombre": "Barking and Dagenham",
+    "paradas_n": 426,
+    "por_modo": [
+     {
+      "modo": "bus (en calle)",
+      "n": 416
+     },
+     {
+      "modo": "entrada de estación de tren",
+      "n": 6
+     },
+     {
+      "modo": "metro o tranvía",
+      "n": 4
+     }
+    ],
+    "puesto": 30
+   },
+   {
+    "nombre": "Hammersmith and Fulham",
+    "paradas_n": 334,
+    "por_modo": [
+     {
+      "modo": "bus (en calle)",
+      "n": 305
+     },
+     {
+      "modo": "metro o tranvía",
+      "n": 21
+     },
+     {
+      "modo": "entrada de estación de tren",
+      "n": 8
+     }
+    ],
+    "puesto": 31
+   },
+   {
+    "nombre": "Kensington and Chelsea",
+    "paradas_n": 313,
+    "por_modo": [
+     {
+      "modo": "bus (en calle)",
+      "n": 286
+     },
+     {
+      "modo": "metro o tranvía",
+      "n": 24
+     },
+     {
+      "modo": "entrada de estación de tren",
+      "n": 2
+     },
+     {
+      "modo": "ferri",
+      "n": 1
+     }
+    ],
+    "puesto": 32
+   },
+   {
+    "nombre": "City of London",
+    "paradas_n": 176,
+    "por_modo": [
+     {
+      "modo": "bus (en calle)",
+      "n": 127
+     },
+     {
+      "modo": "metro o tranvía",
+      "n": 33
+     },
+     {
+      "modo": "entrada de estación de tren",
+      "n": 16
+     }
+    ],
+    "puesto": 33
+   }
+  ]
+ },
+ "territorio": "Greater London (33 boroughs)",
+ "nota": "32 paradas no cayeron dentro de ningún polígono de los 33 boroughs (bordes administrativos, estaciones sobre el río, o coordenadas imprecisas del propio registro): se cuentan aparte, no se fuerzan a un borough."
+}

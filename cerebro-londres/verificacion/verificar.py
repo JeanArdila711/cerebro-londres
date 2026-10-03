@@ -13,6 +13,7 @@ rompe a propósito en verificacion/probar_verificador.sh
 import glob, json, os, re, sys
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.join(RAIZ, "ingesta"))
 fallos = 0
 
 # Correo, móvil británico (07… o +44 7…) y postcode del Reino Unido.
@@ -56,7 +57,15 @@ def recorre(x, clave=""):
         yield clave, x
 
 
-LICENCIAS = {"OGL-3.0", "ODbL-1.0", "CC0-1.0", "CC-BY-4.0", "derivado", "terminos-del-servicio"}
+# Antes era una copia propia de esta lista, separada de la de ingesta/comun.py.
+# Las dos se desincronizaron: el rastreo amplió la de comun.py con OGL-2.0,
+# CC-BY, ODC-BY, etc., y esta se quedó con la original, así que el verificador
+# rechazaba una licencia que el propio catálogo del lago ya aceptaba como
+# válida. Una sola lista, importada, en vez de dos copias que alguien olvida
+# sincronizar — el mismo problema que el catálogo de Lima tenía escribiendo
+# la licencia de 34 maneras distintas.
+import comun as C
+LICENCIAS = C.LICENCIAS
 
 lagos = {}
 for ruta in sorted(glob.glob(os.path.join(RAIZ, "lago", "*.json"))):

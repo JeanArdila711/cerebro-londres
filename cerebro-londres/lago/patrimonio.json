@@ -1,0 +1,1310 @@
+{
+ "tema": "patrimonio",
+ "probado": "2026-10-02",
+ "fuentes": [
+  {
+   "id": "planning_listed",
+   "nombre": "Planning Data · listed buildings (Historic England)",
+   "entidad": "MHCLG",
+   "url": "https://www.planning.data.gov.uk/dataset/listed-building",
+   "resolucion": "punto",
+   "vigencia": "continua (entry-date por entidad)",
+   "probado": "2026-10-02",
+   "estado": "vivo",
+   "licencia": "OGL-3.0",
+   "personas": "no",
+   "proteccion": "abierto",
+   "uso": "sección Territorio · analizar un punto",
+   "nota": "Republica el listado de Historic England. Grados II, II* y I, de menor a mayor importancia. Mismo filtro por geometry_curie que riesgo.py: el bbox de esta API no funciona."
+  }
+ ],
+ "cifras": {
+  "edificios_protegidos_n": {
+   "valor": 4017,
+   "unidad": "edificios",
+   "fuente": "planning_listed",
+   "vigencia": "2026-10-02",
+   "nota": "Total de edificios con alguna protección patrimonial en Westminster",
+   "estado": "integrado"
+  },
+  "grado_i_n": {
+   "valor": 205,
+   "unidad": "edificios",
+   "fuente": "planning_listed",
+   "vigencia": "2026-10-02",
+   "nota": "Grado I: el de mayor importancia histórica o arquitectónica",
+   "estado": "integrado"
+  },
+  "grado_ii_estrella_n": {
+   "valor": 373,
+   "unidad": "edificios",
+   "fuente": "planning_listed",
+   "vigencia": "2026-10-02",
+   "nota": "Grado II*",
+   "estado": "integrado"
+  },
+  "grado_ii_n": {
+   "valor": 3418,
+   "unidad": "edificios",
+   "fuente": "planning_listed",
+   "vigencia": "2026-10-02",
+   "nota": "Grado II, el más común",
+   "estado": "integrado"
+  }
+ },
+ "series": {},
+ "listas": {
+  "por_grado": [
+   {
+    "grado": "I",
+    "n": 205
+   },
+   {
+    "grado": "II",
+    "n": 3418
+   },
+   {
+    "grado": "II*",
+    "n": 373
+   },
+   {
+    "grado": "sin grado",
+    "n": 21
+   }
+  ],
+  "grado_i": [
+   {
+    "nombre": "1-18, YORK TERRACE EAST NW1 (See details for further address information)",
+    "referencia": "1066044",
+    "punto": "POINT (-0.151665 51.52397)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1066044"
+   },
+   {
+    "nombre": "1-33, YORK TERRACE WEST NW1 (See details for further address information)",
+    "referencia": "1066047",
+    "punto": "POINT (-0.153935 51.523578)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1066047"
+   },
+   {
+    "nombre": "47, YORK TERRACE WEST NW1 (See details for further address information)",
+    "referencia": "1066048",
+    "punto": "POINT (-0.155358 51.523314)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1066048"
+   },
+   {
+    "nombre": "THE ADMIRALTY AND THE ADMIRALTY SCREEN",
+    "referencia": "1066099",
+    "punto": "POINT (-0.127707 51.505799)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1066099"
+   },
+   {
+    "nombre": "HORSE GUARDS",
+    "referencia": "1066100",
+    "punto": "POINT (-0.127232 51.504773)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1066100"
+   },
+   {
+    "nombre": "DOVER HOUSE SCOTTISH OFFICE",
+    "referencia": "1066101",
+    "punto": "POINT (-0.126979 51.504222)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1066101"
+   },
+   {
+    "nombre": "FOREIGN AND COMMONWEALTH OFFICE WITH HOME OFFICE THE FOREIGN OFFICE THE FOREIGN OFFICE (FOREIGN AND COMMONWEALTH OFFICE WITH HOME OFFICE)",
+    "referencia": "1066102",
+    "punto": "POINT (-0.128434 51.502834)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1066102"
+   },
+   {
+    "nombre": "VICTORIA TOWER LODGE AND GATES TO BLACK ROD GARDEN",
+    "referencia": "1066149",
+    "punto": "POINT (-0.125527 51.498139)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1066149"
+   },
+   {
+    "nombre": "STATUARY GROUP OF THE BURGHERS OF CALAIS",
+    "referencia": "1066150",
+    "punto": "POINT (-0.124809 51.497519)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1066150"
+   },
+   {
+    "nombre": "Church of St James The Less",
+    "referencia": "1066164",
+    "punto": "POINT (-0.135297 51.490713)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1066164"
+   },
+   {
+    "nombre": "St James The Less Parish Rooms and Schools",
+    "referencia": "1066166",
+    "punto": "POINT (-0.134855 51.490616)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1066166"
+   },
+   {
+    "nombre": "CLEOPATRA'S NEEDLE",
+    "referencia": "1066169",
+    "punto": "POINT (-0.120319 51.508504)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1066169"
+   },
+   {
+    "nombre": "ULSTER PLACE",
+    "referencia": "1066214",
+    "punto": "POINT (-0.148553 51.523692)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1066214"
+   },
+   {
+    "nombre": "NATIONAL GALLERY",
+    "referencia": "1066236",
+    "punto": "POINT (-0.12869 51.50889)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1066236"
+   },
+   {
+    "nombre": "CHURCHYARD WALLS AND RAILINGS SURROUNDING CHURCH OF ST MARTIN IN THE FIELDS ON NORTH, SOUTH, EAST AND WEST SIDES",
+    "referencia": "1066237",
+    "punto": "POINT (-0.126417 51.509059)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1066237"
+   },
+   {
+    "nombre": "BRIDGEWATER HOUSE",
+    "referencia": "1066255",
+    "punto": "POINT (-0.13978 51.504804)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1066255"
+   },
+   {
+    "nombre": "NATIONAL PORTRAIT GALLERY",
+    "referencia": "1066285",
+    "punto": "POINT (-0.128176 51.509484)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1066285"
+   },
+   {
+    "nombre": "THE ROYAL MEWS AT BUCKINGHAM PALACE",
+    "referencia": "1066364",
+    "punto": "POINT (-0.144779 51.498453)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1066364"
+   },
+   {
+    "nombre": "THE GREAT CLOISTERS,INCLUDING ST FAITHS CHAPEL,THE CHAPTER HOUSE,THE PARLOUR,NUMBERS 1 AND 2 THE CLOISTERS,THE DARK CLOISTERS AND DORMITORY WITH THE CHAPEL OF ST DUNSTAN (SCHOOL AND BUSBY LIBRARY)",
+    "referencia": "1066370",
+    "punto": "POINT (-0.1275 51.49905)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1066370"
+   },
+   {
+    "nombre": "LITTLE DEANS YARD",
+    "referencia": "1066371",
+    "punto": "POINT (-0.127819 51.498203)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1066371"
+   },
+   {
+    "nombre": "LITTLE DEANS YARD (COLLEGE OF WESTMINSTER SCHOOL)",
+    "referencia": "1066372",
+    "punto": "POINT (-0.127583 51.498117)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1066372"
+   },
+   {
+    "nombre": "LITTLE DEANS YARD STAIRCASE TO DOORWAY AND GATEWAY TO SCHOOL AND BUSBY LIBRARY",
+    "referencia": "1066373",
+    "punto": "POINT (-0.127552 51.498484)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1066373"
+   },
+   {
+    "nombre": "THE DEANERY AND SUB DEAN'S RESIDENCE WITH THE JERICHO PARLOUR",
+    "referencia": "1066375",
+    "punto": "POINT (-0.128597 51.49922)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1066375"
+   },
+   {
+    "nombre": "No. 25, BROOK STREET",
+    "referencia": "1066382",
+    "punto": "POINT (-0.145904 51.512967)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1066382"
+   },
+   {
+    "nombre": "Royal Opera House",
+    "referencia": "1066392",
+    "punto": "POINT (-0.122551 51.512834)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1066392"
+   },
+   {
+    "nombre": "DEAN'S YARD",
+    "referencia": "1066406",
+    "punto": "POINT (-0.128357 51.498372)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1066406"
+   },
+   {
+    "nombre": "1-11, BELGRAVE SQUARE SW1",
+    "referencia": "1066455",
+    "punto": "POINT (-0.154822 51.499862)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1066455"
+   },
+   {
+    "nombre": "12, BELGRAVE SQUARE SW1",
+    "referencia": "1066456",
+    "punto": "POINT (-0.155842 51.499203)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1066456"
+   },
+   {
+    "nombre": "13-23, BELGRAVE SQUARE SW1",
+    "referencia": "1066457",
+    "punto": "POINT (-0.154654 51.498486)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1066457"
+   },
+   {
+    "nombre": "44, BERKELEY SQUARE W1",
+    "referencia": "1066466",
+    "punto": "POINT (-0.146645 51.509274)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1066466"
+   },
+   {
+    "nombre": "CHURCH OF ST PAUL CHURCH OF ST PAUL COVENT GARDEN",
+    "referencia": "1066487",
+    "punto": "POINT (-0.123695 51.511552)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1066487"
+   },
+   {
+    "nombre": "WESTMINSTER CATHEDRAL",
+    "referencia": "1066500",
+    "punto": "POINT (-0.139493 51.495843)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1066500"
+   },
+   {
+    "nombre": "PART OF ROYAL INSTITUTION",
+    "referencia": "1066520",
+    "punto": "POINT (-0.142178 51.509617)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1066520"
+   },
+   {
+    "nombre": "THE ROYAL INSTITUTION",
+    "referencia": "1066521",
+    "punto": "POINT (-0.142444 51.509801)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1066521"
+   },
+   {
+    "nombre": "17, HILL STREET W1",
+    "referencia": "1066622",
+    "punto": "POINT (-0.147979 51.50871)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1066622"
+   },
+   {
+    "nombre": "QUEEN MARY'S STEPS AND FRAGMENT OF WHITEHALL PALACE",
+    "referencia": "1066636",
+    "punto": "POINT (-0.124025 51.504571)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1066636"
+   },
+   {
+    "nombre": "THE HAYMARKET THEATRE (THEATRE ROYAL)",
+    "referencia": "1066641",
+    "punto": "POINT (-0.131353 51.508618)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1066641"
+   },
+   {
+    "nombre": "FORECOURT GARDEN RAILINGS AND GATEPIERS TO NUMBERS 1 TO 20 (CONSECUTIVE) FORECOURT GARDEN RAILINGS AND GATEPIERS TO NUMBERS 1 TO 20 (CONSECUTIVE) HANOVER TERRACE",
+    "referencia": "1066693",
+    "punto": "POINT (-0.163402 51.528323)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1066693"
+   },
+   {
+    "nombre": "HOUSE OF ST BARNABAS",
+    "referencia": "1066753",
+    "punto": "POINT (-0.131281 51.514947)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1066753"
+   },
+   {
+    "nombre": "PADDINGTON STATION INCLUDING THE LAWN, GWR OFFICE BLOCK ON LONDON STREET AND OFFICES ALONG EASTBOURNE TERRACE",
+    "referencia": "1066881",
+    "punto": "POINT (-0.177413 51.517112)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1066881"
+   },
+   {
+    "nombre": "OXFORD UNIVERSITY PRESS",
+    "referencia": "1066901",
+    "punto": "POINT (-0.142584 51.508481)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1066901"
+   },
+   {
+    "nombre": "36, CRAVEN STREET WC2",
+    "referencia": "1066930",
+    "punto": "POINT (-0.124894 51.507642)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1066930"
+   },
+   {
+    "nombre": "FORECOURT GARDEN RAILINGS TO NUMBERS 20 AND 21",
+    "referencia": "1066947",
+    "punto": "POINT (-0.155609 51.523534)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1066947"
+   },
+   {
+    "nombre": "ALBANY COURTYARD",
+    "referencia": "1209755",
+    "punto": "POINT (-0.138593 51.508832)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1209755"
+   },
+   {
+    "nombre": "BODLEY HOUSE CHAMBERS B1 TO 6, C1 TO 6, D1 TO 6, E1 TO 6, F1 TO 3, G1 TO 3, H1 TO 6, I1 TO 6, K1 TO 6 AND L1 TO 6",
+    "referencia": "1209773",
+    "punto": "POINT (-0.139646 51.510056)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1209773"
+   },
+   {
+    "nombre": "NUMBERS 1-9 INCLUDING RAILINGS TO NORTH AND EAST",
+    "referencia": "1209780",
+    "punto": "POINT (-0.13265 51.505812)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1209780"
+   },
+   {
+    "nombre": "NUMBERS 10 TO 18 (INCLUDING THE INSTITUTE OF CONTEMPORARY ARTS) AND RAILINGS TO NORTH AND WEST",
+    "referencia": "1209794",
+    "punto": "POINT (-0.130545 51.50654)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1209794"
+   },
+   {
+    "nombre": "BLUECOAT SCHOOL (NATIONAL TRUST)",
+    "referencia": "1210081",
+    "punto": "POINT (-0.136043 51.49838)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1210081"
+   },
+   {
+    "nombre": "THE ROYAL OVERSEAS LEAGUE, INCLUDING RUTLAND HOUSE AND ITS FORMER GATEHOUSE, NUMBER 16 ARLINGTON STREET, AND VERNON HOUSE TO THE SOUTH",
+    "referencia": "1210140",
+    "punto": "POINT (-0.140416 51.50636)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1210140"
+   },
+   {
+    "nombre": "10, DOWNING STREET SW1",
+    "referencia": "1210759",
+    "punto": "POINT (-0.127505 51.50341)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1210759"
+   },
+   {
+    "nombre": "180, EBURY STREET SW1",
+    "referencia": "1211215",
+    "punto": "POINT (-0.152568 51.491454)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1211215"
+   },
+   {
+    "nombre": "THE ROYAL SOCIETY OF ARTS",
+    "referencia": "1216787",
+    "punto": "POINT (-0.122726 51.50941)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1216787"
+   },
+   {
+    "nombre": "STATUE OF JAMES II IN FRONT OF NATIONAL GALLERY WEST WING",
+    "referencia": "1217629",
+    "punto": "POINT (-0.129009 51.508481)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1217629"
+   },
+   {
+    "nombre": "CHURCH OF ST MARTIN IN THE FIELDS",
+    "referencia": "1217661",
+    "punto": "POINT (-0.126665 51.508827)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1217661"
+   },
+   {
+    "nombre": "PRINCE CONSORT NATIONAL MEMORIAL (ALBERT MEMORIAL)",
+    "referencia": "1217741",
+    "punto": "POINT (-0.1777 51.502414)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1217741"
+   },
+   {
+    "nombre": "Royal Albert Hall",
+    "referencia": "1217742",
+    "punto": "POINT (-0.17741 51.501033)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1217742"
+   },
+   {
+    "nombre": "SPANISH EMBASSY",
+    "referencia": "1218320",
+    "punto": "POINT (-0.153592 51.497837)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1218320"
+   },
+   {
+    "nombre": "45 AND 46, BERKELEY SQUARE W1",
+    "referencia": "1218401",
+    "punto": "POINT (-0.146561 51.50921)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1218401"
+   },
+   {
+    "nombre": "Little Dean's Yard Ashburnham House",
+    "referencia": "1219461",
+    "punto": "POINT (-0.127884 51.49867)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1219461"
+   },
+   {
+    "nombre": "TERRACES AND ORNAMENTAL WALLS OF BRIDGEWATER HOUSE ON GREEN PARK SIDE",
+    "referencia": "1219506",
+    "punto": "POINT (-0.14014 51.504667)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1219506"
+   },
+   {
+    "nombre": "DEAN'S YARD",
+    "referencia": "1219607",
+    "punto": "POINT (-0.128364 51.49821)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1219607"
+   },
+   {
+    "nombre": "19,19A AND 20, BROAD SANCTUARY SW1",
+    "referencia": "1219626",
+    "punto": "POINT (-0.128347 51.49875)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1219626"
+   },
+   {
+    "nombre": "LONDON UNDERGROUND HEADQUARTERS INCLUDING ST JAMES'S PARK UNDERGROUND STATION",
+    "referencia": "1219790",
+    "punto": "POINT (-0.134281 51.499466)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1219790"
+   },
+   {
+    "nombre": "GROSVENOR ESTATE OFFICE",
+    "referencia": "1219812",
+    "punto": "POINT (-0.148632 51.512891)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1219812"
+   },
+   {
+    "nombre": "CHURCH OF ST AUGUSTINE",
+    "referencia": "1221320",
+    "punto": "POINT (-0.191582 51.53313)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1221320"
+   },
+   {
+    "nombre": "CHURCH OF ALL SOULS, LANGHAM PLACE",
+    "referencia": "1221802",
+    "punto": "POINT (-0.143047 51.518148)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1221802"
+   },
+   {
+    "nombre": "CHURCH OF ST MARY",
+    "referencia": "1224993",
+    "punto": "POINT (-0.161896 51.519831)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1224993"
+   },
+   {
+    "nombre": "1-5, REGENT'S PARK NW1 (See details for further address information)",
+    "referencia": "1225218",
+    "punto": "POINT (-0.152309 51.523482)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1225218"
+   },
+   {
+    "nombre": "CHURCH OF ST MARK'S",
+    "referencia": "1225301",
+    "punto": "POINT (-0.153133 51.513108)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1225301"
+   },
+   {
+    "nombre": "GARDEN RAILINGS TO PARK FRONT OF NUMBERS 1 TO 18",
+    "referencia": "1225417",
+    "punto": "POINT (-0.151733 51.524127)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1225417"
+   },
+   {
+    "nombre": "PARK FRONT GARDEN RAILINGS TO NUMBERS 19 AND 20",
+    "referencia": "1225450",
+    "punto": "POINT (-0.150535 51.524362)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1225450"
+   },
+   {
+    "nombre": "31, OLD BURLINGTON STREET W1",
+    "referencia": "1225471",
+    "punto": "POINT (-0.140725 51.51025)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1225471"
+   },
+   {
+    "nombre": "THE JEWEL HOUSE (OR TOWER) OF THE PALACE OF WESTMINSTER",
+    "referencia": "1225529",
+    "punto": "POINT (-0.126424 51.498449)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1225529"
+   },
+   {
+    "nombre": "GARDEN RAILINGS TO PARK FRONT OF NUMBER 1-33",
+    "referencia": "1225553",
+    "punto": "POINT (-0.154003 51.52376)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1225553"
+   },
+   {
+    "nombre": "GARDEN RAILINGS TO PARK FRONT OF NUMBERS 34 TO 47",
+    "referencia": "1225611",
+    "punto": "POINT (-0.155201 51.523552)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1225611"
+   },
+   {
+    "nombre": "PENGUIN POOL",
+    "referencia": "1225665",
+    "punto": "POINT (-0.153441 51.534003)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1225665"
+   },
+   {
+    "nombre": "THE REFORM CLUB",
+    "referencia": "1225841",
+    "punto": "POINT (-0.133473 51.506566)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1225841"
+   },
+   {
+    "nombre": "THE ATHENAEUM",
+    "referencia": "1225842",
+    "punto": "POINT (-0.132713 51.506809)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1225842"
+   },
+   {
+    "nombre": "INSTITUTE OF DIRECTORS",
+    "referencia": "1225843",
+    "punto": "POINT (-0.131669 51.50722)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1225843"
+   },
+   {
+    "nombre": "1-6, PARK CRESCENT W1 (See details for further address information)",
+    "referencia": "1225956",
+    "punto": "POINT (-0.14497 51.523309)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1225956"
+   },
+   {
+    "nombre": "NUMBERS 18 TO 26 (INCLUDING THE FORMER NUMBER 27)",
+    "referencia": "1225959",
+    "punto": "POINT (-0.147348 51.522828)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1225959"
+   },
+   {
+    "nombre": "93, PARK LANE W1",
+    "referencia": "1226023",
+    "punto": "POINT (-0.155975 51.510185)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1226023"
+   },
+   {
+    "nombre": "Houses of Parliament and The Palace of Westminster",
+    "referencia": "1226284",
+    "punto": "POINT (-0.124666 51.499477)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1226284"
+   },
+   {
+    "nombre": "Church of St Margaret, Westminster",
+    "referencia": "1226286",
+    "punto": "POINT (-0.126704 51.499893)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1226286"
+   },
+   {
+    "nombre": "CHURCH OF ST JAMES'S PICCADILLY",
+    "referencia": "1226621",
+    "punto": "POINT (-0.136655 51.508661)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1226621"
+   },
+   {
+    "nombre": "NAVAL AND MILITARY CLUB",
+    "referencia": "1226748",
+    "punto": "POINT (-0.145349 51.505961)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1226748"
+   },
+   {
+    "nombre": "ST JAMES'S CLUB",
+    "referencia": "1226811",
+    "punto": "POINT (-0.14667 51.505111)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1226811"
+   },
+   {
+    "nombre": "APSLEY HOUSE",
+    "referencia": "1226873",
+    "punto": "POINT (-0.151664 51.503472)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1226873"
+   },
+   {
+    "nombre": "10, PORTMAN CLOSE W1",
+    "referencia": "1227091",
+    "punto": "POINT (-0.156812 51.516592)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1227091"
+   },
+   {
+    "nombre": "ROYAL INTITUTE OF BRITISH ARCHITECTS DRAWINGS COLLECTION",
+    "referencia": "1227092",
+    "punto": "POINT (-0.156856 51.516206)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1227092"
+   },
+   {
+    "nombre": "HOME HOUSE (COURTAULD INSTITUTE)",
+    "referencia": "1227105",
+    "punto": "POINT (-0.156684 51.516177)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1227105"
+   },
+   {
+    "nombre": "5-13, QUEEN ANNE'S GATE SW1",
+    "referencia": "1227241",
+    "punto": "POINT (-0.132786 51.500444)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1227241"
+   },
+   {
+    "nombre": "STATUE OF QUEEN ANNE AGAINST NORTH FLANK OF NUMBER 15 QUEEN ANNE'S GATE",
+    "referencia": "1227294",
+    "punto": "POINT (-0.133042 51.500483)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1227294"
+   },
+   {
+    "nombre": "17 AND 19, QUEEN ANNE'S GATE SW1",
+    "referencia": "1227295",
+    "punto": "POINT (-0.133227 51.500367)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1227295"
+   },
+   {
+    "nombre": "21 AND 23, QUEEN ANNE'S GATE SW1",
+    "referencia": "1227296",
+    "punto": "POINT (-0.133492 51.500369)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1227296"
+   },
+   {
+    "nombre": "Nos. 14-22, 22A and 24, QUEEN ANNE'S GATE",
+    "referencia": "1227298",
+    "punto": "POINT (-0.132689 51.500715)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1227298"
+   },
+   {
+    "nombre": "26-32, QUEEN ANNE'S GATE SW1",
+    "referencia": "1227299",
+    "punto": "POINT (-0.133331 51.500689)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1227299"
+   },
+   {
+    "nombre": "40, QUEEN ANNE'S GATE SW1",
+    "referencia": "1227300",
+    "punto": "POINT (-0.134195 51.500433)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1227300"
+   },
+   {
+    "nombre": "42, QUEEN ANNE'S GATE SW1",
+    "referencia": "1227328",
+    "punto": "POINT (-0.13406 51.500414)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1227328"
+   },
+   {
+    "nombre": "44, QUEEN ANNE'S GATE SW1",
+    "referencia": "1227329",
+    "punto": "POINT (-0.13407 51.500341)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1227329"
+   },
+   {
+    "nombre": "CHANDOS HOUSE",
+    "referencia": "1227332",
+    "punto": "POINT (-0.145086 51.518548)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1227332"
+   },
+   {
+    "nombre": "10, HERTFORD STREET W1",
+    "referencia": "1230913",
+    "punto": "POINT (-0.147873 51.505633)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1230913"
+   },
+   {
+    "nombre": "The Guards Memorial",
+    "referencia": "1231315",
+    "punto": "POINT (-0.129524 51.504483)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1231315"
+   },
+   {
+    "nombre": "The Achilles Statue",
+    "referencia": "1231393",
+    "punto": "POINT (-0.152712 51.504511)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1231393"
+   },
+   {
+    "nombre": "Royal Artillery Memorial",
+    "referencia": "1231613",
+    "punto": "POINT (-0.151955 51.502587)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1231613"
+   },
+   {
+    "nombre": "CHURCH OF ST MARY MAGDALENE",
+    "referencia": "1235288",
+    "punto": "POINT (-0.189027 51.522459)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1235288"
+   },
+   {
+    "nombre": "Royal Opera Arcades (including No 24 Charles II Street and No 5B Pall Mall)",
+    "referencia": "1235289",
+    "punto": "POINT (-0.132162 51.507848)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1235289"
+   },
+   {
+    "nombre": "CHURCH OF ST GEORGE, VESTRY AND OBELISKS",
+    "referencia": "1235638",
+    "punto": "POINT (-0.142773 51.512562)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1235638"
+   },
+   {
+    "nombre": "15, ST JAMES'S SQUARE SW1",
+    "referencia": "1235826",
+    "punto": "POINT (-0.136728 51.507254)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1235826"
+   },
+   {
+    "nombre": "STATUE OF WILLIAM III (IN CENTRE OF SQUARE)",
+    "referencia": "1235855",
+    "punto": "POINT (-0.135278 51.507216)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1235855"
+   },
+   {
+    "nombre": "St. John's Smith Square",
+    "referencia": "1236250",
+    "punto": "POINT (-0.127053 51.495981)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1236250"
+   },
+   {
+    "nombre": "LANCASTER HOUSE",
+    "referencia": "1236546",
+    "punto": "POINT (-0.13907 51.503813)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1236546"
+   },
+   {
+    "nombre": "CLARENCE HOUSE",
+    "referencia": "1236580",
+    "punto": "POINT (-0.138416 51.503964)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1236580"
+   },
+   {
+    "nombre": "CHURCH OF ST MARY LE STRAND",
+    "referencia": "1236753",
+    "punto": "POINT (-0.116822 51.512202)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1236753"
+   },
+   {
+    "nombre": "SOMERSET HOUSE AND KING'S COLLEGE OLD BUILDING",
+    "referencia": "1237041",
+    "punto": "POINT (-0.117569 51.511647)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1237041"
+   },
+   {
+    "nombre": "STATUE OF GEORGE III IN SOMERSET HOUSE QUADRANGLE",
+    "referencia": "1237087",
+    "punto": "POINT (-0.117348 51.511343)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1237087"
+   },
+   {
+    "nombre": "CHURCH OF ST CLEMENT DANES",
+    "referencia": "1237099",
+    "punto": "POINT (-0.113888 51.513113)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1237099"
+   },
+   {
+    "nombre": "SCREEN WALLS, GATES, RAILINGS AND LAMPS TO THE LAW COURTS",
+    "referencia": "1237101",
+    "punto": "POINT (-0.114085 51.513439)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1237101"
+   },
+   {
+    "nombre": "STRATFORD HOUSE, THE ORIENTAL CLUB",
+    "referencia": "1237107",
+    "punto": "POINT (-0.149465 51.515425)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1237107"
+   },
+   {
+    "nombre": "GARDEN RAILINGS IN FRONT OF SUSSEX PLACE",
+    "referencia": "1237472",
+    "punto": "POINT (-0.160121 51.526383)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1237472"
+   },
+   {
+    "nombre": "York Water Gate",
+    "referencia": "1237938",
+    "punto": "POINT (-0.122913 51.508141)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1237938"
+   },
+   {
+    "nombre": "Catholic Apostolic Church and Church House",
+    "referencia": "1238911",
+    "punto": "POINT (-0.178696 51.52295)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1238911"
+   },
+   {
+    "nombre": "ADMIRALTY ARCH, FIRST SEA LORD'S RESIDENCE AND OFFICES, BALUSTRADES AND STEPS",
+    "referencia": "1238982",
+    "punto": "POINT (-0.128651 51.506739)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1238982"
+   },
+   {
+    "nombre": "QUEEN VICTORIA MEMORIAL GATES AND GATEPIERS, BALUSTRADES, STEPS AND RETAINING WALL WITH FOUNTAIN FRAMING WEST END OF THE MALL",
+    "referencia": "1239086",
+    "punto": "POINT (-0.141185 51.502594)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1239086"
+   },
+   {
+    "nombre": "Buckingham Palace",
+    "referencia": "1239087",
+    "punto": "POINT (-0.142913 51.500753)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1239087"
+   },
+   {
+    "nombre": "SOUTH SCREEN TO BUCKINGHAM PALACE FORECOURT BACKING ONTO AMBASSADORS' COURT",
+    "referencia": "1239088",
+    "punto": "POINT (-0.141503 51.500695)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1239088"
+   },
+   {
+    "nombre": "BUCKINGHAM PALACE LODGE TO SOUTH OF ENTRANCE TO ROYAL MEWS BUCKINGHAM PALACE LODGES NORTH AND SOUTH ENTRANCE TO ROYAL MEWS",
+    "referencia": "1239204",
+    "punto": "POINT (-0.144002 51.498414)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1239204"
+   },
+   {
+    "nombre": "BUCKINGHAM PALACE LODGE TO NORTH OF ENTRANCE TO ROYAL MEWS BUCKINGHAM PALACE LODGES NORTH AND SOUTH ENTRANCE TO ROYAL MEWS",
+    "referencia": "1239205",
+    "punto": "POINT (-0.14374 51.498691)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1239205"
+   },
+   {
+    "nombre": "BUCKINGHAM PALACE RIDING SCHOOL",
+    "referencia": "1239207",
+    "punto": "POINT (-0.143523 51.499216)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1239207"
+   },
+   {
+    "nombre": "BUCKINGHAM PALACE, WALL LINKING PALACE AND RIDING SCHOOL, ALONG BUCKINGHAM PALACE ROAD",
+    "referencia": "1239208",
+    "punto": "POINT (-0.143031 51.499472)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1239208"
+   },
+   {
+    "nombre": "BUCKINGHAM PALACE BOUNDARY WALLS ENCLOSING GROUNDS WALLS TO BUCKINGHAM PALACE GARDENS",
+    "referencia": "1239209",
+    "punto": "POINT (-0.149577 51.502342)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1239209"
+   },
+   {
+    "nombre": "SUMMER HOUSE IN BUCKINGHAM PALACE GARDEN",
+    "referencia": "1239210",
+    "punto": "POINT (-0.14827 51.502145)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1239210"
+   },
+   {
+    "nombre": "BUCKINGHAM PALACE GATES, RAILINGS, PIERS AND GATE PIERS WITH LAMPS FRONTING BUCKINGHAM GATE AND AS ENTRANCE TO AMBASSADORS' COURT",
+    "referencia": "1239211",
+    "punto": "POINT (-0.141437 51.50016)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1239211"
+   },
+   {
+    "nombre": "THE WATERLOO VASE IN BUCKINGHAM PALACE GARDEN",
+    "referencia": "1239244",
+    "punto": "POINT (-0.148374 51.50181)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1239244"
+   },
+   {
+    "nombre": "BUCKINGHAM PALACE FORECOURT GATE PIERS, GATES, RAILINGS AND LAMPS",
+    "referencia": "1239251",
+    "punto": "POINT (-0.141322 51.501548)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1239251"
+   },
+   {
+    "nombre": "DUKE OF YORK COLUMN AND STEPS",
+    "referencia": "1239383",
+    "punto": "POINT (-0.131735 51.506313)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1239383"
+   },
+   {
+    "nombre": "THE MARBLE ARCH",
+    "referencia": "1239534",
+    "punto": "POINT (-0.158909 51.513181)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1239534"
+   },
+   {
+    "nombre": "ALL SAINTS CHURCH AND NUMBERS 7 AND 8: ALL SAINTS CHURCH HOUSE AND VESTRY, INCLUDING RAILINGS TO BASEMENT AREA AND ATTACHED PAIR OF LAMP STANDARDS",
+    "referencia": "1239569",
+    "punto": "POINT (-0.138938 51.517285)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1239569"
+   },
+   {
+    "nombre": "DEAN'S RESIDENCE, QUEEN'S CHAPEL",
+    "referencia": "1239701",
+    "punto": "POINT (-0.136855 51.504899)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1239701"
+   },
+   {
+    "nombre": "QUEEN ALEXANDRA MEMORIAL",
+    "referencia": "1239703",
+    "punto": "POINT (-0.136745 51.504675)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1239703"
+   },
+   {
+    "nombre": "CHURCH OF ST MARYLEBONE",
+    "referencia": "1239817",
+    "punto": "POINT (-0.152288 51.522666)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1239817"
+   },
+   {
+    "nombre": "1 TO 26 SUSSEX PLACE LONDON GRADUATE SCHOOL OF BUSINESS STUDIES",
+    "referencia": "1264092",
+    "punto": "POINT (-0.160778 51.526178)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1264092"
+   },
+   {
+    "nombre": "18, SUFFOLK STREET SW1",
+    "referencia": "1264252",
+    "punto": "POINT (-0.131211 51.50876)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1264252"
+   },
+   {
+    "nombre": "Royal Courts of Justice: The Law Courts, Screen Walls, Gates, Railings and Lamps",
+    "referencia": "1264258",
+    "punto": "POINT (-0.113192 51.514198)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1264258"
+   },
+   {
+    "nombre": "APARTMENT 5, ST JAMES' PALACE",
+    "referencia": "1264511",
+    "punto": "POINT (-0.139441 51.504277)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1264511"
+   },
+   {
+    "nombre": "The Edith Cavell Memorial",
+    "referencia": "1264768",
+    "punto": "POINT (-0.127171 51.509374)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1264768"
+   },
+   {
+    "nombre": "NEW WEST END SYNAGOGUE",
+    "referencia": "1264769",
+    "punto": "POINT (-0.190218 51.511106)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1264769"
+   },
+   {
+    "nombre": "BROOK'S CLUB (SOUTH OF NUMBER 60)",
+    "referencia": "1264849",
+    "punto": "POINT (-0.13985 51.506622)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1264849"
+   },
+   {
+    "nombre": "ST JAMES'S PALACE ST JAMES'S PALACE, GARDEN WALLS, MARLBOROUGH GATE ETC",
+    "referencia": "1264851",
+    "punto": "POINT (-0.137685 51.504559)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1264851"
+   },
+   {
+    "nombre": "BOODLE'S CLUB",
+    "referencia": "1264870",
+    "punto": "POINT (-0.139259 51.506972)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1264870"
+   },
+   {
+    "nombre": "WHITE'S CLUB",
+    "referencia": "1264877",
+    "punto": "POINT (-0.139954 51.507612)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1264877"
+   },
+   {
+    "nombre": "20 AND 21, ST JAMES'S SQUARE SW1",
+    "referencia": "1264890",
+    "punto": "POINT (-0.135905 51.506408)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1264890"
+   },
+   {
+    "nombre": "CHATHAM HOUSE",
+    "referencia": "1264939",
+    "punto": "POINT (-0.136108 51.507732)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1264939"
+   },
+   {
+    "nombre": "SPENCER HOUSE",
+    "referencia": "1264952",
+    "punto": "POINT (-0.140182 51.505188)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1264952"
+   },
+   {
+    "nombre": "CHURCH OF ST BARNABAS",
+    "referencia": "1265057",
+    "punto": "POINT (-0.151747 51.490389)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1265057"
+   },
+   {
+    "nombre": "46, QUEEN ANNE'S GATE SW1",
+    "referencia": "1265430",
+    "punto": "POINT (-0.134083 51.500284)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1265430"
+   },
+   {
+    "nombre": "25, QUEEN ANNE'S GATE SW1",
+    "referencia": "1265450",
+    "punto": "POINT (-0.133719 51.50035)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1265450"
+   },
+   {
+    "nombre": "15, QUEEN ANNE'S GATE SW1",
+    "referencia": "1265463",
+    "punto": "POINT (-0.133073 51.500383)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1265463"
+   },
+   {
+    "nombre": "CHURCH OF THE HOLY TRINITY",
+    "referencia": "1265499",
+    "punto": "POINT (-0.178849 51.499994)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1265499"
+   },
+   {
+    "nombre": "NUFFIELD LODGE",
+    "referencia": "1265526",
+    "punto": "POINT (-0.166889 51.530518)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1265526"
+   },
+   {
+    "nombre": "FORECOURT RAILINGS, PIERS AND GATES TO APSLEY HOUSE",
+    "referencia": "1265623",
+    "punto": "POINT (-0.15157 51.5033)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1265623"
+   },
+   {
+    "nombre": "SHAFTESBURY MEMORIAL FOUNTAIN EROS",
+    "referencia": "1265625",
+    "punto": "POINT (-0.134474 51.509885)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1265625"
+   },
+   {
+    "nombre": "GATES, RAILINGS, GATE PIERS TO NEW PALACE YARD, HOUSES OF PARLIAMENT",
+    "referencia": "1265947",
+    "punto": "POINT (-0.125934 51.500575)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1265947"
+   },
+   {
+    "nombre": "NUMBERS 1 TO 12 PARK SQUARE WEST",
+    "referencia": "1265975",
+    "punto": "POINT (-0.148449 51.524122)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1265975"
+   },
+   {
+    "nombre": "THE TRAVELLERS CLUB",
+    "referencia": "1266151",
+    "punto": "POINT (-0.133072 51.506749)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1266151"
+   },
+   {
+    "nombre": "35-46, YORK TERRACE WEST NW1 (See details for further address information)",
+    "referencia": "1266293",
+    "punto": "POINT (-0.155125 51.523382)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1266293"
+   },
+   {
+    "nombre": "FORMER DOCK RETAINING WALLS TO MOAT AROUND JEWEL HOUSE",
+    "referencia": "1266310",
+    "punto": "POINT (-0.126526 51.49849)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1266310"
+   },
+   {
+    "nombre": "TREASURY BUILDINGS TREASURY BUILDINGS (CABINET OFFICE AND PRIVY COUNCIL OFFICE)",
+    "referencia": "1267063",
+    "punto": "POINT (-0.126617 51.503569)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1267063"
+   },
+   {
+    "nombre": "FORECOURT RAILINGS, GATES AND GUARDHOUSES TO HORSEGUARDS",
+    "referencia": "1267077",
+    "punto": "POINT (-0.126764 51.504902)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1267077"
+   },
+   {
+    "nombre": "ADMIRALTY HOUSE",
+    "referencia": "1267114",
+    "punto": "POINT (-0.127315 51.505523)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1267114"
+   },
+   {
+    "nombre": "HOLY TRINITY CHURCH",
+    "referencia": "1267658",
+    "punto": "POINT (-0.143723 51.524375)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1267658"
+   },
+   {
+    "nombre": "QUEEN'S CHAPEL",
+    "referencia": "1273605",
+    "punto": "POINT (-0.136866 51.504982)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1273605"
+   },
+   {
+    "nombre": "NORTH SCREEN TO BUCKINGHAM PALACE FORECOURT WITH GATEWAY TO GARDENS",
+    "referencia": "1273844",
+    "punto": "POINT (-0.142683 51.501792)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1273844"
+   },
+   {
+    "nombre": "QUEEN VICTORIA MEMORIAL",
+    "referencia": "1273864",
+    "punto": "POINT (-0.140601 51.501844)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1273864"
+   },
+   {
+    "nombre": "Former New Scotland Yard, Norman Shaw North Building",
+    "referencia": "1274511",
+    "punto": "POINT (-0.124351 51.502247)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1274511"
+   },
+   {
+    "nombre": "The Nelson Monument (Nelson's Column)",
+    "referencia": "1276052",
+    "punto": "POINT (-0.12793 51.507754)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1276052"
+   },
+   {
+    "nombre": "Decimus Burton Screen (Apsley Gate)",
+    "referencia": "1278089",
+    "punto": "POINT (-0.152308 51.50323)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1278089"
+   },
+   {
+    "nombre": "WELLINGTON ARCH",
+    "referencia": "1278092",
+    "punto": "POINT (-0.150808 51.502541)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1278092"
+   },
+   {
+    "nombre": "MINISTRY OF DEFENCE, CONTAINING SIXTEENTH CENTURY UNDERCROFT AND HISTORIC ROOMS NUMBERS 13, 24, 25, 27 AND 79",
+    "referencia": "1278223",
+    "punto": "POINT (-0.124869 51.504027)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1278223"
+   },
+   {
+    "nombre": "HANOVER TERRACE",
+    "referencia": "1279085",
+    "punto": "POINT (-0.162879 51.527704)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1279085"
+   },
+   {
+    "nombre": "3-6, GRAFTON STREET W1 (See details for further address information)",
+    "referencia": "1289151",
+    "punto": "POINT (-0.14379 51.50967)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1289151"
+   },
+   {
+    "nombre": "QUO VADIS RESTAURANT",
+    "referencia": "1290584",
+    "punto": "POINT (-0.132585 51.514078)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1290584"
+   },
+   {
+    "nombre": "12, BUCKINGHAM STREET WC2",
+    "referencia": "1291053",
+    "punto": "POINT (-0.12339 51.508249)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1291053"
+   },
+   {
+    "nombre": "Westminster Abbey (The Collegiate Church of St Peter)",
+    "referencia": "1291494",
+    "punto": "POINT (-0.127342 51.499395)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1291494"
+   },
+   {
+    "nombre": "25-36, BELGRAVE SQUARE SW1",
+    "referencia": "1292018",
+    "punto": "POINT (-0.151713 51.498716)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1292018"
+   },
+   {
+    "nombre": "38-48, BELGRAVE SQUARE SW1",
+    "referencia": "1292022",
+    "punto": "POINT (-0.152561 51.500186)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1292022"
+   },
+   {
+    "nombre": "MARLBOROUGH HOUSE WITH ENCLOSING FORECOURT WALLS AND EAST SERVICE/STABLE WING",
+    "referencia": "1331701",
+    "punto": "POINT (-0.136068 51.505024)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1331701"
+   },
+   {
+    "nombre": "1-21, CORNWALL TERRACE NW1",
+    "referencia": "1356971",
+    "punto": "POINT (-0.15736 51.524065)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1356971"
+   },
+   {
+    "nombre": "11, DOWNING STREET SW1",
+    "referencia": "1356989",
+    "punto": "POINT (-0.127849 51.5034)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1356989"
+   },
+   {
+    "nombre": "30, CURZON STREET W1",
+    "referencia": "1356991",
+    "punto": "POINT (-0.149051 51.506443)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1356991"
+   },
+   {
+    "nombre": "MELBOURNE HOUSE (A1 TO A15)",
+    "referencia": "1357178",
+    "punto": "POINT (-0.138741 51.509086)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1357178"
+   },
+   {
+    "nombre": "CLERK OF THE WORKS OFFICE AND THE REMAINS OF THE CHAPEL OF ST CATHERINE LITTLE CLOISTERS LODGINGS",
+    "referencia": "1357234",
+    "punto": "POINT (-0.126991 51.498626)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1357234"
+   },
+   {
+    "nombre": "ABBEY PRECINCT WALL",
+    "referencia": "1357235",
+    "punto": "POINT (-0.126437 51.497998)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1357235"
+   },
+   {
+    "nombre": "THEATRE ROYAL DRURY LANE AND ATTACHED SIR AUGUSTUS HARRIS MEMORIAL DRINKING FOUNTAIN",
+    "referencia": "1357276",
+    "punto": "POINT (-0.12022 51.513008)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1357276"
+   },
+   {
+    "nombre": "STATUE OF CHARLES I",
+    "referencia": "1357291",
+    "punto": "POINT (-0.127658 51.507336)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1357291"
+   },
+   {
+    "nombre": "1-43, CLARENCE TERRACE NW1",
+    "referencia": "1357311",
+    "punto": "POINT (-0.159512 51.525394)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1357311"
+   },
+   {
+    "nombre": "1-17 Ulster Terrace",
+    "referencia": "1357331",
+    "punto": "POINT (-0.148925 51.524534)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1357331"
+   },
+   {
+    "nombre": "CHURCH OF ST PETERS",
+    "referencia": "1357345",
+    "punto": "POINT (-0.147155 51.515432)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1357345"
+   },
+   {
+    "nombre": "BANQUETING HOUSE",
+    "referencia": "1357353",
+    "punto": "POINT (-0.125913 51.504574)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1357353"
+   },
+   {
+    "nombre": "The Cenotaph",
+    "referencia": "1357354",
+    "punto": "POINT (-0.126089 51.502678)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1357354"
+   },
+   {
+    "nombre": "8-12, YORK GATE NW1 (See details for further address information)",
+    "referencia": "1357372",
+    "punto": "POINT (-0.152978 51.523358)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1357372"
+   },
+   {
+    "nombre": "DORIC VILLA",
+    "referencia": "1357399",
+    "punto": "POINT (-0.150451 51.524172)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1357399"
+   },
+   {
+    "nombre": "34, YORK TERRACE WEST NW1 (See details for further address information)",
+    "referencia": "1357401",
+    "punto": "POINT (-0.154894 51.523379)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1357401"
+   },
+   {
+    "nombre": "CHIMPS BREEDING COLONY THE GORILLA HOUSE",
+    "referencia": "1357402",
+    "punto": "POINT (-0.154478 51.536519)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1357402"
+   },
+   {
+    "nombre": "Sainsbury Wing at the National Gallery",
+    "referencia": "1451082",
+    "punto": "POINT (-0.129757 51.508621)",
+    "documentacion": "https://historicengland.org.uk/listing/the-list/list-entry/1451082"
+   }
+  ]
+ },
+ "territorio": "City of Westminster",
+ "nota": "Se guardan los 205 de grado I con nombre y punto; los de grado II y II* solo se cuentan, para que el archivo no pese varios MB por un dato que en pantalla es un punto en el mapa."
+}

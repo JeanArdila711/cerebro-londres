@@ -1,0 +1,1131 @@
+{
+ "tema": "privacion",
+ "probado": "2026-10-02",
+ "fuentes": [
+  {
+   "id": "imd_2025",
+   "nombre": "English Indices of Deprivation 2025 · File 7 (MHCLG)",
+   "entidad": "MHCLG",
+   "url": "https://www.gov.uk/government/statistics/english-indices-of-deprivation-2025",
+   "resolucion": "LSOA 2021",
+   "vigencia": "publicado 2025-10-30",
+   "probado": "2026-10-02",
+   "estado": "vivo",
+   "licencia": "OGL-3.0",
+   "personas": "no",
+   "proteccion": "abierto, solo agregados",
+   "uso": "sección Territorio · privación relativa por zona",
+   "nota": "Rango relativo entre LSOA de Inglaterra, no una medida absoluta. Reemplaza al IoD2019 que el London Datastore todavía enlaza con ese nombre."
+  }
+ ],
+ "cifras": {
+  "lsoa_westminster_n": {
+   "valor": 123,
+   "unidad": "LSOA",
+   "fuente": "imd_2025",
+   "vigencia": "2026-10-02",
+   "nota": "Unidades censales de Westminster con dato de privación",
+   "estado": "integrado"
+  },
+  "score_medio_westminster": {
+   "valor": 23.65,
+   "unidad": "puntaje IMD",
+   "fuente": "imd_2025",
+   "vigencia": "2026-10-02",
+   "nota": "Promedio simple de los LSOA de Westminster; más alto = más privado",
+   "estado": "integrado"
+  },
+  "puesto_privacion_westminster": {
+   "valor": 12,
+   "unidad": "puesto de 32",
+   "fuente": "imd_2025",
+   "vigencia": "2026-10-02",
+   "nota": "1 = el borough en promedio más privado de los 32 con dato",
+   "estado": "integrado"
+  },
+  "lsoa_mas_privado": {
+   "valor": "Westminster 020B",
+   "unidad": "LSOA",
+   "fuente": "imd_2025",
+   "vigencia": "2026-10-02",
+   "nota": "Rank nacional 1338 de ~33.000, decil 1",
+   "estado": "integrado"
+  },
+  "lsoa_menos_privado": {
+   "valor": "Westminster 011C",
+   "unidad": "LSOA",
+   "fuente": "imd_2025",
+   "vigencia": "2026-10-02",
+   "nota": "Rank nacional 28688 de ~33.000, decil 9",
+   "estado": "integrado"
+  }
+ },
+ "series": {},
+ "listas": {
+  "ranking_boroughs": [
+   {
+    "nombre": "Hackney",
+    "score_medio": 31.77,
+    "lsoa_n": 149,
+    "puesto_privacion": 1
+   },
+   {
+    "nombre": "Newham",
+    "score_medio": 31.35,
+    "lsoa_n": 185,
+    "puesto_privacion": 2
+   },
+   {
+    "nombre": "Tower Hamlets",
+    "score_medio": 30.44,
+    "lsoa_n": 169,
+    "puesto_privacion": 3
+   },
+   {
+    "nombre": "Barking and Dagenham",
+    "score_medio": 30.27,
+    "lsoa_n": 115,
+    "puesto_privacion": 4
+   },
+   {
+    "nombre": "Haringey",
+    "score_medio": 30.04,
+    "lsoa_n": 147,
+    "puesto_privacion": 5
+   },
+   {
+    "nombre": "Brent",
+    "score_medio": 29.98,
+    "lsoa_n": 181,
+    "puesto_privacion": 6
+   },
+   {
+    "nombre": "Enfield",
+    "score_medio": 29.21,
+    "lsoa_n": 183,
+    "puesto_privacion": 7
+   },
+   {
+    "nombre": "Islington",
+    "score_medio": 26.54,
+    "lsoa_n": 126,
+    "puesto_privacion": 8
+   },
+   {
+    "nombre": "Ealing",
+    "score_medio": 25.42,
+    "lsoa_n": 199,
+    "puesto_privacion": 9
+   },
+   {
+    "nombre": "Lewisham",
+    "score_medio": 25.4,
+    "lsoa_n": 175,
+    "puesto_privacion": 10
+   },
+   {
+    "nombre": "Hounslow",
+    "score_medio": 24.51,
+    "lsoa_n": 150,
+    "puesto_privacion": 11
+   },
+   {
+    "nombre": "Westminster",
+    "score_medio": 23.65,
+    "lsoa_n": 123,
+    "puesto_privacion": 12
+   },
+   {
+    "nombre": "Camden",
+    "score_medio": 23.33,
+    "lsoa_n": 130,
+    "puesto_privacion": 13
+   },
+   {
+    "nombre": "Waltham Forest",
+    "score_medio": 23.27,
+    "lsoa_n": 146,
+    "puesto_privacion": 14
+   },
+   {
+    "nombre": "Lambeth",
+    "score_medio": 23.2,
+    "lsoa_n": 181,
+    "puesto_privacion": 15
+   },
+   {
+    "nombre": "Greenwich",
+    "score_medio": 23.12,
+    "lsoa_n": 164,
+    "puesto_privacion": 16
+   },
+   {
+    "nombre": "Southwark",
+    "score_medio": 23.04,
+    "lsoa_n": 173,
+    "puesto_privacion": 17
+   },
+   {
+    "nombre": "Croydon",
+    "score_medio": 22.11,
+    "lsoa_n": 229,
+    "puesto_privacion": 18
+   },
+   {
+    "nombre": "Hammersmith and Fulham",
+    "score_medio": 21.1,
+    "lsoa_n": 115,
+    "puesto_privacion": 19
+   },
+   {
+    "nombre": "Kensington and Chelsea",
+    "score_medio": 20.46,
+    "lsoa_n": 101,
+    "puesto_privacion": 20
+   },
+   {
+    "nombre": "Hillingdon",
+    "score_medio": 20.02,
+    "lsoa_n": 170,
+    "puesto_privacion": 21
+   },
+   {
+    "nombre": "Redbridge",
+    "score_medio": 19.28,
+    "lsoa_n": 164,
+    "puesto_privacion": 22
+   },
+   {
+    "nombre": "Barnet",
+    "score_medio": 19.1,
+    "lsoa_n": 220,
+    "puesto_privacion": 23
+   },
+   {
+    "nombre": "Harrow",
+    "score_medio": 17.03,
+    "lsoa_n": 144,
+    "puesto_privacion": 24
+   },
+   {
+    "nombre": "Havering",
+    "score_medio": 15.93,
+    "lsoa_n": 153,
+    "puesto_privacion": 25
+   },
+   {
+    "nombre": "Wandsworth",
+    "score_medio": 14.87,
+    "lsoa_n": 186,
+    "puesto_privacion": 26
+   },
+   {
+    "nombre": "Bexley",
+    "score_medio": 14.85,
+    "lsoa_n": 148,
+    "puesto_privacion": 27
+   },
+   {
+    "nombre": "Merton",
+    "score_medio": 14.02,
+    "lsoa_n": 126,
+    "puesto_privacion": 28
+   },
+   {
+    "nombre": "Sutton",
+    "score_medio": 13.55,
+    "lsoa_n": 123,
+    "puesto_privacion": 29
+   },
+   {
+    "nombre": "Bromley",
+    "score_medio": 12.54,
+    "lsoa_n": 199,
+    "puesto_privacion": 30
+   },
+   {
+    "nombre": "Kingston upon Thames",
+    "score_medio": 10.74,
+    "lsoa_n": 99,
+    "puesto_privacion": 31
+   },
+   {
+    "nombre": "City of London",
+    "score_medio": 10.25,
+    "lsoa_n": 6,
+    "puesto_privacion": 32
+   },
+   {
+    "nombre": "Richmond upon Thames",
+    "score_medio": 9.49,
+    "lsoa_n": 115,
+    "puesto_privacion": 33
+   }
+  ],
+  "lsoa_westminster": [
+   {
+    "lsoa": "Westminster 020B",
+    "codigo": "E01004732",
+    "score": 56.921,
+    "rank_nacional": 1338,
+    "decil": 1
+   },
+   {
+    "lsoa": "Westminster 010F",
+    "codigo": "E01032512",
+    "score": 56.543,
+    "rank_nacional": 1388,
+    "decil": 1
+   },
+   {
+    "lsoa": "Westminster 009H",
+    "codigo": "E01033602",
+    "score": 52.986,
+    "rank_nacional": 1874,
+    "decil": 1
+   },
+   {
+    "lsoa": "Westminster 009J",
+    "codigo": "E01033604",
+    "score": 51.69,
+    "rank_nacional": 2084,
+    "decil": 1
+   },
+   {
+    "lsoa": "Westminster 009A",
+    "codigo": "E01004670",
+    "score": 50.968,
+    "rank_nacional": 2194,
+    "decil": 1
+   },
+   {
+    "lsoa": "Westminster 009F",
+    "codigo": "E01033598",
+    "score": 50.198,
+    "rank_nacional": 2336,
+    "decil": 1
+   },
+   {
+    "lsoa": "Westminster 024A",
+    "codigo": "E01004665",
+    "score": 49.345,
+    "rank_nacional": 2470,
+    "decil": 1
+   },
+   {
+    "lsoa": "Westminster 009K",
+    "codigo": "E01033605",
+    "score": 47.58,
+    "rank_nacional": 2826,
+    "decil": 1
+   },
+   {
+    "lsoa": "Westminster 004D",
+    "codigo": "E01004721",
+    "score": 47.124,
+    "rank_nacional": 2920,
+    "decil": 1
+   },
+   {
+    "lsoa": "Westminster 009E",
+    "codigo": "E01004702",
+    "score": 45.693,
+    "rank_nacional": 3233,
+    "decil": 1
+   },
+   {
+    "lsoa": "Westminster 010C",
+    "codigo": "E01004757",
+    "score": 45.161,
+    "rank_nacional": 3320,
+    "decil": 1
+   },
+   {
+    "lsoa": "Westminster 010G",
+    "codigo": "E01032513",
+    "score": 44.263,
+    "rank_nacional": 3515,
+    "decil": 2
+   },
+   {
+    "lsoa": "Westminster 005E",
+    "codigo": "E01004679",
+    "score": 43.313,
+    "rank_nacional": 3738,
+    "decil": 2
+   },
+   {
+    "lsoa": "Westminster 010A",
+    "codigo": "E01004754",
+    "score": 42.969,
+    "rank_nacional": 3834,
+    "decil": 2
+   },
+   {
+    "lsoa": "Westminster 009I",
+    "codigo": "E01033603",
+    "score": 42.871,
+    "rank_nacional": 3863,
+    "decil": 2
+   },
+   {
+    "lsoa": "Westminster 005B",
+    "codigo": "E01004675",
+    "score": 41.101,
+    "rank_nacional": 4318,
+    "decil": 2
+   },
+   {
+    "lsoa": "Westminster 021A",
+    "codigo": "E01004740",
+    "score": 39.408,
+    "rank_nacional": 4731,
+    "decil": 2
+   },
+   {
+    "lsoa": "Westminster 005A",
+    "codigo": "E01004674",
+    "score": 38.818,
+    "rank_nacional": 4914,
+    "decil": 2
+   },
+   {
+    "lsoa": "Westminster 004E",
+    "codigo": "E01004722",
+    "score": 38.689,
+    "rank_nacional": 4945,
+    "decil": 2
+   },
+   {
+    "lsoa": "Westminster 017D",
+    "codigo": "E01004696",
+    "score": 38.102,
+    "rank_nacional": 5121,
+    "decil": 2
+   },
+   {
+    "lsoa": "Westminster 021D",
+    "codigo": "E01004746",
+    "score": 36.732,
+    "rank_nacional": 5551,
+    "decil": 2
+   },
+   {
+    "lsoa": "Westminster 024B",
+    "codigo": "E01004669",
+    "score": 36.203,
+    "rank_nacional": 5728,
+    "decil": 2
+   },
+   {
+    "lsoa": "Westminster 005F",
+    "codigo": "E01004723",
+    "score": 35.995,
+    "rank_nacional": 5797,
+    "decil": 2
+   },
+   {
+    "lsoa": "Westminster 023F",
+    "codigo": "E01033597",
+    "score": 35.995,
+    "rank_nacional": 5798,
+    "decil": 2
+   },
+   {
+    "lsoa": "Westminster 023G",
+    "codigo": "E01033599",
+    "score": 35.391,
+    "rank_nacional": 6025,
+    "decil": 2
+   },
+   {
+    "lsoa": "Westminster 015E",
+    "codigo": "E01004686",
+    "score": 34.443,
+    "rank_nacional": 6388,
+    "decil": 2
+   },
+   {
+    "lsoa": "Westminster 022D",
+    "codigo": "E01004752",
+    "score": 34.116,
+    "rank_nacional": 6499,
+    "decil": 2
+   },
+   {
+    "lsoa": "Westminster 004B",
+    "codigo": "E01004719",
+    "score": 34.102,
+    "rank_nacional": 6503,
+    "decil": 2
+   },
+   {
+    "lsoa": "Westminster 015G",
+    "codigo": "E01033594",
+    "score": 33.644,
+    "rank_nacional": 6696,
+    "decil": 2
+   },
+   {
+    "lsoa": "Westminster 006E",
+    "codigo": "E01004756",
+    "score": 32.913,
+    "rank_nacional": 6990,
+    "decil": 3
+   },
+   {
+    "lsoa": "Westminster 004A",
+    "codigo": "E01004718",
+    "score": 32.605,
+    "rank_nacional": 7118,
+    "decil": 3
+   },
+   {
+    "lsoa": "Westminster 003E",
+    "codigo": "E01004729",
+    "score": 32.072,
+    "rank_nacional": 7338,
+    "decil": 3
+   },
+   {
+    "lsoa": "Westminster 002E",
+    "codigo": "E01004711",
+    "score": 32.002,
+    "rank_nacional": 7370,
+    "decil": 3
+   },
+   {
+    "lsoa": "Westminster 002D",
+    "codigo": "E01004710",
+    "score": 30.467,
+    "rank_nacional": 8049,
+    "decil": 3
+   },
+   {
+    "lsoa": "Westminster 004C",
+    "codigo": "E01004720",
+    "score": 30.361,
+    "rank_nacional": 8101,
+    "decil": 3
+   },
+   {
+    "lsoa": "Westminster 009G",
+    "codigo": "E01033601",
+    "score": 29.668,
+    "rank_nacional": 8441,
+    "decil": 3
+   },
+   {
+    "lsoa": "Westminster 005C",
+    "codigo": "E01004677",
+    "score": 29.254,
+    "rank_nacional": 8656,
+    "decil": 3
+   },
+   {
+    "lsoa": "Westminster 005D",
+    "codigo": "E01004678",
+    "score": 29.194,
+    "rank_nacional": 8683,
+    "decil": 3
+   },
+   {
+    "lsoa": "Westminster 023D",
+    "codigo": "E01004668",
+    "score": 28.874,
+    "rank_nacional": 8842,
+    "decil": 3
+   },
+   {
+    "lsoa": "Westminster 010B",
+    "codigo": "E01004755",
+    "score": 28.828,
+    "rank_nacional": 8862,
+    "decil": 3
+   },
+   {
+    "lsoa": "Westminster 018A",
+    "codigo": "E01004734",
+    "score": 28.233,
+    "rank_nacional": 9191,
+    "decil": 3
+   },
+   {
+    "lsoa": "Westminster 020D",
+    "codigo": "E01004744",
+    "score": 28.114,
+    "rank_nacional": 9244,
+    "decil": 3
+   },
+   {
+    "lsoa": "Westminster 024F",
+    "codigo": "E01004741",
+    "score": 28.035,
+    "rank_nacional": 9285,
+    "decil": 3
+   },
+   {
+    "lsoa": "Westminster 003B",
+    "codigo": "E01004725",
+    "score": 26.641,
+    "rank_nacional": 10091,
+    "decil": 3
+   },
+   {
+    "lsoa": "Westminster 023H",
+    "codigo": "E01035721",
+    "score": 26.249,
+    "rank_nacional": 10352,
+    "decil": 4
+   },
+   {
+    "lsoa": "Westminster 006A",
+    "codigo": "E01004676",
+    "score": 26.072,
+    "rank_nacional": 10450,
+    "decil": 4
+   },
+   {
+    "lsoa": "Westminster 017E",
+    "codigo": "E01004698",
+    "score": 26.054,
+    "rank_nacional": 10461,
+    "decil": 4
+   },
+   {
+    "lsoa": "Westminster 023E",
+    "codigo": "E01004750",
+    "score": 25.389,
+    "rank_nacional": 10871,
+    "decil": 4
+   },
+   {
+    "lsoa": "Westminster 024C",
+    "codigo": "E01004737",
+    "score": 25.154,
+    "rank_nacional": 11016,
+    "decil": 4
+   },
+   {
+    "lsoa": "Westminster 014D",
+    "codigo": "E01004656",
+    "score": 24.544,
+    "rank_nacional": 11404,
+    "decil": 4
+   },
+   {
+    "lsoa": "Westminster 015C",
+    "codigo": "E01004684",
+    "score": 24.2,
+    "rank_nacional": 11632,
+    "decil": 4
+   },
+   {
+    "lsoa": "Westminster 007E",
+    "codigo": "E01004709",
+    "score": 24.06,
+    "rank_nacional": 11727,
+    "decil": 4
+   },
+   {
+    "lsoa": "Westminster 016B",
+    "codigo": "E01004682",
+    "score": 23.943,
+    "rank_nacional": 11815,
+    "decil": 4
+   },
+   {
+    "lsoa": "Westminster 006D",
+    "codigo": "E01004708",
+    "score": 23.899,
+    "rank_nacional": 11850,
+    "decil": 4
+   },
+   {
+    "lsoa": "Westminster 013B",
+    "codigo": "E01004763",
+    "score": 23.754,
+    "rank_nacional": 11944,
+    "decil": 4
+   },
+   {
+    "lsoa": "Westminster 014H",
+    "codigo": "E01035717",
+    "score": 23.742,
+    "rank_nacional": 11956,
+    "decil": 4
+   },
+   {
+    "lsoa": "Westminster 014E",
+    "codigo": "E01004760",
+    "score": 22.361,
+    "rank_nacional": 12896,
+    "decil": 4
+   },
+   {
+    "lsoa": "Westminster 021E",
+    "codigo": "E01004747",
+    "score": 22.34,
+    "rank_nacional": 12909,
+    "decil": 4
+   },
+   {
+    "lsoa": "Westminster 013G",
+    "codigo": "E01035716",
+    "score": 22.193,
+    "rank_nacional": 13000,
+    "decil": 4
+   },
+   {
+    "lsoa": "Westminster 017C",
+    "codigo": "E01004695",
+    "score": 22.094,
+    "rank_nacional": 13076,
+    "decil": 4
+   },
+   {
+    "lsoa": "Westminster 018B",
+    "codigo": "E01004735",
+    "score": 21.893,
+    "rank_nacional": 13237,
+    "decil": 4
+   },
+   {
+    "lsoa": "Westminster 021B",
+    "codigo": "E01004743",
+    "score": 21.738,
+    "rank_nacional": 13343,
+    "decil": 4
+   },
+   {
+    "lsoa": "Westminster 015F",
+    "codigo": "E01033593",
+    "score": 20.853,
+    "rank_nacional": 14037,
+    "decil": 5
+   },
+   {
+    "lsoa": "Westminster 012B",
+    "codigo": "E01004658",
+    "score": 20.74,
+    "rank_nacional": 14126,
+    "decil": 5
+   },
+   {
+    "lsoa": "Westminster 022B",
+    "codigo": "E01004749",
+    "score": 20.403,
+    "rank_nacional": 14408,
+    "decil": 5
+   },
+   {
+    "lsoa": "Westminster 022E",
+    "codigo": "E01004753",
+    "score": 19.73,
+    "rank_nacional": 14915,
+    "decil": 5
+   },
+   {
+    "lsoa": "Westminster 001A",
+    "codigo": "E01004647",
+    "score": 19.357,
+    "rank_nacional": 15228,
+    "decil": 5
+   },
+   {
+    "lsoa": "Westminster 017A",
+    "codigo": "E01004652",
+    "score": 19.287,
+    "rank_nacional": 15289,
+    "decil": 5
+   },
+   {
+    "lsoa": "Westminster 012E",
+    "codigo": "E01004663",
+    "score": 19.017,
+    "rank_nacional": 15482,
+    "decil": 5
+   },
+   {
+    "lsoa": "Westminster 013D",
+    "codigo": "E01004765",
+    "score": 18.322,
+    "rank_nacional": 16070,
+    "decil": 5
+   },
+   {
+    "lsoa": "Westminster 012C",
+    "codigo": "E01004661",
+    "score": 18.096,
+    "rank_nacional": 16285,
+    "decil": 5
+   },
+   {
+    "lsoa": "Westminster 017F",
+    "codigo": "E01004699",
+    "score": 17.805,
+    "rank_nacional": 16537,
+    "decil": 5
+   },
+   {
+    "lsoa": "Westminster 022A",
+    "codigo": "E01004742",
+    "score": 17.744,
+    "rank_nacional": 16599,
+    "decil": 5
+   },
+   {
+    "lsoa": "Westminster 013A",
+    "codigo": "E01004715",
+    "score": 17.606,
+    "rank_nacional": 16737,
+    "decil": 5
+   },
+   {
+    "lsoa": "Westminster 016E",
+    "codigo": "E01004700",
+    "score": 17.317,
+    "rank_nacional": 16988,
+    "decil": 6
+   },
+   {
+    "lsoa": "Westminster 016D",
+    "codigo": "E01004697",
+    "score": 16.58,
+    "rank_nacional": 17671,
+    "decil": 6
+   },
+   {
+    "lsoa": "Westminster 016C",
+    "codigo": "E01004694",
+    "score": 16.062,
+    "rank_nacional": 18171,
+    "decil": 6
+   },
+   {
+    "lsoa": "Westminster 003D",
+    "codigo": "E01004728",
+    "score": 15.846,
+    "rank_nacional": 18395,
+    "decil": 6
+   },
+   {
+    "lsoa": "Westminster 012D",
+    "codigo": "E01004662",
+    "score": 15.584,
+    "rank_nacional": 18684,
+    "decil": 6
+   },
+   {
+    "lsoa": "Westminster 022C",
+    "codigo": "E01004751",
+    "score": 15.363,
+    "rank_nacional": 18920,
+    "decil": 6
+   },
+   {
+    "lsoa": "Westminster 021G",
+    "codigo": "E01035720",
+    "score": 15.106,
+    "rank_nacional": 19208,
+    "decil": 6
+   },
+   {
+    "lsoa": "Westminster 011E",
+    "codigo": "E01004762",
+    "score": 15.016,
+    "rank_nacional": 19310,
+    "decil": 6
+   },
+   {
+    "lsoa": "Westminster 008A",
+    "codigo": "E01004659",
+    "score": 14.273,
+    "rank_nacional": 20117,
+    "decil": 6
+   },
+   {
+    "lsoa": "Westminster 020E",
+    "codigo": "E01004748",
+    "score": 14.149,
+    "rank_nacional": 20241,
+    "decil": 6
+   },
+   {
+    "lsoa": "Westminster 002A",
+    "codigo": "E01004646",
+    "score": 13.972,
+    "rank_nacional": 20436,
+    "decil": 7
+   },
+   {
+    "lsoa": "Westminster 007H",
+    "codigo": "E01035715",
+    "score": 13.907,
+    "rank_nacional": 20509,
+    "decil": 7
+   },
+   {
+    "lsoa": "Westminster 012A",
+    "codigo": "E01004657",
+    "score": 13.845,
+    "rank_nacional": 20579,
+    "decil": 7
+   },
+   {
+    "lsoa": "Westminster 018D",
+    "codigo": "E01004761",
+    "score": 13.48,
+    "rank_nacional": 20936,
+    "decil": 7
+   },
+   {
+    "lsoa": "Westminster 020C",
+    "codigo": "E01004733",
+    "score": 13.222,
+    "rank_nacional": 21213,
+    "decil": 7
+   },
+   {
+    "lsoa": "Westminster 014B",
+    "codigo": "E01004654",
+    "score": 13.114,
+    "rank_nacional": 21325,
+    "decil": 7
+   },
+   {
+    "lsoa": "Westminster 017B",
+    "codigo": "E01004693",
+    "score": 12.974,
+    "rank_nacional": 21484,
+    "decil": 7
+   },
+   {
+    "lsoa": "Westminster 008C",
+    "codigo": "E01004712",
+    "score": 12.695,
+    "rank_nacional": 21777,
+    "decil": 7
+   },
+   {
+    "lsoa": "Westminster 015A",
+    "codigo": "E01004680",
+    "score": 12.435,
+    "rank_nacional": 22098,
+    "decil": 7
+   },
+   {
+    "lsoa": "Westminster 016A",
+    "codigo": "E01004681",
+    "score": 12.138,
+    "rank_nacional": 22442,
+    "decil": 7
+   },
+   {
+    "lsoa": "Westminster 001C",
+    "codigo": "E01004724",
+    "score": 11.907,
+    "rank_nacional": 22690,
+    "decil": 7
+   },
+   {
+    "lsoa": "Westminster 007B",
+    "codigo": "E01004703",
+    "score": 11.712,
+    "rank_nacional": 22915,
+    "decil": 7
+   },
+   {
+    "lsoa": "Westminster 002B",
+    "codigo": "E01004648",
+    "score": 11.576,
+    "rank_nacional": 23070,
+    "decil": 7
+   },
+   {
+    "lsoa": "Westminster 011D",
+    "codigo": "E01004717",
+    "score": 11.248,
+    "rank_nacional": 23488,
+    "decil": 7
+   },
+   {
+    "lsoa": "Westminster 007A",
+    "codigo": "E01004701",
+    "score": 11.15,
+    "rank_nacional": 23604,
+    "decil": 7
+   },
+   {
+    "lsoa": "Westminster 015B",
+    "codigo": "E01004683",
+    "score": 11.057,
+    "rank_nacional": 23718,
+    "decil": 8
+   },
+   {
+    "lsoa": "Westminster 008B",
+    "codigo": "E01004660",
+    "score": 10.759,
+    "rank_nacional": 24078,
+    "decil": 8
+   },
+   {
+    "lsoa": "Westminster 014A",
+    "codigo": "E01004653",
+    "score": 10.645,
+    "rank_nacional": 24203,
+    "decil": 8
+   },
+   {
+    "lsoa": "Westminster 019G",
+    "codigo": "E01035718",
+    "score": 10.466,
+    "rank_nacional": 24418,
+    "decil": 8
+   },
+   {
+    "lsoa": "Westminster 018C",
+    "codigo": "E01004736",
+    "score": 10.324,
+    "rank_nacional": 24593,
+    "decil": 8
+   },
+   {
+    "lsoa": "Westminster 003C",
+    "codigo": "E01004726",
+    "score": 10.293,
+    "rank_nacional": 24626,
+    "decil": 8
+   },
+   {
+    "lsoa": "Westminster 019D",
+    "codigo": "E01004690",
+    "score": 10.182,
+    "rank_nacional": 24755,
+    "decil": 8
+   },
+   {
+    "lsoa": "Westminster 021F",
+    "codigo": "E01035719",
+    "score": 10.157,
+    "rank_nacional": 24783,
+    "decil": 8
+   },
+   {
+    "lsoa": "Westminster 008D",
+    "codigo": "E01004727",
+    "score": 9.692,
+    "rank_nacional": 25313,
+    "decil": 8
+   },
+   {
+    "lsoa": "Westminster 019E",
+    "codigo": "E01004691",
+    "score": 9.639,
+    "rank_nacional": 25385,
+    "decil": 8
+   },
+   {
+    "lsoa": "Westminster 019F",
+    "codigo": "E01004692",
+    "score": 9.396,
+    "rank_nacional": 25711,
+    "decil": 8
+   },
+   {
+    "lsoa": "Westminster 024G",
+    "codigo": "E01035722",
+    "score": 9.363,
+    "rank_nacional": 25766,
+    "decil": 8
+   },
+   {
+    "lsoa": "Westminster 003A",
+    "codigo": "E01004651",
+    "score": 9.053,
+    "rank_nacional": 26140,
+    "decil": 8
+   },
+   {
+    "lsoa": "Westminster 007D",
+    "codigo": "E01004705",
+    "score": 8.834,
+    "rank_nacional": 26415,
+    "decil": 8
+   },
+   {
+    "lsoa": "Westminster 011B",
+    "codigo": "E01004714",
+    "score": 8.79,
+    "rank_nacional": 26473,
+    "decil": 8
+   },
+   {
+    "lsoa": "Westminster 019A",
+    "codigo": "E01004687",
+    "score": 8.421,
+    "rank_nacional": 26945,
+    "decil": 8
+   },
+   {
+    "lsoa": "Westminster 006B",
+    "codigo": "E01004706",
+    "score": 8.377,
+    "rank_nacional": 27008,
+    "decil": 9
+   },
+   {
+    "lsoa": "Westminster 001D",
+    "codigo": "E01004730",
+    "score": 8.314,
+    "rank_nacional": 27088,
+    "decil": 9
+   },
+   {
+    "lsoa": "Westminster 011A",
+    "codigo": "E01004713",
+    "score": 7.879,
+    "rank_nacional": 27616,
+    "decil": 9
+   },
+   {
+    "lsoa": "Westminster 002C",
+    "codigo": "E01004650",
+    "score": 7.595,
+    "rank_nacional": 27933,
+    "decil": 9
+   },
+   {
+    "lsoa": "Westminster 006C",
+    "codigo": "E01004707",
+    "score": 7.335,
+    "rank_nacional": 28257,
+    "decil": 9
+   },
+   {
+    "lsoa": "Westminster 020A",
+    "codigo": "E01004731",
+    "score": 7.304,
+    "rank_nacional": 28289,
+    "decil": 9
+   },
+   {
+    "lsoa": "Westminster 001B",
+    "codigo": "E01004649",
+    "score": 7.274,
+    "rank_nacional": 28323,
+    "decil": 9
+   },
+   {
+    "lsoa": "Westminster 011C",
+    "codigo": "E01004716",
+    "score": 6.956,
+    "rank_nacional": 28688,
+    "decil": 9
+   }
+  ]
+ },
+ "territorio": "City of Westminster",
+ "nota": "Westminster: puesto 12 de 32 boroughs con dato por score promedio (falta City of London, sin boroughs code E09 propio en este archivo tampoco). Un promedio esconde la dispersión interna: Westminster tiene LSOA entre el decil más privado y el menos privado del país al mismo tiempo, visible en la lista lsoa_westminster."
+}

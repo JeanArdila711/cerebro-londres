@@ -1,0 +1,360 @@
+{
+ "tema": "seguridad_boroughs",
+ "probado": "2026-10-02",
+ "fuentes": [
+  {
+   "id": "lds_mps_delito_borough",
+   "nombre": "MPS Recorded Crime: Geographic Breakdown · nivel borough (London Datastore)",
+   "entidad": "Metropolitan Police Service",
+   "url": "https://data.london.gov.uk/dataset/recorded_crime_summary",
+   "resolucion": "borough (BOCU), mensual",
+   "vigencia": "202509 a 202608",
+   "probado": "2026-10-02",
+   "estado": "vivo",
+   "licencia": "OGL-2.0",
+   "personas": "no",
+   "proteccion": "abierto, solo agregados",
+   "uso": "sección Seguridad · comparar los 33 boroughs",
+   "nota": "Cuenta delitos registrados, no víctimas. Cruzado por nombre de BOCU contra los boroughs del ONS; City of London queda fuera porque tiene su propia policía, no la Metropolitana."
+  }
+ ],
+ "cifras": {
+  "boroughs_con_dato_n": {
+   "valor": 32,
+   "unidad": "boroughs",
+   "fuente": "lds_mps_delito_borough",
+   "vigencia": "2026-10-02",
+   "nota": "De los 33 de Greater London; falta City of London",
+   "estado": "integrado"
+  },
+  "delitos_12m_westminster": {
+   "valor": 74464,
+   "unidad": "delitos registrados",
+   "fuente": "lds_mps_delito_borough",
+   "vigencia": "202608",
+   "nota": "Últimos 12 meses en Westminster",
+   "estado": "integrado"
+  },
+  "tasa_westminster": {
+   "valor": 350.64,
+   "unidad": "delitos por 1.000 habitantes",
+   "fuente": "lds_mps_delito_borough",
+   "vigencia": "202608",
+   "nota": "Delitos de 12 meses sobre población mid-year",
+   "estado": "integrado"
+  },
+  "puesto_tasa_westminster": {
+   "valor": 1,
+   "unidad": "puesto de 32",
+   "fuente": "lds_mps_delito_borough",
+   "vigencia": "202608",
+   "nota": "1 = la tasa más alta de los boroughs con dato",
+   "estado": "integrado"
+  },
+  "borough_tasa_mas_alta": {
+   "valor": "Westminster",
+   "unidad": "borough",
+   "fuente": "lds_mps_delito_borough",
+   "vigencia": "202608",
+   "nota": "350.64 por 1.000 habitantes",
+   "estado": "integrado"
+  },
+  "borough_tasa_mas_baja": {
+   "valor": "Richmond upon Thames",
+   "unidad": "borough",
+   "fuente": "lds_mps_delito_borough",
+   "vigencia": "202608",
+   "nota": "58.14 por 1.000 habitantes",
+   "estado": "integrado"
+  },
+  "categoria_top_westminster": {
+   "valor": "THEFT",
+   "unidad": "categoría",
+   "fuente": "lds_mps_delito_borough",
+   "vigencia": "202608",
+   "nota": "43,351 casos en 12 meses",
+   "estado": "integrado"
+  }
+ },
+ "series": {},
+ "listas": {
+  "boroughs": [
+   {
+    "nombre": "Westminster",
+    "delitos_12m": 74464,
+    "poblacion": 212367,
+    "tasa_x1000": 350.64,
+    "puesto_tasa": 1
+   },
+   {
+    "nombre": "Camden",
+    "delitos_12m": 39541,
+    "poblacion": 216658,
+    "tasa_x1000": 182.5,
+    "puesto_tasa": 2
+   },
+   {
+    "nombre": "Kensington and Chelsea",
+    "delitos_12m": 20989,
+    "poblacion": 145734,
+    "tasa_x1000": 144.02,
+    "puesto_tasa": 3
+   },
+   {
+    "nombre": "Islington",
+    "delitos_12m": 32083,
+    "poblacion": 224551,
+    "tasa_x1000": 142.88,
+    "puesto_tasa": 4
+   },
+   {
+    "nombre": "Southwark",
+    "delitos_12m": 41486,
+    "poblacion": 312366,
+    "tasa_x1000": 132.81,
+    "puesto_tasa": 5
+   },
+   {
+    "nombre": "Lambeth",
+    "delitos_12m": 39378,
+    "poblacion": 314298,
+    "tasa_x1000": 125.29,
+    "puesto_tasa": 6
+   },
+   {
+    "nombre": "Hackney",
+    "delitos_12m": 32606,
+    "poblacion": 266241,
+    "tasa_x1000": 122.47,
+    "puesto_tasa": 7
+   },
+   {
+    "nombre": "Tower Hamlets",
+    "delitos_12m": 38426,
+    "poblacion": 334240,
+    "tasa_x1000": 114.97,
+    "puesto_tasa": 8
+   },
+   {
+    "nombre": "Newham",
+    "delitos_12m": 42038,
+    "poblacion": 376542,
+    "tasa_x1000": 111.64,
+    "puesto_tasa": 9
+   },
+   {
+    "nombre": "Hammersmith and Fulham",
+    "delitos_12m": 21048,
+    "poblacion": 190216,
+    "tasa_x1000": 110.65,
+    "puesto_tasa": 10
+   },
+   {
+    "nombre": "Haringey",
+    "delitos_12m": 27765,
+    "poblacion": 266218,
+    "tasa_x1000": 104.29,
+    "puesto_tasa": 11
+   },
+   {
+    "nombre": "Lewisham",
+    "delitos_12m": 30990,
+    "poblacion": 301037,
+    "tasa_x1000": 102.94,
+    "puesto_tasa": 12
+   },
+   {
+    "nombre": "Hillingdon",
+    "delitos_12m": 31539,
+    "poblacion": 326671,
+    "tasa_x1000": 96.55,
+    "puesto_tasa": 13
+   },
+   {
+    "nombre": "Greenwich",
+    "delitos_12m": 28198,
+    "poblacion": 301225,
+    "tasa_x1000": 93.61,
+    "puesto_tasa": 14
+   },
+   {
+    "nombre": "Brent",
+    "delitos_12m": 32958,
+    "poblacion": 352201,
+    "tasa_x1000": 93.58,
+    "puesto_tasa": 15
+   },
+   {
+    "nombre": "Hounslow",
+    "delitos_12m": 26925,
+    "poblacion": 299486,
+    "tasa_x1000": 89.9,
+    "puesto_tasa": 16
+   },
+   {
+    "nombre": "Enfield",
+    "delitos_12m": 29564,
+    "poblacion": 329400,
+    "tasa_x1000": 89.75,
+    "puesto_tasa": 17
+   },
+   {
+    "nombre": "Barking and Dagenham",
+    "delitos_12m": 20427,
+    "poblacion": 238295,
+    "tasa_x1000": 85.72,
+    "puesto_tasa": 18
+   },
+   {
+    "nombre": "Ealing",
+    "delitos_12m": 32942,
+    "poblacion": 387072,
+    "tasa_x1000": 85.11,
+    "puesto_tasa": 19
+   },
+   {
+    "nombre": "Croydon",
+    "delitos_12m": 34587,
+    "poblacion": 410085,
+    "tasa_x1000": 84.34,
+    "puesto_tasa": 20
+   },
+   {
+    "nombre": "Waltham Forest",
+    "delitos_12m": 23372,
+    "poblacion": 283713,
+    "tasa_x1000": 82.38,
+    "puesto_tasa": 21
+   },
+   {
+    "nombre": "Wandsworth",
+    "delitos_12m": 26865,
+    "poblacion": 339859,
+    "tasa_x1000": 79.05,
+    "puesto_tasa": 22
+   },
+   {
+    "nombre": "Redbridge",
+    "delitos_12m": 25081,
+    "poblacion": 321829,
+    "tasa_x1000": 77.93,
+    "puesto_tasa": 23
+   },
+   {
+    "nombre": "Barnet",
+    "delitos_12m": 29638,
+    "poblacion": 408087,
+    "tasa_x1000": 72.63,
+    "puesto_tasa": 24
+   },
+   {
+    "nombre": "Bromley",
+    "delitos_12m": 24128,
+    "poblacion": 336048,
+    "tasa_x1000": 71.8,
+    "puesto_tasa": 25
+   },
+   {
+    "nombre": "Havering",
+    "delitos_12m": 19748,
+    "poblacion": 280787,
+    "tasa_x1000": 70.33,
+    "puesto_tasa": 26
+   },
+   {
+    "nombre": "Kingston upon Thames",
+    "delitos_12m": 12074,
+    "poblacion": 172761,
+    "tasa_x1000": 69.89,
+    "puesto_tasa": 27
+   },
+   {
+    "nombre": "Sutton",
+    "delitos_12m": 13670,
+    "poblacion": 213972,
+    "tasa_x1000": 63.89,
+    "puesto_tasa": 28
+   },
+   {
+    "nombre": "Bexley",
+    "delitos_12m": 16292,
+    "poblacion": 257103,
+    "tasa_x1000": 63.37,
+    "puesto_tasa": 29
+   },
+   {
+    "nombre": "Harrow",
+    "delitos_12m": 17210,
+    "poblacion": 272612,
+    "tasa_x1000": 63.13,
+    "puesto_tasa": 30
+   },
+   {
+    "nombre": "Merton",
+    "delitos_12m": 13233,
+    "poblacion": 218891,
+    "tasa_x1000": 60.45,
+    "puesto_tasa": 31
+   },
+   {
+    "nombre": "Richmond upon Thames",
+    "delitos_12m": 11436,
+    "poblacion": 196713,
+    "tasa_x1000": 58.14,
+    "puesto_tasa": 32
+   }
+  ],
+  "por_categoria_westminster": [
+   {
+    "categoria": "THEFT",
+    "n": 43351
+   },
+   {
+    "categoria": "VIOLENCE AGAINST THE PERSON",
+    "n": 11397
+   },
+   {
+    "categoria": "PUBLIC ORDER OFFENCES",
+    "n": 3703
+   },
+   {
+    "categoria": "DRUG OFFENCES",
+    "n": 3050
+   },
+   {
+    "categoria": "VEHICLE OFFENCES",
+    "n": 2793
+   },
+   {
+    "categoria": "ROBBERY",
+    "n": 2776
+   },
+   {
+    "categoria": "BURGLARY",
+    "n": 2592
+   },
+   {
+    "categoria": "ARSON AND CRIMINAL DAMAGE",
+    "n": 2270
+   },
+   {
+    "categoria": "SEXUAL OFFENCES",
+    "n": 1578
+   },
+   {
+    "categoria": "MISCELLANEOUS CRIMES AGAINST SOCIETY",
+    "n": 489
+   },
+   {
+    "categoria": "POSSESSION OF WEAPONS",
+    "n": 463
+   },
+   {
+    "categoria": "FRAUD AND FORGERY",
+    "n": 2
+   }
+  ]
+ },
+ "territorio": "Greater London (32 de 33 boroughs; sin City of London)",
+ "nota": "Sin asignar a ningún borough (Aviation Policing + Unknown): 7 delitos en 12 meses, no se reparten entre boroughs. La tasa usa la población mid-year ya integrada en demografia.json: mismo año de referencia, mismo criterio para los 32."
+}

@@ -1,11 +1,11 @@
 {
  "tema": "catalogo",
- "probado": "2026-09-25",
- "n": 170,
+ "probado": "2026-10-02",
+ "n": 175,
  "por_estado": {
-  "integrado": 12,
+  "integrado": 20,
   "declarado": 15,
-  "candidato": 129,
+  "candidato": 126,
   "caido": 5,
   "excluido": 9
  },
@@ -117,19 +117,115 @@
    "tema": "correlaciones"
   },
   {
+   "id": "dft_naptan",
+   "nombre": "NaPTAN · National Public Transport Access Nodes (área 490, Londres)",
+   "entidad": "DfT",
+   "url": "https://www.gov.uk/government/publications/national-public-transport-access-node-schema",
+   "resolucion": "parada, clasificada por borough contra el polígono oficial",
+   "vigencia": "continua",
+   "probado": "2026-10-02",
+   "estado": "integrado",
+   "licencia": "OGL-3.0",
+   "personas": "no",
+   "proteccion": "abierto",
+   "uso": "sección Infraestructura · transporte en los 33 boroughs",
+   "nota": "Registro oficial, no mapeo voluntario: complementa a osm_transporte (solo Westminster). El borough de cada parada se calculó por punto dentro de polígono, no viene en el archivo original.",
+   "tema": "transporte_boroughs"
+  },
+  {
+   "id": "fingertips_vida",
+   "nombre": "OHID Fingertips · Life expectancy at birth (indicador 90366)",
+   "entidad": "OHID",
+   "url": "https://fingertips.phe.org.uk/profile/health-profiles",
+   "resolucion": "autoridad local, por sexo",
+   "vigencia": "2023 - 25",
+   "probado": "2026-10-02",
+   "estado": "integrado",
+   "licencia": "OGL-3.0",
+   "personas": "no",
+   "proteccion": "abierto, solo agregados",
+   "uso": "sección Salud · esperanza de vida por borough",
+   "nota": "Primera fuente de salud del lago. Periodo trienal (2023-25) para suavizar ruido estadístico en áreas pequeñas. El endpoint de metadatos del perfil responde 500; el indicador se encontró leyendo la cabecera del volcado masivo del grupo «Life expectancy and causes of death».",
+   "tema": "salud"
+  },
+  {
+   "id": "imd_2025",
+   "nombre": "English Indices of Deprivation 2025 · File 7 (MHCLG)",
+   "entidad": "MHCLG",
+   "url": "https://www.gov.uk/government/statistics/english-indices-of-deprivation-2025",
+   "resolucion": "LSOA 2021",
+   "vigencia": "publicado 2025-10-30",
+   "probado": "2026-10-02",
+   "estado": "integrado",
+   "licencia": "OGL-3.0",
+   "personas": "no",
+   "proteccion": "abierto, solo agregados",
+   "uso": "sección Territorio · privación relativa por zona",
+   "nota": "Rango relativo entre LSOA de Inglaterra, no una medida absoluta. Reemplaza al IoD2019 que el London Datastore todavía enlaza con ese nombre.",
+   "tema": "privacion"
+  },
+  {
+   "id": "laqn_daily",
+   "nombre": "London Air Quality Network · Daily Monitoring Index",
+   "entidad": "Imperial College London",
+   "url": "https://www.londonair.org.uk/",
+   "resolucion": "estación, agregado por borough",
+   "vigencia": "2026-10-01",
+   "probado": "2026-10-02",
+   "estado": "integrado",
+   "licencia": "sin-confirmar",
+   "personas": "no",
+   "proteccion": "abierto",
+   "uso": "sección Ambiente · aire medido, no modelado",
+   "nota": "Red real de estaciones, financiada por los boroughs, no un modelo. Solo 21-22 boroughs tienen estación activa en un día dado: es un límite real de la red, no un fallo de esta ingesta. Licencia no confirmada.",
+   "tema": "aire_laqn"
+  },
+  {
+   "id": "lds_mps_delito_borough",
+   "nombre": "MPS Recorded Crime: Geographic Breakdown · nivel borough (London Datastore)",
+   "entidad": "Metropolitan Police Service",
+   "url": "https://data.london.gov.uk/dataset/recorded_crime_summary",
+   "resolucion": "borough (BOCU), mensual",
+   "vigencia": "202509 a 202608",
+   "probado": "2026-10-02",
+   "estado": "integrado",
+   "licencia": "OGL-2.0",
+   "personas": "no",
+   "proteccion": "abierto, solo agregados",
+   "uso": "sección Seguridad · comparar los 33 boroughs",
+   "nota": "Cuenta delitos registrados, no víctimas. Cruzado por nombre de BOCU contra los boroughs del ONS; City of London queda fuera porque tiene su propia policía, no la Metropolitana.",
+   "tema": "seguridad_boroughs"
+  },
+  {
+   "id": "mhclg_council_tax",
+   "nombre": "Council Tax levels set by local authorities in England 2026 to 2027 · Table 8a",
+   "entidad": "MHCLG",
+   "url": "https://www.gov.uk/government/statistics/council-tax-levels-set-by-local-authorities-in-england-2026-to-2027",
+   "resolucion": "borough (Banda D, incluye social care y parish precepts)",
+   "vigencia": "2026-2027",
+   "probado": "2026-10-02",
+   "estado": "integrado",
+   "licencia": "OGL-3.0",
+   "personas": "no",
+   "proteccion": "abierto",
+   "uso": "sección Municipio · financiación local",
+   "nota": "Archivo .ods, no CSV. Dentro hay dos conjuntos con el mismo nombre de tabla: «Table_10» es un formulario en blanco de recolección, no un resultado; «Table_8a» dentro de Tables_1-9 es la tabla publicada de verdad.",
+   "tema": "finanzas"
+  },
+  {
    "id": "ons_geography",
    "nombre": "ONS Open Geography Portal · Local Authority Districts (December 2025) and Wards (December 2024), generalised",
    "entidad": "ONS",
    "url": "https://geoportal.statistics.gov.uk/",
    "resolucion": "borough y ward",
-   "vigencia": "boroughs 2025-12 · wards 2024-12",
-   "probado": "2026-09-21",
+   "vigencia": "boroughs 2025-12 · wards de Westminster 2024-12 · wards de Londres 2025-12",
+   "probado": "2026-10-02",
    "estado": "integrado",
    "licencia": "OGL-3.0",
    "personas": "no",
    "proteccion": "abierto",
    "uso": "mapa · secciones Territorio y Atlas",
-   "nota": "Capas BGC (generalizadas, clipped) en WGS84. Las dos escalas no son de la misma cosecha: los wards de diciembre de 2025 solo están como MapServer, que devuelve 400 a la consulta, así que se usan los de diciembre de 2024. Contiene OS data © Crown copyright and database right 2024/2025; la atribución de OS va en la vista.",
+   "nota": "Capas BGC (generalizadas, clipped) en WGS84. Dos capas de wards conviven: wards_westminster (solo ese borough, cosecha 2024) y wards_londres (los 704 de los 33 boroughs, cosecha 2025, más nueva). Contiene OS data © Crown copyright and database right 2024/2025; la atribución de OS va en la vista.",
    "tema": "geo"
   },
   {
@@ -211,6 +307,38 @@
    "uso": "sección Territorio · infraestructura",
    "nota": "© OpenStreetMap contributors, ODbL. El área es la relación 51781, verificada por ref:gss=E09000033: se cruza por código, no por nombre. Cobertura voluntaria.",
    "tema": "infraestructura"
+  },
+  {
+   "id": "planning_flood",
+   "nombre": "Planning Data · flood risk zones (Environment Agency Flood Map for Planning)",
+   "entidad": "MHCLG",
+   "url": "https://www.planning.data.gov.uk/dataset/flood-risk-zone",
+   "resolucion": "polígono",
+   "vigencia": "continua (entry-date por entidad)",
+   "probado": "2026-10-02",
+   "estado": "integrado",
+   "licencia": "OGL-3.0",
+   "personas": "no",
+   "proteccion": "abierto",
+   "uso": "sección Territorio · analizar un punto",
+   "nota": "Clasificación estructural de riesgo de inundación, no monitoreo en vivo. El bbox de esta API no funciona: se filtra por geometry_curie contra la geometría oficial de Westminster (E09000033).",
+   "tema": "riesgo"
+  },
+  {
+   "id": "planning_listed",
+   "nombre": "Planning Data · listed buildings (Historic England)",
+   "entidad": "MHCLG",
+   "url": "https://www.planning.data.gov.uk/dataset/listed-building",
+   "resolucion": "punto",
+   "vigencia": "continua (entry-date por entidad)",
+   "probado": "2026-10-02",
+   "estado": "integrado",
+   "licencia": "OGL-3.0",
+   "personas": "no",
+   "proteccion": "abierto",
+   "uso": "sección Territorio · analizar un punto",
+   "nota": "Republica el listado de Historic England. Grados II, II* y I, de menor a mayor importancia. Mismo filtro por geometry_curie que riesgo.py: el bbox de esta API no funciona.",
+   "tema": "patrimonio"
   },
   {
    "id": "police_uk",
@@ -1110,41 +1238,6 @@
    "proteccion": "por decidir"
   },
   {
-   "id": "dft_naptan",
-   "nombre": "DfT · NaPTAN (paradas de transporte público), área 490 Londres",
-   "entidad": "DfT",
-   "familia": "Territorio",
-   "tema": "infraestructura",
-   "url": "https://beta-naptan.dft.gov.uk/",
-   "prueba": "https://naptan.api.dft.gov.uk/v1/access-nodes?dataFormat=csv&atcoAreaCodes=490",
-   "resolucion": "parada",
-   "vigencia": "continua",
-   "licencia": "OGL-3.0",
-   "personas": "no",
-   "semaforo": {
-    "origen": "estado",
-    "personas": "no",
-    "acceso": "api"
-   },
-   "uso": "paradas de bus, metro y tren (el equivalente a los paraderos de la ATU)",
-   "nota": "21.288 filas para el área 490 (2026-09-25).",
-   "rastreo": "2026-09-25",
-   "evidencia": {
-    "url": "https://www.data.gov.uk/dataset/ff93ffc1-6656-47d8-9155-85ea0b8f2251/national-public-transport-access-nodes-naptan",
-    "patron": "Open Government Licence"
-   },
-   "probado": "2026-09-25",
-   "respuesta": {
-    "codigo": 200,
-    "detalle": ""
-   },
-   "licencia_verificada": true,
-   "licencia_evidencia": "Open Government Licence",
-   "veredicto": "integrado",
-   "estado": "candidato",
-   "proteccion": "abierto"
-  },
-  {
    "id": "dft_trafico",
    "nombre": "DfT · Road traffic statistics API",
    "entidad": "DfT",
@@ -1438,41 +1531,6 @@
    "veredicto": "integrado",
    "estado": "candidato",
    "proteccion": "detrás de una compuerta real"
-  },
-  {
-   "id": "imd_2025",
-   "nombre": "English indices of deprivation 2025",
-   "entidad": "MHCLG",
-   "familia": "Estadística oficial",
-   "tema": "demografia",
-   "url": "https://www.gov.uk/government/statistics/english-indices-of-deprivation-2025",
-   "prueba": "https://www.gov.uk/api/content/government/statistics/english-indices-of-deprivation-2025",
-   "resolucion": "LSOA 2021 y autoridad local",
-   "vigencia": "publicado 2025-10-30",
-   "licencia": "OGL-3.0",
-   "personas": "no: cifras agregadas por autoridad local",
-   "semaforo": {
-    "origen": "estado",
-    "personas": "agregado",
-    "acceso": "api"
-   },
-   "uso": "privación por barrio: el equivalente a la pobreza distrital que usa Lima",
-   "nota": "Reemplaza al IoD2019 (que el London Datastore todavía sirve como «Indices of Deprivation»). Rangos relativos: dicen qué zona está más privada que otra, no cuánto.",
-   "rastreo": "2026-09-25",
-   "evidencia": {
-    "url": "https://www.gov.uk/government/statistics/english-indices-of-deprivation-2025",
-    "patron": "Open Government Licence v3\\.0"
-   },
-   "probado": "2026-09-25",
-   "respuesta": {
-    "codigo": 200,
-    "detalle": ""
-   },
-   "licencia_verificada": true,
-   "licencia_evidencia": "Open Government Licence v3.0",
-   "veredicto": "integrado",
-   "estado": "candidato",
-   "proteccion": "abierto, solo agregados"
   },
   {
    "id": "laqn_api",
@@ -3078,41 +3136,6 @@
    "veredicto": "candidato",
    "estado": "candidato",
    "proteccion": "por decidir"
-  },
-  {
-   "id": "mhclg_council_tax",
-   "nombre": "Council Tax statistics (MHCLG)",
-   "entidad": "MHCLG",
-   "familia": "La plata pública",
-   "tema": "municipio",
-   "url": "https://www.gov.uk/government/collections/council-tax-statistics",
-   "prueba": "https://www.gov.uk/api/content/government/collections/council-tax-statistics",
-   "resolucion": "autoridad local",
-   "vigencia": "anual",
-   "licencia": "OGL-3.0",
-   "personas": "no: cifras agregadas por autoridad local",
-   "semaforo": {
-    "origen": "estado",
-    "personas": "agregado",
-    "acceso": "api"
-   },
-   "uso": "impuesto local por borough (Band D)",
-   "nota": "Incluye «Council Tax levels set by local authorities». El equivalente al predial y los arbitrios de Lima.",
-   "rastreo": "2026-09-25",
-   "evidencia": {
-    "url": "https://www.gov.uk/government/collections/council-tax-statistics",
-    "patron": "Open Government Licence v3\\.0"
-   },
-   "probado": "2026-09-25",
-   "respuesta": {
-    "codigo": 200,
-    "detalle": ""
-   },
-   "licencia_verificada": true,
-   "licencia_evidencia": "Open Government Licence v3.0",
-   "veredicto": "integrado",
-   "estado": "candidato",
-   "proteccion": "abierto, solo agregados"
   },
   {
    "id": "mhclg_parque_viviendas",

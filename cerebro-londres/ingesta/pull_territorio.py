@@ -70,36 +70,63 @@ for f in w["features"]:
 rw, nw, sw = escribir_geo("wards_westminster", w)
 print(f"  wards    : {nw:>3} features · {sw/1024:>6.0f} kB")
 
+# --- Wards de los 33 boroughs (no solo Westminster) -------------------------
+# Hallazgo posterior al de arriba: la capa de wards de diciembre de 2025 SÍ
+# es FeatureServer y SÍ responde con el nombre de servicio correcto,
+# WD_DEC_2025_UK_BGC (el bloqueo original puede haber sido otro nombre de
+# servicio, o el portal cambió). Se usa la cosecha más nueva para los 33,
+# sin borrar wards_westminster.geojson por si algo del sistema todavía la usa.
+wl = capa("WD_DEC_2025_UK_BGC", "LAD25CD%20LIKE%20%27E09%25%27", "WD25CD,WD25NM,LAD25CD,LAD25NM")
+for f in wl["features"]:
+    p = f["properties"]
+    p["codigo"], p["nombre"] = p.pop("WD25CD"), p.pop("WD25NM")
+    p["borough_codigo"], p["borough_nombre"] = p.pop("LAD25CD"), p.pop("LAD25NM")
+rwl, nwl, swl = escribir_geo("wards_londres", wl)
+print(f"  wards (Londres completa): {nwl:>3} features · {swl/1024:>6.0f} kB")
+if nwl < 650:
+    sys.exit(f"se esperaban ~704 wards de los 33 boroughs y llegaron {nwl}")
+
 fuentes = [{
     "id": "ons_geography",
     "nombre": "ONS Open Geography Portal · Local Authority Districts (December 2025) and Wards (December 2024), generalised",
     "entidad": "ONS",
     "url": "https://geoportal.statistics.gov.uk/",
     "resolucion": "borough y ward",
-    "vigencia": "boroughs 2025-12 · wards 2024-12",
+    "vigencia": "boroughs 2025-12 · wards de Westminster 2024-12 · wards de Londres 2025-12",
     "probado": C.hoy(),
     "estado": "vivo",
     "licencia": "OGL-3.0",
     "personas": "no",
     "proteccion": "abierto",
     "uso": "mapa · secciones Territorio y Atlas",
-    "nota": ("Capas BGC (generalizadas, clipped) en WGS84. Las dos escalas no son de la misma "
-             "cosecha: los wards de diciembre de 2025 solo están como MapServer, que devuelve 400 "
-             "a la consulta, así que se usan los de diciembre de 2024. Contiene OS data © Crown "
-             "copyright and database right 2024/2025; la atribución de OS va en la vista."),
+    "nota": ("Capas BGC (generalizadas, clipped) en WGS84. Dos capas de wards conviven: "
+             "wards_westminster (solo ese borough, cosecha 2024) y wards_londres (los 704 de "
+             "los 33 boroughs, cosecha 2025, más nueva). Contiene OS data © Crown copyright "
+             "and database right 2024/2025; la atribución de OS va en la vista."),
 }]
 
 cifras = {
     "boroughs_n": C.cifra(nb, "boroughs", "ons_geography", "2025-12", "Greater London"),
     "wards_westminster_n": C.cifra(nw, "wards", "ons_geography", "2024-12",
                                    f"Divisiones electorales dentro de {FOCO}"),
+    "wards_londres_n": C.cifra(nwl, "wards", "ons_geography", "2025-12",
+                                "Divisiones electorales en los 33 boroughs de Greater London"),
 }
+
+por_borough = {}
+for f in wl["features"]:
+    p = f["properties"]
+    por_borough[p["borough_nombre"]] = por_borough.get(p["borough_nombre"], 0) + 1
+ranking_wards = sorted(({"borough": b, "wards_n": n} for b, n in por_borough.items()), key=lambda x: -x["wards_n"])
 
 ruta = C.escribir(
     "geo", fuentes, cifras,
-    listas={"wards": sorted(f["properties"]["nombre"] for f in w["features"])},
+    listas={"wards": sorted(f["properties"]["nombre"] for f in w["features"]),
+            "wards_por_borough": ranking_wards},
     ambito="Greater London · foco City of Westminster",
     capas={"boroughs": {"archivo": "territorio/boroughs.geojson", "features": nb, "bytes": sb},
            "wards_westminster": {"archivo": "territorio/wards_westminster.geojson",
-                                 "features": nw, "bytes": sw}})
-print(f"\n  → {ruta.relative_to(C.RAIZ)} · {nb} boroughs, {nw} wards")
+                                 "features": nw, "bytes": sw},
+           "wards_londres": {"archivo": "territorio/wards_londres.geojson",
+                             "features": nwl, "bytes": swl}})
+print(f"\n  → {ruta.relative_to(C.RAIZ)} · {nb} boroughs, {nw} wards Westminster, {nwl} wards Londres")

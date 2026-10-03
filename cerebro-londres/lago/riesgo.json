@@ -1,0 +1,60 @@
+{
+ "tema": "riesgo",
+ "probado": "2026-10-02",
+ "fuentes": [
+  {
+   "id": "planning_flood",
+   "nombre": "Planning Data · flood risk zones (Environment Agency Flood Map for Planning)",
+   "entidad": "MHCLG",
+   "url": "https://www.planning.data.gov.uk/dataset/flood-risk-zone",
+   "resolucion": "polígono",
+   "vigencia": "continua (entry-date por entidad)",
+   "probado": "2026-10-02",
+   "estado": "vivo",
+   "licencia": "OGL-3.0",
+   "personas": "no",
+   "proteccion": "abierto",
+   "uso": "sección Territorio · analizar un punto",
+   "nota": "Clasificación estructural de riesgo de inundación, no monitoreo en vivo. El bbox de esta API no funciona: se filtra por geometry_curie contra la geometría oficial de Westminster (E09000033)."
+  }
+ ],
+ "cifras": {
+  "zonas_riesgo_n": {
+   "valor": 2,
+   "unidad": "zonas",
+   "fuente": "planning_flood",
+   "vigencia": "2026-10-02",
+   "nota": "Polígonos de riesgo de inundación que tocan el territorio de Westminster",
+   "estado": "integrado"
+  },
+  "nivel_maximo": {
+   "valor": "3",
+   "unidad": "nivel (1 bajo · 2 medio · 3 alto)",
+   "fuente": "planning_flood",
+   "vigencia": "2026-10-02",
+   "nota": "El nivel de riesgo más alto que toca el borough",
+   "estado": "integrado"
+  }
+ },
+ "series": {},
+ "listas": {
+  "zonas": [
+   {
+    "referencia": "232138/2",
+    "nivel": "2",
+    "tipo": "Tidal Models",
+    "punto": "POINT (-0.026885 51.493961)",
+    "fuente_url": ""
+   },
+   {
+    "referencia": "106807/3",
+    "nivel": "3",
+    "tipo": "Tidal Models",
+    "punto": "POINT (-0.017909 51.494577)",
+    "fuente_url": ""
+   }
+  ]
+ },
+ "territorio": "City of Westminster",
+ "nota": "Por nivel: 2=1, 3=1. El centro administrativo de Westminster cae dentro de zona 2 y de zona 3 al mismo tiempo (dos polígonos superpuestos, no es un error del script)."
+}

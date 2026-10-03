@@ -1,0 +1,301 @@
+{
+ "tema": "finanzas",
+ "probado": "2026-10-02",
+ "fuentes": [
+  {
+   "id": "mhclg_council_tax",
+   "nombre": "Council Tax levels set by local authorities in England 2026 to 2027 · Table 8a",
+   "entidad": "MHCLG",
+   "url": "https://www.gov.uk/government/statistics/council-tax-levels-set-by-local-authorities-in-england-2026-to-2027",
+   "resolucion": "borough (Banda D, incluye social care y parish precepts)",
+   "vigencia": "2026-2027",
+   "probado": "2026-10-02",
+   "estado": "vivo",
+   "licencia": "OGL-3.0",
+   "personas": "no",
+   "proteccion": "abierto",
+   "uso": "sección Municipio · financiación local",
+   "nota": "Archivo .ods, no CSV. Dentro hay dos conjuntos con el mismo nombre de tabla: «Table_10» es un formulario en blanco de recolección, no un resultado; «Table_8a» dentro de Tables_1-9 es la tabla publicada de verdad."
+  }
+ ],
+ "cifras": {
+  "council_tax_westminster": {
+   "valor": 539.04,
+   "unidad": "£ por vivienda Banda D",
+   "fuente": "mhclg_council_tax",
+   "vigencia": "2026-2027",
+   "nota": "Incluye precepto de cuidado social y parroquial",
+   "estado": "integrado"
+  },
+  "cambio_interanual_westminster": {
+   "valor": 1.97,
+   "unidad": "% frente a 2025-26",
+   "fuente": "mhclg_council_tax",
+   "vigencia": "2026-2027",
+   "nota": "",
+   "estado": "integrado"
+  },
+  "puesto_council_tax_westminster": {
+   "valor": 32,
+   "unidad": "puesto de 33",
+   "fuente": "mhclg_council_tax",
+   "vigencia": "2026-2027",
+   "nota": "1 = el Council Tax más alto de los 33 boroughs",
+   "estado": "integrado"
+  },
+  "borough_mas_caro": {
+   "valor": "Kingston upon Thames",
+   "unidad": "borough",
+   "fuente": "mhclg_council_tax",
+   "vigencia": "2026-2027",
+   "nota": "£2,098.69",
+   "estado": "integrado"
+  },
+  "borough_mas_barato": {
+   "valor": "Wandsworth",
+   "unidad": "borough",
+   "fuente": "mhclg_council_tax",
+   "vigencia": "2026-2027",
+   "nota": "£517.70",
+   "estado": "integrado"
+  }
+ },
+ "series": {},
+ "listas": {
+  "boroughs": [
+   {
+    "codigo": "E09000021",
+    "nombre": "Kingston upon Thames",
+    "council_tax_banda_d": 2098.69,
+    "cambio_interanual_pct": 4.99,
+    "puesto": 1
+   },
+   {
+    "codigo": "E09000008",
+    "nombre": "Croydon",
+    "council_tax_banda_d": 2089.4,
+    "cambio_interanual_pct": 4.99,
+    "puesto": 2
+   },
+   {
+    "codigo": "E09000015",
+    "nombre": "Harrow",
+    "council_tax_banda_d": 2000.56,
+    "cambio_interanual_pct": 4.99,
+    "puesto": 3
+   },
+   {
+    "codigo": "E09000027",
+    "nombre": "Richmond upon Thames",
+    "council_tax_banda_d": 1975.59,
+    "cambio_interanual_pct": 4.99,
+    "puesto": 4
+   },
+   {
+    "codigo": "E09000016",
+    "nombre": "Havering",
+    "council_tax_banda_d": 1914.15,
+    "cambio_interanual_pct": 4.99,
+    "puesto": 5
+   },
+   {
+    "codigo": "E09000031",
+    "nombre": "Waltham Forest",
+    "council_tax_banda_d": 1876.45,
+    "cambio_interanual_pct": 4.99,
+    "puesto": 6
+   },
+   {
+    "codigo": "E09000029",
+    "nombre": "Sutton",
+    "council_tax_banda_d": 1868.13,
+    "cambio_interanual_pct": 4.99,
+    "puesto": 7
+   },
+   {
+    "codigo": "E09000004",
+    "nombre": "Bexley",
+    "council_tax_banda_d": 1855.85,
+    "cambio_interanual_pct": 4.99,
+    "puesto": 8
+   },
+   {
+    "codigo": "E09000014",
+    "nombre": "Haringey",
+    "council_tax_banda_d": 1803.27,
+    "cambio_interanual_pct": 4.99,
+    "puesto": 9
+   },
+   {
+    "codigo": "E09000026",
+    "nombre": "Redbridge",
+    "council_tax_banda_d": 1784.07,
+    "cambio_interanual_pct": 4.99,
+    "puesto": 10
+   },
+   {
+    "codigo": "E09000010",
+    "nombre": "Enfield",
+    "council_tax_banda_d": 1757.16,
+    "cambio_interanual_pct": 4.99,
+    "puesto": 11
+   },
+   {
+    "codigo": "E09000023",
+    "nombre": "Lewisham",
+    "council_tax_banda_d": 1726.82,
+    "cambio_interanual_pct": 4.99,
+    "puesto": 12
+   },
+   {
+    "codigo": "E09000005",
+    "nombre": "Brent",
+    "council_tax_banda_d": 1724.76,
+    "cambio_interanual_pct": 4.99,
+    "puesto": 13
+   },
+   {
+    "codigo": "E09000007",
+    "nombre": "Camden",
+    "council_tax_banda_d": 1697.04,
+    "cambio_interanual_pct": 4.99,
+    "puesto": 14
+   },
+   {
+    "codigo": "E09000002",
+    "nombre": "Barking and Dagenham",
+    "council_tax_banda_d": 1688.0,
+    "cambio_interanual_pct": 4.99,
+    "puesto": 15
+   },
+   {
+    "codigo": "E09000018",
+    "nombre": "Hounslow",
+    "council_tax_banda_d": 1675.05,
+    "cambio_interanual_pct": 4.99,
+    "puesto": 16
+   },
+   {
+    "codigo": "E09000024",
+    "nombre": "Merton",
+    "council_tax_banda_d": 1636.25,
+    "cambio_interanual_pct": 2.01,
+    "puesto": 17
+   },
+   {
+    "codigo": "E09000006",
+    "nombre": "Bromley",
+    "council_tax_banda_d": 1629.53,
+    "cambio_interanual_pct": 4.99,
+    "puesto": 18
+   },
+   {
+    "codigo": "E09000009",
+    "nombre": "Ealing",
+    "council_tax_banda_d": 1628.02,
+    "cambio_interanual_pct": 4.99,
+    "puesto": 19
+   },
+   {
+    "codigo": "E09000003",
+    "nombre": "Barnet",
+    "council_tax_banda_d": 1622.09,
+    "cambio_interanual_pct": 4.98,
+    "puesto": 20
+   },
+   {
+    "codigo": "E09000019",
+    "nombre": "Islington",
+    "council_tax_banda_d": 1597.64,
+    "cambio_interanual_pct": 4.99,
+    "puesto": 21
+   },
+   {
+    "codigo": "E09000011",
+    "nombre": "Greenwich",
+    "council_tax_banda_d": 1597.35,
+    "cambio_interanual_pct": 4.99,
+    "puesto": 22
+   },
+   {
+    "codigo": "E09000012",
+    "nombre": "Hackney",
+    "council_tax_banda_d": 1549.79,
+    "cambio_interanual_pct": 4.99,
+    "puesto": 23
+   },
+   {
+    "codigo": "E09000022",
+    "nombre": "Lambeth",
+    "council_tax_banda_d": 1536.6,
+    "cambio_interanual_pct": 4.99,
+    "puesto": 24
+   },
+   {
+    "codigo": "E09000017",
+    "nombre": "Hillingdon",
+    "council_tax_banda_d": 1534.95,
+    "cambio_interanual_pct": 4.99,
+    "puesto": 25
+   },
+   {
+    "codigo": "E09000028",
+    "nombre": "Southwark",
+    "council_tax_banda_d": 1456.75,
+    "cambio_interanual_pct": 4.99,
+    "puesto": 26
+   },
+   {
+    "codigo": "E09000025",
+    "nombre": "Newham",
+    "council_tax_banda_d": 1433.72,
+    "cambio_interanual_pct": 4.99,
+    "puesto": 27
+   },
+   {
+    "codigo": "E09000030",
+    "nombre": "Tower Hamlets",
+    "council_tax_banda_d": 1327.27,
+    "cambio_interanual_pct": 4.99,
+    "puesto": 28
+   },
+   {
+    "codigo": "E09000020",
+    "nombre": "Kensington and Chelsea",
+    "council_tax_banda_d": 1156.14,
+    "cambio_interanual_pct": 4.99,
+    "puesto": 29
+   },
+   {
+    "codigo": "E09000001",
+    "nombre": "City of London",
+    "council_tax_banda_d": 1153.18,
+    "cambio_interanual_pct": 4.57,
+    "puesto": 30
+   },
+   {
+    "codigo": "E09000013",
+    "nombre": "Hammersmith and Fulham",
+    "council_tax_banda_d": 1009.0,
+    "cambio_interanual_pct": 4.99,
+    "puesto": 31
+   },
+   {
+    "codigo": "E09000033",
+    "nombre": "Westminster",
+    "council_tax_banda_d": 539.04,
+    "cambio_interanual_pct": 1.97,
+    "puesto": 32
+   },
+   {
+    "codigo": "E09000032",
+    "nombre": "Wandsworth",
+    "council_tax_banda_d": 517.7,
+    "cambio_interanual_pct": 2.04,
+    "puesto": 33
+   }
+  ]
+ },
+ "territorio": "City of Westminster",
+ "nota": "Westminster cobra £539.04, puesto 32 de 33 (la más baja es Wandsworth, con £517.70). Westminster y Wandsworth, las dos tarifas más bajas de Londres, también tuvieron el menor incremento interanual (1,97 % y 2,04 %) frente al 4,99 % de la mayoría de boroughs: la política fiscal baja de ambos viene de antes, no es un efecto de este año."
+}

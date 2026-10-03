@@ -1,0 +1,342 @@
+{
+ "tema": "salud",
+ "probado": "2026-10-02",
+ "fuentes": [
+  {
+   "id": "fingertips_vida",
+   "nombre": "OHID Fingertips · Life expectancy at birth (indicador 90366)",
+   "entidad": "OHID",
+   "url": "https://fingertips.phe.org.uk/profile/health-profiles",
+   "resolucion": "autoridad local, por sexo",
+   "vigencia": "2023 - 25",
+   "probado": "2026-10-02",
+   "estado": "vivo",
+   "licencia": "OGL-3.0",
+   "personas": "no",
+   "proteccion": "abierto, solo agregados",
+   "uso": "sección Salud · esperanza de vida por borough",
+   "nota": "Primera fuente de salud del lago. Periodo trienal (2023-25) para suavizar ruido estadístico en áreas pequeñas. El endpoint de metadatos del perfil responde 500; el indicador se encontró leyendo la cabecera del volcado masivo del grupo «Life expectancy and causes of death»."
+  }
+ ],
+ "cifras": {
+  "esperanza_vida_westminster": {
+   "valor": 84.5,
+   "unidad": "años",
+   "fuente": "fingertips_vida",
+   "vigencia": "2023 - 25",
+   "nota": "Promedio simple de hombres y mujeres",
+   "estado": "integrado"
+  },
+  "esperanza_vida_hombres_westminster": {
+   "valor": 82.5,
+   "unidad": "años",
+   "fuente": "fingertips_vida",
+   "vigencia": "2023 - 25",
+   "nota": "",
+   "estado": "integrado"
+  },
+  "esperanza_vida_mujeres_westminster": {
+   "valor": 86.4,
+   "unidad": "años",
+   "fuente": "fingertips_vida",
+   "vigencia": "2023 - 25",
+   "nota": "",
+   "estado": "integrado"
+  },
+  "brecha_mujer_hombre_westminster": {
+   "valor": 3.9,
+   "unidad": "años",
+   "fuente": "fingertips_vida",
+   "vigencia": "2023 - 25",
+   "nota": "Cuántos años más vive una mujer que un hombre, en promedio",
+   "estado": "integrado"
+  },
+  "puesto_esperanza_vida_westminster": {
+   "valor": 3,
+   "unidad": "puesto de 33",
+   "fuente": "fingertips_vida",
+   "vigencia": "2023 - 25",
+   "nota": "1 = la esperanza de vida promedio más alta de los 33 boroughs",
+   "estado": "integrado"
+  },
+  "borough_mas_esperanza_vida": {
+   "valor": "Kensington and Chelsea",
+   "unidad": "borough",
+   "fuente": "fingertips_vida",
+   "vigencia": "2023 - 25",
+   "nota": "85.2 años en promedio",
+   "estado": "integrado"
+  },
+  "borough_menos_esperanza_vida": {
+   "valor": "Barking and Dagenham",
+   "unidad": "borough",
+   "fuente": "fingertips_vida",
+   "vigencia": "2023 - 25",
+   "nota": "80.2 años en promedio",
+   "estado": "integrado"
+  }
+ },
+ "series": {},
+ "listas": {
+  "boroughs": [
+   {
+    "nombre": "Kensington and Chelsea",
+    "hombres": 83.3,
+    "mujeres": 87.1,
+    "promedio": 85.2,
+    "brecha_mujer_hombre": 3.8,
+    "puesto": 1
+   },
+   {
+    "nombre": "Richmond upon Thames",
+    "hombres": 83.1,
+    "mujeres": 87.2,
+    "promedio": 85.2,
+    "brecha_mujer_hombre": 4.1,
+    "puesto": 2
+   },
+   {
+    "nombre": "Westminster",
+    "hombres": 82.5,
+    "mujeres": 86.4,
+    "promedio": 84.5,
+    "brecha_mujer_hombre": 3.9,
+    "puesto": 3
+   },
+   {
+    "nombre": "Barnet",
+    "hombres": 82.7,
+    "mujeres": 86.1,
+    "promedio": 84.4,
+    "brecha_mujer_hombre": 3.4,
+    "puesto": 4
+   },
+   {
+    "nombre": "Harrow",
+    "hombres": 82.3,
+    "mujeres": 86.1,
+    "promedio": 84.2,
+    "brecha_mujer_hombre": 3.8,
+    "puesto": 5
+   },
+   {
+    "nombre": "Kingston upon Thames",
+    "hombres": 82.3,
+    "mujeres": 86.0,
+    "promedio": 84.2,
+    "brecha_mujer_hombre": 3.7,
+    "puesto": 6
+   },
+   {
+    "nombre": "Bromley",
+    "hombres": 82.1,
+    "mujeres": 85.7,
+    "promedio": 83.9,
+    "brecha_mujer_hombre": 3.6,
+    "puesto": 7
+   },
+   {
+    "nombre": "Camden",
+    "hombres": 81.0,
+    "mujeres": 86.0,
+    "promedio": 83.5,
+    "brecha_mujer_hombre": 5.0,
+    "puesto": 8
+   },
+   {
+    "nombre": "Redbridge",
+    "hombres": 81.5,
+    "mujeres": 85.4,
+    "promedio": 83.5,
+    "brecha_mujer_hombre": 3.9,
+    "puesto": 9
+   },
+   {
+    "nombre": "Ealing",
+    "hombres": 81.0,
+    "mujeres": 85.7,
+    "promedio": 83.3,
+    "brecha_mujer_hombre": 4.7,
+    "puesto": 10
+   },
+   {
+    "nombre": "Merton",
+    "hombres": 81.2,
+    "mujeres": 84.9,
+    "promedio": 83.1,
+    "brecha_mujer_hombre": 3.7,
+    "puesto": 11
+   },
+   {
+    "nombre": "Enfield",
+    "hombres": 81.1,
+    "mujeres": 85.0,
+    "promedio": 83.0,
+    "brecha_mujer_hombre": 3.9,
+    "puesto": 12
+   },
+   {
+    "nombre": "Haringey",
+    "hombres": 80.2,
+    "mujeres": 85.7,
+    "promedio": 83.0,
+    "brecha_mujer_hombre": 5.5,
+    "puesto": 13
+   },
+   {
+    "nombre": "Brent",
+    "hombres": 80.2,
+    "mujeres": 85.6,
+    "promedio": 82.9,
+    "brecha_mujer_hombre": 5.4,
+    "puesto": 14
+   },
+   {
+    "nombre": "Hounslow",
+    "hombres": 80.6,
+    "mujeres": 85.0,
+    "promedio": 82.8,
+    "brecha_mujer_hombre": 4.4,
+    "puesto": 15
+   },
+   {
+    "nombre": "Sutton",
+    "hombres": 81.1,
+    "mujeres": 84.6,
+    "promedio": 82.8,
+    "brecha_mujer_hombre": 3.5,
+    "puesto": 16
+   },
+   {
+    "nombre": "Wandsworth",
+    "hombres": 80.5,
+    "mujeres": 85.2,
+    "promedio": 82.8,
+    "brecha_mujer_hombre": 4.7,
+    "puesto": 17
+   },
+   {
+    "nombre": "Hillingdon",
+    "hombres": 80.6,
+    "mujeres": 84.7,
+    "promedio": 82.7,
+    "brecha_mujer_hombre": 4.1,
+    "puesto": 18
+   },
+   {
+    "nombre": "Hammersmith and Fulham",
+    "hombres": 80.5,
+    "mujeres": 84.6,
+    "promedio": 82.5,
+    "brecha_mujer_hombre": 4.1,
+    "puesto": 19
+   },
+   {
+    "nombre": "Havering",
+    "hombres": 80.7,
+    "mujeres": 84.3,
+    "promedio": 82.5,
+    "brecha_mujer_hombre": 3.6,
+    "puesto": 20
+   },
+   {
+    "nombre": "Croydon",
+    "hombres": 80.0,
+    "mujeres": 84.3,
+    "promedio": 82.2,
+    "brecha_mujer_hombre": 4.3,
+    "puesto": 21
+   },
+   {
+    "nombre": "Waltham Forest",
+    "hombres": 80.2,
+    "mujeres": 84.3,
+    "promedio": 82.2,
+    "brecha_mujer_hombre": 4.1,
+    "puesto": 22
+   },
+   {
+    "nombre": "Bexley",
+    "hombres": 80.2,
+    "mujeres": 83.9,
+    "promedio": 82.1,
+    "brecha_mujer_hombre": 3.7,
+    "puesto": 23
+   },
+   {
+    "nombre": "Lambeth",
+    "hombres": 79.4,
+    "mujeres": 84.3,
+    "promedio": 81.8,
+    "brecha_mujer_hombre": 4.9,
+    "puesto": 24
+   },
+   {
+    "nombre": "Newham",
+    "hombres": 79.6,
+    "mujeres": 84.0,
+    "promedio": 81.8,
+    "brecha_mujer_hombre": 4.4,
+    "puesto": 25
+   },
+   {
+    "nombre": "Southwark",
+    "hombres": 79.6,
+    "mujeres": 83.8,
+    "promedio": 81.7,
+    "brecha_mujer_hombre": 4.2,
+    "puesto": 26
+   },
+   {
+    "nombre": "Islington",
+    "hombres": 79.1,
+    "mujeres": 84.1,
+    "promedio": 81.6,
+    "brecha_mujer_hombre": 5.0,
+    "puesto": 27
+   },
+   {
+    "nombre": "Lewisham",
+    "hombres": 79.1,
+    "mujeres": 83.8,
+    "promedio": 81.4,
+    "brecha_mujer_hombre": 4.7,
+    "puesto": 28
+   },
+   {
+    "nombre": "Greenwich",
+    "hombres": 79.6,
+    "mujeres": 83.1,
+    "promedio": 81.3,
+    "brecha_mujer_hombre": 3.5,
+    "puesto": 29
+   },
+   {
+    "nombre": "Tower Hamlets",
+    "hombres": 79.3,
+    "mujeres": 83.2,
+    "promedio": 81.2,
+    "brecha_mujer_hombre": 3.9,
+    "puesto": 30
+   },
+   {
+    "nombre": "Hackney",
+    "hombres": 78.7,
+    "mujeres": 83.3,
+    "promedio": 81.0,
+    "brecha_mujer_hombre": 4.6,
+    "puesto": 31
+   },
+   {
+    "nombre": "Barking and Dagenham",
+    "hombres": 78.2,
+    "mujeres": 82.2,
+    "promedio": 80.2,
+    "brecha_mujer_hombre": 4.0,
+    "puesto": 32
+   }
+  ]
+ },
+ "territorio": "City of Westminster",
+ "nota": "Diferencia entre el borough de mayor y menor esperanza de vida: 5.0 años, dentro de la misma ciudad. City of London queda fuera: la propia fuente no publica el dato porque su población residente es demasiado pequeña para una tasa fiable (no es un fallo del script)."
+}

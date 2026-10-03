@@ -1,6 +1,6 @@
 {
  "tema": "geo",
- "probado": "2026-09-21",
+ "probado": "2026-10-02",
  "fuentes": [
   {
    "id": "ons_geography",
@@ -8,14 +8,14 @@
    "entidad": "ONS",
    "url": "https://geoportal.statistics.gov.uk/",
    "resolucion": "borough y ward",
-   "vigencia": "boroughs 2025-12 · wards 2024-12",
-   "probado": "2026-09-21",
+   "vigencia": "boroughs 2025-12 · wards de Westminster 2024-12 · wards de Londres 2025-12",
+   "probado": "2026-10-02",
    "estado": "vivo",
    "licencia": "OGL-3.0",
    "personas": "no",
    "proteccion": "abierto",
    "uso": "mapa · secciones Territorio y Atlas",
-   "nota": "Capas BGC (generalizadas, clipped) en WGS84. Las dos escalas no son de la misma cosecha: los wards de diciembre de 2025 solo están como MapServer, que devuelve 400 a la consulta, así que se usan los de diciembre de 2024. Contiene OS data © Crown copyright and database right 2024/2025; la atribución de OS va en la vista."
+   "nota": "Capas BGC (generalizadas, clipped) en WGS84. Dos capas de wards conviven: wards_westminster (solo ese borough, cosecha 2024) y wards_londres (los 704 de los 33 boroughs, cosecha 2025, más nueva). Contiene OS data © Crown copyright and database right 2024/2025; la atribución de OS va en la vista."
   }
  ],
  "cifras": {
@@ -33,6 +33,14 @@
    "fuente": "ons_geography",
    "vigencia": "2024-12",
    "nota": "Divisiones electorales dentro de City of Westminster",
+   "estado": "integrado"
+  },
+  "wards_londres_n": {
+   "valor": 704,
+   "unidad": "wards",
+   "fuente": "ons_geography",
+   "vigencia": "2025-12",
+   "nota": "Divisiones electorales en los 33 boroughs de Greater London",
    "estado": "integrado"
   }
  },
@@ -57,6 +65,140 @@
    "Vincent Square",
    "West End",
    "Westbourne"
+  ],
+  "wards_por_borough": [
+   {
+    "borough": "Croydon",
+    "wards_n": 28
+   },
+   {
+    "borough": "City of London",
+    "wards_n": 25
+   },
+   {
+    "borough": "Enfield",
+    "wards_n": 25
+   },
+   {
+    "borough": "Lambeth",
+    "wards_n": 25
+   },
+   {
+    "borough": "Ealing",
+    "wards_n": 24
+   },
+   {
+    "borough": "Barnet",
+    "wards_n": 24
+   },
+   {
+    "borough": "Newham",
+    "wards_n": 24
+   },
+   {
+    "borough": "Southwark",
+    "wards_n": 23
+   },
+   {
+    "borough": "Greenwich",
+    "wards_n": 23
+   },
+   {
+    "borough": "Redbridge",
+    "wards_n": 22
+   },
+   {
+    "borough": "Brent",
+    "wards_n": 22
+   },
+   {
+    "borough": "Harrow",
+    "wards_n": 22
+   },
+   {
+    "borough": "Hounslow",
+    "wards_n": 22
+   },
+   {
+    "borough": "Waltham Forest",
+    "wards_n": 22
+   },
+   {
+    "borough": "Bromley",
+    "wards_n": 22
+   },
+   {
+    "borough": "Wandsworth",
+    "wards_n": 22
+   },
+   {
+    "borough": "Hackney",
+    "wards_n": 21
+   },
+   {
+    "borough": "Hillingdon",
+    "wards_n": 21
+   },
+   {
+    "borough": "Haringey",
+    "wards_n": 21
+   },
+   {
+    "borough": "Hammersmith and Fulham",
+    "wards_n": 21
+   },
+   {
+    "borough": "Tower Hamlets",
+    "wards_n": 20
+   },
+   {
+    "borough": "Camden",
+    "wards_n": 20
+   },
+   {
+    "borough": "Sutton",
+    "wards_n": 20
+   },
+   {
+    "borough": "Merton",
+    "wards_n": 20
+   },
+   {
+    "borough": "Havering",
+    "wards_n": 20
+   },
+   {
+    "borough": "Lewisham",
+    "wards_n": 19
+   },
+   {
+    "borough": "Kingston upon Thames",
+    "wards_n": 19
+   },
+   {
+    "borough": "Barking and Dagenham",
+    "wards_n": 19
+   },
+   {
+    "borough": "Kensington and Chelsea",
+    "wards_n": 18
+   },
+   {
+    "borough": "Richmond upon Thames",
+    "wards_n": 18
+   },
+   {
+    "borough": "Westminster",
+    "wards_n": 18
+   },
+   {
+    "borough": "Bexley",
+    "wards_n": 17
+   },
+   {
+    "borough": "Islington",
+    "wards_n": 17
+   }
   ]
  },
  "ambito": "Greater London · foco City of Westminster",
@@ -70,6 +212,11 @@
    "archivo": "territorio/wards_westminster.geojson",
    "features": 18,
    "bytes": 10751
+  },
+  "wards_londres": {
+   "archivo": "territorio/wards_londres.geojson",
+   "features": 704,
+   "bytes": 637060
   }
  }
 }
