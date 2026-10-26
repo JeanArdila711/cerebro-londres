@@ -153,8 +153,9 @@ fuentes = [
      "personas": "no", "proteccion": "abierto", "uso": "sección Atlas · coropleta del mapa",
      "nota": ("Columnas: poblacion (ONS mid-year, vía Nomis), area_km2 (calculada sobre el "
               "polígono ONS), densidad (derivada) y precio_medio_gbp (UK HPI). El área se "
-              "calcula por área esférica sobre la capa generalizada: sirve para densidad, "
-              "no para catastro. ODbL no aplica aquí; ninguna columna viene de OSM.")},
+              "proyecta a metros (Transverse Mercator del British National Grid, EPSG:27700) "
+              "sobre la capa generalizada: sirve para densidad, no para catastro. ODbL no "
+              "aplica aquí; ninguna columna viene de OSM.")},
 ]
 
 p_dens, n_dens, orden_dens = puesto("densidad_hab_km2")
