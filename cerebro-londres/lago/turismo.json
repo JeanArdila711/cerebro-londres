@@ -1,15 +1,15 @@
 {
  "tema": "turismo",
- "probado": "2026-09-21",
+ "probado": "2026-10-26",
  "fuentes": [
   {
    "id": "osm_overpass",
    "nombre": "OpenStreetMap · Overpass API",
    "entidad": "OSM",
-   "url": "https://overpass-api.de/api/interpreter",
+   "url": "https://wiki.openstreetmap.org/wiki/Overpass_API",
    "resolucion": "punto (dentro del borough)",
-   "vigencia": "2026-09-21",
-   "probado": "2026-09-21",
+   "vigencia": "2026-10-26",
+   "probado": "2026-10-26",
    "estado": "vivo",
    "licencia": "ODbL-1.0",
    "personas": "no",
@@ -20,26 +20,26 @@
  ],
  "cifras": {
   "alojamientos_n": {
-   "valor": 521,
+   "valor": 522,
    "unidad": "establecimientos",
    "fuente": "osm_overpass",
-   "vigencia": "2026-09-21",
+   "vigencia": "2026-10-26",
    "nota": "Hoteles, hostales, casas de huéspedes y apartamentos en City of Westminster",
    "estado": "integrado"
   },
   "hoteles_n": {
-   "valor": 465,
+   "valor": 467,
    "unidad": "hoteles",
    "fuente": "osm_overpass",
-   "vigencia": "2026-09-21",
+   "vigencia": "2026-10-26",
    "nota": "Etiquetados tourism=hotel",
    "estado": "integrado"
   },
   "atracciones_n": {
-   "valor": 515,
+   "valor": 517,
    "unidad": "puntos",
    "fuente": "osm_overpass",
-   "vigencia": "2026-09-21",
+   "vigencia": "2026-10-26",
    "nota": "Atracciones, museos, galerías, obras de arte y miradores",
    "estado": "integrado"
   },
@@ -47,16 +47,16 @@
    "valor": 33,
    "unidad": "museos",
    "fuente": "osm_overpass",
-   "vigencia": "2026-09-21",
+   "vigencia": "2026-10-26",
    "nota": "Etiquetados tourism=museum",
    "estado": "integrado"
   },
   "habitaciones_declaradas": {
-   "valor": 20108,
+   "valor": 20064,
    "unidad": "habitaciones",
    "fuente": "osm_overpass",
-   "vigencia": "2026-09-21",
-   "nota": "Cota INFERIOR: solo 233 de 521 alojamientos declaran «rooms» en OSM",
+   "vigencia": "2026-10-26",
+   "nota": "Cota INFERIOR: solo 232 de 522 alojamientos declaran «rooms» en OSM",
    "estado": "integrado"
   }
  },
@@ -65,11 +65,11 @@
   "alojamiento_por_tipo": [
    [
     "hotel",
-    465
+    467
    ],
    [
     "apartment",
-    26
+    25
    ],
    [
     "hostel",
@@ -83,7 +83,7 @@
   "atracciones_por_tipo": [
    [
     "artwork",
-    255
+    257
    ],
    [
     "attraction",

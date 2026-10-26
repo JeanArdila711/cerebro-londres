@@ -60,7 +60,7 @@ print(f"  puntos de bici  : {len(ciclo):>4}")
 
 fuentes = [
     {"id": "osm_transporte", "nombre": "OpenStreetMap · Overpass API (transporte)",
-     "entidad": "OSM", "url": "https://overpass-api.de/api/interpreter",
+     "entidad": "OSM", "url": "https://wiki.openstreetmap.org/wiki/Overpass_API",
      "resolucion": "punto (dentro del área oficial del borough)",
      "vigencia": C.hoy(), "probado": C.hoy(), "estado": "vivo", "licencia": "ODbL-1.0",
      "personas": "no", "proteccion": "abierto", "uso": "sección Territorio · infraestructura",
@@ -68,7 +68,7 @@ fuentes = [
               f"ref:gss={FOCO_COD}: se cruza por código, no por nombre. Cobertura voluntaria.")},
     # La fuente que NO sirvió también se declara, aquí y en el catálogo
     {"id": "tfl_stoppoint", "nombre": "TfL Unified API · StopPoint",
-     "entidad": "TfL", "url": "https://api.tfl.gov.uk/StopPoint",
+     "entidad": "TfL", "url": "https://api-portal.tfl.gov.uk/api-details#api=StopPoint",
      "resolucion": "parada", "vigencia": "—", "probado": C.hoy(), "estado": "caido",
      "licencia": "terminos-del-servicio", "personas": "no", "proteccion": "abierto",
      "uso": "descartada para esta sección",

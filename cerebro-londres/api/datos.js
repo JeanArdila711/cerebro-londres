@@ -17,7 +17,9 @@ module.exports = (req, res) => {
   const esGeo = GEO.test(f);
   if (!esTema && !esGeo) return res.status(404).end();
 
-  const base = process.cwd();
+  // __dirname (no process.cwd()) porque es la ruta que Vercel garantiza estable
+  // para los archivos que `includeFiles` empaqueta junto a la función.
+  const base = path.join(__dirname, '..');
   const destino = esTema ? path.join(base, 'lago', f) : path.join(base, f);
 
   // Cinturón y tirantes: aunque la lista blanca ya lo impide, se comprueba que

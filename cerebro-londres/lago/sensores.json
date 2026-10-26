@@ -1,6 +1,6 @@
 {
  "tema": "sensores",
- "probado": "2026-09-21",
+ "probado": "2026-10-26",
  "fuentes": [
   {
    "id": "open_meteo_clima",
@@ -8,8 +8,8 @@
    "entidad": "Open-Meteo",
    "url": "https://open-meteo.com/en/docs",
    "resolucion": "punto (centroide del borough)",
-   "vigencia": "2026-09-21T19:45",
-   "probado": "2026-09-21",
+   "vigencia": "2026-10-26T22:30",
+   "probado": "2026-10-26",
    "estado": "vivo",
    "licencia": "CC-BY-4.0",
    "personas": "no",
@@ -23,8 +23,8 @@
    "entidad": "Open-Meteo",
    "url": "https://open-meteo.com/en/docs/air-quality-api",
    "resolucion": "punto (centroide del borough)",
-   "vigencia": "2026-09-21T19:00",
-   "probado": "2026-09-21",
+   "vigencia": "2026-10-26T22:00",
+   "probado": "2026-10-26",
    "estado": "vivo",
    "licencia": "CC-BY-4.0",
    "personas": "no",
@@ -36,10 +36,10 @@
    "id": "tfl_airquality",
    "nombre": "TfL · AirQuality API",
    "entidad": "TfL",
-   "url": "https://api.tfl.gov.uk/AirQuality",
+   "url": "https://api-portal.tfl.gov.uk/api-details#api=AirQuality",
    "resolucion": "Greater London",
-   "vigencia": "2026-09-21",
-   "probado": "2026-09-21",
+   "vigencia": "2026-10-26",
+   "probado": "2026-10-26",
    "estado": "vivo",
    "licencia": "terminos-del-servicio",
    "personas": "no",
@@ -50,66 +50,66 @@
  ],
  "cifras": {
   "temperatura_actual": {
-   "valor": 22.3,
+   "valor": 16.0,
    "unidad": "°C",
    "fuente": "open_meteo_clima",
-   "vigencia": "2026-09-21T19:45",
+   "vigencia": "2026-10-26T22:30",
    "nota": "Temperatura a 2 m",
    "estado": "integrado"
   },
   "humedad_actual": {
-   "valor": 43,
+   "valor": 90,
    "unidad": "%",
    "fuente": "open_meteo_clima",
-   "vigencia": "2026-09-21T19:45",
+   "vigencia": "2026-10-26T22:30",
    "nota": "Humedad relativa",
    "estado": "integrado"
   },
   "viento_actual": {
-   "valor": 6.5,
+   "valor": 18.4,
    "unidad": "km/h",
    "fuente": "open_meteo_clima",
-   "vigencia": "2026-09-21T19:45",
+   "vigencia": "2026-10-26T22:30",
    "nota": "Viento a 10 m",
    "estado": "integrado"
   },
   "nubosidad_actual": {
-   "valor": 6,
+   "valor": 98,
    "unidad": "%",
    "fuente": "open_meteo_clima",
-   "vigencia": "2026-09-21T19:45",
+   "vigencia": "2026-10-26T22:30",
    "nota": "Cobertura de nubes",
    "estado": "integrado"
   },
   "pm25_actual": {
-   "valor": 7.6,
+   "valor": 4.2,
    "unidad": "µg/m³",
    "fuente": "open_meteo_aire",
-   "vigencia": "2026-09-21T19:00",
+   "vigencia": "2026-10-26T22:00",
    "nota": "PM2.5 (modelo CAMS)",
    "estado": "integrado"
   },
   "pm10_actual": {
-   "valor": 15.1,
+   "valor": 8.6,
    "unidad": "µg/m³",
    "fuente": "open_meteo_aire",
-   "vigencia": "2026-09-21T19:00",
+   "vigencia": "2026-10-26T22:00",
    "nota": "PM10 (modelo CAMS)",
    "estado": "integrado"
   },
   "no2_actual": {
-   "valor": 43.7,
+   "valor": 7.6,
    "unidad": "µg/m³",
    "fuente": "open_meteo_aire",
-   "vigencia": "2026-09-21T19:00",
+   "vigencia": "2026-10-26T22:00",
    "nota": "Dióxido de nitrógeno (modelo CAMS)",
    "estado": "integrado"
   },
   "aqi_europeo": {
-   "valor": 51,
+   "valor": 17,
    "unidad": "índice",
    "fuente": "open_meteo_aire",
-   "vigencia": "2026-09-21T19:00",
+   "vigencia": "2026-10-26T22:00",
    "nota": "Índice europeo de calidad del aire",
    "estado": "integrado"
   },
@@ -117,8 +117,8 @@
    "valor": "Low",
    "unidad": "banda",
    "fuente": "tfl_airquality",
-   "vigencia": "2026-09-21",
-   "nota": "Low air pollution forecast valid from Monday 21 September to end of Monday 21 September GMT",
+   "vigencia": "2026-10-26",
+   "nota": "Low air pollution forecast valid from Monday 26 October to end of Monday 26 October GMT",
    "estado": "integrado"
   }
  },
@@ -128,32 +128,32 @@
    "unidad": "°C",
    "puntos": [
     [
-     "2026-09-21",
-     23.4
+     "2026-10-26",
+     16.3
     ],
     [
-     "2026-09-22",
-     24.9
+     "2026-10-27",
+     16.3
     ],
     [
-     "2026-09-23",
-     23.1
+     "2026-10-28",
+     15.6
     ],
     [
-     "2026-09-24",
-     18.1
+     "2026-10-29",
+     13.4
     ],
     [
-     "2026-09-25",
-     22.2
+     "2026-10-30",
+     14.4
     ],
     [
-     "2026-09-26",
-     18.0
+     "2026-10-31",
+     14.7
     ],
     [
-     "2026-09-27",
-     19.6
+     "2026-11-01",
+     11.4
     ]
    ]
   },
@@ -162,32 +162,32 @@
    "unidad": "°C",
    "puntos": [
     [
-     "2026-09-21",
-     11.2
+     "2026-10-26",
+     9.1
     ],
     [
-     "2026-09-22",
-     16.7
+     "2026-10-27",
+     9.8
     ],
     [
-     "2026-09-23",
-     12.9
+     "2026-10-28",
+     8.8
     ],
     [
-     "2026-09-24",
-     10.0
+     "2026-10-29",
+     8.7
     ],
     [
-     "2026-09-25",
-     12.0
+     "2026-10-30",
+     8.6
     ],
     [
-     "2026-09-26",
-     13.5
+     "2026-10-31",
+     9.0
     ],
     [
-     "2026-09-27",
-     14.2
+     "2026-11-01",
+     9.5
     ]
    ]
   },
@@ -196,31 +196,31 @@
    "unidad": "mm",
    "puntos": [
     [
-     "2026-09-21",
+     "2026-10-26",
+     3.0
+    ],
+    [
+     "2026-10-27",
+     2.7
+    ],
+    [
+     "2026-10-28",
      0.0
     ],
     [
-     "2026-09-22",
+     "2026-10-29",
      0.0
     ],
     [
-     "2026-09-23",
-     0.2
-    ],
-    [
-     "2026-09-24",
+     "2026-10-30",
      0.0
     ],
     [
-     "2026-09-25",
+     "2026-10-31",
      0.0
     ],
     [
-     "2026-09-26",
-     0.0
-    ],
-    [
-     "2026-09-27",
+     "2026-11-01",
      0.0
     ]
    ]
@@ -230,52 +230,52 @@
    "unidad": "µg/m³",
    "puntos": [
     [
-     "2026-09-14",
+     "2026-10-19",
+     9.5
+    ],
+    [
+     "2026-10-20",
+     18.1
+    ],
+    [
+     "2026-10-21",
      4.4
     ],
     [
-     "2026-09-15",
-     4.3
+     "2026-10-22",
+     4.0
     ],
     [
-     "2026-09-16",
-     3.5
+     "2026-10-23",
+     2.8
     ],
     [
-     "2026-09-17",
-     4.6
+     "2026-10-24",
+     3.1
     ],
     [
-     "2026-09-18",
-     7.3
+     "2026-10-25",
+     3.4
     ],
     [
-     "2026-09-19",
-     5.1
+     "2026-10-26",
+     4.2
     ],
     [
-     "2026-09-20",
-     5.5
+     "2026-10-27",
+     3.8
     ],
     [
-     "2026-09-21",
-     11.2
+     "2026-10-28",
+     6.3
     ],
     [
-     "2026-09-22",
-     12.9
+     "2026-10-29",
+     14.4
     ],
     [
-     "2026-09-23",
-     10.8
-    ],
-    [
-     "2026-09-24",
-     6.0
-    ],
-    [
-     "2026-09-25",
-     13.3
+     "2026-10-30",
+     29.0
     ]
    ]
   }

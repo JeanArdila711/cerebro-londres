@@ -86,7 +86,7 @@ try:
     if fc.get("forecastBand"):
         fuentes.append({
             "id": "tfl_airquality", "nombre": "TfL · AirQuality API", "entidad": "TfL",
-            "url": "https://api.tfl.gov.uk/AirQuality", "resolucion": "Greater London",
+            "url": "https://api-portal.tfl.gov.uk/api-details#api=AirQuality", "resolucion": "Greater London",
             "vigencia": (fc.get("fromDate") or C.hoy())[:10], "probado": C.hoy(),
             "estado": "vivo", "licencia": "terminos-del-servicio", "personas": "no",
             "proteccion": "abierto", "uso": "sección Ambiente",

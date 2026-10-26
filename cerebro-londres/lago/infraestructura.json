@@ -1,15 +1,15 @@
 {
  "tema": "infraestructura",
- "probado": "2026-09-21",
+ "probado": "2026-10-26",
  "fuentes": [
   {
    "id": "osm_transporte",
    "nombre": "OpenStreetMap · Overpass API (transporte)",
    "entidad": "OSM",
-   "url": "https://overpass-api.de/api/interpreter",
+   "url": "https://wiki.openstreetmap.org/wiki/Overpass_API",
    "resolucion": "punto (dentro del área oficial del borough)",
-   "vigencia": "2026-09-21",
-   "probado": "2026-09-21",
+   "vigencia": "2026-10-26",
+   "probado": "2026-10-26",
    "estado": "vivo",
    "licencia": "ODbL-1.0",
    "personas": "no",
@@ -21,10 +21,10 @@
    "id": "tfl_stoppoint",
    "nombre": "TfL Unified API · StopPoint",
    "entidad": "TfL",
-   "url": "https://api.tfl.gov.uk/StopPoint",
+   "url": "https://api-portal.tfl.gov.uk/api-details#api=StopPoint",
    "resolucion": "parada",
    "vigencia": "—",
-   "probado": "2026-09-21",
+   "probado": "2026-10-26",
    "estado": "caido",
    "licencia": "terminos-del-servicio",
    "personas": "no",
@@ -38,23 +38,23 @@
    "valor": 35,
    "unidad": "estaciones",
    "fuente": "osm_transporte",
-   "vigencia": "2026-09-21",
+   "vigencia": "2026-10-26",
    "nota": "Estaciones de metro y tren con nombre dentro de City of Westminster",
    "estado": "integrado"
   },
   "paradas_bus_n": {
-   "valor": 536,
+   "valor": 521,
    "unidad": "paradas",
    "fuente": "osm_transporte",
-   "vigencia": "2026-09-21",
+   "vigencia": "2026-10-26",
    "nota": "Paradas de autobús mapeadas en OpenStreetMap",
    "estado": "integrado"
   },
   "bicicleta_puntos_n": {
-   "valor": 182,
+   "valor": 183,
    "unidad": "puntos",
    "fuente": "osm_transporte",
-   "vigencia": "2026-09-21",
+   "vigencia": "2026-10-26",
    "nota": "Puntos de alquiler de bicicleta",
    "estado": "integrado"
   }

@@ -66,7 +66,7 @@ fuentes = [{
     "id": "osm_overpass",
     "nombre": "OpenStreetMap · Overpass API",
     "entidad": "OSM",
-    "url": "https://overpass-api.de/api/interpreter",
+    "url": "https://wiki.openstreetmap.org/wiki/Overpass_API",
     "resolucion": "punto (dentro del borough)",
     "vigencia": C.hoy(),
     "probado": C.hoy(),
