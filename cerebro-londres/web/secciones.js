@@ -6,6 +6,80 @@ window.SECCIONES = (function () {
   const librasDec = n => '£' + new Intl.NumberFormat('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(n);
   let LAGO = {};
 
+  // Motor de calibración e interpolación numérica en tiempo real (60fps, tabular-nums, respeta reduced-motion)
+  const sinMovimiento = () => window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function contarDecimales(num) {
+    if (typeof num !== 'number' || Number.isInteger(num)) return 0;
+    const s = String(num);
+    const i = s.indexOf('.');
+    return i === -1 ? 0 : Math.min(2, s.length - i - 1);
+  }
+
+  function formatearInterpolado(val, dec, fnFormato) {
+    const redondeado = dec > 0 ? Number(val.toFixed(dec)) : Math.round(val);
+    if (fnFormato === libras) return libras(redondeado);
+    if (fnFormato === librasDec) return librasDec(val);
+    if (fnFormato) return fnFormato(redondeado);
+    if (dec > 0) {
+      return new Intl.NumberFormat('es-ES', {
+        minimumFractionDigits: dec,
+        maximumFractionDigits: dec
+      }).format(redondeado);
+    }
+    return fmt(redondeado);
+  }
+
+  function animarNumeroElemento(el, desde, hasta, duracion = 780, delay = 0, fnFormato = null, dec = 0, onTick = null) {
+    if (!el || typeof hasta !== 'number' || isNaN(hasta)) return;
+    if (el._rafNum) {
+      cancelAnimationFrame(el._rafNum);
+      el._rafNum = 0;
+    }
+    if (sinMovimiento() || Math.abs(hasta - desde) < 1e-6) {
+      el.textContent = formatearInterpolado(hasta, dec, fnFormato);
+      if (onTick) onTick(1);
+      return;
+    }
+
+    let inicioTs = null;
+    const paso = ts => {
+      if (inicioTs === null) inicioTs = ts;
+      const transcurrido = ts - inicioTs - delay;
+      if (transcurrido < 0) {
+        el._rafNum = requestAnimationFrame(paso);
+        return;
+      }
+      const t = Math.min(1, transcurrido / duracion);
+      // Curva de frenado de instrumento de precisión (easeOutExpo)
+      const ease = t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+      const actual = desde + (hasta - desde) * ease;
+      el.textContent = formatearInterpolado(actual, dec, fnFormato);
+      if (onTick) onTick(ease);
+
+      if (t < 1) {
+        el._rafNum = requestAnimationFrame(paso);
+      } else {
+        el._rafNum = 0;
+        el.textContent = formatearInterpolado(hasta, dec, fnFormato);
+        if (onTick) onTick(1);
+      }
+    };
+    el._rafNum = requestAnimationFrame(paso);
+  }
+
+  // Observador de entrada en pantalla para calibrar cada baldosa (.tile) una sola vez
+  const ioTiles = typeof IntersectionObserver !== 'undefined'
+    ? new IntersectionObserver(entries => {
+        entries.forEach(en => {
+          if (!en.isIntersecting) return;
+          const b = en.target;
+          ioTiles.unobserve(b);
+          if (typeof b._calibrar === 'function') b._calibrar();
+        });
+      }, { threshold: 0.18 })
+    : null;
+
   function cifra(tema, clave) {
     const t = LAGO[tema];
     return t && t.cifras ? t.cifras[clave] : null;
@@ -16,26 +90,116 @@ window.SECCIONES = (function () {
     return t && t.fuentes ? t.fuentes.find(f => f.id === id) : null;
   }
 
-  // Una baldosa = una cifra + su vigencia visible + su ficha al tocarla.
+  // Una baldosa = una cifra + su vigencia visible + su ficha al tocarla + micro-visualización contextual.
   // La vigencia va pegada a la cifra, no en una nota al pie.
-  function tile(tema, clave, etiqueta, formato, destacado = false) {
+  function unidadEsCategorica(unidad) {
+    return ['borough', 'categoría', 'LSOA'].includes(unidad);
+  }
+
+  function tile(tema, clave, etiqueta, formato, destacado = false, extra = {}) {
     const c = cifra(tema, clave);
     if (!c) return null;
     const b = document.createElement('button');
     b.type = 'button';
     b.className = 'tile' + (destacado ? ' tileDestacado' : '');
     const valor = formato ? formato(c.valor) : fmt(c.valor);
-    const omitirUnidad = ['borough', 'categoría', 'LSOA'].includes(c.unidad);
+    const omitirUnidad = unidadEsCategorica(c.unidad);
     const f = fuenteDe(tema, c.fuente) || {};
+    const G = window.GRAFICOS;
+
+    // Micro-visualización automática o por opción:
+    // 1. Si trae serie temporal (extra.spark), dibuja sparkline Tufte.
+    // 2. Si la unidad es "puesto de N" (p. ej. "puesto de 33", "puesto de 32", "puesto de 14"), dibuja regla de posición.
+    let microHtml = '';
+    if (extra.spark && G && G.sparkline) {
+      microHtml = G.sparkline(extra.spark);
+    } else if (G && G.rangoMetropolitano && typeof c.unidad === 'string') {
+      const mPuesto = c.unidad.match(/puesto de (\d+)/i);
+      if (mPuesto) {
+        microHtml = G.rangoMetropolitano(c.valor, Number(mPuesto[1]));
+      }
+    }
+
     b.innerHTML =
       `<div class="tileTop">` +
         `<span class="l">${etiqueta}</span>` +
         `<span class="tileFichaTag" aria-hidden="true">FICHA ↗</span>` +
       `</div>` +
-      `<span class="v">${valor}${omitirUnidad ? '' : `<span class="u">${c.unidad}</span>`}</span>` +
+      `<div class="tileCuerpoValor">` +
+        `<span class="v"><span class="vNum">${valor}</span>${omitirUnidad ? '' : `<span class="u">${c.unidad}</span>`}</span>` +
+        microHtml +
+      `</div>` +
       (destacado && c.nota ? `<span class="nota">${c.nota}</span>` : '') +
       `<span class="vig">${c.vigencia} · ${f.entidad || c.fuente}</span>`;
     b.addEventListener('click', () => abrirFicha(tema, clave, etiqueta));
+
+    // Configurar calibración numérica sincronizada con el sparkline o la regla de posición al entrar en viewport
+    if (typeof c.valor === 'number' && !sinMovimiento()) {
+      const spanNum = b.querySelector('.vNum');
+      const sparkPath = b.querySelector('.sparkPath');
+      const sparkArea = b.querySelector('.sparkArea');
+      const rangoFill = b.querySelector('.tileRangoFill');
+      const rangoPin = b.querySelector('.tileRangoPin');
+
+      const dec = formato === librasDec ? 2 : (formato === libras ? 0 : contarDecimales(c.valor));
+      // Punto de arranque inteligente:
+      // - Esperanza de vida (años > 50): arranca en 65,0 para sentirse como calibración real
+      // - Puestos (1..33): arrancan desde el fondo de la tabla (33) subiendo hasta su puesto real
+      // - Resto de cifras: arrancan desde 0
+      const esPuesto = typeof c.unidad === 'string' && /puesto de (\d+)/i.test(c.unidad);
+      const totalPuesto = esPuesto ? Number(c.unidad.match(/puesto de (\d+)/i)[1]) : 33;
+      const valorInicio = esPuesto
+        ? totalPuesto
+        : (c.unidad === 'años' && c.valor > 50 ? 65 : 0);
+
+      let pctFinalRango = 0;
+      if (rangoPin && rangoPin.style.left) {
+        pctFinalRango = parseFloat(rangoPin.style.left) || 0;
+      }
+
+      b._calibrar = () => {
+        const idxStagger = Number(b.style.getPropertyValue('--i')) || 0;
+        const delayMs = Math.min(idxStagger, 8) * 45;
+
+        if (sparkPath && typeof sparkPath.getTotalLength === 'function') {
+          try {
+            const len = sparkPath.getTotalLength();
+            sparkPath.style.strokeDasharray = `${len}`;
+            sparkPath.style.strokeDashoffset = `${len}`;
+            sparkPath.animate(
+              [{ strokeDashoffset: len }, { strokeDashoffset: 0 }],
+              { duration: 820, delay: delayMs, easing: 'cubic-bezier(0.16, 1, 0.3, 1)', fill: 'forwards' }
+            );
+            if (sparkArea) {
+              sparkArea.animate(
+                [{ opacity: 0 }, { opacity: 1 }],
+                { duration: 640, delay: delayMs + 160, easing: 'ease-out', fill: 'forwards' }
+              );
+            }
+          } catch (_) {}
+        }
+
+        animarNumeroElemento(
+          spanNum,
+          valorInicio,
+          c.valor,
+          820,
+          delayMs,
+          formato,
+          dec,
+          ease => {
+            if (rangoFill && rangoPin) {
+              const pctActual = 100 - (100 - pctFinalRango) * ease;
+              rangoFill.style.width = `${pctActual.toFixed(1)}%`;
+              rangoPin.style.left = `${pctActual.toFixed(1)}%`;
+            }
+          }
+        );
+      };
+
+      if (ioTiles) ioTiles.observe(b);
+    }
+
     return b;
   }
 
@@ -43,7 +207,7 @@ window.SECCIONES = (function () {
     const c = cifra(tema, clave), f = fuenteDe(tema, c.fuente), t = LAGO[tema];
     if (!c) return;
     const campos = [
-      ['Cifra auditada', `${fmt(c.valor)} ${c.unidad}`],
+      ['Cifra auditada', unidadEsCategorica(c.unidad) ? fmt(c.valor) : `${fmt(c.valor)} ${c.unidad}`],
       ['Vigencia del dato', c.vigencia],
       ['Definición / Nota', c.nota || '—'],
       ['Conjunto de origen', f ? f.nombre : c.fuente],
@@ -141,17 +305,26 @@ window.SECCIONES = (function () {
     // =========================================================================
     // 01 · PANORAMA: LAS SEIS PREGUNTAS DEL CONCEJAL
     // =========================================================================
+    const seriePobPan = LAGO.demografia && LAGO.demografia.series && LAGO.demografia.series.poblacion_westminster;
+    const seriePrecioPan = LAGO.economia && LAGO.economia.series && LAGO.economia.series.precio_medio_city_of_westminster;
+    const serieDelitosPan = LAGO.seguridad && LAGO.seguridad.series && LAGO.seguridad.series.delitos_mensuales;
+    const serieWikiPan = LAGO.escucha && LAGO.escucha.series && LAGO.escucha.series.wiki_westminster;
+
     const pan = seccion('panorama', 'SÍNTESIS EJECUTIVA · E09000033', 'Panorama del City of Westminster',
       'Seis preguntas de partida que haría un concejal del City of Westminster (E09000033). ' +
       'Cada respuesta proviene de una cifra viva del lago con su vigencia y su entidad publicadora. ' +
       'Seleccione cualquier baldosa para inspeccionar su ficha técnica.');
     pan.appendChild(rejilla([
-      tile('demografia', 'poblacion_westminster', '¿Cuánta gente reside aquí?', null, true),
-      tile('economia', 'precio_medio_westminster', '¿Cuánto cuesta una vivienda media?', libras, true),
-      tile('seguridad', 'delitos_ultimo_mes', '¿Qué registra la policía en un mes?', null, true),
+      tile('demografia', 'poblacion_westminster', '¿Cuánta gente reside aquí?', null, true,
+        { spark: seriePobPan ? seriePobPan.puntos : null }),
+      tile('economia', 'precio_medio_westminster', '¿Cuánto cuesta una vivienda media?', libras, true,
+        { spark: seriePrecioPan ? seriePrecioPan.puntos : null }),
+      tile('seguridad', 'delitos_ultimo_mes', '¿Qué registra la policía en un mes?', null, true,
+        { spark: serieDelitosPan ? serieDelitosPan.puntos : null }),
       tile('turismo', 'alojamientos_n', '¿Cuánto pesa la planta turística?'),
       tile('infraestructura', 'estaciones_n', '¿Qué infraestructura ferroviaria hay?'),
-      tile('escucha', 'vistas_ultimo_mes', '¿Cuánta atención pública despierta?'),
+      tile('escucha', 'vistas_ultimo_mes', '¿Cuánta atención pública despierta?', null, false,
+        { spark: serieWikiPan ? serieWikiPan.puntos : null }),
     ], 'rejillaPanorama'));
     pan.appendChild(aviso(
       '<strong>Nota de gobernanza · Límites y silencios del sistema</strong> ' +
@@ -413,23 +586,482 @@ window.SECCIONES = (function () {
     ]));
 
     const bs = LAGO.atlas_boroughs && LAGO.atlas_boroughs.listas.boroughs;
+    // Unificar las variables de los 33 boroughs por código GSS y nombre normalizado (para Atlas y Correlaciones)
+    let mapaB = {};
+    let listaUnificada = [];
     if (bs) {
-      const orden = bs.slice().sort((x, y) => (y.precio_medio_gbp || 0) - (x.precio_medio_gbp || 0));
-      a.appendChild(bloque('Jerarquía metropolitana por precio medio de vivienda (£)', '33 boroughs · Westminster en bermellón',
-        G.barras(orden.map(b => [b.nombre, b.precio_medio_gbp || 0, b.codigo === 'E09000033']),
-          { formato: libras, anchoEtiqueta: 205 })));
-      a.appendChild(bloque('Cuadro estadístico consolidado de Greater London', 'Ordenado de mayor a menor precio residencial',
-        tabla(
-          ['Borough', 'Código GSS', 'Población', 'Superficie (km²)', 'Densidad (hab/km²)', 'Precio medio (£)'],
-          orden.map(b => [
-            b.nombre,
+      const normNom = s => String(s || '').toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]/g, '');
+      const nombreACod = {};
+      bs.forEach(b => {
+        mapaB[b.codigo] = {
+          codigo: b.codigo,
+          nombre: b.nombre,
+          foco: b.codigo === 'E09000033',
+          area: b.area_km2,
+          densidad: b.densidad_hab_km2,
+          poblacion: b.poblacion,
+          precio: b.precio_medio_gbp
+        };
+        nombreACod[normNom(b.nombre)] = b.codigo;
+      });
+      ((LAGO.finanzas || {}).listas || {}).boroughs?.forEach(b => {
+        if (mapaB[b.codigo]) mapaB[b.codigo].tax = b.council_tax_banda_d;
+      });
+      ((LAGO.privacion || {}).listas || {}).ranking_boroughs?.forEach(b => {
+        const c = nombreACod[normNom(b.nombre)];
+        if (c && mapaB[c]) mapaB[c].imd = b.score_medio;
+      });
+      ((LAGO.salud || {}).listas || {}).boroughs?.forEach(b => {
+        const c = nombreACod[normNom(b.nombre)];
+        if (c && mapaB[c]) mapaB[c].vida = b.promedio;
+      });
+      ((LAGO.seguridad_boroughs || {}).listas || {}).boroughs?.forEach(b => {
+        const c = nombreACod[normNom(b.nombre)];
+        if (c && mapaB[c]) mapaB[c].delitos = b.tasa_x1000;
+      });
+      listaUnificada = Object.values(mapaB);
+
+      // Consola interactiva «Cara a Cara»: Westminster (E09000033) vs. otro borough de Londres
+      const west = mapaB['E09000033'];
+      const rivales = listaUnificada
+        .filter(b => b.codigo !== 'E09000033')
+        .sort((x, y) => x.nombre.localeCompare(y.nombre));
+
+      if (west && rivales.length) {
+        const compWrap = document.createElement('div');
+        compWrap.className = 'comparadorCaja';
+
+        const rivalesRapidos = [
+          ['E09000020', 'Kensington & Chelsea'],
+          ['E09000007', 'Camden'],
+          ['E09000030', 'Tower Hamlets'],
+          ['E09000032', 'Wandsworth'],
+          ['E09000002', 'Barking & Dagenham']
+        ].filter(([cod]) => mapaB[cod]);
+
+        const barraComp = document.createElement('div');
+        barraComp.className = 'comparadorControles';
+        barraComp.innerHTML =
+          `<div class="comparadorSelectGrupo">` +
+            `<span class="comparadorBadgeWest">WESTMINSTER (E09000033)</span>` +
+            `<span class="comparadorVs">VS.</span>` +
+            `<select class="selectBorough" id="selectBoroughRival" aria-label="Seleccionar borough para comparar con Westminster">` +
+              rivales.map(r => `<option value="${r.codigo}"${r.codigo === 'E09000007' ? ' selected' : ''}>${r.nombre} (${r.codigo})</option>`).join('') +
+            `</select>` +
+          `</div>` +
+          `<div class="comparadorAtajos">` +
+            `<span class="filtroLabel">CONTRASTES CLAVE:</span>` +
+            rivalesRapidos.map(([cod, nom]) =>
+              `<button type="button" data-rival="${cod}" class="btnRivalAtajo${cod === 'E09000007' ? ' activo' : ''}">${nom}</button>`
+            ).join('') +
+          `</div>`;
+        compWrap.appendChild(barraComp);
+
+        const gridComp = document.createElement('div');
+        gridComp.className = 'comparadorGrid';
+        compWrap.appendChild(gridComp);
+
+        const METRICAS_COMP = [
+          { k: 'precio',   titulo: 'Precio medio vivienda', unidad: '£ (UK HPI)',      fmt: libras,    dec: 0, esMoneda: true },
+          { k: 'tax',      titulo: 'Council Tax Banda D',   unidad: '£/año (MHCLG)',   fmt: librasDec, dec: 2, esMoneda: true },
+          { k: 'poblacion',titulo: 'Población residente',   unidad: 'habitantes (ONS)',fmt: fmt,       dec: 0 },
+          { k: 'densidad', titulo: 'Densidad urbana',       unidad: 'hab/km² (ONS)',   fmt: fmt,       dec: 0 },
+          { k: 'imd',      titulo: 'Privación media (IMD)', unidad: 'puntaje IoD2025', fmt: fmt,       dec: 1 },
+          { k: 'vida',     titulo: 'Esperanza de vida',     unidad: 'años al nacer',   fmt: fmt,       dec: 1 },
+        ];
+
+        // Construir las 6 tarjetas una sola vez y en cada cambio interpolar barras y números suavemente
+        let estadoPrevRival = {};
+        gridComp.innerHTML = METRICAS_COMP.map(m =>
+          `<div class="compCard" data-mk="${m.k}">` +
+            `<div class="compCardTop">` +
+              `<span class="compCardTitulo">${m.titulo}</span>` +
+              `<span class="compCardUnidad">${m.unidad}</span>` +
+            `</div>` +
+            `<div class="compFila">` +
+              `<div class="compFilaMeta">` +
+                `<span class="compNom foco">▸ Westminster</span>` +
+                `<strong class="compVal foco">${west[m.k] != null ? m.fmt(west[m.k]) : '—'}</strong>` +
+              `</div>` +
+              `<div class="compBarraTrack"><span class="compBarraFill foco" style="width:50%"></span></div>` +
+            `</div>` +
+            `<div class="compFila">` +
+              `<div class="compFilaMeta">` +
+                `<span class="compNom compNomRival">—</span>` +
+                `<strong class="compVal compValRival">—</strong>` +
+              `</div>` +
+              `<div class="compBarraTrack"><span class="compBarraFill rival" style="width:50%"></span></div>` +
+            `</div>` +
+            `<div class="compDelta"></div>` +
+          `</div>`
+        ).join('');
+
+        const pintarComparacion = (codRival, animar = true) => {
+          const riv = mapaB[codRival] || rivales[0];
+          METRICAS_COMP.forEach(m => {
+            const card = gridComp.querySelector(`.compCard[data-mk="${m.k}"]`);
+            if (!card) return;
+            const vW = west[m.k];
+            const vR = riv[m.k];
+            const tieneAmbos = typeof vW === 'number' && typeof vR === 'number';
+            const maxLocal = Math.max(Number(vW) || 0, Number(vR) || 0, 1);
+            const pctW = tieneAmbos ? Math.max(4, (vW / maxLocal) * 100) : 0;
+            const pctR = tieneAmbos ? Math.max(4, (vR / maxLocal) * 100) : 0;
+
+            card.querySelector('.compNomRival').textContent = riv.nombre;
+            card.querySelector('.compBarraFill.foco').style.width = `${pctW.toFixed(1)}%`;
+            card.querySelector('.compBarraFill.rival').style.width = `${pctR.toFixed(1)}%`;
+
+            const elValRival = card.querySelector('.compValRival');
+            const elDelta = card.querySelector('.compDelta');
+            const prevVal = typeof estadoPrevRival[m.k] === 'number' ? estadoPrevRival[m.k] : (typeof vR === 'number' ? vR * 0.85 : 0);
+
+            if (typeof vR === 'number') {
+              if (animar && !sinMovimiento()) {
+                animarNumeroElemento(elValRival, prevVal, vR, 520, 0, m.fmt, m.dec, ease => {
+                  if (!tieneAmbos) return;
+                  const rInterp = prevVal + (vR - prevVal) * ease;
+                  const dif = vW - rInterp;
+                  const signo = dif > 0 ? '+' : (dif < 0 ? '−' : '');
+                  const absDif = Math.abs(dif);
+                  const difStr = m.esMoneda
+                    ? libras(absDif)
+                    : fmt(m.dec ? Number(absDif.toFixed(m.dec)) : Math.round(absDif));
+                  const pctDif = rInterp !== 0 ? ((dif / rInterp) * 100) : 0;
+                  const pctStr = `${dif >= 0 ? '+' : ''}${pctDif.toFixed(1).replace('.', ',')}%`;
+                  elDelta.innerHTML = `Δ Westminster: <b>${signo}${difStr}</b> (${pctStr})`;
+                });
+              } else {
+                elValRival.textContent = m.fmt(vR);
+              }
+              estadoPrevRival[m.k] = vR;
+            } else {
+              elValRival.textContent = '—';
+              elDelta.textContent = 'Dato parcial';
+            }
+
+            if (tieneAmbos && (!animar || sinMovimiento())) {
+              const dif = vW - vR;
+              const signo = dif > 0 ? '+' : (dif < 0 ? '−' : '');
+              const absDif = Math.abs(dif);
+              const difStr = m.esMoneda
+                ? libras(absDif)
+                : fmt(m.dec ? Number(absDif.toFixed(m.dec)) : Math.round(absDif));
+              const pctDif = vR !== 0 ? ((dif / vR) * 100) : 0;
+              const pctStr = `${dif >= 0 ? '+' : ''}${pctDif.toFixed(1).replace('.', ',')}%`;
+              elDelta.innerHTML = `Δ Westminster: <b>${signo}${difStr}</b> (${pctStr})`;
+            }
+          });
+        };
+
+        const selectEl = barraComp.querySelector('#selectBoroughRival');
+        const botonesAtajo = barraComp.querySelectorAll('.btnRivalAtajo');
+
+        selectEl.addEventListener('change', () => {
+          const cod = selectEl.value;
+          botonesAtajo.forEach(b => b.classList.toggle('activo', b.dataset.rival === cod));
+          pintarComparacion(cod);
+        });
+
+        botonesAtajo.forEach(btn => {
+          btn.addEventListener('click', () => {
+            const cod = btn.dataset.rival;
+            selectEl.value = cod;
+            botonesAtajo.forEach(b => b.classList.toggle('activo', b === btn));
+            pintarComparacion(cod);
+          });
+        });
+
+        pintarComparacion(selectEl.value || 'E09000007');
+        a.appendChild(bloque(
+          'Comparador bilateral cara a cara: Westminster frente a otro borough',
+          '6 indicadores oficiales cruzados por código GSS · Bermellón vs. Azul Támesis',
+          compWrap
+        ));
+      }
+
+      // Consola Metropolitana Unificada (Vista Gráfica + Cuadro Estadístico + Selector de Métrica + Cortina S-curve)
+      const METRICAS_ATLAS = [
+        { k: 'precio',    boton: 'Precio vivienda (£)',   titulo: 'Precio medio residencial', fmt: libras },
+        { k: 'densidad',  boton: 'Densidad (hab/km²)',    titulo: 'Densidad poblacional',     fmt: fmt },
+        { k: 'poblacion', boton: 'Población residente',   titulo: 'Población total',          fmt: fmt },
+        { k: 'tax',       boton: 'Council Tax D (£)',     titulo: 'Council Tax Banda D',      fmt: librasDec },
+      ];
+
+      let vistaAtlas = 'barras'; // 'barras' | 'tabla'
+      let metricaAtlas = 'precio';
+      let expandidoAtlas = false;
+      let animAtlas = null;
+
+      const consolaAtlas = document.createElement('div');
+      consolaAtlas.className = 'atlasConsola';
+
+      // Barra de herramientas superior (Conmutador Gráfico/Tabla + Ordenar por métrica)
+      const barraAtlas = document.createElement('div');
+      barraAtlas.className = 'atlasToolbar';
+      barraAtlas.innerHTML =
+        `<div class="atlasModoGrupo" role="tablist" aria-label="Modo de visualización del Atlas">` +
+          `<button type="button" data-modo="barras" class="btnModoAtlas activo" role="tab" aria-selected="true">Vista Gráfica (Barras)</button>` +
+          `<button type="button" data-modo="tabla" class="btnModoAtlas" role="tab" aria-selected="false">Cuadro Estadístico (6 columnas)</button>` +
+        `</div>` +
+        `<div class="atlasOrdenGrupo">` +
+          `<span class="filtroLabel">ORDENAR JERARQUÍA POR:</span>` +
+          `<div class="atlasMetricasBtns">` +
+            METRICAS_ATLAS.map((m, idx) =>
+              `<button type="button" data-m="${m.k}" class="btnMetricaAtlas${idx === 0 ? ' activo' : ''}">${m.boton}</button>`
+            ).join('') +
+          `</div>` +
+        `</div>`;
+      consolaAtlas.appendChild(barraAtlas);
+
+      const marcoAnimAtlas = document.createElement('div');
+      marcoAnimAtlas.className = 'atlasViewport';
+      const innerAtlas = document.createElement('div');
+      innerAtlas.className = 'atlasInner';
+      marcoAnimAtlas.appendChild(innerAtlas);
+      consolaAtlas.appendChild(marcoAnimAtlas);
+
+      // Botón inferior de cortina para alternar entre Síntesis (10 clave) y los 33 boroughs
+      const pieToggleAtlas = document.createElement('button');
+      pieToggleAtlas.type = 'button';
+      pieToggleAtlas.className = 'btnToggleAtlas';
+      pieToggleAtlas.setAttribute('aria-expanded', 'false');
+      consolaAtlas.appendChild(pieToggleAtlas);
+
+      // Construye la lista recortada (Top 6 + Westminster garantizado + Bottom 4) o completa (33)
+      const obtenerListaOrdenada = claveM => {
+        const m = METRICAS_ATLAS.find(x => x.k === claveM) || METRICAS_ATLAS[0];
+        const ord = listaUnificada.slice().sort((x, y) => (Number(y[m.k]) || 0) - (Number(x[m.k]) || 0));
+        ord.forEach((item, idx) => { item._rank = idx + 1; });
+        return { m, ord };
+      };
+
+      const renderContenidoAtlas = () => {
+        const { m, ord } = obtenerListaOrdenada(metricaAtlas);
+        innerAtlas.innerHTML = '';
+
+        // Definir subconjunto si está en modo síntesis (Top 6 + Westminster si no está en Top 6/Bottom 4 + Bottom 4)
+        let itemsSup = ord.slice(0, 6);
+        let itemsInf = ord.slice(-4);
+        const westItem = ord.find(b => b.foco);
+        const westEnSup = itemsSup.some(b => b.foco);
+        const westEnInf = itemsInf.some(b => b.foco);
+        const ocultosN = ord.length - itemsSup.length - itemsInf.length - ((!westEnSup && !westEnInf && westItem) ? 1 : 0);
+
+        if (vistaAtlas === 'barras') {
+          const maxGlobal = Math.max(...ord.map(b => Number(b[m.k]) || 0), 1);
+          if (expandidoAtlas) {
+            const filasCompletas = ord.map(b => [`#${b._rank} ${b.nombre}`, b[m.k] || 0, b.foco]);
+            innerAtlas.appendChild(G.barras(filasCompletas, { formato: m.fmt, anchoEtiqueta: 220, maxGlobal }));
+          } else {
+            const filasSup = itemsSup.map(b => [`#${b._rank} ${b.nombre}`, b[m.k] || 0, b.foco]);
+            innerAtlas.appendChild(G.barras(filasSup, { formato: m.fmt, anchoEtiqueta: 220, maxGlobal }));
+
+            if (!westEnSup && !westEnInf && westItem) {
+              const sep1 = document.createElement('div');
+              sep1.className = 'atlasCorteFranja';
+              sep1.innerHTML = `<span>··· Posición intermedia de Westminster en ${m.titulo.toLowerCase()} ···</span>`;
+              innerAtlas.appendChild(sep1);
+              innerAtlas.appendChild(G.barras([[`#${westItem._rank} ${westItem.nombre}`, westItem[m.k] || 0, true]], {
+                formato: m.fmt,
+                anchoEtiqueta: 220,
+                maxGlobal
+              }));
+            }
+
+            const sepCorte = document.createElement('div');
+            sepCorte.className = 'atlasCorteFranja';
+            sepCorte.innerHTML =
+              `<span>··· ${ocultosN} boroughs intermedios plegados (vista ejecutiva: extremos + foco) ···</span>`;
+            innerAtlas.appendChild(sepCorte);
+
+            const filasInf = itemsInf.map(b => [`#${b._rank} ${b.nombre}`, b[m.k] || 0, b.foco]);
+            const cajaInf = G.barras(filasInf, { formato: m.fmt, anchoEtiqueta: 220, maxGlobal });
+            innerAtlas.appendChild(cajaInf);
+          }
+        } else {
+          // Vista de Cuadro Estadístico (6 columnas)
+          const cabeceras = ['#', 'Borough', 'Código GSS', 'Población', 'Densidad (hab/km²)', 'Council Tax D', 'Precio medio (£)'];
+          const colActivaIdx = { poblacion: 3, densidad: 4, tax: 5, precio: 6 }[metricaAtlas] || 6;
+          const armarFila = b => [
+            `<code>#${b._rank}</code>`,
+            b.foco ? `<strong>▸ ${b.nombre}</strong>` : b.nombre,
             `<code>${b.codigo}</code>`,
             fmt(b.poblacion),
-            fmt(b.area_km2),
-            fmt(b.densidad_hab_km2),
-            libras(b.precio_medio_gbp || 0),
-            b.codigo === 'E09000033'
-          ]), 6)));
+            fmt(b.densidad),
+            b.tax ? librasDec(b.tax) : '—',
+            libras(b.precio || 0),
+            b.foco
+          ];
+
+          let filasTabla = [];
+          if (expandidoAtlas) {
+            filasTabla = ord.map(armarFila);
+          } else {
+            filasTabla = [
+              ...itemsSup.map(armarFila),
+              ...(!westEnSup && !westEnInf && westItem ? [armarFila(westItem)] : []),
+              ...itemsInf.map(armarFila)
+            ];
+          }
+          const tDom = tabla(cabeceras, filasTabla, 7);
+          // Resaltar columna por la cual se está ordenando
+          const ths = tDom.querySelectorAll('thead th');
+          if (ths[colActivaIdx]) ths[colActivaIdx].classList.add('colActiva');
+          tDom.querySelectorAll('tbody tr').forEach(tr => {
+            const tds = tr.querySelectorAll('td');
+            if (tds[colActivaIdx]) tds[colActivaIdx].classList.add('colActiva');
+          });
+          if (!expandidoAtlas) {
+            // Insertar fila divisoria visual entre el bloque superior y los 4 inferiores
+            const trs = tDom.querySelectorAll('tbody tr');
+            const idxCorte = itemsSup.length + (!westEnSup && !westEnInf && westItem ? 1 : 0);
+            if (trs[idxCorte]) {
+              const trSep = document.createElement('tr');
+              trSep.className = 'filaCorteTabla';
+              trSep.innerHTML = `<td colspan="7">··· ${ocultosN} boroughs intermedios plegados ···</td>`;
+              trs[idxCorte].parentNode.insertBefore(trSep, trs[idxCorte]);
+            }
+          }
+          innerAtlas.appendChild(tDom);
+        }
+
+        pieToggleAtlas.setAttribute('aria-expanded', String(expandidoAtlas));
+        pieToggleAtlas.innerHTML = expandidoAtlas
+          ? `<span class="toggleAtlasIcon">▲</span> <span>Contraer a vista ejecutiva (Top 6 + Westminster + 4 menores)</span>`
+          : `<span class="toggleAtlasIcon">▼</span> <span>Desplegar los 33 boroughs completos (+${ocultosN} distritos intermedios)</span>`;
+      };
+
+      let animInner = [];
+      const limpiarAnimInner = () => {
+        animInner.forEach(a => { try { a.cancel(); } catch (_) {} });
+        animInner = [];
+      };
+
+      const cambiarConCortina = (mutarEstado, tipoTransicion = 'cortina') => {
+        const sinMov = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (animAtlas) { animAtlas.cancel(); animAtlas = null; }
+        limpiarAnimInner();
+
+        const ejecutarCambioYEntrada = () => {
+          const hAntes = marcoAnimAtlas.getBoundingClientRect().height;
+          mutarEstado();
+          renderContenidoAtlas();
+
+          if (sinMov) {
+            marcoAnimAtlas.style.height = 'auto';
+            return;
+          }
+
+          // 1. Si ya está en pantalla, disparar el llenado de barras inmediatamente (por cambio de tab o modo)
+          innerAtlas.querySelectorAll('.svgCaja').forEach(cajaSvg => {
+            cajaSvg.setAttribute('data-anim', 'visible');
+            if (typeof cajaSvg._alEntrar === 'function') {
+              cajaSvg._alEntrar();
+              cajaSvg._alEntrar = null;
+            }
+          });
+
+          // 2. Cortina de altura suave en curva S si la altura cambió
+          marcoAnimAtlas.style.height = 'auto';
+          const hDespues = innerAtlas.getBoundingClientRect().height;
+          if (hAntes && Math.abs(hDespues - hAntes) >= 4) {
+            marcoAnimAtlas.style.height = `${hAntes}px`;
+            animAtlas = marcoAnimAtlas.animate(
+              [
+                { height: `${hAntes}px` },
+                { height: `${hDespues}px` }
+              ],
+              { duration: 540, easing: 'cubic-bezier(0.65, 0, 0.35, 1)' }
+            );
+            animAtlas.onfinish = () => {
+              marcoAnimAtlas.style.height = 'auto';
+              animAtlas = null;
+            };
+          }
+
+          // 3. Coreografía de entrada según el tipo de cambio (modo Vista/Tabla vs. cambio de Métrica vs. Despliegue)
+          if (tipoTransicion === 'modo') {
+            const dirX = vistaAtlas === 'tabla' ? 16 : -16;
+            const aCont = innerAtlas.animate(
+              [
+                { opacity: 0, transform: `translateX(${dirX}px)` },
+                { opacity: 1, transform: 'translateX(0px)' }
+              ],
+              { duration: 360, easing: 'cubic-bezier(0.22, 1, 0.36, 1)', fill: 'both' }
+            );
+            animInner.push(aCont);
+          }
+
+          const filasAnimables = vistaAtlas === 'barras'
+            ? [...innerAtlas.querySelectorAll('.filaBarra, .atlasCorteFranja')]
+            : [...innerAtlas.querySelectorAll('thead tr, tbody tr')];
+
+          filasAnimables.slice(0, 20).forEach((fila, idx) => {
+            const aFila = fila.animate(
+              [
+                { opacity: 0, transform: 'translateY(8px)' },
+                { opacity: 1, transform: 'translateY(0px)' }
+              ],
+              {
+                duration: 380,
+                delay: idx * 20,
+                easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
+                fill: 'both'
+              }
+            );
+            animInner.push(aFila);
+          });
+        };
+
+        // Si es cambio entre Vista Gráfica y Cuadro Estadístico (o cambio de métrica), hacer micro-salida rápida primero
+        if (!sinMov && (tipoTransicion === 'modo' || tipoTransicion === 'metrica')) {
+          const dirOut = tipoTransicion === 'modo' ? (vistaAtlas === 'barras' ? -10 : 10) : 0;
+          const yOut = tipoTransicion === 'metrica' ? -6 : 0;
+          const aOut = innerAtlas.animate(
+            [
+              { opacity: 1, transform: 'translate(0px, 0px)' },
+              { opacity: 0, transform: `translate(${dirOut}px, ${yOut}px)` }
+            ],
+            { duration: 130, easing: 'cubic-bezier(0.4, 0, 1, 1)' }
+          );
+          animInner.push(aOut);
+          aOut.onfinish = ejecutarCambioYEntrada;
+        } else {
+          ejecutarCambioYEntrada();
+        }
+      };
+
+      barraAtlas.querySelectorAll('.btnModoAtlas').forEach(btn => {
+        btn.addEventListener('click', () => {
+          if (btn.dataset.modo === vistaAtlas) return;
+          barraAtlas.querySelectorAll('.btnModoAtlas').forEach(b => {
+            const act = b === btn;
+            b.classList.toggle('activo', act);
+            b.setAttribute('aria-selected', String(act));
+          });
+          cambiarConCortina(() => { vistaAtlas = btn.dataset.modo; }, 'modo');
+        });
+      });
+
+      barraAtlas.querySelectorAll('.btnMetricaAtlas').forEach(btn => {
+        btn.addEventListener('click', () => {
+          if (btn.dataset.m === metricaAtlas) return;
+          barraAtlas.querySelectorAll('.btnMetricaAtlas').forEach(b => b.classList.toggle('activo', b === btn));
+          cambiarConCortina(() => { metricaAtlas = btn.dataset.m; }, 'metrica');
+        });
+      });
+
+      pieToggleAtlas.addEventListener('click', () => {
+        cambiarConCortina(() => { expandidoAtlas = !expandidoAtlas; }, 'cortina');
+      });
+
+      renderContenidoAtlas();
+      a.appendChild(bloque(
+        'Jerarquía y cuadro consolidado de los 33 boroughs de Greater London',
+        'Vista síntesis de extremos por defecto · Conmute entre gráfico y tabla o despliegue los 33 distritos',
+        consolaAtlas
+      ));
     }
     if (LAGO.atlas_boroughs && LAGO.atlas_boroughs.nota) {
       a.appendChild(aviso('<strong>Por qué dos escalas · ONS & UK HPI</strong> ' + LAGO.atlas_boroughs.nota));
@@ -451,6 +1083,101 @@ window.SECCIONES = (function () {
     ]));
 
     const pares = LAGO.correlaciones && LAGO.correlaciones.listas.pares;
+    if (listaUnificada.length && G.dispersion) {
+      const CRUCES = [
+        {
+          id: 'tax_precio',
+          boton: 'Council Tax vs. Precio vivienda',
+          sub: 'Paradoja fiscal metropolitana: Westminster y Wandsworth combinan la vivienda más cara con el impuesto local más bajo.',
+          x: 'tax', etiqX: 'Council Tax Banda D (£)', fmtX: libras,
+          y: 'precio', etiqY: 'Precio medio vivienda (£)', fmtY: libras
+        },
+        {
+          id: 'area_densidad',
+          boton: 'Superficie vs. Densidad',
+          sub: 'Asociación estructural más intensa de Londres (r = −0,76): los boroughs centrales compactos triplican la densidad periférica.',
+          x: 'area', etiqX: 'Superficie territorial (km²)', fmtX: fmt,
+          y: 'densidad', etiqY: 'Densidad (hab/km²)', fmtY: fmt
+        },
+        {
+          id: 'imd_vida',
+          boton: 'Privación IMD vs. Esperanza de vida',
+          sub: 'Gradiente socio-sanitario: a mayor puntaje de privación media (IMD 2025), menor esperanza de vida al nacer.',
+          x: 'imd', etiqX: 'Puntaje medio privación (IMD 2025)', fmtX: fmt,
+          y: 'vida', etiqY: 'Esperanza de vida al nacer (años)', fmtY: fmt
+        },
+        {
+          id: 'densidad_delitos',
+          boton: 'Densidad vs. Tasa policial',
+          sub: 'Efecto del denominador residente: Westminster sobresale como valor extremo por concentrar el flujo turístico y comercial.',
+          x: 'densidad', etiqX: 'Densidad (hab/km²)', fmtX: fmt,
+          y: 'delitos', etiqY: 'Delitos por 1.000 residentes', fmtY: fmt
+        }
+      ];
+
+      const wrapDisp = document.createElement('div');
+      wrapDisp.className = 'dispInteractiva';
+
+      const barraCruces = document.createElement('div');
+      barraCruces.className = 'dispControles';
+      barraCruces.innerHTML =
+        `<span class="filtroLabel">EXPLORAR PAR BIVARIADO:</span>` +
+        `<div class="dispBotones">` +
+          CRUCES.map((cr, idx) =>
+            `<button type="button" data-cruce="${cr.id}" class="btnCruceDisp${idx === 0 ? ' activo' : ''}">${cr.boton}</button>`
+          ).join('') +
+        `</div>`;
+      wrapDisp.appendChild(barraCruces);
+
+      const notaCruce = document.createElement('p');
+      notaCruce.className = 'dispSubLectura';
+      wrapDisp.appendChild(notaCruce);
+
+      const lienzoDisp = document.createElement('div');
+      wrapDisp.appendChild(lienzoDisp);
+
+      let instanciaDisp = null;
+      const pintarCruce = idCruce => {
+        const cr = CRUCES.find(c => c.id === idCruce) || CRUCES[0];
+        notaCruce.textContent = cr.sub;
+        const pts = listaUnificada.map(b => ({
+          nombre: b.nombre,
+          codigo: b.codigo,
+          foco: b.foco,
+          x: b[cr.x],
+          y: b[cr.y]
+        }));
+        const opts = {
+          etiquetaX: cr.etiqX,
+          etiquetaY: cr.etiqY,
+          fmtX: cr.fmtX,
+          fmtY: cr.fmtY
+        };
+        if (instanciaDisp && typeof instanciaDisp.actualizar === 'function') {
+          instanciaDisp.actualizar(pts, opts);
+        } else {
+          lienzoDisp.innerHTML = '';
+          instanciaDisp = G.dispersion(pts, opts);
+          lienzoDisp.appendChild(instanciaDisp);
+        }
+      };
+
+      barraCruces.querySelectorAll('.btnCruceDisp').forEach(btn => {
+        btn.addEventListener('click', () => {
+          barraCruces.querySelectorAll('.btnCruceDisp').forEach(b => b.classList.remove('activo'));
+          btn.classList.add('activo');
+          pintarCruce(btn.dataset.cruce);
+        });
+      });
+
+      pintarCruce(CRUCES[0].id);
+      co.appendChild(bloque(
+        'Laboratorio bivariado de los 33 boroughs (Regresión OLS y cuadrantes de media)',
+        'Pase el cursor por cualquier punto · Westminster en bermellón',
+        wrapDisp
+      ));
+    }
+
     if (pares) {
       co.appendChild(bloque('Pares evaluados sobre los 33 boroughs, ordenados por magnitud |r|', 'Coeficiente r de Pearson y estadístico t',
         tabla(['Par de variables comparadas', 'Coeficiente r', 'Estadístico t', 'Muestra (n)', 'Intensidad'],

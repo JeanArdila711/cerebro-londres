@@ -568,6 +568,21 @@ nav#menu a.activa::before {
   transform: scaleX(1);
 }
 
+nav#menu a.navGemelo {
+  color: var(--acento);
+  font-weight: 700;
+}
+
+nav#menu a.navGemelo::after {
+  content: "3D";
+  margin-left: 6px;
+  padding: 2px 4px;
+  font: 700 0.6rem/1 var(--font-mono);
+  background: var(--acento-suave);
+  border: 1px solid var(--acento);
+  color: var(--acento);
+}
+
 /* Regla viva de progreso de lectura del expediente (compositor scaleX) */
 .barraLectura {
   position: sticky;
@@ -616,16 +631,23 @@ nav#menu a.activa::before {
 
 .mastheadGrid {
   display: grid;
-  grid-template-columns: 1.35fr 1fr;
+  grid-template-columns: 1.38fr 1fr;
   gap: 28px;
-  align-items: end;
+  align-items: stretch;
 }
 
-@media (max-width: 860px) {
+@media (max-width: 920px) {
   .mastheadGrid {
     grid-template-columns: 1fr;
-    gap: 14px;
+    gap: 18px;
   }
+}
+
+.mastheadColIzq {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
 }
 
 .mastheadEyebrow {
@@ -655,6 +677,141 @@ nav#menu a.activa::before {
 
 .mastheadManifiesto strong {
   color: var(--texto);
+}
+
+.mastheadCintas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--linea);
+  font: 500 0.7rem/1.3 var(--font-mono);
+  color: var(--suave);
+}
+
+.mastheadCintas strong {
+  color: var(--tinta-fuerte);
+}
+
+/* Tarjeta del Plano Táctico SVG de los 18 Wards en la Portada */
+.mastheadMapaCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--panel2);
+  border: 1.5px solid var(--linea-fuerte);
+  box-shadow: 4px 4px 0 var(--linea-fuerte);
+  overflow: hidden;
+}
+
+.mastheadMapaTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--linea);
+  font: 600 0.66rem/1 var(--font-mono);
+}
+
+.mastheadMapaKicker {
+  color: var(--tinta-fuerte);
+  letter-spacing: 0.06em;
+}
+
+.mastheadMapaHint {
+  color: var(--acento);
+  letter-spacing: 0.04em;
+}
+
+.mastheadMapaLienzo {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 195px;
+  background: var(--panel2);
+}
+
+.miniMapaCargando {
+  font: 400 0.72rem var(--font-mono);
+  color: var(--suave);
+}
+
+.miniMapaSvg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 215px;
+}
+
+.miniMapaGrid line {
+  stroke: var(--linea);
+  stroke-width: 0.7;
+  stroke-dasharray: 2 3;
+  opacity: 0.7;
+}
+
+.miniWardPath {
+  fill: var(--panel);
+  stroke: var(--tinta-fuerte);
+  stroke-width: 0.9;
+  cursor: pointer;
+  transition:
+    fill 160ms var(--ease-out-quart),
+    stroke 160ms var(--ease-out-quart),
+    stroke-width 160ms var(--ease-out-quart);
+}
+
+.miniWardPath.focoInicial {
+  fill: color-mix(in srgb, var(--acento) 18%, var(--panel));
+  stroke: var(--acento);
+  stroke-width: 1.3;
+}
+
+.miniWardPath:hover,
+.miniWardPath:focus-visible {
+  fill: var(--acento);
+  stroke: var(--tinta-fuerte);
+  stroke-width: 1.5;
+  outline: none;
+}
+
+.miniMapaCota {
+  font: 600 8.5px var(--font-mono);
+  fill: var(--suave);
+  letter-spacing: 0.05em;
+}
+
+.miniMapaRio {
+  font: 600 8px var(--font-mono);
+  fill: var(--acento2);
+  letter-spacing: 0.06em;
+}
+
+.mastheadMapaPie {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  background: var(--panel);
+  border-top: 1px solid var(--linea);
+  font: 400 0.74rem/1.2 var(--font-sans);
+  color: var(--suave);
+}
+
+.mastheadMapaPie strong {
+  color: var(--tinta-fuerte);
+}
+
+.mastheadMapaPie code {
+  font: 600 0.68rem/1 var(--font-mono);
+  color: var(--acento);
+  background: var(--panel2);
+  padding: 3px 6px;
+  border: 1px solid var(--linea);
 }
 
 /* ==========================================================================
@@ -853,6 +1010,113 @@ main {
   border-top: 1px dashed var(--linea);
   font: 400 0.7rem/1.3 var(--font-mono);
   color: var(--suave);
+}
+
+/* Micro-visualizaciones empotradas en baldosas (Sparklines Tufte + Reglas de Posición 1..33) */
+.tileCuerpoValor {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tileSparkWrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding-top: 6px;
+  margin-top: 2px;
+  border-top: 1px dotted var(--linea);
+}
+
+.sparklineSvg {
+  display: block;
+  flex: 0 0 auto;
+  overflow: visible;
+}
+
+.sparkArea {
+  fill: var(--acento-suave);
+}
+
+.sparkPath {
+  fill: none;
+  stroke: var(--acento);
+  stroke-width: 1.65;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.sparkDotIni {
+  fill: var(--suave);
+}
+
+.sparkDotFin {
+  fill: var(--acento);
+  stroke: var(--panel);
+  stroke-width: 1.2;
+}
+
+.sparkMeta {
+  font: 500 0.65rem/1.2 var(--font-mono);
+  color: var(--suave);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.sparkMeta b {
+  color: var(--tinta-fuerte);
+  font-weight: 700;
+}
+
+/* Regla de posición relativa (1º .. 33º entre boroughs) */
+.tileRango {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px dotted var(--linea);
+}
+
+.tileRangoTrack {
+  position: relative;
+  height: 5px;
+  background: var(--panel2);
+  border: 1px solid var(--linea);
+}
+
+.tileRangoFill {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  background: color-mix(in srgb, var(--acento) 26%, transparent);
+}
+
+.tileRangoPin {
+  position: absolute;
+  top: 50%;
+  width: 9px;
+  height: 9px;
+  background: var(--acento);
+  border: 1.5px solid var(--panel);
+  box-shadow: 0 0 0 1px var(--linea-fuerte);
+  transform: translate(-50%, -50%);
+}
+
+.tileRangoEscala {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font: 500 0.63rem/1 var(--font-mono);
+  color: var(--suave);
+  font-variant-numeric: tabular-nums;
+}
+
+.tileRangoEscala b {
+  color: var(--acento);
+  font-weight: 700;
 }
 
 /* ==========================================================================
@@ -1591,6 +1855,408 @@ svg .filaBarra:hover .barra {
   opacity: 0.82;
 }
 
+/* Nube de dispersión bivariada (Scatter Plot) y controles de cruce */
+.dispControles {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid var(--linea);
+}
+
+.dispBotones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.btnCruceDisp {
+  padding: 5px 11px;
+  border: 1px solid var(--linea);
+  background: var(--panel2);
+  color: var(--texto);
+  font: 600 0.72rem/1.15 var(--font-mono);
+  transition:
+    background-color 140ms var(--ease-out-quart),
+    color 140ms var(--ease-out-quart),
+    border-color 140ms var(--ease-out-quart);
+}
+
+.btnCruceDisp:hover {
+  border-color: var(--linea-fuerte);
+}
+
+.btnCruceDisp.activo {
+  background: var(--acento);
+  border-color: var(--acento);
+  color: #ffffff;
+}
+
+.dispSubLectura {
+  margin: 0 0 10px;
+  font: 400 0.84rem/1.45 var(--font-sans);
+  color: var(--suave);
+}
+
+svg .rectaRegresion {
+  fill: none;
+  stroke: var(--acento);
+  stroke-width: 1.75;
+  stroke-dasharray: 5 4;
+  opacity: 0.75;
+}
+
+svg .guiaMira {
+  stroke: var(--acento);
+  stroke-width: 1;
+  stroke-dasharray: 2 2;
+  pointer-events: none;
+}
+
+svg .puntoBorough {
+  fill: var(--acento2);
+  fill-opacity: 0.72;
+  stroke: var(--panel);
+  stroke-width: 1.4;
+  cursor: pointer;
+  transition: fill-opacity 140ms, stroke-width 140ms;
+}
+
+svg .nodoDisp:hover .puntoBorough {
+  fill: var(--tinta-fuerte);
+  fill-opacity: 1;
+  stroke-width: 2;
+}
+
+svg .nodoDispFoco {
+  cursor: pointer;
+}
+
+/* Consola de Comparación Bilateral «Cara a Cara» (Westminster vs. otro Borough) */
+.comparadorCaja {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.comparadorControles {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px 16px;
+  padding: 12px 14px;
+  background: var(--panel2);
+  border: 1px solid var(--linea);
+  border-left: 4px solid var(--acento);
+}
+
+.comparadorSelectGrupo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.comparadorBadgeWest {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  background: var(--acento);
+  color: #ffffff;
+  font: 700 0.72rem/1 var(--font-mono);
+  letter-spacing: 0.05em;
+}
+
+.comparadorVs {
+  font: 700 0.74rem/1 var(--font-mono);
+  color: var(--suave);
+}
+
+.selectBorough {
+  padding: 6px 12px;
+  background: var(--panel);
+  color: var(--tinta-fuerte);
+  border: 1.5px solid var(--linea-fuerte);
+  font: 600 0.84rem/1.2 var(--font-sans);
+  cursor: pointer;
+}
+
+.selectBorough:focus-visible {
+  outline: 2px solid var(--acento);
+  outline-offset: 1px;
+}
+
+.comparadorAtajos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.btnRivalAtajo {
+  padding: 5px 10px;
+  border: 1px solid var(--linea);
+  background: var(--panel);
+  color: var(--texto);
+  font: 500 0.71rem/1.1 var(--font-mono);
+  transition: background-color 140ms, color 140ms, border-color 140ms;
+}
+
+.btnRivalAtajo:hover {
+  border-color: var(--linea-fuerte);
+}
+
+.btnRivalAtajo.activo {
+  background: var(--acento2);
+  border-color: var(--acento2);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.comparadorGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 285px), 1fr));
+  gap: 14px;
+}
+
+.compCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 14px 16px;
+  background: var(--panel);
+  border: 1px solid var(--linea);
+  border-top: 2px solid var(--linea-fuerte);
+}
+
+.compCardTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px dotted var(--linea);
+}
+
+.compCardTitulo {
+  font: 700 0.8rem/1.25 var(--font-sans);
+  color: var(--tinta-fuerte);
+}
+
+.compCardUnidad {
+  font: 400 0.68rem/1 var(--font-mono);
+  color: var(--suave);
+}
+
+.compFila {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.compFilaMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 0.8rem;
+}
+
+.compNom {
+  font: 500 0.75rem/1.2 var(--font-sans);
+  color: var(--suave);
+}
+
+.compNom.foco {
+  font-weight: 700;
+  color: var(--acento);
+}
+
+.compVal {
+  font: 600 0.86rem/1.1 var(--font-mono);
+  color: var(--tinta-fuerte);
+  font-variant-numeric: tabular-nums;
+}
+
+.compVal.foco {
+  color: var(--acento);
+}
+
+.compBarraTrack {
+  height: 7px;
+  background: var(--panel2);
+  border: 1px solid var(--linea);
+  overflow: hidden;
+}
+
+.compBarraFill {
+  display: block;
+  height: 100%;
+  transition: width 320ms var(--ease-out-expo);
+}
+
+.compBarraFill.foco {
+  background: var(--acento);
+}
+
+.compBarraFill.rival {
+  background: var(--acento2);
+}
+
+.compDelta {
+  padding-top: 6px;
+  border-top: 1px dashed var(--linea);
+  font: 500 0.7rem/1.25 var(--font-mono);
+  color: var(--suave);
+  font-variant-numeric: tabular-nums;
+}
+
+.compDelta b {
+  color: var(--tinta-fuerte);
+}
+
+/* Consola Metropolitana Unificada del Atlas (Barras + Tabla + Recorte Inteligente + Cortina S-curve) */
+.atlasConsola {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.atlasToolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px 16px;
+  padding: 10px 14px;
+  background: var(--panel2);
+  border: 1px solid var(--linea);
+  border-bottom: 2px solid var(--linea-fuerte);
+}
+
+.atlasModoGrupo {
+  display: inline-flex;
+  border: 1.5px solid var(--linea-fuerte);
+  background: var(--panel);
+}
+
+.btnModoAtlas {
+  padding: 6px 13px;
+  border: 0;
+  border-right: 1px solid var(--linea);
+  background: var(--panel);
+  color: var(--suave);
+  font: 600 0.75rem/1.15 var(--font-sans);
+  transition: background-color 140ms, color 140ms;
+}
+
+.btnModoAtlas:last-child {
+  border-right: 0;
+}
+
+.btnModoAtlas:hover {
+  color: var(--tinta-fuerte);
+  background: var(--panel2);
+}
+
+.btnModoAtlas.activo {
+  background: var(--tinta-fuerte);
+  color: var(--fondo);
+}
+
+.atlasOrdenGrupo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.atlasMetricasBtns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.btnMetricaAtlas {
+  padding: 5px 10px;
+  border: 1px solid var(--linea);
+  background: var(--panel);
+  color: var(--texto);
+  font: 500 0.71rem/1.1 var(--font-mono);
+  transition: background-color 140ms, color 140ms, border-color 140ms;
+}
+
+.btnMetricaAtlas:hover {
+  border-color: var(--linea-fuerte);
+}
+
+.btnMetricaAtlas.activo {
+  background: var(--acento);
+  border-color: var(--acento);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.atlasViewport {
+  overflow: clip;
+  will-change: height;
+}
+
+.atlasCorteFranja {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 6px 0;
+  padding: 6px 12px;
+  background: var(--panel2);
+  border-top: 1px dashed var(--linea-fuerte);
+  border-bottom: 1px dashed var(--linea-fuerte);
+  font: 500 0.69rem/1.2 var(--font-mono);
+  color: var(--suave);
+  letter-spacing: 0.03em;
+}
+
+.tabla tr.filaCorteTabla td {
+  text-align: center;
+  padding: 7px 10px;
+  background: var(--panel2);
+  border-top: 1px dashed var(--linea-fuerte);
+  border-bottom: 1px dashed var(--linea-fuerte);
+  font: 500 0.7rem/1.2 var(--font-mono);
+  color: var(--suave);
+}
+
+.btnToggleAtlas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 11px 16px;
+  background: var(--panel2);
+  color: var(--tinta-fuerte);
+  border: 1.5px solid var(--linea-fuerte);
+  font: 700 0.75rem/1.1 var(--font-mono);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: background-color 150ms, color 150ms, border-color 150ms;
+}
+
+.btnToggleAtlas:hover {
+  background: var(--acento);
+  border-color: var(--acento);
+  color: #ffffff;
+}
+
+.toggleAtlasIcon {
+  font-size: 0.68rem;
+}
+
 /* ==========================================================================
    10. FICHA DE PROCEDENCIA Y AUDITORÍA (MODAL)
    ========================================================================== */
@@ -1872,17 +2538,43 @@ svg .filaBarra:hover .barra {
     opacity: 1;
   }
 
-  .svgCaja[data-anim="ready"] svg .barra {
+  .svgCaja[data-anim="ready"] svg .punto {
+    opacity: 0;
     transform-box: fill-box;
-    transform-origin: left center;
-    transform: scaleX(0);
+    transform-origin: center;
+    transform: scale(0.35);
     transition:
-      transform 620ms var(--ease-out-expo) calc(var(--row-i, 0) * 18ms),
-      opacity 150ms ease;
+      opacity 320ms var(--ease-out-quart) calc(var(--pt-i, 0) * 26ms + 80ms),
+      transform 380ms var(--ease-out-expo) calc(var(--pt-i, 0) * 26ms + 80ms);
   }
 
-  .svgCaja[data-anim="visible"] svg .barra {
-    transform: scaleX(1);
+  .svgCaja[data-anim="visible"] svg .punto {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .miniWardPath {
+    animation: wardCascade 520ms var(--ease-out-expo) calc(var(--w-i, 0) * 22ms + 60ms) both;
+  }
+
+  @keyframes wardCascade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .tabla th.colActiva {
+    color: var(--acento);
+    border-bottom-color: var(--acento);
+  }
+
+  .tabla td.colActiva {
+    font-weight: 700;
+    color: var(--tinta-fuerte);
+    background: color-mix(in srgb, var(--acento) 5%, transparent);
   }
 
   /* Pulso de telemetría en el nodo activo del gráfico */

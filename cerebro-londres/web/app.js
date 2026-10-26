@@ -4,6 +4,21 @@
   const gate = $('#gate'), app = $('#app');
   window.LAGO = {};
 
+  // Restauración de scroll: en recargas (Cmd+R / F5) mantiene la posición exacta de esta pestaña;
+  // en pestañas nuevas empieza desde el inicio en la portada.
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+  const navEntries = (window.performance && performance.getEntriesByType) ? performance.getEntriesByType('navigation') : [];
+  const esRecarga = navEntries.length ? navEntries[0].type === 'reload' : (window.performance && performance.navigation && performance.navigation.type === 1);
+  const scrollGuardado = esRecarga ? Number(sessionStorage.getItem('cerebro_scroll_y') || 0) : 0;
+
+  window.addEventListener('scroll', () => {
+    try {
+      sessionStorage.setItem('cerebro_scroll_y', String(Math.round(window.scrollY)));
+    } catch (_) {}
+  }, { passive: true });
+
   const TEMAS = [
     'demografia', 'salud', 'economia', 'finanzas', 'privacion',
     'seguridad', 'seguridad_boroughs', 'turismo', 'patrimonio',
@@ -91,7 +106,12 @@
     try { SECCIONES.render(LAGO); } catch (e) { console.error('secciones', e); }
     try { MAPA.init(LAGO); } catch (e) { console.error('mapa', e); }
     navegacion(); buscador(); ficha();
-    if (location.hash) { const s = document.querySelector(location.hash); if (s) s.scrollIntoView(); }
+    if (location.hash) {
+      history.replaceState(null, '', location.pathname + location.search);
+    }
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: scrollGuardado > 0 ? scrollGuardado : 0, left: 0, behavior: 'instant' });
+    });
   }
 
   // Compuerta: la clave se manda al servidor, nunca se compara aquí.
@@ -116,24 +136,29 @@
 
   function navegacion() {
     const enlaces = [...document.querySelectorAll('#menu a')];
-    const secs = enlaces.map(a => document.getElementById(a.dataset.sec)).filter(Boolean);
+    const todasSecs = [...document.querySelectorAll('main .sec')];
     enlaces.forEach(a => a.addEventListener('click', e => {
       e.preventDefault();
       const s = document.getElementById(a.dataset.sec);
       if (!s) return;
-      history.replaceState(null, '', '#' + a.dataset.sec);
       s.scrollIntoView({ behavior: 'smooth' });
     }));
     const io = new IntersectionObserver(() => {
-      let mejor = 0, y = Infinity;
-      secs.forEach((s, i) => {
-        const d = Math.abs(s.getBoundingClientRect().top - 110);
-        if (d < y) { y = d; mejor = i; }
+      let mejorSec = todasSecs[0], y = Infinity;
+      todasSecs.forEach(s => {
+        const d = Math.abs(s.getBoundingClientRect().top - 115);
+        if (d < y) { y = d; mejorSec = s; }
       });
-      enlaces.forEach((a, i) => a.classList.toggle('activa', i === mejor));
-      if (enlaces[mejor]) $('#migas').textContent = enlaces[mejor].textContent.replace(/^\d+\s*/, '').trim();
+      if (!mejorSec) return;
+      const idActiva = mejorSec.id;
+      enlaces.forEach(a => {
+        const grupo = (a.dataset.grupo || a.dataset.sec || '').split(',');
+        a.classList.toggle('activa', grupo.includes(idActiva));
+      });
+      const h1 = mejorSec.querySelector('h1');
+      if (h1) $('#migas').textContent = h1.textContent.trim();
     }, { threshold: [0, .25, .5, .75, 1] });
-    secs.forEach(s => io.observe(s));
+    todasSecs.forEach(s => io.observe(s));
 
     // Regla de progreso de lectura en el compositor (scaleX con rAF, cero layout shift)
     const barra = $('#barraLecturaFill');
@@ -166,8 +191,10 @@
 
     function indexar() {
       items = [];
-      document.querySelectorAll('#menu a').forEach(a =>
-        items.push({ t: a.textContent.trim(), s: 'sección', go: () => a.click() }));
+      document.querySelectorAll('main .sec').forEach(s => {
+        const h1 = s.querySelector('h1');
+        if (h1) items.push({ t: h1.textContent.trim(), s: 'sección · #' + s.id, go: () => s.scrollIntoView({ behavior: 'smooth' }) });
+      });
       document.querySelectorAll('.tile').forEach(t => {
         const sec = t.closest('.sec');
         items.push({

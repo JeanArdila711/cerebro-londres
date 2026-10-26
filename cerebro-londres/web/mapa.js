@@ -212,7 +212,41 @@ window.MAPA = (function () {
       }).filter(Boolean)
     };
 
-    // Función para actualizar el panel HUD lateral con todos los datos de un borough
+    // Función para actualizar el panel HUD lateral con todos los datos de un borough (con interpolación numérica viva)
+    let hudEstadoPrev = {};
+    let hudCodigoPrev = null;
+
+    function animarHudValor(el, desde, hasta, formateador) {
+      if (!el || typeof hasta !== 'number' || isNaN(hasta)) {
+        if (el) el.textContent = '—';
+        return;
+      }
+      if (el._rafHud) {
+        cancelAnimationFrame(el._rafHud);
+        el._rafHud = 0;
+      }
+      const sinMov = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (sinMov || typeof desde !== 'number' || isNaN(desde) || Math.abs(hasta - desde) < 1e-4) {
+        el.textContent = formateador(hasta);
+        return;
+      }
+      let t0 = null;
+      const dur = 340;
+      const tick = ts => {
+        if (t0 === null) t0 = ts;
+        const p = Math.min(1, (ts - t0) / dur);
+        const ease = 1 - Math.pow(1 - p, 3);
+        el.textContent = formateador(desde + (hasta - desde) * ease);
+        if (p < 1) {
+          el._rafHud = requestAnimationFrame(tick);
+        } else {
+          el._rafHud = 0;
+          el.textContent = formateador(hasta);
+        }
+      };
+      el._rafHud = requestAnimationFrame(tick);
+    }
+
     function pintarHUD(p, etiquetaKicker) {
       if (!p) return;
       const k = document.getElementById('hudKicker');
@@ -225,24 +259,201 @@ window.MAPA = (function () {
       t.textContent = p.nombre || 'Westminster';
       if (s) s.textContent = `${p.codigo || 'E09000033'} · ${p.area_km2 ? fmtDec(p.area_km2) + ' km²' : 'Greater London'} · ${p.poblacion ? fmtInt(p.poblacion) + ' hab' : ''}`;
 
-      const filas = [
-        ['precio', 'Precio vivienda', p.precio ? fmtGBP(p.precio) : '—'],
-        ['densidad', 'Densidad', p.densidad ? fmtInt(p.densidad) + ' /km²' : '—'],
-        ['tax', 'Council Tax D', p.tax ? fmtGBP(p.tax) : '—'],
-        ['delitos', 'Tasa delitos', p.delitos_tasa ? fmtDec(p.delitos_tasa) + ' /1k' : '—'],
-        ['imd', 'Privación IMD', p.imd ? fmtDec(p.imd) + ' pts' : '—'],
-        ['vida', 'Esperanza vida', p.vida ? fmtDec(p.vida) + ' años' : '—'],
+      const defs = [
+        { k: 'precio',   nom: 'Precio vivienda', val: p.precio,       fmt: fmtGBP },
+        { k: 'densidad', nom: 'Densidad',        val: p.densidad,     fmt: v => fmtInt(v) + ' /km²' },
+        { k: 'tax',      nom: 'Council Tax D',   val: p.tax,          fmt: fmtGBP },
+        { k: 'delitos',  nom: 'Tasa delitos',    val: p.delitos_tasa, fmt: v => fmtDec(v) + ' /1k' },
+        { k: 'imd',      nom: 'Privación IMD',   val: p.imd,          fmt: v => fmtDec(v) + ' pts' },
+        { k: 'vida',     nom: 'Esperanza vida',  val: p.vida,         fmt: v => fmtDec(v) + ' años' },
       ];
-      m.innerHTML = filas.map(([clave, nom, val]) =>
-        `<div class="hudDato${metricaActual === clave ? ' activo' : ''}">` +
-          `<span>${nom}</span><strong>${val}</strong>` +
-        `</div>`
-      ).join('');
+
+      if (!m.querySelector('.hudDato')) {
+        m.innerHTML = defs.map(d =>
+          `<div class="hudDato" data-hk="${d.k}">` +
+            `<span>${d.nom}</span><strong>—</strong>` +
+          `</div>`
+        ).join('');
+      }
+
+      const cambioBorough = hudCodigoPrev !== p.codigo;
+      defs.forEach(d => {
+        const nodo = m.querySelector(`.hudDato[data-hk="${d.k}"]`);
+        if (!nodo) return;
+        nodo.classList.toggle('activo', metricaActual === d.k);
+        const strong = nodo.querySelector('strong');
+        const numVal = d.val != null && d.val !== '' ? Number(d.val) : null;
+        if (numVal != null && !isNaN(numVal)) {
+          if (cambioBorough && hudEstadoPrev[d.k] != null) {
+            animarHudValor(strong, hudEstadoPrev[d.k], numVal, d.fmt);
+          } else {
+            strong.textContent = d.fmt(numVal);
+          }
+          hudEstadoPrev[d.k] = numVal;
+        } else {
+          strong.textContent = '—';
+        }
+      });
+      hudCodigoPrev = p.codigo;
     }
 
     // Inicializar HUD con Westminster por defecto
     const westminsterProps = boroughs.features.find(f => f.properties.codigo === 'E09000033')?.properties;
     if (westminsterProps) pintarHUD(westminsterProps, 'FOCO DEL EXPEDIENTE · SELECCIONADO');
+
+    // Plano vectorial táctico SVG de los 18 wards de Westminster en el Masthead de portada
+    function pintarMiniMapaPortada(wardsGeo) {
+      const cont = document.getElementById('miniMapaWestminster');
+      const lectura = document.getElementById('miniMapaLectura');
+      if (!cont || !wardsGeo || !wardsGeo.features || !wardsGeo.features.length) return;
+
+      let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+      const recorrerAnillos = (geom, cb) => {
+        if (!geom || !geom.coordinates) return;
+        const polys = geom.type === 'MultiPolygon' ? geom.coordinates : [geom.coordinates];
+        polys.forEach(poly => poly.forEach(ring => cb(ring)));
+      };
+
+      wardsGeo.features.forEach(f => {
+        recorrerAnillos(f.geometry, ring => {
+          ring.forEach(([lon, lat]) => {
+            if (lon < minX) minX = lon;
+            if (lon > maxX) maxX = lon;
+            if (lat < minY) minY = lat;
+            if (lat > maxY) maxY = lat;
+          });
+        });
+      });
+
+      const W = 380;
+      const H = 220;
+      const PAD = 14;
+      // Corrección cos(lat) para que la proporción geográfica en 51.5°N sea exacta y sin achatamiento
+      const cosLat = Math.cos(((minY + maxY) * 0.5 * Math.PI) / 180);
+      const spanX = (maxX - minX) * cosLat || 0.01;
+      const spanY = (maxY - minY) || 0.01;
+      const scale = Math.min((W - PAD * 2) / spanX, (H - PAD * 2) / spanY);
+      const offX = (W - spanX * scale) / 2;
+      const offY = (H - spanY * scale) / 2;
+
+      const proyX = lon => offX + (lon - minX) * cosLat * scale;
+      const proyY = lat => H - offY - (lat - minY) * scale;
+
+      const ns = 'http://www.w3.org/2000/svg';
+      const svg = document.createElementNS(ns, 'svg');
+      svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+      svg.setAttribute('class', 'miniMapaSvg');
+      svg.setAttribute('role', 'img');
+      svg.setAttribute('aria-label', 'Mapa interactivo de los 18 wards electorales de Westminster');
+
+      // Retícula técnica de fondo (paralelos y meridianos de referencia)
+      const gGrid = document.createElementNS(ns, 'g');
+      gGrid.setAttribute('class', 'miniMapaGrid');
+      for (let gx = 45; gx < W; gx += 65) {
+        const l = document.createElementNS(ns, 'line');
+        l.setAttribute('x1', gx); l.setAttribute('y1', 0);
+        l.setAttribute('x2', gx); l.setAttribute('y2', H);
+        gGrid.appendChild(l);
+      }
+      for (let gy = 35; gy < H; gy += 55) {
+        const l = document.createElementNS(ns, 'line');
+        l.setAttribute('x1', 0); l.setAttribute('y1', gy);
+        l.setAttribute('x2', W); l.setAttribute('y2', gy);
+        gGrid.appendChild(l);
+      }
+      svg.appendChild(gGrid);
+
+      const gWards = document.createElementNS(ns, 'g');
+      const wardDestacadoInicial = "West End";
+
+      wardsGeo.features.forEach((f, idxWard) => {
+        let d = '';
+        recorrerAnillos(f.geometry, ring => {
+          ring.forEach(([lon, lat], idx) => {
+            d += `${idx === 0 ? 'M' : 'L'}${proyX(lon).toFixed(1)},${proyY(lat).toFixed(1)}`;
+          });
+          d += 'Z';
+        });
+        if (!d) return;
+
+        const path = document.createElementNS(ns, 'path');
+        const nom = f.properties.nombre || 'Ward';
+        const cod = f.properties.codigo || '';
+        path.setAttribute('d', d);
+        path.setAttribute('class', 'miniWardPath' + (nom === wardDestacadoInicial ? ' focoInicial' : ''));
+        path.style.setProperty('--w-i', String(idxWard));
+        path.setAttribute('tabindex', '0');
+        path.setAttribute('role', 'button');
+        path.setAttribute('aria-label', `${nom} (${cod}) — Volar en el Gemelo 3D`);
+
+        const activarLectura = () => {
+          gWards.querySelectorAll('.focoInicial').forEach(el => el.classList.remove('focoInicial'));
+          if (lectura) {
+            lectura.innerHTML =
+              `<span><strong>${nom}</strong> · Clic para inspección 3D</span>` +
+              `<code>${cod}</code>`;
+          }
+        };
+
+        const volarAlWard = () => {
+          const c = centroide(f.geometry);
+          const secTerr = document.getElementById('territorio');
+          if (secTerr) secTerr.scrollIntoView({ behavior: 'smooth' });
+          if (mapa) {
+            detenerOrbita();
+            mapa.flyTo({ center: c, zoom: 14.4, pitch: 60, bearing: -20, duration: 1700 });
+            const hudK = document.getElementById('hudKicker');
+            const hudT = document.getElementById('hudTitulo');
+            const hudS = document.getElementById('hudSub');
+            if (hudK) hudK.textContent = 'WARD ELECTORAL · VUELO DESDE PORTADA';
+            if (hudT) hudT.textContent = nom;
+            if (hudS) hudS.textContent = `${cod} · City of Westminster (E09000033)`;
+          }
+        };
+
+        path.addEventListener('pointerenter', activarLectura);
+        path.addEventListener('focus', activarLectura);
+        path.addEventListener('click', volarAlWard);
+        path.addEventListener('keydown', ev => {
+          if (ev.key === 'Enter' || ev.key === ' ') {
+            ev.preventDefault();
+            volarAlWard();
+          }
+        });
+
+        gWards.appendChild(path);
+      });
+
+      svg.addEventListener('pointerleave', () => {
+        if (lectura) {
+          lectura.innerHTML =
+            `<span><strong>City of Westminster</strong> · 18 wards electorales</span>` +
+            `<code>E09000033</code>`;
+        }
+      });
+
+      svg.appendChild(gWards);
+
+      // Etiqueta de rosa náutica y referencia del río Támesis al sur-este
+      const txtNorte = document.createElementNS(ns, 'text');
+      txtNorte.setAttribute('x', W - 12);
+      txtNorte.setAttribute('y', 16);
+      txtNorte.setAttribute('text-anchor', 'end');
+      txtNorte.setAttribute('class', 'miniMapaCota');
+      txtNorte.textContent = 'N ↑ · 51,51°N';
+      svg.appendChild(txtNorte);
+
+      const txtTamesis = document.createElementNS(ns, 'text');
+      txtTamesis.setAttribute('x', W - 12);
+      txtTamesis.setAttribute('y', H - 8);
+      txtTamesis.setAttribute('text-anchor', 'end');
+      txtTamesis.setAttribute('class', 'miniMapaRio');
+      txtTamesis.textContent = '≈ RÍO TÁMESIS (FRONTERA SUR)';
+      svg.appendChild(txtTamesis);
+
+      cont.innerHTML = '';
+      cont.appendChild(svg);
+    }
 
     // Inicializar MapLibre GL con soporte de pitch hasta 75 grados para el Gemelo Digital 3D
     mapa = new maplibregl.Map({
@@ -611,6 +822,9 @@ window.MAPA = (function () {
         }))
       ];
     });
+
+    // Renderizar el plano táctico SVG de los 18 wards de Westminster en la portada (Masthead)
+    pintarMiniMapaPortada(wardsWestminster);
 
     // Conectar botones de Métricas Coropléticas
     const contMetricas = document.getElementById('mapaMetricas');

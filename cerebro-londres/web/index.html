@@ -79,20 +79,15 @@
     </div>
   </header>
 
-  <nav id="menu" aria-label="Secciones del expediente">
+  <nav id="menu" aria-label="Capítulos del expediente">
     <div class="menuInner" id="menuInner">
-      <a href="#panorama"      data-sec="panorama">Panorama</a>
-      <a href="#gente"         data-sec="gente">Gente y salud</a>
-      <a href="#economia"      data-sec="economia">Vivienda y fiscalidad</a>
-      <a href="#desigualdad"   data-sec="desigualdad">Desigualdad (IMD)</a>
-      <a href="#seguridad"     data-sec="seguridad">Seguridad</a>
-      <a href="#turismo"       data-sec="turismo">Turismo y patrimonio</a>
-      <a href="#territorio"    data-sec="territorio">Territorio y red</a>
-      <a href="#atlas"         data-sec="atlas">Atlas de los 33</a>
-      <a href="#correlaciones" data-sec="correlaciones">Correlaciones</a>
-      <a href="#ambiente"      data-sec="ambiente">Ambiente y aire</a>
-      <a href="#escucha"       data-sec="escucha">Escucha social</a>
-      <a href="#fuentes"       data-sec="fuentes">Fuentes y método</a>
+      <a href="#panorama" data-sec="panorama" data-grupo="panorama">Panorama</a>
+      <a href="#gente" data-sec="gente" data-grupo="gente,desigualdad">Sociedad y salud</a>
+      <a href="#economia" data-sec="economia" data-grupo="economia,seguridad,turismo">Economía y entorno</a>
+      <a href="#territorio" data-sec="territorio" data-grupo="territorio" class="navGemelo">Gemelo 3D</a>
+      <a href="#atlas" data-sec="atlas" data-grupo="atlas,correlaciones">Atlas y correlaciones</a>
+      <a href="#ambiente" data-sec="ambiente" data-grupo="ambiente,escucha">Ambiente y escucha</a>
+      <a href="#fuentes" data-sec="fuentes" data-grupo="fuentes">Fuentes y método</a>
     </div>
     <div class="barraLectura" aria-hidden="true"><div class="barraLecturaFill" id="barraLecturaFill"></div></div>
   </nav>
@@ -105,13 +100,35 @@
         <span id="mastheadCosecha">AUDITORÍA: 185 COMPROBACIONES</span>
       </div>
       <div class="mastheadGrid">
-        <div class="mastheadTituloCaja">
-          <p class="mastheadEyebrow">CITY OF WESTMINSTER · INNER LONDON</p>
-          <h1 class="mastheadTitulo">Dossier de Inteligencia Territorial y Gobernanza de Datos</h1>
+        <div class="mastheadColIzq">
+          <div class="mastheadTituloCaja">
+            <p class="mastheadEyebrow">CITY OF WESTMINSTER · INNER LONDON</p>
+            <h1 class="mastheadTitulo">Dossier de Inteligencia Territorial y Gobernanza de Datos</h1>
+          </div>
+          <div class="mastheadManifiesto">
+            <p>Diseñado para responder las preguntas de un concejal de Westminster sin esconder las costuras del dato. <strong>Ninguna cifra está escrita a mano:</strong> todas viajan desde el lago verificado con su unidad, su vigencia y su ficha de auditoría a un clic.</p>
+          </div>
+          <div class="mastheadCintas">
+            <span><strong>CÓDIGO GSS:</strong> E09000033</span>
+            <span><strong>SUPERFICIE:</strong> 21,5 km²</span>
+            <span><strong>DIVISIÓN ELECTORAL:</strong> 18 WARDS</span>
+            <span><strong>CENSO MICRO:</strong> 123 LSOA</span>
+          </div>
         </div>
-        <div class="mastheadManifiesto">
-          <p>Diseñado para responder las preguntas de un concejal de Westminster sin esconder las costuras del dato. <strong>Ninguna cifra está escrita a mano:</strong> todas viajan desde el lago verificado con su unidad, su vigencia y su ficha de auditoría a un clic.</p>
-        </div>
+
+        <aside class="mastheadMapaCard" aria-label="Plano táctico interactivo de los 18 wards de Westminster">
+          <div class="mastheadMapaTop">
+            <span class="mastheadMapaKicker">PLANO TÁCTICO · 18 WARDS (WD24)</span>
+            <span class="mastheadMapaHint">CLIC PARA VOLAR EN 3D ↗</span>
+          </div>
+          <div class="mastheadMapaLienzo" id="miniMapaWestminster">
+            <span class="miniMapaCargando">Trazando geometría oficial ONS…</span>
+          </div>
+          <div class="mastheadMapaPie" id="miniMapaLectura">
+            <span><strong>City of Westminster</strong> · Pase el cursor por un ward</span>
+            <code>E09000033</code>
+          </div>
+        </aside>
       </div>
     </div>
   </section>
