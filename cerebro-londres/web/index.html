@@ -44,27 +44,43 @@
   <header class="top">
     <div class="topInner">
       <div class="marca">
-        <span class="placaMini" aria-hidden="true">SW1</span>
-        <div class="marcaTexto">
-          <strong>Cerebro Londres</strong>
-          <span class="marcaFoco">City of Westminster · <code>E09000033</code></span>
+        <a href="#panorama" class="marcaEnlace" title="Volver al inicio del expediente">
+          <span class="placaMini" aria-hidden="true">SW1</span>
+          <div class="marcaTexto">
+            <strong>Cerebro Londres</strong>
+            <span class="marcaFoco">City of Westminster · <code>E09000033</code></span>
+          </div>
+        </a>
+        <div class="migasCaja">
+          <span class="migasKicker">SECCIÓN ACTIVA</span>
+          <span class="migas" id="migas">Panorama</span>
         </div>
-        <span class="separadorBarra" aria-hidden="true">/</span>
-        <span class="migas" id="migas">Panorama</span>
+        <div class="telemetriaVivo" id="telemetriaVivo" title="Hora oficial en Londres y clima actual del lago">
+          <span class="pulsoDot" aria-hidden="true"></span>
+          <span id="relojLondres">LON --:--</span>
+          <span class="sepTele" aria-hidden="true">·</span>
+          <span id="climaLondres">--°C</span>
+        </div>
       </div>
-      <div class="topDer">
-        <span id="estadoDatos" class="estado" title="Temas verificados cargados desde /api/datos">lago: cargando…</span>
-        <button id="btnTema" type="button" class="btnAccion" title="Alternar modo papel / modo nocturno" aria-label="Alternar tema de color">Tinta</button>
-        <button id="btnBuscar" type="button" class="btnAccion btnBuscar" title="Buscar cifra, borough o sección (⌘K o /)" aria-label="Buscar">
-          <span>Consultar</span> <kbd>⌘K</kbd>
+
+      <div class="consolaDer" role="toolbar" aria-label="Herramientas del expediente">
+        <a href="#fuentes" id="estadoDatos" class="consolaItem estado" title="Ir al catálogo de fuentes verificadas">
+          <span class="ledOk" aria-hidden="true"></span>
+          <span id="estadoTexto">lago: cargando…</span>
+        </a>
+        <button id="btnBuscar" type="button" class="consolaItem btnBuscar" title="Buscar cifra, borough, ward o sección (⌘K o /)" aria-label="Buscar">
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="6.8" cy="6.8" r="5"/><path d="M10.5 10.5L14.5 14.5"/></svg>
+          <span>Consultar</span>
+          <kbd>⌘K</kbd>
         </button>
-        <a href="/api/salir" class="salir">Cerrar sesión</a>
+        <button id="btnTema" type="button" class="consolaItem" title="Alternar modo papel / modo nocturno" aria-label="Alternar tema de color">Modo noche</button>
+        <a href="/api/salir" class="consolaItem salir" title="Cerrar sesión firmada">Salir</a>
       </div>
     </div>
   </header>
 
   <nav id="menu" aria-label="Secciones del expediente">
-    <div class="menuInner">
+    <div class="menuInner" id="menuInner">
       <a href="#panorama"      data-sec="panorama">Panorama</a>
       <a href="#gente"         data-sec="gente">Gente y salud</a>
       <a href="#economia"      data-sec="economia">Vivienda y fiscalidad</a>
@@ -78,6 +94,7 @@
       <a href="#escucha"       data-sec="escucha">Escucha social</a>
       <a href="#fuentes"       data-sec="fuentes">Fuentes y método</a>
     </div>
+    <div class="barraLectura" aria-hidden="true"><div class="barraLecturaFill" id="barraLecturaFill"></div></div>
   </nav>
 
   <section class="portadaMasthead" aria-label="Encabezado del dossier">

@@ -5,6 +5,8 @@
    ========================================================================== */
 
 :root {
+  interpolate-size: allow-keywords;
+
   /* Paleta Papel Técnico / Piedra Portland (Default) */
   --fondo: #f3f1eb;
   --panel: #ffffff;
@@ -34,6 +36,10 @@
   --r: 2px;
   --sombra: 0 12px 32px rgba(17, 19, 21, 0.12);
   --max-w: 1280px;
+
+  /* Curvas cinemáticas secas (sin rebote ni overshoot, regla web-anti-slop M4) */
+  --ease-out-quart: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 :root[data-theme="dark"] {
@@ -254,7 +260,7 @@ code, kbd {
 }
 
 /* ==========================================================================
-   2. CABECERA SUPERIOR Y NAVEGACIÓN DE EXPEDIENTE
+   2. CABECERA SUPERIOR (INSTRUMENT CLUSTER) Y CARPETAS DE EXPEDIENTE
    ========================================================================== */
 .top {
   position: sticky;
@@ -262,7 +268,7 @@ code, kbd {
   z-index: 40;
   background: var(--panel);
   border-top: 4px solid var(--acento);
-  border-bottom: 1px solid var(--linea-fuerte);
+  border-bottom: 1.5px solid var(--linea-fuerte);
 }
 
 .topInner {
@@ -271,41 +277,60 @@ code, kbd {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 12px;
-  padding: 10px 20px;
+  gap: 14px;
+  padding: 8px 20px;
+  min-height: 54px;
 }
 
 .marca {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   min-width: 0;
+}
+
+.marcaEnlace {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  text-decoration: none;
+  color: inherit;
+  flex: 0 0 auto;
 }
 
 .placaMini {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 4px 8px;
+  height: 34px;
+  padding: 0 10px;
   background: var(--tinta-fuerte);
   color: var(--fondo);
-  border-bottom: 3px solid var(--acento);
-  font: 600 0.72rem/1 var(--font-mono);
-  letter-spacing: 0.05em;
+  border: 1.5px solid var(--tinta-fuerte);
+  border-bottom: 4px solid var(--acento);
+  font: 600 0.76rem/1 var(--font-mono);
+  letter-spacing: 0.06em;
   flex: 0 0 auto;
+  transition: transform 150ms var(--ease-out-quart);
+}
+
+.marcaEnlace:hover .placaMini {
+  transform: translateY(-1px);
 }
 
 .marcaTexto {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   line-height: 1.15;
 }
 
 .marcaTexto strong {
   font-family: var(--font-display);
-  font-size: 1.08rem;
+  font-size: 1.16rem;
   font-weight: 700;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
+  color: var(--tinta-fuerte);
 }
 
 .marcaFoco {
@@ -315,17 +340,31 @@ code, kbd {
 
 .marcaFoco code {
   font-size: 0.7rem;
+  font-weight: 600;
   color: var(--texto);
 }
 
-.separadorBarra {
-  color: var(--linea);
-  font-weight: 300;
-  font-size: 1.2rem;
+/* Ficha de sección activa en la barra */
+.migasCaja {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 14px;
+  border-left: 1.5px solid var(--linea);
+  line-height: 1.15;
+  min-width: 0;
+}
+
+.migasKicker {
+  font: 500 0.6rem/1 var(--font-mono);
+  color: var(--suave);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 3px;
 }
 
 .migas {
-  font: 600 0.78rem var(--font-mono);
+  font: 700 0.76rem/1.1 var(--font-mono);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--acento);
@@ -334,67 +373,134 @@ code, kbd {
   text-overflow: ellipsis;
 }
 
-@media (max-width: 680px) {
-  .marcaFoco, .separadorBarra, .migas {
-    display: none;
-  }
-}
-
-.topDer {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex: 0 0 auto;
-}
-
-.estado {
-  font: 500 0.74rem var(--font-mono);
-  color: var(--ok);
-  background: var(--panel2);
-  border: 1px solid var(--linea);
-  padding: 5px 9px;
-}
-
-@media (max-width: 560px) {
-  .estado {
-    display: none;
-  }
-}
-
-.btnAccion, .salir {
+/* Telemetría en vivo: hora oficial de Londres + clima actual */
+.telemetriaVivo {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: var(--panel);
-  border: 1px solid var(--linea);
-  color: var(--texto);
   padding: 5px 10px;
-  font: 500 0.76rem var(--font-sans);
-  text-decoration: none;
-  transition: border-color 0.15s, background-color 0.15s;
+  background: var(--panel2);
+  border: 1px solid var(--linea);
+  font: 500 0.7rem/1 var(--font-mono);
+  color: var(--texto);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
 }
 
-.btnAccion:hover, .salir:hover,
-.btnAccion:focus-visible, .salir:focus-visible {
-  border-color: var(--linea-fuerte);
+.pulsoDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--acento);
+  box-shadow: 0 0 0 2px var(--acento-suave);
+}
+
+.sepTele {
+  color: var(--suave);
+}
+
+@media (max-width: 1080px) {
+  .telemetriaVivo {
+    display: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .marcaFoco,
+  .migasCaja {
+    display: none;
+  }
+}
+
+/* Consola de Instrumentos Unificada (Derecha) */
+.consolaDer {
+  display: inline-flex;
+  align-items: stretch;
+  height: 34px;
+  border: 1.5px solid var(--linea-fuerte);
+  background: var(--panel);
+  box-shadow: 2px 2px 0 var(--linea-fuerte);
+  flex: 0 0 auto;
+}
+
+.consolaItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 12px;
+  border: 0;
+  border-right: 1px solid var(--linea);
+  background: var(--panel);
+  color: var(--texto);
+  font: 500 0.75rem/1 var(--font-sans);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 140ms var(--ease-out-quart), color 140ms var(--ease-out-quart);
+}
+
+.consolaItem:last-child {
+  border-right: 0;
+}
+
+.consolaItem:hover,
+.consolaItem:focus-visible {
   background: var(--panel2);
+  color: var(--tinta-fuerte);
   outline: none;
 }
 
+.consolaItem.estado {
+  font: 600 0.72rem/1 var(--font-mono);
+  color: var(--ok);
+  background: color-mix(in srgb, var(--ok) 6%, var(--panel));
+}
+
+.consolaItem.estado:hover {
+  background: color-mix(in srgb, var(--ok) 12%, var(--panel));
+}
+
+.ledOk {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--ok);
+  box-shadow: 0 0 0 2px rgba(27, 110, 68, 0.22);
+  flex: 0 0 auto;
+}
+
+.btnBuscar svg {
+  color: var(--acento);
+  flex: 0 0 auto;
+}
+
 .btnBuscar kbd {
-  font: 500 0.68rem var(--font-mono);
-  color: var(--suave);
+  font: 600 0.65rem/1 var(--font-mono);
+  color: var(--tinta-fuerte);
   background: var(--panel2);
-  padding: 1px 4px;
+  padding: 3px 5px;
   border: 1px solid var(--linea);
 }
 
-/* Barra de índice de secciones (estilo pestañas de archivo técnico) */
+.consolaItem.salir:hover {
+  background: var(--acento);
+  color: #ffffff;
+}
+
+@media (max-width: 620px) {
+  .consolaItem.estado {
+    display: none;
+  }
+  .btnBuscar kbd {
+    display: none;
+  }
+}
+
+/* Barra de índice de secciones (Pestañas de archivo colgante sin huecos muertos) */
 nav#menu {
   position: sticky;
-  top: 53px;
+  top: 59px;
   z-index: 39;
-  background: var(--fondo);
+  background: var(--panel2);
   border-bottom: 1.5px solid var(--linea-fuerte);
   overflow-x: auto;
   scrollbar-width: none;
@@ -408,49 +514,77 @@ nav#menu::-webkit-scrollbar {
   max-width: var(--max-w);
   margin: 0 auto;
   display: flex;
+  align-items: stretch;
   padding: 0 20px;
 }
 
 nav#menu a {
-  flex: 0 0 auto;
+  position: relative;
+  flex: 1 0 auto;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 10px 13px;
-  font: 500 0.8rem/1 var(--font-sans);
+  justify-content: center;
+  padding: 11px 12px 10px;
+  font: 500 0.78rem/1.1 var(--font-sans);
   color: var(--suave);
   text-decoration: none;
   border-right: 1px solid var(--linea);
-  border-bottom: 3px solid transparent;
   white-space: nowrap;
-  transition: color 0.15s, background-color 0.15s, border-color 0.15s;
+  transition: color 150ms var(--ease-out-quart), background-color 150ms var(--ease-out-quart);
 }
 
 nav#menu a:first-child {
   border-left: 1px solid var(--linea);
 }
 
-nav#menu a .numSec {
-  font: 500 0.68rem var(--font-mono);
-  color: var(--suave);
-  opacity: 0.75;
+/* Filete superior de carpeta activa que se despliega desde el centro */
+nav#menu a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--acento);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 200ms var(--ease-out-expo);
 }
 
 nav#menu a:hover {
   color: var(--tinta-fuerte);
-  background: var(--panel2);
+  background: color-mix(in srgb, var(--panel) 60%, var(--panel2));
 }
 
 nav#menu a.activa {
   color: var(--tinta-fuerte);
-  font-weight: 600;
+  font-weight: 700;
   background: var(--panel);
-  border-bottom-color: var(--acento);
+  /* Conecta visualmente la pestaña activa con el documento inferior */
+  box-shadow: 0 2px 0 var(--panel);
 }
 
-nav#menu a.activa .numSec {
-  color: var(--acento);
-  opacity: 1;
+nav#menu a.activa::before {
+  transform: scaleX(1);
+}
+
+/* Regla viva de progreso de lectura del expediente (compositor scaleX) */
+.barraLectura {
+  position: sticky;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: transparent;
+  overflow: clip;
+  pointer-events: none;
+}
+
+.barraLecturaFill {
+  width: 100%;
+  height: 100%;
+  background: var(--acento);
+  transform: scaleX(var(--scroll-p, 0));
+  transform-origin: left center;
 }
 
 /* ==========================================================================
@@ -577,14 +711,14 @@ main {
 }
 
 /* ==========================================================================
-   5. RETÍCULA DE BALDOSAS (HAIRLINE LEDGER GRID, NO CAJITAS SUELTAS)
+   5. RETÍCULA DE BALDOSAS (HAIRLINE LEDGER GRID)
    ========================================================================== */
 .rejilla {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
-  background: var(--linea);
-  border: 1px solid var(--linea-fuerte);
-  gap: 1px;
+  background: var(--panel);
+  border: 1.5px solid var(--linea-fuerte);
 }
 
 .rejilla.rejillaPanorama {
@@ -598,18 +732,23 @@ main {
   justify-content: space-between;
   background: var(--panel);
   border: 0;
+  border-right: 1px solid var(--linea);
+  border-bottom: 1px solid var(--linea);
   border-radius: 0;
   padding: 18px 20px 16px;
   text-align: left;
   width: 100%;
   color: inherit;
-  transition: background-color 0.15s;
+  overflow: clip;
+  /* Hover asimétrico: entrada inmediata, salida suave */
+  transition: background-color 220ms var(--ease-out-quart);
 }
 
 .tile.tileDestacado {
   background: var(--panel-foco);
 }
 
+/* Filete superior que se traza desde la izquierda en el compositor (scaleX) */
 .tile::before {
   content: "";
   position: absolute;
@@ -617,23 +756,26 @@ main {
   left: 0;
   right: 0;
   height: 3px;
-  background: transparent;
-  transition: background-color 0.15s;
+  background: var(--acento);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 260ms var(--ease-out-quart);
 }
 
 .tile.tileDestacado::before {
-  background: var(--acento);
+  transform: scaleX(1);
 }
 
 .tile:hover,
 .tile:focus-visible {
   background: var(--panel2);
   outline: none;
+  transition-duration: 70ms;
 }
 
 .tile:hover::before,
 .tile:focus-visible::before {
-  background: var(--acento);
+  transform: scaleX(1);
 }
 
 .tileTop {
@@ -652,12 +794,19 @@ main {
 
 .tileFichaTag {
   flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
   font: 500 0.65rem/1 var(--font-mono);
   color: var(--suave);
   border: 1px solid var(--linea);
   padding: 3px 5px;
-  opacity: 0.7;
-  transition: opacity 0.15s, color 0.15s, border-color 0.15s;
+  opacity: 0.72;
+  transition:
+    opacity 220ms var(--ease-out-quart),
+    color 220ms var(--ease-out-quart),
+    border-color 220ms var(--ease-out-quart),
+    transform 220ms var(--ease-out-quart);
 }
 
 .tile:hover .tileFichaTag,
@@ -665,6 +814,8 @@ main {
   opacity: 1;
   color: var(--acento);
   border-color: var(--acento);
+  transform: translate(2px, -2px);
+  transition-duration: 80ms;
 }
 
 .tile .v {
@@ -685,6 +836,14 @@ main {
   color: var(--suave);
   margin-left: 6px;
   letter-spacing: 0;
+}
+
+.tile .nota {
+  display: block;
+  margin-top: 6px;
+  font: 400 0.78rem/1.35 var(--font-sans);
+  font-style: italic;
+  color: var(--suave);
 }
 
 .tile .vig {
@@ -854,25 +1013,340 @@ main {
   color: var(--tinta-fuerte);
 }
 
-/* ==========================================================================
-   8. CARTOGRAFÍA (MAPLIBRE GL + LEYENDA INTEGRADA)
-   ========================================================================== */
-.mapaMarco {
-  border: 1.5px solid var(--linea-fuerte);
+/* Acordeón de Fuentes y Método (Animación 0fr -> 1fr + Stagger de filas, patrón web-css) */
+.acordeonFuentes {
+  position: relative;
   background: var(--panel);
-  margin-bottom: 20px;
+  border: 1.5px solid var(--linea-fuerte);
+  box-shadow: 4px 4px 0 var(--linea-fuerte);
+  transition: box-shadow 380ms var(--ease-out-quart), border-color 280ms var(--ease-out-quart);
 }
 
-.mapaBarra {
+.acordeonFuentes[data-open="true"] {
+  box-shadow: 7px 7px 0 var(--linea-fuerte);
+}
+
+/* Filete superior bermellón que se traza al abrir el expediente de fuentes */
+.acordeonFuentes::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--acento);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 520ms var(--ease-out-expo);
+  pointer-events: none;
+}
+
+.acordeonFuentes[data-open="true"]::before {
+  transform: scaleX(1);
+}
+
+.acordeonResumen {
+  width: 100%;
+  border: 0;
+  text-align: left;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 22px;
+  cursor: pointer;
+  user-select: none;
+  background: var(--panel);
+  color: inherit;
+  transition: background-color 180ms var(--ease-out-quart);
+}
+
+.acordeonResumen:hover,
+.acordeonResumen:focus-visible {
+  background: var(--panel2);
+  outline: none;
+}
+
+.acordeonInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.acordeonTituloFila {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.acordeonTituloFila strong {
+  font: 700 0.96rem/1.2 var(--font-sans);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--tinta-fuerte);
+}
+
+.acordeonChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.acordeonAccion {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  border: 1.5px solid var(--linea-fuerte);
+  background: var(--tinta-fuerte);
+  color: var(--fondo);
+  font: 600 0.75rem/1 var(--font-mono);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition:
+    background-color 180ms var(--ease-out-quart),
+    border-color 180ms var(--ease-out-quart),
+    transform 180ms var(--ease-out-quart);
+}
+
+.acordeonResumen:hover .acordeonAccion {
+  background: var(--acento);
+  border-color: var(--acento);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.iconoAcordeon {
+  flex: 0 0 auto;
+  transition: transform 380ms var(--ease-out-expo);
+}
+
+.iconoAcordeon .trazoV {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 320ms var(--ease-out-expo), opacity 220ms var(--ease-out-quart);
+}
+
+.acordeonFuentes[data-open="true"] .iconoAcordeon {
+  transform: rotate(180deg);
+}
+
+.acordeonFuentes[data-open="true"] .iconoAcordeon .trazoV {
+  transform: scaleY(0);
+  opacity: 0;
+}
+
+.acordeonFuentes[data-open="false"] .txtCerrar {
+  display: none;
+}
+
+.acordeonFuentes[data-open="true"] .txtAbrir {
+  display: none;
+}
+
+.acordeonFuentes[data-open="true"] .acordeonResumen {
+  border-bottom: 1.5px solid var(--linea-fuerte);
+  background: var(--panel2);
+}
+
+/* Contenedor animado por Web Animations API (altura exacta medida + clip limpio) */
+.acordeonGridWrap {
+  height: 0;
+  opacity: 0;
+  overflow: clip;
+  will-change: height, opacity;
+}
+
+.acordeonGridInner {
+  min-height: 0;
+}
+
+.acordeonCuerpo {
+  padding: 20px 22px 24px;
+  background: var(--fondo);
+}
+
+.acordeonCuerpo > .bloque:first-of-type {
+  margin-top: 0;
+}
+
+.filtroFuentes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 16px;
+  padding: 10px 14px;
+  background: var(--panel);
+  border: 1px solid var(--linea);
+}
+
+.filtroLabel {
+  font: 600 0.7rem/1 var(--font-mono);
+  color: var(--suave);
+  letter-spacing: 0.06em;
+  margin-right: 6px;
+}
+
+.btnFiltroFuente {
+  padding: 5px 10px;
+  border: 1px solid var(--linea);
+  background: var(--panel2);
+  color: var(--texto);
+  font: 600 0.72rem/1 var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  transition: background-color 140ms var(--ease-out-quart), color 140ms var(--ease-out-quart), border-color 140ms var(--ease-out-quart);
+}
+
+.btnFiltroFuente:hover {
+  border-color: var(--linea-fuerte);
+}
+
+.btnFiltroFuente.activo {
+  background: var(--acento);
+  border-color: var(--acento);
+  color: #ffffff;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Cascada escalonada cuando se filtra por estado dentro del inventario */
+  .acordeonFuentes .tabla tbody tr.filaFiltrada {
+    animation: filaCascade 340ms var(--ease-out-quart) calc(var(--row-i, 0) * 14ms) both;
+  }
+
+  @keyframes filaCascade {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .acordeonGridWrap,
+  .acordeonCuerpo,
+  .iconoAcordeon {
+    transition: none;
+  }
+}
+
+/* ==========================================================================
+   8. CARTOGRAFÍA & GEMELO DIGITAL 3D (MAPLIBRE GL + CONSOLA TÁCTICA)
+   ========================================================================== */
+.mapaMarco {
+  border: 2px solid var(--linea-fuerte);
+  background: var(--panel);
+  margin-bottom: 24px;
+  box-shadow: 6px 6px 0 var(--linea-fuerte);
+}
+
+.mapaControles {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px;
+  background: var(--tinta-fuerte);
+  color: var(--fondo);
+  border-bottom: 2px solid var(--acento);
+}
+
+.mapaGrupoControl {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.mapaControlLabel {
+  font: 600 0.68rem/1 var(--font-mono);
+  letter-spacing: 0.08em;
+  color: #a3adb8;
+  text-transform: uppercase;
+}
+
+.mapaBotones {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.mapaBotones button {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #e6e4de;
+  padding: 5px 10px;
+  font: 500 0.74rem/1.1 var(--font-mono);
+  transition: background-color 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.mapaBotones button:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+.mapaBotones button.activo {
+  background: var(--acento);
+  border-color: var(--acento);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.mapaBotones button.btnGemelo {
+  border-color: #e9b949;
+  color: #ffd97d;
+}
+
+.mapaBotones button.btnGemelo.activo {
+  background: #c8281e;
+  border-color: #ffd97d;
+  color: #ffffff;
+}
+
+.mapaSubBarra {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   gap: 12px;
-  padding: 10px 16px;
+  padding: 9px 16px;
   background: var(--panel2);
-  border-bottom: 1px solid var(--linea);
-  font: 500 0.74rem var(--font-mono);
+  border-bottom: 1px solid var(--linea-fuerte);
+  font: 500 0.73rem var(--font-mono);
+}
+
+.mapaCapasCheck {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+}
+
+.mapaCapasCheck label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  color: var(--texto);
+  font-size: 0.73rem;
+  user-select: none;
+}
+
+.mapaCapasCheck input[type="checkbox"] {
+  accent-color: var(--acento);
+  width: 14px;
+  height: 14px;
+  margin: 0;
+  cursor: pointer;
 }
 
 .mapaLeyenda {
@@ -886,7 +1360,7 @@ main {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   color: var(--texto);
 }
 
@@ -894,13 +1368,118 @@ main {
   width: 12px;
   height: 12px;
   display: inline-block;
-  border: 1px solid rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(0, 0, 0, 0.35);
+}
+
+.mapaLienzoWrap {
+  position: relative;
+  width: 100%;
+  height: min(72vh, 640px);
+  background: #0c1117;
+  overflow: clip;
 }
 
 #mapa {
-  height: min(64vh, 540px);
   width: 100%;
-  overflow: clip;
+  height: 100%;
+}
+
+/* Panel HUD flotante de Telemetría Territorial */
+.mapaHUD {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 10;
+  width: min(315px, calc(100% - 64px));
+  background: color-mix(in srgb, var(--panel) 94%, transparent);
+  backdrop-filter: blur(6px);
+  border: 1.5px solid var(--linea-fuerte);
+  border-top: 4px solid var(--acento);
+  box-shadow: var(--sombra);
+  padding: 13px 15px;
+  pointer-events: auto;
+}
+
+@media (max-width: 640px) {
+  .mapaHUD {
+    top: auto;
+    bottom: 34px;
+    left: 10px;
+    right: 10px;
+    width: auto;
+    max-height: 42%;
+    overflow: auto;
+  }
+}
+
+.hudKicker {
+  font: 600 0.64rem/1.1 var(--font-mono);
+  letter-spacing: 0.08em;
+  color: var(--acento);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.hudTitulo {
+  font: 700 1.2rem/1.15 var(--font-display);
+  color: var(--tinta-fuerte);
+  margin: 0 0 2px;
+}
+
+.hudSub {
+  font: 500 0.7rem/1.3 var(--font-mono);
+  color: var(--suave);
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--linea);
+}
+
+.hudMetricas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7px 10px;
+}
+
+.hudDato {
+  display: flex;
+  flex-direction: column;
+}
+
+.hudDato span {
+  font: 500 0.65rem/1.2 var(--font-sans);
+  color: var(--suave);
+}
+
+.hudDato strong {
+  font: 600 0.84rem/1.25 var(--font-mono);
+  color: var(--tinta-fuerte);
+  font-variant-numeric: tabular-nums;
+}
+
+.hudDato.activo strong {
+  color: var(--acento);
+}
+
+.hudPie {
+  margin-top: 10px;
+  padding-top: 7px;
+  border-top: 1px dashed var(--linea);
+  font: 400 0.68rem/1.35 var(--font-sans);
+  color: var(--suave);
+}
+
+.mapaCoordenadas {
+  position: absolute;
+  bottom: 8px;
+  left: 14px;
+  z-index: 9;
+  background: rgba(17, 19, 21, 0.84);
+  color: #f3f1eb;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 4px 9px;
+  font: 500 0.68rem/1 var(--font-mono);
+  letter-spacing: 0.04em;
+  pointer-events: none;
 }
 
 .maplibregl-popup-content {
@@ -908,9 +1487,11 @@ main {
   color: var(--texto) !important;
   border-radius: 0 !important;
   border: 1.5px solid var(--linea-fuerte) !important;
+  border-top: 3px solid var(--acento) !important;
   box-shadow: var(--sombra) !important;
-  font: 400 0.84rem/1.45 var(--font-sans) !important;
+  font: 400 0.82rem/1.45 var(--font-sans) !important;
   padding: 12px 14px !important;
+  max-width: 280px !important;
 }
 
 .maplibregl-popup-tip {
@@ -1221,4 +1802,134 @@ svg .filaBarra:hover .barra {
   background: var(--panel2);
   padding: 8px 10px;
   border-left: 3px solid var(--ok);
+}
+
+/* ==========================================================================
+   13. COREOGRAFÍA Y MOVIMIENTO EN EL COMPOSITOR (web-css + web-efectos-puntero)
+   Todo movimiento decorativo vive bajo prefers-reduced-motion: no-preference
+   y anima únicamente transform, opacity o stroke-dashoffset.
+   ========================================================================== */
+@media (prefers-reduced-motion: no-preference) {
+  /* 13.1 Momento único orquestado al abrir el expediente (Portada + Panorama) */
+  .portadaMasthead .mastheadTituloCaja {
+    animation: dossierReveal 550ms var(--ease-out-expo) both;
+  }
+
+  .portadaMasthead .mastheadManifiesto {
+    animation: dossierReveal 620ms var(--ease-out-expo) 90ms both;
+  }
+
+  .secCabecera {
+    position: relative;
+  }
+
+  .rejillaPanorama .tile {
+    animation: dossierReveal 520ms var(--ease-out-expo) calc(var(--i, 0) * 45ms + 120ms) both;
+  }
+
+  .placaReglaRoja {
+    transform-origin: left center;
+    animation: trazoRegla 600ms var(--ease-out-expo) 80ms both;
+  }
+
+  @keyframes dossierReveal {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes trazoRegla {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+
+  /* 13.2 Trazado vivo de series y barras SVG cuando entran en el viewport */
+  .svgCaja[data-anim="ready"] svg .linea {
+    stroke-dasharray: var(--path-len, 1400);
+    stroke-dashoffset: var(--path-len, 1400);
+    transition: stroke-dashoffset 950ms var(--ease-out-expo);
+  }
+
+  .svgCaja[data-anim="visible"] svg .linea {
+    stroke-dashoffset: 0;
+  }
+
+  .svgCaja[data-anim="ready"] svg .area {
+    opacity: 0;
+    transition: opacity 700ms var(--ease-out-quart) 180ms;
+  }
+
+  .svgCaja[data-anim="visible"] svg .area {
+    opacity: 1;
+  }
+
+  .svgCaja[data-anim="ready"] svg .barra {
+    transform-box: fill-box;
+    transform-origin: left center;
+    transform: scaleX(0);
+    transition:
+      transform 620ms var(--ease-out-expo) calc(var(--row-i, 0) * 18ms),
+      opacity 150ms ease;
+  }
+
+  .svgCaja[data-anim="visible"] svg .barra {
+    transform: scaleX(1);
+  }
+
+  /* Pulso de telemetría en el nodo activo del gráfico */
+  svg .puntoPulso {
+    fill: none;
+    stroke: var(--acento);
+    stroke-width: 1.5;
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: pulsoTelemetria 2.2s var(--ease-out-quart) infinite;
+    pointer-events: none;
+  }
+
+  @keyframes pulsoTelemetria {
+    0% {
+      transform: scale(0.9);
+      opacity: 0.85;
+    }
+    75%, 100% {
+      transform: scale(2.35);
+      opacity: 0;
+    }
+  }
+
+  /* 13.3 Transiciones discretas modernas (@starting-style) en Ficha y Buscador */
+  .ficha,
+  .buscador {
+    transition: opacity 180ms var(--ease-out-quart);
+  }
+
+  .fichaCaja,
+  .buscadorCaja {
+    transition:
+      transform 220ms var(--ease-out-expo),
+      opacity 180ms var(--ease-out-quart);
+  }
+
+  @starting-style {
+    .ficha:not([hidden]),
+    .buscador:not([hidden]) {
+      opacity: 0;
+    }
+
+    .ficha:not([hidden]) .fichaCaja,
+    .buscador:not([hidden]) .buscadorCaja {
+      opacity: 0;
+      transform: translateY(8px) scale(0.98);
+    }
+  }
 }

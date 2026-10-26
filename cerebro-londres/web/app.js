@@ -53,10 +53,33 @@
   async function arrancar() {
     gate.hidden = true;
     app.hidden = false;
-    const estado = $('#estadoDatos');
+    const estadoTxt = $('#estadoTexto') || $('#estadoDatos');
     const res = await Promise.allSettled(TEMAS.map(t => datos(t + '.json').then(j => { LAGO[t] = j; })));
     const ok = res.filter(r => r.status === 'fulfilled').length;
-    estado.textContent = `lago: ${ok}/${TEMAS.length} temas`;
+    if (estadoTxt) estadoTxt.textContent = `lago: ${ok}/${TEMAS.length} temas`;
+
+    // Telemetría viva de Londres en la cabecera (hora oficial Europe/London + temperatura del lago)
+    const temp = LAGO.sensores && LAGO.sensores.cifras && LAGO.sensores.cifras.temperatura_actual;
+    const elClima = $('#climaLondres');
+    if (elClima && temp && temp.valor != null) {
+      elClima.textContent = `${temp.valor} ${temp.unidad || '°C'}`;
+    }
+    const elReloj = $('#relojLondres');
+    if (elReloj) {
+      const pintarHora = () => {
+        try {
+          const h = new Intl.DateTimeFormat('en-GB', {
+            timeZone: 'Europe/London',
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: false
+          }).format(new Date());
+          elReloj.textContent = `LON ${h}`;
+        } catch (_) {}
+      };
+      pintarHora();
+      setInterval(pintarHora, 30000);
+    }
 
     const probados = Object.values(LAGO).map(j => j && j.probado).filter(Boolean).sort();
     if (probados.length) {
@@ -111,6 +134,22 @@
       if (enlaces[mejor]) $('#migas').textContent = enlaces[mejor].textContent.replace(/^\d+\s*/, '').trim();
     }, { threshold: [0, .25, .5, .75, 1] });
     secs.forEach(s => io.observe(s));
+
+    // Regla de progreso de lectura en el compositor (scaleX con rAF, cero layout shift)
+    const barra = $('#barraLecturaFill');
+    if (barra) {
+      let scrollRaf = 0;
+      const actualizarProgreso = () => {
+        scrollRaf = 0;
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        const p = max > 0 ? Math.max(0, Math.min(1, window.scrollY / max)) : 0;
+        barra.style.setProperty('--scroll-p', p.toFixed(4));
+      };
+      window.addEventListener('scroll', () => {
+        if (!scrollRaf) scrollRaf = requestAnimationFrame(actualizarProgreso);
+      }, { passive: true });
+      actualizarProgreso();
+    }
   }
 
   function ficha() {

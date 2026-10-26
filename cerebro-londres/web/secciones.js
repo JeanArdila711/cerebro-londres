@@ -33,6 +33,7 @@ window.SECCIONES = (function () {
         `<span class="tileFichaTag" aria-hidden="true">FICHA ↗</span>` +
       `</div>` +
       `<span class="v">${valor}${omitirUnidad ? '' : `<span class="u">${c.unidad}</span>`}</span>` +
+      (destacado && c.nota ? `<span class="nota">${c.nota}</span>` : '') +
       `<span class="vig">${c.vigencia} · ${f.entidad || c.fuente}</span>`;
     b.addEventListener('click', () => abrirFicha(tema, clave, etiqueta));
     return b;
@@ -76,7 +77,10 @@ window.SECCIONES = (function () {
   function rejilla(tiles, claseExtra = '') {
     const r = document.createElement('div');
     r.className = 'rejilla' + (claseExtra ? ' ' + claseExtra : '');
-    tiles.filter(Boolean).forEach(t => r.appendChild(t));
+    tiles.filter(Boolean).forEach((t, idx) => {
+      t.style.setProperty('--i', String(idx));
+      r.appendChild(t);
+    });
     return r;
   }
 
@@ -250,6 +254,9 @@ window.SECCIONES = (function () {
               { anchoEtiqueta: 185 })) : null
         ));
       }
+      if (LAGO.privacion.nota) {
+        pr.appendChild(aviso('<strong>Un promedio esconde la dispersión interna · MHCLG IoD2025</strong> ' + LAGO.privacion.nota));
+      }
       main.appendChild(pr);
     }
 
@@ -318,26 +325,58 @@ window.SECCIONES = (function () {
     main.appendChild(t);
 
     // =========================================================================
-    // 07 · TERRITORIO, TRANSPORTE Y RIESGO HÍDRICO
+    // 07 · TERRITORIO, TRANSPORTE Y RIESGO HÍDRICO (GEMELO DIGITAL 3D)
     // =========================================================================
-    const te = seccion('territorio', 'CARTOGRAFÍA DOBLE ESCALA · ONS & NAPTAN', 'Territorio, red de transporte y riesgo',
-      'Dos escalas superpuestas: los 33 boroughs de Greater London coloreados por precio medio de vivienda (UK HPI) ' +
-      'y los 18 wards electorales de Westminster delineados en bermellón. Seleccione cualquier polígono para inspeccionarlo.');
+    const te = seccion('territorio', 'CARTOGRAFÍA DOBLE ESCALA · ONS & NAPTAN', 'Gemelo digital territorial y red urbana',
+      'Modelo espacial multicapa: alterne entre las 6 variables metropolitanas (33 boroughs), inspeccione los 18 wards ' +
+      'de Westminster o active la extrusión volumétrica 3D para recorrer la estructura urbana y los 205 edificios Grado I.');
 
     const marcoMapa = document.createElement('div');
     marcoMapa.className = 'mapaMarco';
     marcoMapa.innerHTML =
-      `<div class="mapaBarra">` +
-        `<span><strong>CAPA COROPLÉTICA:</strong> PRECIO MEDIO DE VIVIENDA (UK HPI) + LÍMITES DE WARDS (ONS)</span>` +
-        `<div class="mapaLeyenda" id="mapaLeyenda">` +
-          `<span class="leyendaItem"><i class="leyendaSw" style="background:#d9e2ec"></i> Q1 (Menor)</span>` +
-          `<span class="leyendaItem"><i class="leyendaSw" style="background:#9fb3c8"></i> Q2</span>` +
-          `<span class="leyendaItem"><i class="leyendaSw" style="background:#627d98"></i> Q3</span>` +
-          `<span class="leyendaItem"><i class="leyendaSw" style="background:#334e68"></i> Q4</span>` +
-          `<span class="leyendaItem"><i class="leyendaSw" style="background:#c8281e"></i> Q5 / Foco Westminster</span>` +
+      `<div class="mapaControles">` +
+        `<div class="mapaGrupoControl">` +
+          `<span class="mapaControlLabel">CAPA COROPLÉTICA (33 BOROUGHS)</span>` +
+          `<div class="mapaBotones" id="mapaMetricas">` +
+            `<button type="button" data-m="precio" class="activo">Precio vivienda (£)</button>` +
+            `<button type="button" data-m="densidad">Densidad (hab/km²)</button>` +
+            `<button type="button" data-m="tax">Council Tax (£)</button>` +
+            `<button type="button" data-m="delitos">Tasa delitos (/1k)</button>` +
+            `<button type="button" data-m="imd">Privación (IMD)</button>` +
+            `<button type="button" data-m="vida">Esperanza vida</button>` +
+          `</div>` +
+        `</div>` +
+        `<div class="mapaGrupoControl">` +
+          `<span class="mapaControlLabel">CÁMARA Y ESTRUCTURA 3D</span>` +
+          `<div class="mapaBotones" id="mapaVistas">` +
+            `<button type="button" data-v="londres">Greater London (2D)</button>` +
+            `<button type="button" data-v="westminster">Foco Westminster</button>` +
+            `<button type="button" data-v="gemelo3d" class="btnGemelo">Gemelo 3D (Edificios)</button>` +
+            `<button type="button" data-v="extrusion3d">Prisma 3D (Datos)</button>` +
+            `<button type="button" data-v="orbita3d" class="btnGemelo">Órbita 3D ↻</button>` +
+          `</div>` +
         `</div>` +
       `</div>` +
-      `<div id="mapa"></div>`;
+      `<div class="mapaSubBarra">` +
+        `<div class="mapaCapasCheck">` +
+          `<label><input type="checkbox" id="chkWards" checked> <span>18 Wards Westminster</span></label>` +
+          `<label><input type="checkbox" id="chkPatrimonio" checked> <span>205 Edificios Grado I (Historic England)</span></label>` +
+          `<label><input type="checkbox" id="chkRiesgo" checked> <span>Nodos Riesgo Mareal</span></label>` +
+          `<label><input type="checkbox" id="chkWardsLondres"> <span>Malla 704 Wards Londres</span></label>` +
+        `</div>` +
+        `<div class="mapaLeyenda" id="mapaLeyenda"></div>` +
+      `</div>` +
+      `<div class="mapaLienzoWrap">` +
+        `<div id="mapa"></div>` +
+        `<aside class="mapaHUD" id="mapaHUD" aria-live="polite">` +
+          `<div class="hudKicker" id="hudKicker">TELEMETRÍA TERRITORIAL · HOVER O CLIC</div>` +
+          `<h4 class="hudTitulo" id="hudTitulo">City of Westminster</h4>` +
+          `<div class="hudSub" id="hudSub">GSS E09000033 · Foco del expediente</div>` +
+          `<div class="hudMetricas" id="hudMetricas"></div>` +
+          `<div class="hudPie" id="hudPie">Use Ctrl + arrastrar (o botón Gemelo 3D) para inclinar y rotar la estructura urbana.</div>` +
+        `</aside>` +
+        `<div class="mapaCoordenadas" id="mapaCoords">51.4975° N, 0.1357° W · ZOOM 9.5 · PITCH 0°</div>` +
+      `</div>`;
     te.appendChild(marcoMapa);
 
     te.appendChild(rejilla([
@@ -391,6 +430,9 @@ window.SECCIONES = (function () {
             libras(b.precio_medio_gbp || 0),
             b.codigo === 'E09000033'
           ]), 6)));
+    }
+    if (LAGO.atlas_boroughs && LAGO.atlas_boroughs.nota) {
+      a.appendChild(aviso('<strong>Por qué dos escalas · ONS & UK HPI</strong> ' + LAGO.atlas_boroughs.nota));
     }
     main.appendChild(a);
 
@@ -486,25 +528,82 @@ window.SECCIONES = (function () {
         G.linea(we.puntos, 'Vistas')) : null,
       bloqueCompEscucha
     ));
+    if (LAGO.escucha && LAGO.escucha.nota) {
+      es.appendChild(aviso('<strong>Atención, no afluencia · Wikimedia Pageviews</strong> ' + LAGO.escucha.nota));
+    }
     main.appendChild(es);
 
     // =========================================================================
-    // 12 · FUENTES, CATÁLOGO Y AUDITORÍA DE DATOS
+    // 12 · FUENTES, CATÁLOGO Y AUDITORÍA DE DATOS (COLAPSABLE CON ANIMACIÓN FLUIDA)
     // =========================================================================
     const fu = seccion('fuentes', 'TRAZABILIDAD Y GOBERNANZA · CATÁLOGO COMPLETO', 'Catálogo de fuentes y método',
       'Un catálogo honesto documenta también las fuentes que cayeron (504/400), las candidatas y las excluidas por ' +
-      'privacidad. Eso ahorra días de ingeniería a quien audite o continúe el sistema.');
+      'privacidad. Por defecto el inventario técnico permanece plegado para facilitar la lectura ejecutiva.');
     const cata = LAGO.catalogo;
     if (cata) {
-      const pastillas = document.createElement('div');
-      pastillas.style.marginBottom = '6px';
-      pastillas.innerHTML = Object.entries(cata.por_estado)
+      const det = document.createElement('div');
+      det.className = 'acordeonFuentes';
+      det.id = 'detallesFuentes';
+      det.dataset.open = 'false';
+
+      const sum = document.createElement('button');
+      sum.type = 'button';
+      sum.className = 'acordeonResumen';
+      sum.setAttribute('aria-expanded', 'false');
+      sum.setAttribute('aria-controls', 'acordeonPanelFuentes');
+
+      const chipsEstado = Object.entries(cata.por_estado)
         .map(([est, n]) => `<span class="pastilla ${est}">${est}: ${n}</span>`).join('');
-      fu.appendChild(bloque(`Resumen de auditoría: ${cata.n} fuentes rastreadas en total`, 'Verificadas por script antes del despliegue', pastillas));
-      fu.appendChild(bloque('Inventario completo del catálogo de datos', 'Incluye estado de enlace, licencia cerrada y evaluación de datos personales',
-        tabla(
+      sum.innerHTML =
+        `<div class="acordeonInfo">` +
+          `<div class="acordeonTituloFila">` +
+            `<strong>Auditoría de ${cata.n} fuentes rastreadas</strong>` +
+            `<span class="bloqueMeta">Verificadas automáticamente antes del despliegue</span>` +
+          `</div>` +
+          `<div class="acordeonChips">${chipsEstado}</div>` +
+        `</div>` +
+        `<div class="acordeonAccion">` +
+          `<svg class="iconoAcordeon" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">` +
+            `<path class="trazoV" d="M8 3v10"/><path d="M3 8h10"/>` +
+          `</svg>` +
+          `<span class="txtCerrar">Colapsar inventario</span>` +
+          `<span class="txtAbrir">Desplegar inventario (${cata.n} fuentes)</span>` +
+        `</div>`;
+      det.appendChild(sum);
+
+      const gridWrap = document.createElement('div');
+      gridWrap.className = 'acordeonGridWrap';
+      gridWrap.id = 'acordeonPanelFuentes';
+      gridWrap.setAttribute('aria-hidden', 'true');
+
+      const gridInner = document.createElement('div');
+      gridInner.className = 'acordeonGridInner';
+
+      const cuerpo = document.createElement('div');
+      cuerpo.className = 'acordeonCuerpo';
+
+      // Barra de filtro rápido por estado dentro del desplegable
+      const barraFiltro = document.createElement('div');
+      barraFiltro.className = 'filtroFuentes';
+      const estadosUnicos = ['todos', ...Object.keys(cata.por_estado)];
+      barraFiltro.innerHTML =
+        `<span class="filtroLabel">FILTRAR POR ESTADO:</span>` +
+        estadosUnicos.map((est, idx) =>
+          `<button type="button" data-est="${est}" class="btnFiltroFuente${idx === 0 ? ' activo' : ''}">` +
+            `${est === 'todos' ? `Todos (${cata.n})` : `${est} (${cata.por_estado[est]})`}` +
+          `</button>`
+        ).join('');
+      cuerpo.appendChild(barraFiltro);
+
+      const contenedorTabla = document.createElement('div');
+      const pintarTablaFuentes = (estadoFiltro, animarFilas = false) => {
+        const listaFiltrada = estadoFiltro === 'todos'
+          ? cata.datasets
+          : cata.datasets.filter(d => d.estado === estadoFiltro);
+        contenedorTabla.innerHTML = '';
+        const tbl = tabla(
           ['Fuente / Conjunto de datos', 'Entidad', 'Estado', 'Licencia', '¿Personas?', 'Probado el'],
-          cata.datasets.map(d => [
+          listaFiltrada.map(d => [
             `<a href="${d.url}" target="_blank" rel="noopener noreferrer"><strong>${d.nombre}</strong></a>` +
             (d.nota ? `<br><small style="color:var(--suave)">${d.nota}</small>` : ''),
             d.entidad,
@@ -512,12 +611,175 @@ window.SECCIONES = (function () {
             `<code>${d.licencia}</code>`,
             d.personas,
             `<code>${d.probado}</code>`
-          ]))));
-      fu.appendChild(aviso(
+          ]));
+        tbl.querySelectorAll('tbody tr').forEach((tr, idx) => {
+          tr.style.setProperty('--row-i', String(Math.min(idx, 18)));
+          if (animarFilas) tr.classList.add('filaFiltrada');
+        });
+        contenedorTabla.appendChild(tbl);
+      };
+      pintarTablaFuentes('todos', false);
+
+      barraFiltro.querySelectorAll('button').forEach(btn => {
+        btn.addEventListener('click', () => {
+          barraFiltro.querySelectorAll('button').forEach(b => b.classList.remove('activo'));
+          btn.classList.add('activo');
+          pintarTablaFuentes(btn.dataset.est, true);
+        });
+      });
+
+      cuerpo.appendChild(bloque(
+        'Inventario completo del catálogo de datos',
+        'Incluye estado de enlace, licencia cerrada y evaluación de datos personales',
+        contenedorTabla
+      ));
+
+      cuerpo.appendChild(aviso(
         '<strong>Dos garantías adicionales frente al Cerebro Lima</strong> Cada ficha de este catálogo exige ' +
         '<code>probado</code> (fecha ISO en que el endpoint respondió 200) y <code>personas</code> ' +
         '(declaración explícita de si existen datos personales o cuasi-identificadores como el postcode británico). ' +
         'El verificador automático bloquea el despliegue si falta cualquiera de los dos.'));
+
+      gridInner.appendChild(cuerpo);
+      gridWrap.appendChild(gridInner);
+      det.appendChild(gridWrap);
+
+      // Coreografía de apertura y cierre en tres tiempos (Cortina S-curve + Bloques + Filas)
+      let animCaja = null;
+      let animItems = [];
+      let estaAbierto = false;
+
+      const limpiarAnimItems = () => {
+        animItems.forEach(a => { try { a.cancel(); } catch (_) {} });
+        animItems = [];
+      };
+
+      const alternarAcordeon = forzar => {
+        const abrir = typeof forzar === 'boolean' ? forzar : !estaAbierto;
+        if (abrir === estaAbierto) return;
+        estaAbierto = abrir;
+
+        const sinMov = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const hActual = gridWrap.getBoundingClientRect().height;
+
+        if (animCaja) { animCaja.cancel(); animCaja = null; }
+        limpiarAnimItems();
+
+        det.dataset.open = abrir ? 'true' : 'false';
+        sum.setAttribute('aria-expanded', String(abrir));
+        gridWrap.setAttribute('aria-hidden', String(!abrir));
+
+        if (sinMov) {
+          gridWrap.style.height = abrir ? 'auto' : '0px';
+          gridWrap.style.opacity = abrir ? '1' : '0';
+          return;
+        }
+
+        const piezas = [barraFiltro, ...cuerpo.querySelectorAll('.bloque, .aviso')].filter(Boolean);
+        const filasVisibles = [...cuerpo.querySelectorAll('tbody tr')].slice(0, 14);
+
+        if (abrir) {
+          // 1. Medir altura real de destino sin parpadeo
+          gridWrap.style.height = 'auto';
+          const hFinal = gridInner.getBoundingClientRect().height;
+          gridWrap.style.height = `${hActual}px`;
+          gridWrap.style.opacity = '1';
+
+          // 2. Cortina contenedora con curva S simétrica (arranca suave, acelera en el medio y frena con seda)
+          animCaja = gridWrap.animate(
+            [
+              { height: `${hActual}px` },
+              { height: `${hFinal}px` }
+            ],
+            { duration: 680, easing: 'cubic-bezier(0.65, 0, 0.35, 1)' }
+          );
+
+          // 3. Entrada escalonada de la barra de filtro, el bloque de tabla y la nota de gobernanza
+          piezas.forEach((el, idx) => {
+            const a = el.animate(
+              [
+                { opacity: 0, transform: 'translateY(14px)' },
+                { opacity: 1, transform: 'translateY(0px)' }
+              ],
+              {
+                duration: 520,
+                delay: 90 + idx * 75,
+                easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
+                fill: 'both'
+              }
+            );
+            animItems.push(a);
+          });
+
+          // 4. Micro-cascada en las primeras filas visibles del catálogo
+          filasVisibles.forEach((tr, idx) => {
+            const a = tr.animate(
+              [
+                { opacity: 0, transform: 'translateY(8px)' },
+                { opacity: 1, transform: 'translateY(0px)' }
+              ],
+              {
+                duration: 420,
+                delay: 160 + idx * 22,
+                easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
+                fill: 'both'
+              }
+            );
+            animItems.push(a);
+          });
+
+          animCaja.onfinish = () => {
+            gridWrap.style.height = 'auto';
+            animCaja = null;
+          };
+        } else {
+          // Cierre tipo cortina real: el contenido permanece visible mientras el borde inferior
+          // sube recortándolo limpiamente (sin blanquear antes de cerrar), y se desvanece solo al final.
+          const rectDet = det.getBoundingClientRect();
+          if (rectDet.top < 90) {
+            window.scrollTo({ top: window.scrollY + rectDet.top - 115, behavior: 'smooth' });
+          }
+
+          gridWrap.style.height = `${hActual}px`;
+          gridWrap.style.opacity = '1';
+
+          const aCuerpo = cuerpo.animate(
+            [
+              { transform: 'translateY(0px)' },
+              { transform: 'translateY(-14px)' }
+            ],
+            {
+              duration: 520,
+              easing: 'cubic-bezier(0.65, 0, 0.35, 1)',
+              fill: 'both'
+            }
+          );
+          animItems.push(aCuerpo);
+
+          animCaja = gridWrap.animate(
+            [
+              { height: `${hActual}px`, opacity: 1, offset: 0 },
+              { height: `${Math.round(hActual * 0.25)}px`, opacity: 0.92, offset: 0.65 },
+              { height: '0px', opacity: 0, offset: 1 }
+            ],
+            {
+              duration: 520,
+              easing: 'cubic-bezier(0.65, 0, 0.35, 1)'
+            }
+          );
+
+          animCaja.onfinish = () => {
+            gridWrap.style.height = '0px';
+            gridWrap.style.opacity = '0';
+            limpiarAnimItems();
+            animCaja = null;
+          };
+        }
+      };
+
+      sum.addEventListener('click', () => alternarAcordeon());
+
+      fu.appendChild(det);
     }
     main.appendChild(fu);
   }
