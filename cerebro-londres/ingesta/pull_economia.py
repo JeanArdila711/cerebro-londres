@@ -92,7 +92,8 @@ fuentes = [{
 
 cifras = {
     "precio_medio_westminster": C.cifra(
-        fval, "£ por vivienda", "ukhpi", fmes, f"Precio medio de vivienda en {FOCO_NOMBRE}"),
+        fval, "£ por vivienda", "ukhpi", fmes,
+        "Cifra provisional: el UK HPI revisa los últimos meses en publicaciones posteriores"),
 }
 if "london" in ultimos:
     cifras["precio_medio_londres"] = C.cifra(

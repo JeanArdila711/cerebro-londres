@@ -72,7 +72,7 @@ fuentes = [{
 cifras = {
     "edificios_protegidos_n": C.cifra(
         len(edificios), "edificios", "planning_listed", C.hoy(),
-        "Total de edificios con alguna protección patrimonial en Westminster"),
+        "Suma de grados I, II* y II (de mayor a menor importancia histórica)"),
     "grado_i_n": C.cifra(
         por_grado.get("I", 0), "edificios", "planning_listed", C.hoy(),
         "Grado I: el de mayor importancia histórica o arquitectónica"),

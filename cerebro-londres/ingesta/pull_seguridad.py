@@ -90,7 +90,8 @@ fuentes = [{
 
 cifras = {
     "delitos_ultimo_mes": C.cifra(ultimo_n, "delitos registrados", "police_uk", ultimo_mes,
-                                  f"Delitos registrados en {FOCO}"),
+                                  "Delitos REGISTRADOS, no ocurridos: un cambio puede venir de la "
+                                  "denuncia o del registro, no del hecho"),
     "delitos_12m": C.cifra(total, "delitos registrados", "police_uk",
                            f"{puntos[0][0]}–{ultimo_mes}", f"Suma de los {len(puntos)} meses descargados"),
     "categoria_mas_frecuente": C.cifra(

@@ -89,7 +89,8 @@ fuentes = [{
 cifras = {
     "poblacion_westminster": C.cifra(
         foco["poblacion"], "personas", "ons_mye_nomis", str(anio),
-        f"Estimación de mitad de año para {FOCO_NOMBRE} ({FOCO})"),
+        "Población RESIDENTE mid-year; no cuenta trabajadores, turistas ni tránsito diario, "
+        "que multiplican varias veces la gente presente en Westminster a diario"),
     "puesto_poblacion": C.cifra(
         puesto, "puesto de 33", "ons_mye_nomis", str(anio),
         "Entre los 33 boroughs de Greater London, de mayor a menor"),

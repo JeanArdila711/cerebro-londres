@@ -1,6 +1,6 @@
 {
  "tema": "patrimonio",
- "probado": "2026-10-02",
+ "probado": "2026-10-26",
  "fuentes": [
   {
    "id": "planning_listed",
@@ -9,7 +9,7 @@
    "url": "https://www.planning.data.gov.uk/dataset/listed-building",
    "resolucion": "punto",
    "vigencia": "continua (entry-date por entidad)",
-   "probado": "2026-10-02",
+   "probado": "2026-10-26",
    "estado": "vivo",
    "licencia": "OGL-3.0",
    "personas": "no",
@@ -20,18 +20,18 @@
  ],
  "cifras": {
   "edificios_protegidos_n": {
-   "valor": 4017,
+   "valor": 4018,
    "unidad": "edificios",
    "fuente": "planning_listed",
-   "vigencia": "2026-10-02",
-   "nota": "Total de edificios con alguna protección patrimonial en Westminster",
+   "vigencia": "2026-10-26",
+   "nota": "Suma de grados I, II* y II (de mayor a menor importancia histórica)",
    "estado": "integrado"
   },
   "grado_i_n": {
    "valor": 205,
    "unidad": "edificios",
    "fuente": "planning_listed",
-   "vigencia": "2026-10-02",
+   "vigencia": "2026-10-26",
    "nota": "Grado I: el de mayor importancia histórica o arquitectónica",
    "estado": "integrado"
   },
@@ -39,15 +39,15 @@
    "valor": 373,
    "unidad": "edificios",
    "fuente": "planning_listed",
-   "vigencia": "2026-10-02",
+   "vigencia": "2026-10-26",
    "nota": "Grado II*",
    "estado": "integrado"
   },
   "grado_ii_n": {
-   "valor": 3418,
+   "valor": 3419,
    "unidad": "edificios",
    "fuente": "planning_listed",
-   "vigencia": "2026-10-02",
+   "vigencia": "2026-10-26",
    "nota": "Grado II, el más común",
    "estado": "integrado"
   }
@@ -61,7 +61,7 @@
    },
    {
     "grado": "II",
-    "n": 3418
+    "n": 3419
    },
    {
     "grado": "II*",

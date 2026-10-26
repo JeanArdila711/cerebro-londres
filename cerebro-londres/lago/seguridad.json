@@ -24,7 +24,7 @@
    "unidad": "delitos registrados",
    "fuente": "police_uk",
    "vigencia": "2026-08",
-   "nota": "Delitos registrados en City of Westminster",
+   "nota": "Delitos REGISTRADOS, no ocurridos: un cambio puede venir de la denuncia o del registro, no del hecho",
    "estado": "integrado"
   },
   "delitos_12m": {

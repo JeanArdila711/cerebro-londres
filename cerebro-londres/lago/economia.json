@@ -1,6 +1,6 @@
 {
  "tema": "economia",
- "probado": "2026-09-21",
+ "probado": "2026-10-26",
  "fuentes": [
   {
    "id": "ukhpi",
@@ -8,8 +8,8 @@
    "entidad": "HM Land Registry",
    "url": "https://landregistry.data.gov.uk/app/ukhpi",
    "resolucion": "borough",
-   "vigencia": "2021-08–2026-07",
-   "probado": "2026-09-21",
+   "vigencia": "2021-09–2026-08",
+   "probado": "2026-10-26",
    "estado": "vivo",
    "licencia": "OGL-3.0",
    "personas": "no",
@@ -20,75 +20,75 @@
  ],
  "cifras": {
   "precio_medio_westminster": {
-   "valor": 876788,
+   "valor": 887206,
    "unidad": "£ por vivienda",
    "fuente": "ukhpi",
-   "vigencia": "2026-07",
-   "nota": "Precio medio de vivienda en City of Westminster",
+   "vigencia": "2026-08",
+   "nota": "Cifra provisional: el UK HPI revisa los últimos meses en publicaciones posteriores",
    "estado": "integrado"
   },
   "precio_medio_londres": {
-   "valor": 550037,
+   "valor": 554430,
    "unidad": "£ por vivienda",
    "fuente": "ukhpi",
-   "vigencia": "2026-07",
+   "vigencia": "2026-08",
    "nota": "Media de Greater London",
    "estado": "integrado"
   },
   "veces_la_media_de_londres": {
-   "valor": 1.59,
+   "valor": 1.6,
    "unidad": "veces",
    "fuente": "ukhpi",
-   "vigencia": "2026-07",
+   "vigencia": "2026-08",
    "nota": "Cuántas veces la media londinense cuesta una vivienda en Westminster",
    "estado": "integrado"
   },
   "veces_la_media_de_inglaterra": {
-   "valor": 2.99,
+   "valor": 3.02,
    "unidad": "veces",
    "fuente": "ukhpi",
-   "vigencia": "2026-07",
+   "vigencia": "2026-08",
    "nota": "Cuántas veces la media de Inglaterra",
    "estado": "integrado"
   },
   "precio_medio_piso": {
-   "valor": 775956,
+   "valor": 784694,
    "unidad": "£ por vivienda",
    "fuente": "ukhpi",
-   "vigencia": "2026-07",
+   "vigencia": "2026-08",
    "nota": "Precio medio de una vivienda tipo «piso»",
    "estado": "integrado"
   },
   "precio_medio_adosada": {
-   "valor": 1616250,
+   "valor": 1641592,
    "unidad": "£ por vivienda",
    "fuente": "ukhpi",
-   "vigencia": "2026-07",
+   "vigencia": "2026-08",
    "nota": "Precio medio de una vivienda tipo «adosada»",
    "estado": "integrado"
   },
   "precio_medio_pareada": {
-   "valor": 2760923,
+   "valor": 2810593,
    "unidad": "£ por vivienda",
    "fuente": "ukhpi",
-   "vigencia": "2026-07",
+   "vigencia": "2026-08",
    "nota": "Precio medio de una vivienda tipo «pareada»",
    "estado": "integrado"
   },
   "precio_medio_unifamiliar": {
-   "valor": 3892403,
+   "valor": 3935497,
    "unidad": "£ por vivienda",
    "fuente": "ukhpi",
-   "vigencia": "2026-07",
+   "vigencia": "2026-08",
    "nota": "Precio medio de una vivienda tipo «unifamiliar»",
    "estado": "integrado"
   },
   "variacion_interanual": {
-   "valor": -20.75,
+   "valor": -14.3,
    "unidad": "%",
    "fuente": "ukhpi",
-   "vigencia": "2026-07",
-   "nota": "Frente a 2025-07: £1,106,346",
+   "vigencia": "2026-08",
+   "nota": "Frente a 2025-08: £1,035,221",
    "estado": "integrado"
   }
  },
@@ -97,10 +97,6 @@
    "fuente": "ukhpi",
    "unidad": "£ por vivienda",
    "puntos": [
-    [
-     "2021-08",
-     1178953
-    ],
     [
      "2021-09",
      1190422
@@ -291,51 +287,55 @@
     ],
     [
      "2025-08",
-     1035423
+     1035221
     ],
     [
      "2025-09",
-     1055294
+     1051596
     ],
     [
      "2025-10",
-     996299
+     994660
     ],
     [
      "2025-11",
-     997915
+     998589
     ],
     [
      "2025-12",
-     938252
+     950271
     ],
     [
      "2026-01",
-     948757
+     963716
     ],
     [
      "2026-02",
-     900297
+     919473
     ],
     [
      "2026-03",
-     865240
+     878055
     ],
     [
      "2026-04",
-     847914
+     868489
     ],
     [
      "2026-05",
-     861415
+     882764
     ],
     [
      "2026-06",
-     867665
+     894417
     ],
     [
      "2026-07",
-     876788
+     892161
+    ],
+    [
+     "2026-08",
+     887206
     ]
    ]
   },
@@ -343,10 +343,6 @@
    "fuente": "ukhpi",
    "unidad": "£ por vivienda",
    "puntos": [
-    [
-     "2021-08",
-     545831
-    ],
     [
      "2021-09",
      541876
@@ -537,51 +533,55 @@
     ],
     [
      "2025-08",
-     568061
+     567115
     ],
     [
      "2025-09",
-     566242
+     565498
     ],
     [
      "2025-10",
-     557638
+     557572
     ],
     [
      "2025-11",
-     558506
+     560709
     ],
     [
      "2025-12",
-     548608
+     550040
     ],
     [
      "2026-01",
-     553557
+     553643
     ],
     [
      "2026-02",
-     546113
+     546681
     ],
     [
      "2026-03",
-     546847
+     546111
     ],
     [
      "2026-04",
-     552567
+     554363
     ],
     [
      "2026-05",
-     547982
+     549535
     ],
     [
      "2026-06",
-     550607
+     551440
     ],
     [
      "2026-07",
-     550037
+     550340
+    ],
+    [
+     "2026-08",
+     554430
     ]
    ]
   },
@@ -589,10 +589,6 @@
    "fuente": "ukhpi",
    "unidad": "£ por vivienda",
    "puntos": [
-    [
-     "2021-08",
-     259193
-    ],
     [
      "2021-09",
      268041
@@ -783,51 +779,55 @@
     ],
     [
      "2025-08",
-     292512
+     292319
     ],
     [
      "2025-09",
-     290866
+     290689
     ],
     [
      "2025-10",
-     291159
+     290975
     ],
     [
      "2025-11",
-     292537
+     291892
     ],
     [
      "2025-12",
-     289918
+     289280
     ],
     [
      "2026-01",
-     290511
+     290474
     ],
     [
      "2026-02",
-     291643
+     291263
     ],
     [
      "2026-03",
-     290496
+     290133
     ],
     [
      "2026-04",
-     292181
+     292164
     ],
     [
      "2026-05",
-     292724
+     292907
     ],
     [
      "2026-06",
-     291581
+     291674
     ],
     [
      "2026-07",
-     293479
+     292882
+    ],
+    [
+     "2026-08",
+     293525
     ]
    ]
   },
@@ -835,10 +835,6 @@
    "fuente": "ukhpi",
    "unidad": "£ por vivienda",
    "puntos": [
-    [
-     "2021-08",
-     858515
-    ],
     [
      "2021-09",
      864925
@@ -1029,51 +1025,55 @@
     ],
     [
      "2025-08",
-     893814
+     893099
     ],
     [
      "2025-09",
-     878425
+     877218
     ],
     [
      "2025-10",
-     872694
+     870482
     ],
     [
      "2025-11",
-     850321
+     856566
     ],
     [
      "2025-12",
-     832130
+     843174
     ],
     [
      "2026-01",
-     823153
+     837315
     ],
     [
      "2026-02",
-     795336
+     802010
     ],
     [
      "2026-03",
-     804951
+     808658
     ],
     [
      "2026-04",
-     805447
+     808031
     ],
     [
      "2026-05",
-     843425
+     841229
     ],
     [
      "2026-06",
-     834198
+     828563
     ],
     [
      "2026-07",
-     815159
+     809906
+    ],
+    [
+     "2026-08",
+     798486
     ]
    ]
   },
@@ -1081,10 +1081,6 @@
    "fuente": "ukhpi",
    "unidad": "£ por vivienda",
    "puntos": [
-    [
-     "2021-08",
-     1563496
-    ],
     [
      "2021-09",
      1640653
@@ -1275,51 +1271,55 @@
     ],
     [
      "2025-08",
-     1395417
+     1396156
     ],
     [
      "2025-09",
-     1390253
+     1392598
     ],
     [
      "2025-10",
-     1373595
+     1374461
     ],
     [
      "2025-11",
-     1385774
+     1382430
     ],
     [
      "2025-12",
-     1324122
+     1316518
     ],
     [
      "2026-01",
-     1315082
+     1315018
     ],
     [
      "2026-02",
-     1303606
+     1310028
     ],
     [
      "2026-03",
-     1312209
+     1322108
     ],
     [
      "2026-04",
-     1336908
+     1363307
     ],
     [
      "2026-05",
-     1290358
+     1335739
     ],
     [
      "2026-06",
-     1266683
+     1324073
     ],
     [
      "2026-07",
-     1232640
+     1257453
+    ],
+    [
+     "2026-08",
+     1204072
     ]
    ]
   }
@@ -1328,19 +1328,19 @@
   "por_tipo_de_vivienda": [
    [
     "piso",
-    775956
+    784694
    ],
    [
     "adosada",
-    1616250
+    1641592
    ],
    [
     "pareada",
-    2760923
+    2810593
    ],
    [
     "unifamiliar",
-    3892403
+    3935497
    ]
   ]
  },

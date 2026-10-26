@@ -1,6 +1,6 @@
 {
  "tema": "demografia",
- "probado": "2026-09-21",
+ "probado": "2026-10-26",
  "fuentes": [
   {
    "id": "ons_mye_nomis",
@@ -9,7 +9,7 @@
    "url": "https://www.nomisweb.co.uk/datasets/pestsyoala",
    "resolucion": "borough",
    "vigencia": "2025",
-   "probado": "2026-09-21",
+   "probado": "2026-10-26",
    "estado": "vivo",
    "licencia": "OGL-3.0",
    "personas": "no",
@@ -24,7 +24,7 @@
    "unidad": "personas",
    "fuente": "ons_mye_nomis",
    "vigencia": "2025",
-   "nota": "Estimación de mitad de año para City of Westminster (E09000033)",
+   "nota": "Población RESIDENTE mid-year; no cuenta trabajadores, turistas ni tránsito diario, que multiplican varias veces la gente presente en Westminster a diario",
    "estado": "integrado"
   },
   "puesto_poblacion": {
