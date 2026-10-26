@@ -1,14 +1,14 @@
-// Gráficos en SVG, sin librería. Lo justo para que una serie se vea.
+// Gráficos en SVG, sin librería. Proporción real (sin deformación), guías de referencia
+// y lectura interactiva punto a punto al pasar el puntero o navegar.
 window.GRAFICOS = (function () {
   const ns = 'http://www.w3.org/2000/svg';
-  const fmt = n => new Intl.NumberFormat('es-ES').format(n);
+  const fmt = n => typeof n === 'number' ? new Intl.NumberFormat('es-ES').format(n) : String(n);
 
-  function marco(alto = 180) {
+  function marco(alto = 210) {
     const s = document.createElementNS(ns, 'svg');
-    s.setAttribute('viewBox', `0 0 640 ${alto}`);
-    s.setAttribute('preserveAspectRatio', 'none');
+    s.setAttribute('viewBox', `0 0 680 ${alto}`);
+    s.setAttribute('preserveAspectRatio', 'xMidYMid meet');
     s.setAttribute('width', '100%');
-    s.setAttribute('height', alto);
     s.setAttribute('role', 'img');
     return s;
   }
@@ -20,59 +20,189 @@ window.GRAFICOS = (function () {
     return e;
   }
 
-  // Serie temporal: línea con área, primer y último rótulo
-  function linea(puntos, titulo) {
+  // Serie temporal: línea con área, línea de media, puntos y barra de lectura interactiva
+  function linea(puntos, titulo, opciones = {}) {
     const caja = document.createElement('div');
     caja.className = 'svgCaja';
     if (!puntos || puntos.length < 2) return caja;
-    const A = 180, M = { i: 8, d: 8, s: 14, f: 24 };
-    const vals = puntos.map(p => p[1]);
-    const min = Math.min(...vals), max = Math.max(...vals);
+
+    const formatear = opciones.formato || fmt;
+    const A = 210;
+    const M = { i: 12, d: 14, s: 24, f: 28 };
+    const W = 680;
+    const vals = puntos.map(p => Number(p[1]));
+    const min = Math.min(...vals);
+    const max = Math.max(...vals);
+    const media = vals.reduce((a, b) => a + b, 0) / vals.length;
     const rango = max - min || 1;
-    const x = i => M.i + (i / (puntos.length - 1)) * (640 - M.i - M.d);
+
+    const x = i => M.i + (i / (puntos.length - 1)) * (W - M.i - M.d);
     const y = v => M.s + (1 - (v - min) / rango) * (A - M.s - M.f);
 
+    // Barra superior de lectura viva (muestra el último dato por defecto y actualiza en hover)
+    const ultimo = puntos[puntos.length - 1];
+    const primero = puntos[0];
+    const lector = document.createElement('div');
+    lector.className = 'svgTooltip';
+    const pintarLector = (par, etiquetaExtra) => {
+      lector.innerHTML =
+        `<span><strong>${par[0]}</strong>${etiquetaExtra ? ' · ' + etiquetaExtra : ''}</span>` +
+        `<span><strong>${formatear(par[1])}</strong> (rango: ${formatear(min)} – ${formatear(max)})</span>`;
+    };
+    pintarLector(ultimo, 'último registro');
+    caja.appendChild(lector);
+
     const s = marco(A);
-    s.setAttribute('aria-label', `${titulo}: de ${puntos[0][0]} a ${puntos[puntos.length - 1][0]}`);
+    s.setAttribute('aria-label', `${titulo}: de ${primero[0]} a ${ultimo[0]}`);
+
+    // Guías horizontales (máximo, media, mínimo)
+    const yMax = y(max), yMed = y(media), yMin = y(min);
+    s.appendChild(el('line', { class: 'guia', x1: M.i, y1: yMax, x2: W - M.d, y2: yMax }));
+    s.appendChild(el('line', { class: 'guia', x1: M.i, y1: yMed, x2: W - M.d, y2: yMed }));
+    s.appendChild(el('line', { class: 'eje', x1: M.i, y1: A - M.f, x2: W - M.d, y2: A - M.f }));
+
+    // Área y línea de la serie
     const d = puntos.map((p, i) => `${i ? 'L' : 'M'}${x(i).toFixed(1)},${y(p[1]).toFixed(1)}`).join('');
-    s.appendChild(el('path', { class: 'area', d: `${d}L${x(puntos.length - 1)},${A - M.f}L${x(0)},${A - M.f}Z` }));
+    s.appendChild(el('path', { class: 'area', d: `${d}L${x(puntos.length - 1).toFixed(1)},${A - M.f}L${x(0).toFixed(1)},${A - M.f}Z` }));
     s.appendChild(el('path', { class: 'linea', d }));
-    s.appendChild(el('line', { class: 'eje', x1: M.i, y1: A - M.f, x2: 640 - M.d, y2: A - M.f }));
-    s.appendChild(el('text', { class: 'rotulo', x: M.i, y: A - 8 }, puntos[0][0]));
-    const fin = el('text', { class: 'rotulo', x: 640 - M.d, y: A - 8, 'text-anchor': 'end' },
-      puntos[puntos.length - 1][0]);
-    s.appendChild(fin);
-    s.appendChild(el('text', { class: 'rotulo', x: M.i, y: 11 }, `máx ${fmt(max)}`));
-    s.appendChild(el('text', { class: 'rotulo', x: 640 - M.d, y: 11, 'text-anchor': 'end' },
-      `mín ${fmt(min)}`));
+
+    // Rótulos de referencia
+    s.appendChild(el('text', { class: 'rotulo', x: M.i, y: 14 }, `MÁX ${formatear(max)}`));
+    s.appendChild(el('text', { class: 'rotulo', x: W / 2, y: 14, 'text-anchor': 'middle' },
+      `MEDIA ${formatear(Math.round(media * 10) / 10)}`));
+    s.appendChild(el('text', { class: 'rotulo', x: W - M.d, y: 14, 'text-anchor': 'end' }, `MÍN ${formatear(min)}`));
+
+    // Rótulos del eje X (inicio, medio y fin)
+    s.appendChild(el('text', { class: 'rotulo', x: M.i, y: A - 8 }, primero[0]));
+    if (puntos.length > 4) {
+      const midIdx = Math.floor((puntos.length - 1) / 2);
+      s.appendChild(el('text', { class: 'rotulo', x: x(midIdx), y: A - 8, 'text-anchor': 'middle' }, puntos[midIdx][0]));
+    }
+    s.appendChild(el('text', { class: 'rotulo', x: W - M.d, y: A - 8, 'text-anchor': 'end' }, ultimo[0]));
+
+    // Cursor interactivo
+    const guiaV = el('line', {
+      class: 'guia', x1: x(puntos.length - 1), y1: M.s, x2: x(puntos.length - 1), y2: A - M.f,
+      opacity: '0'
+    });
+    s.appendChild(guiaV);
+
+    // Puntos de la serie (si son <= 40 dibujamos nodos pequeños; siempre destacamos el último)
+    if (puntos.length <= 36) {
+      puntos.forEach((p, i) => {
+        s.appendChild(el('circle', {
+          class: 'punto',
+          cx: x(i).toFixed(1),
+          cy: y(p[1]).toFixed(1),
+          r: i === puntos.length - 1 ? 4 : 2.5
+        }));
+      });
+    }
+
+    const nodoActivo = el('circle', {
+      class: 'puntoActivo',
+      cx: x(puntos.length - 1).toFixed(1),
+      cy: y(ultimo[1]).toFixed(1),
+      r: 4.5
+    });
+    s.appendChild(nodoActivo);
+
+    // Interacción con puntero sobre el SVG
+    s.addEventListener('pointermove', ev => {
+      const rect = s.getBoundingClientRect();
+      if (!rect.width) return;
+      const relX = ((ev.clientX - rect.left) / rect.width) * W;
+      const prop = Math.max(0, Math.min(1, (relX - M.i) / (W - M.i - M.d)));
+      const idx = Math.round(prop * (puntos.length - 1));
+      const p = puntos[idx];
+      if (!p) return;
+      const cx = x(idx).toFixed(1);
+      const cy = y(p[1]).toFixed(1);
+      guiaV.setAttribute('x1', cx);
+      guiaV.setAttribute('x2', cx);
+      guiaV.setAttribute('opacity', '1');
+      nodoActivo.setAttribute('cx', cx);
+      nodoActivo.setAttribute('cy', cy);
+      pintarLector(p, `observación ${idx + 1}/${puntos.length}`);
+    });
+
+    s.addEventListener('pointerleave', () => {
+      const cx = x(puntos.length - 1).toFixed(1);
+      const cy = y(ultimo[1]).toFixed(1);
+      guiaV.setAttribute('opacity', '0');
+      nodoActivo.setAttribute('cx', cx);
+      nodoActivo.setAttribute('cy', cy);
+      pintarLector(ultimo, 'último registro');
+    });
+
     caja.appendChild(s);
     return caja;
   }
 
-  // Barras horizontales, con el foco resaltado
+  // Barras horizontales de precisión (con track de fondo y foco en Westminster)
   function barras(filas, opciones = {}) {
     const caja = document.createElement('div');
     caja.className = 'svgCaja';
     if (!filas || !filas.length) return caja;
-    const n = filas.length, h = 22, A = n * h + 10;
-    const max = Math.max(...filas.map(f => f[1])) || 1;
-    const anchoEtiqueta = opciones.anchoEtiqueta || 210;
+
+    const W = 680;
+    const n = filas.length;
+    const h = 24;
+    const A = n * h + 10;
+    const max = Math.max(...filas.map(f => Number(f[1]) || 0)) || 1;
+    const anchoEtiqueta = opciones.anchoEtiqueta || 205;
+    const margenValor = 88;
+    const anchoUtil = W - anchoEtiqueta - margenValor;
+
     const s = marco(A);
-    s.setAttribute('viewBox', `0 0 640 ${A}`);
-    s.setAttribute('aria-label', opciones.titulo || 'Comparación');
+    s.setAttribute('viewBox', `0 0 ${W} ${A}`);
+    s.setAttribute('aria-label', opciones.titulo || 'Comparación por categoría');
+
     filas.forEach((f, i) => {
       const y = i * h + 4;
-      const ancho = (f[1] / max) * (640 - anchoEtiqueta - 66);
-      s.appendChild(el('text', { class: 'rotulo', x: 0, y: y + 12 },
-        String(f[0]).length > 30 ? String(f[0]).slice(0, 29) + '…' : f[0]));
-      s.appendChild(el('rect', {
-        class: 'barra' + (f[2] ? ' foco' : ''), x: anchoEtiqueta, y, width: Math.max(ancho, 1),
-        height: h - 7, rx: 3
+      const val = Number(f[1]) || 0;
+      const esFoco = Boolean(f[2]);
+      const ancho = (val / max) * anchoUtil;
+      const g = el('g', { class: 'filaBarra' });
+
+      const textoEtiqueta = String(f[0]).length > 29 ? String(f[0]).slice(0, 28) + '…' : String(f[0]);
+      g.appendChild(el('text', {
+        class: esFoco ? 'rotuloFoco' : 'rotulo',
+        x: 0,
+        y: y + 13
+      }, esFoco ? `▸ ${textoEtiqueta}` : textoEtiqueta));
+
+      // Track de fondo completo para comparar proporción visualmente
+      g.appendChild(el('rect', {
+        class: 'barraTrack',
+        x: anchoEtiqueta,
+        y: y + 2,
+        width: anchoUtil,
+        height: h - 9,
+        rx: 1
       }));
-      s.appendChild(el('text', {
-        class: 'rotulo', x: anchoEtiqueta + ancho + 6, y: y + 12
-      }, opciones.formato ? opciones.formato(f[1]) : fmt(f[1])));
+
+      // Barra de valor
+      g.appendChild(el('rect', {
+        class: 'barra' + (esFoco ? ' foco' : ''),
+        x: anchoEtiqueta,
+        y: y + 2,
+        width: Math.max(ancho, 2),
+        height: h - 9,
+        rx: 1
+      }));
+
+      // Valor numérico alineado
+      const valStr = opciones.formato ? opciones.formato(val) : fmt(val);
+      g.appendChild(el('text', {
+        class: esFoco ? 'rotuloFoco' : 'rotulo',
+        x: anchoEtiqueta + anchoUtil + 8,
+        y: y + 13
+      }, valStr));
+
+      s.appendChild(g);
     });
+
     caja.appendChild(s);
     return caja;
   }

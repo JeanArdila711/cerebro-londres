@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
-<title>Cerebro Londres · City of Westminster</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230d1b2a'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23e0524a'/%3E%3C/svg%3E">
+<title>Cerebro Londres · City of Westminster (E09000033)</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23111315'/%3E%3Crect x='3' y='3' width='26' height='26' fill='none' stroke='%23f4f2ec' stroke-width='1.5'/%3E%3Crect x='3' y='21' width='26' height='8' fill='%23c8281e'/%3E%3Ctext x='16' y='16' text-anchor='middle' fill='%23f4f2ec' font-family='Georgia,serif' font-weight='700' font-size='11'%3EW1%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet">
 <link rel="stylesheet" href="/estilos.css">
 </head>
@@ -17,70 +17,124 @@
 <!-- Compuerta. La clave NO se compara aquí: se manda al servidor. -->
 <div id="gate" class="gate" hidden>
   <form id="gateForm" class="gateCaja">
-    <h1>Cerebro Londres</h1>
-    <p class="sub">Sistema de información sobre Greater London, con foco en el <strong>City of Westminster</strong>.</p>
-    <label for="clave">Clave de acceso</label>
-    <input id="clave" type="password" autocomplete="current-password" required>
-    <button type="submit">Entrar</button>
-    <p id="gateMsg" class="gateMsg" role="status" aria-live="polite"></p>
-    <p class="gateNota">Casi todo lo que muestra viene de fuentes públicas. Que aun así esté
-      detrás de una compuerta también es parte del ejercicio.</p>
+    <div class="placaHeader">
+      <span class="placaCodigo">GSS E09000033 · 51°29′51″N 00°08′08″W</span>
+      <span class="placaCiudad">GREATER LONDON</span>
+    </div>
+    <div class="placaCuerpo">
+      <p class="placaKicker">CITY OF WESTMINSTER · OBSERVATORIO CÍVICO</p>
+      <h1>Cerebro Londres</h1>
+      <div class="placaReglaRoja"></div>
+      <p class="sub">Expediente vivo de inteligencia territorial sobre los 33 boroughs de Greater London, con foco operativo en el <strong>City of Westminster</strong>.</p>
+
+      <label for="clave">Credencial de acceso al lago</label>
+      <div class="gateInputFila">
+        <input id="clave" type="password" autocomplete="current-password" placeholder="Ingrese la clave de sesión…" required>
+        <button type="submit">Abrir expediente</button>
+      </div>
+      <p id="gateMsg" class="gateMsg" role="status" aria-live="polite"></p>
+    </div>
+    <div class="placaPie">
+      <p class="gateNota"><strong>Compuerta real (HMAC-SHA256):</strong> El lago de datos vive fuera de la carpeta pública y se sirve únicamente con sesión firmada. Casi todo viene de fuentes abiertas, pero proteger la frontera de reexposición también es parte del ejercicio.</p>
+    </div>
   </form>
 </div>
 
 <div id="app" hidden>
   <header class="top">
-    <div class="marca">
-      <span class="punto"></span>
-      <strong>Cerebro Londres</strong>
-      <span class="migas" id="migas">Panorama</span>
-    </div>
-    <div class="topDer">
-      <span id="estadoDatos" class="estado">cargando…</span>
-      <button id="btnBuscar" type="button" title="Buscar (⌘K)" aria-label="Buscar">⌘K</button>
-      <a href="/api/salir" class="salir">Salir</a>
+    <div class="topInner">
+      <div class="marca">
+        <span class="placaMini" aria-hidden="true">SW1</span>
+        <div class="marcaTexto">
+          <strong>Cerebro Londres</strong>
+          <span class="marcaFoco">City of Westminster · <code>E09000033</code></span>
+        </div>
+        <span class="separadorBarra" aria-hidden="true">/</span>
+        <span class="migas" id="migas">Panorama</span>
+      </div>
+      <div class="topDer">
+        <span id="estadoDatos" class="estado" title="Temas verificados cargados desde /api/datos">lago: cargando…</span>
+        <button id="btnTema" type="button" class="btnAccion" title="Alternar modo papel / modo nocturno" aria-label="Alternar tema de color">Tinta</button>
+        <button id="btnBuscar" type="button" class="btnAccion btnBuscar" title="Buscar cifra, borough o sección (⌘K o /)" aria-label="Buscar">
+          <span>Consultar</span> <kbd>⌘K</kbd>
+        </button>
+        <a href="/api/salir" class="salir">Cerrar sesión</a>
+      </div>
     </div>
   </header>
 
-  <nav id="menu" aria-label="Secciones">
-    <a href="#panorama"  data-sec="panorama">Panorama</a>
-    <a href="#gente"     data-sec="gente">Gente</a>
-    <a href="#economia"  data-sec="economia">Economía y vivienda</a>
-    <a href="#seguridad" data-sec="seguridad">Seguridad</a>
-    <a href="#turismo"   data-sec="turismo">Turismo</a>
-    <a href="#territorio" data-sec="territorio">Territorio</a>
-    <a href="#atlas"     data-sec="atlas">Atlas de los 33</a>
-    <a href="#correlaciones" data-sec="correlaciones">Correlaciones</a>
-    <a href="#ambiente"  data-sec="ambiente">Ambiente</a>
-    <a href="#escucha"   data-sec="escucha">Escucha social</a>
-    <a href="#fuentes"   data-sec="fuentes">Fuentes y método</a>
+  <nav id="menu" aria-label="Secciones del expediente">
+    <div class="menuInner">
+      <a href="#panorama"      data-sec="panorama">Panorama</a>
+      <a href="#gente"         data-sec="gente">Gente y salud</a>
+      <a href="#economia"      data-sec="economia">Vivienda y fiscalidad</a>
+      <a href="#desigualdad"   data-sec="desigualdad">Desigualdad (IMD)</a>
+      <a href="#seguridad"     data-sec="seguridad">Seguridad</a>
+      <a href="#turismo"       data-sec="turismo">Turismo y patrimonio</a>
+      <a href="#territorio"    data-sec="territorio">Territorio y red</a>
+      <a href="#atlas"         data-sec="atlas">Atlas de los 33</a>
+      <a href="#correlaciones" data-sec="correlaciones">Correlaciones</a>
+      <a href="#ambiente"      data-sec="ambiente">Ambiente y aire</a>
+      <a href="#escucha"       data-sec="escucha">Escucha social</a>
+      <a href="#fuentes"       data-sec="fuentes">Fuentes y método</a>
+    </div>
   </nav>
+
+  <section class="portadaMasthead" aria-label="Encabezado del dossier">
+    <div class="mastheadInner">
+      <div class="mastheadMeta">
+        <span>EXPEDIENTE MUNICIPAL · TÓPICOS DE SISTEMAS DE INFORMACIÓN</span>
+        <span>ESCALAS: 33 BOROUGHS (LAD25) · 18 WARDS (WD24) · 123 LSOA</span>
+        <span id="mastheadCosecha">AUDITORÍA: 185 COMPROBACIONES</span>
+      </div>
+      <div class="mastheadGrid">
+        <div class="mastheadTituloCaja">
+          <p class="mastheadEyebrow">CITY OF WESTMINSTER · INNER LONDON</p>
+          <h1 class="mastheadTitulo">Dossier de Inteligencia Territorial y Gobernanza de Datos</h1>
+        </div>
+        <div class="mastheadManifiesto">
+          <p>Diseñado para responder las preguntas de un concejal de Westminster sin esconder las costuras del dato. <strong>Ninguna cifra está escrita a mano:</strong> todas viajan desde el lago verificado con su unidad, su vigencia y su ficha de auditoría a un clic.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <main id="main"></main>
 
   <footer class="pie">
-    <p id="pieProbado"></p>
-    <p>Contiene datos públicos bajo <strong>Open Government Licence v3.0</strong> ·
-       © <strong>OpenStreetMap contributors</strong> (ODbL) ·
-       Contains OS data © Crown copyright and database right ·
-       Powered by <strong>TfL Open Data</strong> ·
-       Clima y aire de <strong>Open-Meteo</strong> (CC BY 4.0) ·
-       Vistas de <strong>Wikimedia</strong> (CC0).</p>
-    <p class="pieNota">Réplica del Cerebro Lima para el taller de Tópicos de Sistemas de Información.
-       Cada cifra lleva su fuente, su vigencia y el día en que se probó: tóquenla para verlas.</p>
+    <div class="pieInner">
+      <div class="pieCol">
+        <p class="pieTitulo">CITY OF WESTMINSTER · CEREBRO LONDRES</p>
+        <p id="pieProbado" class="pieProbado"></p>
+        <p class="pieNota">Réplica crítica del Cerebro Lima para el taller de Tópicos de Sistemas de Información. Cada baldosa abre su ficha de procedencia, vigencia, licencia y evaluación de privacidad.</p>
+      </div>
+      <div class="pieCol">
+        <p class="pieTitulo">LICENCIAS Y ATRIBUCIÓN OBLIGATORIA</p>
+        <p>Datos públicos bajo <strong>Open Government Licence v3.0 / v2.0</strong> (ONS, HM Land Registry, MHCLG, OHID, DfT, MPS) · Geometrías y conteos voluntarios © <strong>OpenStreetMap contributors</strong> (ODbL-1.0, compartir igual) · Contains OS data © <strong>Crown copyright</strong> and database right · Powered by <strong>TfL Open Data</strong> · Red de aire <strong>Imperial College London LAQN</strong> · Modelos meteorológicos <strong>Open-Meteo</strong> (CC BY 4.0) · Atención en <strong>Wikimedia</strong> (CC0).</p>
+      </div>
+    </div>
   </footer>
 
   <div id="buscador" class="buscador" hidden>
-    <input id="buscadorInput" type="text" placeholder="Buscar una sección o una cifra…"
-           role="combobox" aria-expanded="true" aria-controls="buscadorLista" autocomplete="off">
-    <div id="buscadorLista" role="listbox" aria-label="Resultados"></div>
+    <div class="buscadorCaja">
+      <div class="buscadorCabecera">
+        <span class="buscadorEtiqueta">ÍNDICE RÁPIDO DEL EXPEDIENTE</span>
+        <kbd>ESC para cerrar</kbd>
+      </div>
+      <input id="buscadorInput" type="text" placeholder="Filtrar por cifra, indicador, borough o sección…"
+             role="combobox" aria-expanded="true" aria-controls="buscadorLista" autocomplete="off">
+      <div id="buscadorLista" role="listbox" aria-label="Resultados"></div>
+    </div>
   </div>
 
   <div id="ficha" class="ficha" hidden role="dialog" aria-modal="true" aria-labelledby="fichaTitulo">
     <div class="fichaCaja">
-      <button id="fichaCerrar" type="button" aria-label="Cerrar">×</button>
+      <div class="fichaCabecera">
+        <span class="fichaKicker">FICHA DE PROCEDENCIA Y AUDITORÍA</span>
+        <button id="fichaCerrar" type="button" aria-label="Cerrar ficha">Cerrar [ESC]</button>
+      </div>
       <h3 id="fichaTitulo"></h3>
-      <div id="fichaCuerpo"></div>
+      <div id="fichaCuerpo" class="fichaCuerpo"></div>
     </div>
   </div>
 </div>

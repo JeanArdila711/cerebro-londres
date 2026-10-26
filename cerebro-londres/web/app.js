@@ -1,11 +1,40 @@
-// Arranque: compuerta (servidor), carga del lago vía /api/datos, navegación y buscador.
+// Arranque: compuerta (servidor), carga del lago vía /api/datos, navegación, tema y buscador.
 (function () {
   const $ = s => document.querySelector(s);
   const gate = $('#gate'), app = $('#app');
   window.LAGO = {};
 
-  const TEMAS = ['demografia', 'economia', 'seguridad', 'turismo', 'escucha', 'sensores',
-    'geo', 'infraestructura', 'atlas_boroughs', 'correlaciones', 'catalogo'];
+  const TEMAS = [
+    'demografia', 'salud', 'economia', 'finanzas', 'privacion',
+    'seguridad', 'seguridad_boroughs', 'turismo', 'patrimonio',
+    'escucha', 'sensores', 'aire_laqn', 'geo', 'infraestructura',
+    'transporte_boroughs', 'riesgo', 'atlas_boroughs', 'correlaciones', 'catalogo'
+  ];
+
+  // Control de tema (Papel técnico por defecto / Modo nocturno conmutable)
+  function iniciarTema() {
+    const guardado = localStorage.getItem('cerebro_tema');
+    const btn = $('#btnTema');
+    const aplicar = modo => {
+      if (modo === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        if (btn) btn.textContent = 'Modo papel';
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+        if (btn) btn.textContent = 'Modo noche';
+      }
+    };
+    aplicar(guardado || 'light');
+    if (btn) {
+      btn.addEventListener('click', () => {
+        const actual = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+        const sig = actual === 'dark' ? 'light' : 'dark';
+        localStorage.setItem('cerebro_tema', sig);
+        aplicar(sig);
+      });
+    }
+  }
+  iniciarTema();
 
   async function sesion() {
     try {
@@ -32,8 +61,8 @@
     const probados = Object.values(LAGO).map(j => j && j.probado).filter(Boolean).sort();
     if (probados.length) {
       const a = probados[0], b = probados[probados.length - 1];
-      $('#pieProbado').textContent = 'Lago probado ' + a + (b !== a ? ' → ' + b : '') +
-        '. Si una fecha de prueba tiene más de un año, el dato necesita volver a mirarse.';
+      $('#pieProbado').textContent = 'AUDITORÍA DE VIGENCIA · Lago probado entre ' + a + (b !== a ? ' y ' + b : '') +
+        '. Si una fecha de prueba supera un año, el indicador debe revalidarse contra la fuente original.';
     }
 
     try { SECCIONES.render(LAGO); } catch (e) { console.error('secciones', e); }
@@ -46,14 +75,14 @@
   $('#gateForm').addEventListener('submit', async e => {
     e.preventDefault();
     const msg = $('#gateMsg');
-    msg.textContent = 'verificando…';
+    msg.textContent = 'Verificando credencial con el servidor…';
     try {
       const r = await fetch('/api/entrar', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ clave: $('#clave').value })
       });
       const j = await r.json();
-      if (r.ok && j.ok) arrancar(); else msg.textContent = j.error || 'Clave incorrecta';
+      if (r.ok && j.ok) arrancar(); else msg.textContent = j.error || 'Credencial incorrecta';
     } catch (_) { msg.textContent = 'No se pudo contactar el servidor'; }
   });
 
@@ -75,11 +104,11 @@
     const io = new IntersectionObserver(() => {
       let mejor = 0, y = Infinity;
       secs.forEach((s, i) => {
-        const d = Math.abs(s.getBoundingClientRect().top - 90);
+        const d = Math.abs(s.getBoundingClientRect().top - 110);
         if (d < y) { y = d; mejor = i; }
       });
       enlaces.forEach((a, i) => a.classList.toggle('activa', i === mejor));
-      if (enlaces[mejor]) $('#migas').textContent = enlaces[mejor].textContent.trim();
+      if (enlaces[mejor]) $('#migas').textContent = enlaces[mejor].textContent.replace(/^\d+\s*/, '').trim();
     }, { threshold: [0, .25, .5, .75, 1] });
     secs.forEach(s => io.observe(s));
   }
@@ -114,7 +143,7 @@
 
     function pintar(q) {
       q = q.toLowerCase();
-      const r = items.filter(i => i.t.toLowerCase().includes(q)).slice(0, 14);
+      const r = items.filter(i => i.t.toLowerCase().includes(q) || i.s.toLowerCase().includes(q)).slice(0, 16);
       sel = 0;
       lista.innerHTML = r.map((i, k) =>
         `<button type="button" role="option" aria-selected="${k === 0}" class="${k === 0 ? 'sel' : ''}"><span>${i.t}</span><small>${i.s}</small></button>`).join('');
@@ -149,8 +178,8 @@
       }
     });
     $('#btnBuscar').addEventListener('click', abrir);
-    document.addEventListener('click', e => {
-      if (!box.hidden && !box.contains(e.target) && e.target !== $('#btnBuscar')) cerrar();
+    box.addEventListener('click', e => {
+      if (e.target === box) cerrar();
     });
   }
 })();

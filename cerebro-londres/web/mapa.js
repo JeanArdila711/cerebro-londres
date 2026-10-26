@@ -25,17 +25,23 @@ window.MAPA = (function () {
     }
 
     // El precio vive en el atlas, no en el GeoJSON: se une por código GSS
-    const precios = {};
+    const precios = {}, poblacion = {}, densidad = {};
     ((LAGO.atlas_boroughs || {}).listas || {}).boroughs?.forEach(b => {
       if (b.precio_medio_gbp) precios[b.codigo] = b.precio_medio_gbp;
+      if (b.poblacion) poblacion[b.codigo] = b.poblacion;
+      if (b.densidad_hab_km2) densidad[b.codigo] = b.densidad_hab_km2;
     });
     boroughs.features.forEach(f => {
-      f.properties.precio = precios[f.properties.codigo] || null;
+      const cod = f.properties.codigo;
+      f.properties.precio = precios[cod] || null;
+      f.properties.poblacion = poblacion[cod] || null;
+      f.properties.densidad = densidad[cod] || null;
     });
 
     const cortes = cuantiles(Object.values(precios), 5);
-    const escala = ['#2b5c7a', '#3d8b8b', '#7fbf8a', '#e9b949', '#e0524a'];
-    const relleno = ['case', ['==', ['get', 'precio'], null], '#44546a',
+    // Escala cartográfica coherente con Thames Navy + Westminster Vermilion
+    const escala = ['#d9e2ec', '#9fb3c8', '#627d98', '#334e68', '#c8281e'];
+    const relleno = ['case', ['==', ['get', 'precio'], null], '#b8b2a6',
       ['step', ['get', 'precio'], escala[0],
         cortes[0], escala[1], cortes[1], escala[2], cortes[2], escala[3], cortes[3], escala[4]]];
 
@@ -43,9 +49,8 @@ window.MAPA = (function () {
       container: 'mapa',
       style: 'https://tiles.openfreemap.org/styles/positron',
       center: [-0.1357, 51.4975],
-      zoom: 9.4,
+      zoom: 9.5,
       attributionControl: { compact: true }
-      // (sin más opciones)
     });
     mapa.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-right');
 
@@ -53,39 +58,43 @@ window.MAPA = (function () {
       mapa.addSource('boroughs', { type: 'geojson', data: boroughs });
       mapa.addLayer({
         id: 'boroughs-relleno', type: 'fill', source: 'boroughs',
-        paint: { 'fill-color': relleno, 'fill-opacity': 0.62 }
+        paint: { 'fill-color': relleno, 'fill-opacity': 0.72 }
       });
       mapa.addLayer({
         id: 'boroughs-linea', type: 'line', source: 'boroughs',
-        paint: { 'line-color': '#0b1420', 'line-width': 0.6, 'line-opacity': 0.5 }
+        paint: { 'line-color': '#111315', 'line-width': 0.85, 'line-opacity': 0.65 }
       });
       mapa.addLayer({
         id: 'foco-linea', type: 'line', source: 'boroughs',
         filter: ['==', ['get', 'foco'], true],
-        paint: { 'line-color': '#e0524a', 'line-width': 2.4 }
+        paint: { 'line-color': '#c8281e', 'line-width': 2.8 }
       });
 
       mapa.addSource('wards', { type: 'geojson', data: wards });
       mapa.addLayer({
         id: 'wards-linea', type: 'line', source: 'wards',
-        paint: { 'line-color': '#e0524a', 'line-width': 1, 'line-dasharray': [2, 1.5],
-          'line-opacity': ['interpolate', ['linear'], ['zoom'], 10, 0, 11.5, 0.9] }
+        paint: { 'line-color': '#c8281e', 'line-width': 1.15, 'line-dasharray': [2, 1.5],
+          'line-opacity': ['interpolate', ['linear'], ['zoom'], 10, 0, 11.2, 0.92] }
       });
 
       const fmt = n => '£' + new Intl.NumberFormat('es-ES').format(n);
+      const fmtNum = n => new Intl.NumberFormat('es-ES').format(n);
       mapa.on('click', 'boroughs-relleno', e => {
         const p = e.features[0].properties;
         new maplibregl.Popup({ closeButton: false })
           .setLngLat(e.lngLat)
-          .setHTML(`<strong>${p.nombre}</strong><br>${p.precio ? fmt(p.precio) + ' de media' : 'sin dato de precio'}` +
-            `<br><small style="opacity:.7">${p.codigo} · UK HPI</small>`)
+          .setHTML(
+            `<div style="font-family:var(--font-mono);font-size:10px;color:var(--acento);letter-spacing:.05em">${p.codigo} · UK HPI / ONS</div>` +
+            `<strong style="font-family:var(--font-display);font-size:15px">${p.nombre}</strong><br>` +
+            `Precio medio: <strong>${p.precio ? fmt(p.precio) : 'sin dato'}</strong><br>` +
+            (p.poblacion ? `Población: ${fmtNum(p.poblacion)} hab · ${fmtNum(p.densidad)} hab/km²` : ''))
           .addTo(mapa);
       });
       mapa.on('mouseenter', 'boroughs-relleno', () => mapa.getCanvas().style.cursor = 'pointer');
       mapa.on('mouseleave', 'boroughs-relleno', () => mapa.getCanvas().style.cursor = '');
 
       lugares = boroughs.features.map(f => ({
-        nombre: f.properties.nombre, tipo: 'borough',
+        nombre: f.properties.nombre, tipo: 'borough (' + f.properties.codigo + ')',
         centro: centroide(f.geometry)
       }));
     });
@@ -103,7 +112,7 @@ window.MAPA = (function () {
     lugares: () => lugares,
     irA: l => {
       document.getElementById('territorio').scrollIntoView({ behavior: 'smooth' });
-      if (mapa && l.centro) mapa.flyTo({ center: l.centro, zoom: 11.5 });
+      if (mapa && l.centro) mapa.flyTo({ center: l.centro, zoom: 11.6 });
     }
   };
 })();

@@ -3,6 +3,7 @@
 window.SECCIONES = (function () {
   const fmt = n => typeof n === 'number' ? new Intl.NumberFormat('es-ES').format(n) : n;
   const libras = n => '£' + new Intl.NumberFormat('es-ES').format(Math.round(n));
+  const librasDec = n => '£' + new Intl.NumberFormat('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(n);
   let LAGO = {};
 
   function cifra(tema, clave) {
@@ -17,35 +18,42 @@ window.SECCIONES = (function () {
 
   // Una baldosa = una cifra + su vigencia visible + su ficha al tocarla.
   // La vigencia va pegada a la cifra, no en una nota al pie.
-  function tile(tema, clave, etiqueta, formato) {
+  function tile(tema, clave, etiqueta, formato, destacado = false) {
     const c = cifra(tema, clave);
     if (!c) return null;
     const b = document.createElement('button');
     b.type = 'button';
-    b.className = 'tile';
+    b.className = 'tile' + (destacado ? ' tileDestacado' : '');
     const valor = formato ? formato(c.valor) : fmt(c.valor);
-    b.innerHTML = `<span class="l">${etiqueta}</span>
-      <span class="v">${valor}<span class="u">${c.unidad === 'borough' || c.unidad === 'categoría' ? '' : ' ' + c.unidad}</span></span>
-      <span class="vig">${c.vigencia} · ${(fuenteDe(tema, c.fuente) || {}).entidad || c.fuente}</span>`;
+    const omitirUnidad = ['borough', 'categoría', 'LSOA'].includes(c.unidad);
+    const f = fuenteDe(tema, c.fuente) || {};
+    b.innerHTML =
+      `<div class="tileTop">` +
+        `<span class="l">${etiqueta}</span>` +
+        `<span class="tileFichaTag" aria-hidden="true">FICHA ↗</span>` +
+      `</div>` +
+      `<span class="v">${valor}${omitirUnidad ? '' : `<span class="u">${c.unidad}</span>`}</span>` +
+      `<span class="vig">${c.vigencia} · ${f.entidad || c.fuente}</span>`;
     b.addEventListener('click', () => abrirFicha(tema, clave, etiqueta));
     return b;
   }
 
   function abrirFicha(tema, clave, etiqueta) {
     const c = cifra(tema, clave), f = fuenteDe(tema, c.fuente), t = LAGO[tema];
+    if (!c) return;
     const campos = [
-      ['Cifra', `${fmt(c.valor)} ${c.unidad}`],
-      ['Vigencia', c.vigencia],
-      ['Qué es', c.nota || '—'],
-      ['Fuente', f ? f.nombre : c.fuente],
-      ['Entidad', f ? f.entidad : '—'],
-      ['Licencia', f ? f.licencia : '—'],
+      ['Cifra auditada', `${fmt(c.valor)} ${c.unidad}`],
+      ['Vigencia del dato', c.vigencia],
+      ['Definición / Nota', c.nota || '—'],
+      ['Conjunto de origen', f ? f.nombre : c.fuente],
+      ['Entidad publicadora', f ? f.entidad : '—'],
+      ['Licencia verificada', f ? `<span class="pastilla integrado">${f.licencia}</span>` : '—'],
       ['¿Datos de personas?', f ? f.personas : '—'],
-      ['Probado el', f ? f.probado : (t ? t.probado : '—')],
-      ['Estado', f ? f.estado : '—'],
-      ['Enlace', f ? `<a href="${f.url}" target="_blank" rel="noopener noreferrer">${f.url}</a>` : '—'],
-      ['Nota de la fuente', f && f.nota ? f.nota : '—'],
-      ['Tema del lago', `${tema}.json → cifras.${clave}`],
+      ['Fecha de prueba', f ? f.probado : (t ? t.probado : '—')],
+      ['Estado en el lago', f ? `<span class="pastilla ${f.estado}">${f.estado}</span>` : '—'],
+      ['Enlace oficial', f ? `<a href="${f.url}" target="_blank" rel="noopener noreferrer">${f.url}</a>` : '—'],
+      ['Observación técnica', f && f.nota ? f.nota : '—'],
+      ['Ruta en el contrato', `<code>lago/${tema}.json → cifras.${clave}</code>`],
     ];
     document.getElementById('fichaTitulo').textContent = etiqueta;
     document.getElementById('fichaCuerpo').innerHTML =
@@ -53,25 +61,42 @@ window.SECCIONES = (function () {
     document.getElementById('ficha').hidden = false;
   }
 
-  function seccion(id, titulo, sub) {
+  function seccion(id, indice, titulo, sub) {
     const s = document.createElement('section');
     s.className = 'sec';
     s.id = id;
-    s.innerHTML = `<h1>${titulo}</h1>${sub ? `<p class="secSub">${sub}</p>` : ''}`;
+    s.innerHTML =
+      `<div class="secCabecera">` +
+        `<div><span class="secIndice">${indice}</span><h1>${titulo}</h1></div>` +
+        `${sub ? `<p class="secSub">${sub}</p>` : ''}` +
+      `</div>`;
     return s;
   }
 
-  function rejilla(tiles) {
+  function rejilla(tiles, claseExtra = '') {
     const r = document.createElement('div');
-    r.className = 'rejilla';
+    r.className = 'rejilla' + (claseExtra ? ' ' + claseExtra : '');
     tiles.filter(Boolean).forEach(t => r.appendChild(t));
     return r;
   }
 
-  function bloque(titulo, ...hijos) {
+  function dosColumnas(...bloques) {
+    const d = document.createElement('div');
+    d.className = 'dosColumnas';
+    bloques.filter(Boolean).forEach(b => d.appendChild(b));
+    return d;
+  }
+
+  function bloque(titulo, meta, ...hijos) {
     const b = document.createElement('div');
     b.className = 'bloque';
-    if (titulo) b.innerHTML = `<h3>${titulo}</h3>`;
+    if (titulo) {
+      b.innerHTML =
+        `<div class="bloqueHeader">` +
+          `<h3>${titulo}</h3>` +
+          `${meta ? `<span class="bloqueMeta">${meta}</span>` : ''}` +
+        `</div>`;
+    }
     hijos.filter(Boolean).forEach(h => b.appendChild(h));
     return b;
   }
@@ -109,243 +134,390 @@ window.SECCIONES = (function () {
     main.innerHTML = '';
     const G = window.GRAFICOS;
 
-    // --- Panorama: las seis preguntas de la portada ---
-    const pan = seccion('panorama', 'Panorama',
-      'Seis preguntas que haría un concejal del City of Westminster. Cada una se responde con ' +
-      'una cifra viva del lago, con su vigencia y su fuente. Toquen cualquiera para ver de dónde sale.');
+    // =========================================================================
+    // 01 · PANORAMA: LAS SEIS PREGUNTAS DEL CONCEJAL
+    // =========================================================================
+    const pan = seccion('panorama', 'SÍNTESIS EJECUTIVA · E09000033', 'Panorama del City of Westminster',
+      'Seis preguntas de partida que haría un concejal del City of Westminster (E09000033). ' +
+      'Cada respuesta proviene de una cifra viva del lago con su vigencia y su entidad publicadora. ' +
+      'Seleccione cualquier baldosa para inspeccionar su ficha técnica.');
     pan.appendChild(rejilla([
-      tile('demografia', 'poblacion_westminster', '¿Cuánta gente vive aquí?'),
-      tile('economia', 'precio_medio_westminster', '¿Cuánto cuesta una vivienda?', libras),
-      tile('seguridad', 'delitos_ultimo_mes', '¿Qué pasa con la seguridad?'),
-      tile('turismo', 'alojamientos_n', '¿Cuánto pesa el turismo?'),
-      tile('infraestructura', 'estaciones_n', '¿Qué hay en el suelo?'),
-      tile('escucha', 'vistas_ultimo_mes', '¿Cuánta atención despierta?'),
-    ]));
+      tile('demografia', 'poblacion_westminster', '¿Cuánta gente reside aquí?', null, true),
+      tile('economia', 'precio_medio_westminster', '¿Cuánto cuesta una vivienda media?', libras, true),
+      tile('seguridad', 'delitos_ultimo_mes', '¿Qué registra la policía en un mes?', null, true),
+      tile('turismo', 'alojamientos_n', '¿Cuánto pesa la planta turística?'),
+      tile('infraestructura', 'estaciones_n', '¿Qué infraestructura ferroviaria hay?'),
+      tile('escucha', 'vistas_ultimo_mes', '¿Cuánta atención pública despierta?'),
+    ], 'rejillaPanorama'));
     pan.appendChild(aviso(
-      '<strong>Lo que este sistema no sabe.</strong> No tiene presupuesto municipal ' +
-      '(el London Datastore quedó como candidato), ni población por ward, ni datos de ' +
-      'renta o desigualdad dentro del borough. Quien viva aquí y no aparezca en ninguna ' +
-      'de estas fuentes no desaparece de la calle: desaparece de la decisión.'));
+      '<strong>Nota de gobernanza · Límites y silencios del sistema</strong> ' +
+      'Este expediente integra hoy 17 temas verificados (incluyendo Council Tax Banda D, ' +
+      'esperanza de vida OHID e Índice de Privación IMD 2025 por LSOA), pero sigue sin presupuesto ' +
+      'municipal ejecutado ni población desagregada por ward. Quien viva en Westminster y no aparezca ' +
+      'en los registros administrativos no desaparece de la calle: desaparece de la decisión pública.'));
     main.appendChild(pan);
 
-    // --- Gente ---
-    const g = seccion('gente', 'Gente',
-      'Población del borough y su lugar entre los 33 de Greater London. ' +
-      'Se cruza por código GSS (E09…), nunca por nombre.');
+    // =========================================================================
+    // 02 · GENTE Y SALUD PÚBLICA
+    // =========================================================================
+    const g = seccion('gente', 'DEMOGRAFÍA Y SALUD · ONS & OHID', 'Gente y esperanza de vida',
+      'Población residente del borough (ONS mid-year vía Nomis) y esperanza de vida al nacer (OHID Fingertips). ' +
+      'Los cruces entre fuentes se ejecutan estrictamente por código oficial GSS (E09000033), nunca por nombre.');
     g.appendChild(rejilla([
-      tile('demografia', 'poblacion_westminster', 'Población de Westminster'),
-      tile('demografia', 'puesto_poblacion', 'Puesto entre los 33 boroughs'),
-      tile('demografia', 'pct_de_londres', 'Peso en Greater London'),
-      tile('demografia', 'hombres_westminster', 'Hombres'),
-      tile('demografia', 'mujeres_westminster', 'Mujeres'),
-      tile('demografia', 'pct_65_mas', '65 años o más'),
+      tile('demografia', 'poblacion_westminster', 'Población residente de Westminster', null, true),
+      tile('salud', 'esperanza_vida_westminster', 'Esperanza de vida al nacer', null, true),
+      tile('demografia', 'puesto_poblacion', 'Puesto en población (de 33)'),
+      tile('demografia', 'pct_de_londres', 'Peso sobre Greater London'),
+      tile('demografia', 'hombres_westminster', 'Hombres residentes'),
+      tile('demografia', 'mujeres_westminster', 'Mujeres residentes'),
+      tile('demografia', 'pct_65_mas', 'Población de 65 años o más'),
+      tile('salud', 'brecha_mujer_hombre_westminster', 'Brecha de longevidad mujer–hombre'),
+      tile('salud', 'puesto_esperanza_vida_westminster', 'Puesto en esperanza de vida'),
     ]));
+
     const serieP = LAGO.demografia && LAGO.demografia.series.poblacion_westminster;
-    if (serieP) g.appendChild(bloque('Población de Westminster, año a año',
-      G.linea(serieP.puntos, 'Población')));
     const pir = LAGO.demografia && LAGO.demografia.listas.piramide_quinquenal;
-    if (pir) g.appendChild(bloque('Estructura por edad, en tramos quinquenales',
-      G.barras(pir.map(p => [p[0].replace('Aged ', '').replace(' years', ''), p[1]]),
-        { anchoEtiqueta: 120 })));
+    g.appendChild(dosColumnas(
+      serieP ? bloque('Serie histórica de población en Westminster', 'ONS · Estimaciones intercensales',
+        G.linea(serieP.puntos, 'Población')) : null,
+      pir ? bloque('Estructura demográfica por tramos quinquenales', 'ONS · Distribución por edad',
+        G.barras(pir.map(p => [p[0].replace('Aged ', '').replace(' years', ' años'), p[1]]),
+          { anchoEtiqueta: 135 })) : null
+    ));
+    if (LAGO.salud && LAGO.salud.nota) {
+      g.appendChild(aviso('<strong>Brecha vital en Londres · OHID Fingertips</strong> ' + LAGO.salud.nota));
+    }
     main.appendChild(g);
 
-    // --- Economía ---
-    const e = seccion('economia', 'Economía y vivienda',
-      'El UK HPI publica el precio MEDIO de una vivienda, no el precio por metro cuadrado. ' +
-      'No son intercambiables, y por eso la unidad viaja pegada a la cifra.');
+    // =========================================================================
+    // 03 · ECONOMÍA, VIVIENDA Y FISCALIDAD MUNICIPAL
+    // =========================================================================
+    const e = seccion('economia', 'MERCADO RESIDENCIAL · UK HPI & MHCLG', 'Economía, vivienda y Council Tax',
+      'El UK HPI publica el precio medio por propiedad (no por m²), mientras que MHCLG registra el Council Tax ' +
+      'Banda D. Westminster combina la segunda vivienda más cara de Londres con el segundo impuesto local más bajo.');
     e.appendChild(rejilla([
-      tile('economia', 'precio_medio_westminster', 'Precio medio en Westminster', libras),
+      tile('economia', 'precio_medio_westminster', 'Precio medio en Westminster', libras, true),
+      tile('finanzas', 'council_tax_westminster', 'Council Tax local (Banda D)', librasDec, true),
       tile('economia', 'precio_medio_londres', 'Media de Greater London', libras),
-      tile('economia', 'veces_la_media_de_londres', 'Veces la media de Londres'),
-      tile('economia', 'veces_la_media_de_inglaterra', 'Veces la media de Inglaterra'),
-      tile('economia', 'variacion_interanual', 'Variación interanual'),
-      tile('economia', 'precio_medio_piso', 'Un piso, de media', libras),
+      tile('economia', 'veces_la_media_de_londres', 'Múltiplo sobre la media de Londres'),
+      tile('economia', 'veces_la_media_de_inglaterra', 'Múltiplo sobre Inglaterra'),
+      tile('economia', 'variacion_interanual', 'Variación anual de precio'),
+      tile('economia', 'precio_medio_piso', 'Precio medio de un piso (flat)', libras),
+      tile('finanzas', 'puesto_council_tax_westminster', 'Puesto en Council Tax (1 = más alto)'),
+      tile('finanzas', 'cambio_interanual_westminster', 'Ajuste anual Council Tax'),
     ]));
+
     const sw = LAGO.economia && LAGO.economia.series.precio_medio_city_of_westminster;
-    if (sw) e.appendChild(bloque('Precio medio de vivienda en Westminster, cinco años',
-      G.linea(sw.puntos, 'Precio medio')));
     const tipos = LAGO.economia && LAGO.economia.listas.por_tipo_de_vivienda;
-    if (tipos && tipos.length) e.appendChild(bloque('Por tipo de vivienda',
-      G.barras(tipos.map(t => [t[0], t[1]]), { formato: libras, anchoEtiqueta: 110 })));
+    e.appendChild(dosColumnas(
+      sw ? bloque('Evolución del precio medio en Westminster (5 años)', 'HM Land Registry · UK HPI',
+        G.linea(sw.puntos, 'Precio medio', { formato: libras })) : null,
+      (tipos && tipos.length) ? bloque('Desglose por tipología constructiva', 'UK HPI · Último corte',
+        G.barras(tipos.map(t => [t[0], t[1]]), { formato: libras, anchoEtiqueta: 130 })) : null
+    ));
+
     e.appendChild(aviso(
-      '<strong>Lo que decidimos no publicar.</strong> El Price Paid Data de HM Land Registry ' +
-      'trae cada venta con su dirección y su código postal, es público y su licencia permite ' +
-      'reutilizarlo. Queda fuera igualmente: dirección, postcode, precio y fecha identifican ' +
-      'un hogar y lo que pagó por su casa. La pregunta se responde con el índice agregado.'));
+      '<strong>Frontera ética · Lo que decidimos excluir</strong> El <em>Price Paid Data</em> de HM Land Registry ' +
+      'detalla cada compraventa con dirección exacta, postcode, precio y fecha bajo licencia abierta OGL-3.0. ' +
+      'Decidimos excluirlo del lago: dirección, código postal y monto identifican un hogar individual. ' +
+      'La pregunta pública se responde con el índice agregado sin exponer patrimonios familiares.'));
     main.appendChild(e);
 
-    // --- Seguridad ---
-    const s = seccion('seguridad', 'Seguridad',
-      'Delitos REGISTRADOS, que no es lo mismo que delitos ocurridos: un cambio puede venir ' +
-      'de la denuncia o del registro, no del hecho.');
+    // =========================================================================
+    // 04 · DESIGUALDAD INTRABOROUGHS (IMD 2025)
+    // =========================================================================
+    if (LAGO.privacion) {
+      const pr = seccion('desigualdad', 'COHESIÓN Y FRACTURA · LSOA IMD 2025', 'Desigualdad interna (IMD 2025)',
+        'Una media municipal enmascara que Westminster alberga simultáneamente zonas de Mayfair/Knightsbridge y ' +
+        'barrios en el 10 % de mayor privación de Inglaterra (Church Street / Queen\'s Park).');
+      pr.appendChild(rejilla([
+        tile('privacion', 'score_medio_westminster', 'Puntaje medio IMD en Westminster', null, true),
+        tile('privacion', 'puesto_privacion_westminster', 'Puesto de privación en Londres (de 32)', null, true),
+        tile('privacion', 'lsoa_westminster_n', 'Unidades censales (LSOA) evaluadas'),
+        tile('privacion', 'lsoa_mas_privado', 'Zona con mayor privación (Decil 1)'),
+        tile('privacion', 'lsoa_menos_privado', 'Zona con menor privación (Decil 9)'),
+      ]));
+
+      const lsoas = LAGO.privacion.listas && LAGO.privacion.listas.lsoa_westminster;
+      const rankB = LAGO.privacion.listas && LAGO.privacion.listas.ranking_boroughs;
+      if (lsoas && lsoas.length) {
+        const topPriv = lsoas.slice(0, 12);
+        pr.appendChild(dosColumnas(
+          bloque('Las 12 LSOA con mayor privación dentro de Westminster', 'MHCLG · IoD2025 (Decil 1 nacional)',
+            G.barras(topPriv.map((z, idx) => [z.lsoa, z.score, idx < 3]), { anchoEtiqueta: 165 })),
+          rankB ? bloque('Posición de Westminster frente a los boroughs más privados', 'Puntaje IMD medio por borough',
+            G.barras(rankB.slice(0, 14).map(b => [b.nombre, b.score_medio, b.nombre === 'Westminster']),
+              { anchoEtiqueta: 185 })) : null
+        ));
+      }
+      main.appendChild(pr);
+    }
+
+    // =========================================================================
+    // 05 · SEGURIDAD CIUDADANA
+    // =========================================================================
+    const s = seccion('seguridad', 'REGISTRO POLICIAL · MPS & POLICE.UK', 'Seguridad y delitos registrados',
+      'Estadísticas de delitos registrados por la Metropolitan Police (data.police.uk y London Datastore). ' +
+      'Toda variación refleja tanto hechos como propensión a denunciar y criterios de registro policial.');
     s.appendChild(rejilla([
-      tile('seguridad', 'delitos_ultimo_mes', 'Delitos en el último mes'),
-      tile('seguridad', 'delitos_12m', 'Delitos en el período'),
-      tile('seguridad', 'categoria_mas_frecuente', 'Categoría más frecuente'),
+      tile('seguridad', 'delitos_ultimo_mes', 'Delitos registrados (último mes)', null, true),
+      tile('seguridad', 'delitos_12m', 'Total acumulado (12 meses)', null, true),
+      tile('seguridad', 'categoria_mas_frecuente', 'Tipología más frecuente'),
       tile('seguridad', 'pct_sin_resultado', 'Sin resultado judicial registrado'),
+      tile('seguridad_boroughs', 'tasa_westminster', 'Tasa anual sobre residentes'),
+      tile('seguridad_boroughs', 'puesto_tasa_westminster', 'Puesto en tasa aparente (de 32)'),
     ]));
+
     const sd = LAGO.seguridad && LAGO.seguridad.series.delitos_mensuales;
-    if (sd) s.appendChild(bloque('Delitos registrados por mes', G.linea(sd.puntos, 'Delitos')));
     const cat = LAGO.seguridad && LAGO.seguridad.listas.por_categoria;
-    if (cat) s.appendChild(bloque('Por categoría',
-      G.barras(cat.slice(0, 12).map(c => [c[0].replace(/-/g, ' '), c[1]]), { anchoEtiqueta: 190 })));
+    s.appendChild(dosColumnas(
+      sd ? bloque('Evolución mensual de delitos registrados', 'data.police.uk · Westminster',
+        G.linea(sd.puntos, 'Delitos')) : null,
+      cat ? bloque('Las 12 categorías con mayor volumen anual', 'Conteo agregado sin coordenadas individuales',
+        G.barras(cat.slice(0, 12).map((c, i) => [c[0].replace(/-/g, ' '), c[1], i === 0]), { anchoEtiqueta: 195 })) : null
+    ));
+
     s.appendChild(aviso(
-      '<strong>Decisión de privacidad.</strong> data.police.uk devuelve un registro por delito ' +
-      'con ubicación. Al lago solo entran conteos agregados: ningún registro individual se ' +
-      'guarda ni se versiona. Un delito, una fecha y una calle son tres columnas que, ' +
-      'cruzadas, pueden señalar a una persona.'));
+      '<strong>Privacidad y sesgo de población flotante</strong> Primero: <code>data.police.uk</code> publica ' +
+      'cada denuncia con coordenadas de calle; nuestro pipeline descarta el punto y conserva solo agregados ' +
+      'porque delito + fecha + calle puede reidentificar víctimas. Segundo: la tasa de Westminster ' +
+      '(350,6 por 1.000 residentes) divide delitos del centro turístico y comercial de Londres entre solo ' +
+      'sus residentes permanentes, sobreestimando el riesgo frente a la población presente real.'));
     main.appendChild(s);
 
-    // --- Turismo ---
-    const t = seccion('turismo', 'Turismo',
-      'Conteos de OpenStreetMap, no de un registro oficial. La cobertura es voluntaria: ' +
-      'complementa el registro, no lo sustituye, y lo que no está mapeado no aparece aquí.');
+    // =========================================================================
+    // 06 · TURISMO Y PATRIMONIO HISTÓRICO
+    // =========================================================================
+    const t = seccion('turismo', 'VISITANTES Y ENTORNO · OSM & HISTORIC ENGLAND', 'Turismo y patrimonio protegido',
+      'Planta turística extraída de OpenStreetMap (cobertura colaborativa) cruzada con el catálogo oficial de ' +
+      'edificios protegidos (Listed Buildings de Historic England / Planning Data).');
     t.appendChild(rejilla([
-      tile('turismo', 'alojamientos_n', 'Alojamientos'),
-      tile('turismo', 'hoteles_n', 'Hoteles'),
+      tile('turismo', 'alojamientos_n', 'Alojamientos mapeados en OSM', null, true),
+      tile('patrimonio', 'edificios_protegidos_n', 'Edificios con protección patrimonial', null, true),
+      tile('turismo', 'hoteles_n', 'Hoteles registrados en OSM'),
       tile('turismo', 'atracciones_n', 'Atracciones y museos'),
-      tile('turismo', 'museos_n', 'Museos'),
-      tile('turismo', 'habitaciones_declaradas', 'Habitaciones declaradas'),
+      tile('turismo', 'museos_n', 'Museos en el borough'),
+      tile('turismo', 'habitaciones_declaradas', 'Habitaciones declaradas (cota inferior)'),
+      tile('patrimonio', 'grado_i_n', 'Edificios Grado I (máxima protección)'),
+      tile('patrimonio', 'grado_ii_estrella_n', 'Edificios Grado II*'),
     ]));
+
     const al = LAGO.turismo && LAGO.turismo.listas.alojamiento_por_tipo;
-    if (al) t.appendChild(bloque('Alojamiento por tipo',
-      G.barras(al.map(a => [a[0], a[1]]), { anchoEtiqueta: 140 })));
+    const grados = LAGO.patrimonio && LAGO.patrimonio.listas.por_grado;
+    t.appendChild(dosColumnas(
+      al ? bloque('Planta de alojamiento según categoría', 'OpenStreetMap · Overpass API',
+        G.barras(al.map(a => [a[0], a[1]]), { anchoEtiqueta: 150 })) : null,
+      grados ? bloque('Edificios protegidos según grado de conservación', 'Historic England · Planning Data',
+        G.barras(grados.map(g => [`Grado ${g.grado}`, g.n, g.grado === 'I']), { anchoEtiqueta: 140 })) : null
+    ));
+
     t.appendChild(aviso(
-      'La cifra de habitaciones es una <strong>cota inferior</strong>: solo cuenta los ' +
-      'alojamientos que declaran el número de habitaciones en OpenStreetMap. Una cota ' +
-      'inferior que se presenta como total es una cifra falsa.'));
+      '<strong>Advertencia metodológica · Cota inferior en mapeo voluntario</strong> ' +
+      'La cifra de habitaciones cuenta únicamente los establecimientos que declaran la etiqueta <code>rooms</code> ' +
+      'en OpenStreetMap. Publicar una cota inferior como si fuera el censo hotelero total sería fabricar un dato falso.'));
     main.appendChild(t);
 
-    // --- Territorio (el mapa lo monta mapa.js) ---
-    const te = seccion('territorio', 'Territorio',
-      'Dos escalas, como el ejemplo de Lima: los 33 boroughs para comparar y los wards de ' +
-      'Westminster para ver dónde pasa lo que pasa. El color es el precio medio de vivienda.');
-    const cajaMapa = document.createElement('div');
-    cajaMapa.id = 'mapa';
-    te.appendChild(cajaMapa);
+    // =========================================================================
+    // 07 · TERRITORIO, TRANSPORTE Y RIESGO HÍDRICO
+    // =========================================================================
+    const te = seccion('territorio', 'CARTOGRAFÍA DOBLE ESCALA · ONS & NAPTAN', 'Territorio, red de transporte y riesgo',
+      'Dos escalas superpuestas: los 33 boroughs de Greater London coloreados por precio medio de vivienda (UK HPI) ' +
+      'y los 18 wards electorales de Westminster delineados en bermellón. Seleccione cualquier polígono para inspeccionarlo.');
+
+    const marcoMapa = document.createElement('div');
+    marcoMapa.className = 'mapaMarco';
+    marcoMapa.innerHTML =
+      `<div class="mapaBarra">` +
+        `<span><strong>CAPA COROPLÉTICA:</strong> PRECIO MEDIO DE VIVIENDA (UK HPI) + LÍMITES DE WARDS (ONS)</span>` +
+        `<div class="mapaLeyenda" id="mapaLeyenda">` +
+          `<span class="leyendaItem"><i class="leyendaSw" style="background:#d9e2ec"></i> Q1 (Menor)</span>` +
+          `<span class="leyendaItem"><i class="leyendaSw" style="background:#9fb3c8"></i> Q2</span>` +
+          `<span class="leyendaItem"><i class="leyendaSw" style="background:#627d98"></i> Q3</span>` +
+          `<span class="leyendaItem"><i class="leyendaSw" style="background:#334e68"></i> Q4</span>` +
+          `<span class="leyendaItem"><i class="leyendaSw" style="background:#c8281e"></i> Q5 / Foco Westminster</span>` +
+        `</div>` +
+      `</div>` +
+      `<div id="mapa"></div>`;
+    te.appendChild(marcoMapa);
+
     te.appendChild(rejilla([
       tile('geo', 'boroughs_n', 'Boroughs de Greater London'),
-      tile('geo', 'wards_westminster_n', 'Wards de Westminster'),
-      tile('infraestructura', 'estaciones_n', 'Estaciones'),
-      tile('infraestructura', 'paradas_bus_n', 'Paradas de autobús'),
-      tile('infraestructura', 'bicicleta_puntos_n', 'Puntos de bicicleta'),
+      tile('geo', 'wards_westminster_n', 'Wards de Westminster (cosecha 2024)'),
+      tile('infraestructura', 'estaciones_n', 'Estaciones ferroviarias / Tube (OSM)'),
+      tile('infraestructura', 'paradas_bus_n', 'Paradas de autobús en Westminster'),
+      tile('infraestructura', 'bicicleta_puntos_n', 'Estaciones de bicicleta pública'),
+      tile('transporte_boroughs', 'paradas_westminster', 'Nodos oficiales NaPTAN en Westminster'),
+      tile('transporte_boroughs', 'paradas_londres_n', 'Total de nodos NaPTAN en Londres'),
+      tile('riesgo', 'zonas_riesgo_n', 'Polígonos de riesgo de inundación'),
+      tile('riesgo', 'nivel_maximo', 'Nivel máximo de riesgo mareal (Támesis)'),
     ]));
+
     te.appendChild(aviso(
-      '<strong>Las dos escalas no son de la misma cosecha.</strong> Los boroughs son de ' +
-      'diciembre de 2025; los wards, de diciembre de 2024, porque la capa de wards de 2025 ' +
-      'solo está publicada como MapServer y su consulta devuelve 400. Está en el catálogo.'));
+      '<strong>Desfase de cosecha cartográfica</strong> Los límites de los 33 boroughs corresponden a diciembre de 2025 ' +
+      '(ONS BGC), mientras que los wards de Westminster son de diciembre de 2024 porque la capa 2025 del ONS solo ' +
+      'está expuesta como MapServer con error 400 en consulta abierta. La discrepancia queda documentada en el catálogo.'));
     main.appendChild(te);
 
-    // --- Atlas ---
-    const a = seccion('atlas', 'Atlas de los 33 boroughs',
-      'Una cifra de ciudad esconde las diferencias de adentro. Westminster va resaltado.');
+    // =========================================================================
+    // 08 · ATLAS COMPARATIVO DE LOS 33 BOROUGHS
+    // =========================================================================
+    const a = seccion('atlas', 'COMPARATIVA METROPOLITANA · 33 BOROUGHS', 'Atlas de los 33 boroughs',
+      'Toda cifra metropolitana esconde la dispersión entre distritos. Westminster (E09000033) se resalta en bermellón ' +
+      'frente a los otros 32 gobiernos locales de Greater London.');
     a.appendChild(rejilla([
-      tile('atlas_boroughs', 'westminster_puesto_poblacion', 'Puesto en población'),
-      tile('atlas_boroughs', 'westminster_puesto_densidad', 'Puesto en densidad'),
-      tile('atlas_boroughs', 'westminster_puesto_precio', 'Puesto en precio de vivienda'),
-      tile('atlas_boroughs', 'borough_mas_caro', 'El borough más caro'),
-      tile('atlas_boroughs', 'borough_mas_barato', 'El más barato'),
-      tile('atlas_boroughs', 'borough_mas_denso', 'El más denso'),
+      tile('atlas_boroughs', 'westminster_puesto_precio', 'Puesto en precio de vivienda', null, true),
+      tile('atlas_boroughs', 'westminster_puesto_densidad', 'Puesto en densidad poblacional', null, true),
+      tile('atlas_boroughs', 'westminster_puesto_poblacion', 'Puesto en población total'),
+      tile('atlas_boroughs', 'borough_mas_caro', 'Máximo en precio (Kensington & Chelsea)'),
+      tile('atlas_boroughs', 'borough_mas_barato', 'Mínimo en precio (Barking & Dagenham)'),
+      tile('atlas_boroughs', 'borough_mas_denso', 'Máxima densidad (Tower Hamlets)'),
     ]));
+
     const bs = LAGO.atlas_boroughs && LAGO.atlas_boroughs.listas.boroughs;
     if (bs) {
       const orden = bs.slice().sort((x, y) => (y.precio_medio_gbp || 0) - (x.precio_medio_gbp || 0));
-      a.appendChild(bloque('Precio medio de vivienda, por borough',
+      a.appendChild(bloque('Jerarquía metropolitana por precio medio de vivienda (£)', '33 boroughs · Westminster en bermellón',
         G.barras(orden.map(b => [b.nombre, b.precio_medio_gbp || 0, b.codigo === 'E09000033']),
-          { formato: libras, anchoEtiqueta: 200 })));
-      a.appendChild(bloque('La tabla completa', tabla(
-        ['Borough', 'Población', 'km²', 'hab/km²', 'Precio medio'],
-        orden.map(b => [b.nombre, fmt(b.poblacion), b.area_km2,
-          fmt(b.densidad_hab_km2), libras(b.precio_medio_gbp || 0),
-          b.codigo === 'E09000033']), 5)));
+          { formato: libras, anchoEtiqueta: 205 })));
+      a.appendChild(bloque('Cuadro estadístico consolidado de Greater London', 'Ordenado de mayor a menor precio residencial',
+        tabla(
+          ['Borough', 'Código GSS', 'Población', 'Superficie (km²)', 'Densidad (hab/km²)', 'Precio medio (£)'],
+          orden.map(b => [
+            b.nombre,
+            `<code>${b.codigo}</code>`,
+            fmt(b.poblacion),
+            fmt(b.area_km2),
+            fmt(b.densidad_hab_km2),
+            libras(b.precio_medio_gbp || 0),
+            b.codigo === 'E09000033'
+          ]), 6)));
     }
     main.appendChild(a);
 
-    // --- Correlaciones ---
-    const co = seccion('correlaciones', 'Correlaciones',
-      'Una correlación describe una asociación y nunca se publica como efecto. ' +
-      'La regla está escrita en el script que las calcula, no solo aquí.');
+    // =========================================================================
+    // 09 · CORRELACIONES Y CONTROL DE FALSOS POSITIVOS
+    // =========================================================================
+    const co = seccion('correlaciones', 'RIGOR ESTADÍSTICO · ASOCIACIÓN VS CAUSA', 'Matriz de correlaciones (Pearson)',
+      'Una correlación mide asociación lineal entre variables territoriales y jamás debe leerse como efecto causal. ' +
+      'El sistema publica cuántos pares evalúa y cuántos darían «significativos» por simple azar al 5 %.');
     co.appendChild(rejilla([
-      tile('correlaciones', 'metricas_n', 'Métricas comparadas'),
-      tile('correlaciones', 'pares_n', 'Pares comparados'),
-      tile('correlaciones', 'esperados_por_azar', 'Esperados por azar al 5 %'),
-      tile('correlaciones', 'asociaciones_fuertes', 'Asociaciones con |r| ≥ 0,5'),
+      tile('correlaciones', 'asociacion_mas_fuerte', 'Asociación más intensa (Área ↔ Densidad)', null, true),
+      tile('correlaciones', 'asociaciones_fuertes', 'Pares con asociación fuerte (|r| ≥ 0,5)', null, true),
+      tile('correlaciones', 'metricas_n', 'Variables territoriales cruzadas'),
+      tile('correlaciones', 'pares_n', 'Pares bivariados evaluados'),
+      tile('correlaciones', 'esperados_por_azar', 'Falsos positivos esperados al 5 % (α = 0,05)'),
     ]));
+
     const pares = LAGO.correlaciones && LAGO.correlaciones.listas.pares;
-    if (pares) co.appendChild(bloque('Todos los pares, ordenados por fuerza de la asociación',
-      tabla(['Par', 'r', 'n'],
-        pares.map(p => [`${p.etiqueta_a} ↔ ${p.etiqueta_b}`, p.r, p.n]))));
+    if (pares) {
+      co.appendChild(bloque('Pares evaluados sobre los 33 boroughs, ordenados por magnitud |r|', 'Coeficiente r de Pearson y estadístico t',
+        tabla(['Par de variables comparadas', 'Coeficiente r', 'Estadístico t', 'Muestra (n)', 'Intensidad'],
+          pares.map(p => [
+            `<strong>${p.etiqueta_a}</strong> ↔ <strong>${p.etiqueta_b}</strong>`,
+            fmt(p.r),
+            fmt(p.t),
+            p.n,
+            p.fuerte ? '<span class="pastilla integrado">|r| ≥ 0,50</span>' : '<span class="pastilla">débil / moderada</span>',
+            p.fuerte
+          ]), 5)));
+    }
     co.appendChild(aviso(
-      'Con ' + (cifra('correlaciones', 'metricas_n') || {}).valor + ' métricas salen ' +
-      (cifra('correlaciones', 'pares_n') || {}).valor + ' pares. Juzgados al 5 %, cabría ' +
-      'esperar ~' + (cifra('correlaciones', 'esperados_por_azar') || {}).valor +
-      ' «significativos» aunque ninguna variable tuviera que ver con otra. ' +
-      'Por eso el número va publicado al lado de los hallazgos.'));
+      '<strong>Higiene contra el p-hacking</strong> Con ' + (cifra('correlaciones', 'metricas_n') || {}).valor +
+      ' métricas se forman ' + (cifra('correlaciones', 'pares_n') || {}).valor + ' pares. Evaluados al 5 %, cabría ' +
+      'esperar ~' + fmt((cifra('correlaciones', 'esperados_por_azar') || {}).valor) +
+      ' cruces «significativos» por puro ruido aleatorio. Por eso el número esperado por azar viaja impreso junto a la tabla.'));
     main.appendChild(co);
 
-    // --- Ambiente ---
-    const am = seccion('ambiente', 'Ambiente',
-      'Un modelo no es un sensor: Open-Meteo interpola desde modelos globales. ' +
-      'Donde la cifra viene de un modelo, la ficha lo dice.');
+    // =========================================================================
+    // 10 · AMBIENTE: MODELO GLOBAL VS ESTACIONES FÍSICAS LAQN
+    // =========================================================================
+    const am = seccion('ambiente', 'MODELO GLOBAL VS ESTACIÓN · OPEN-METEO & LAQN', 'Ambiente: modelo vs. estación física',
+      'Contrastamos la interpolación meteorológica y de calidad de aire de Open-Meteo (modelo numérico) con las ' +
+      'lecturas físicas reales de la red LAQN del Imperial College London.');
     am.appendChild(rejilla([
-      tile('sensores', 'temperatura_actual', 'Temperatura'),
-      tile('sensores', 'humedad_actual', 'Humedad'),
-      tile('sensores', 'viento_actual', 'Viento'),
-      tile('sensores', 'pm25_actual', 'PM2.5 (modelo)'),
-      tile('sensores', 'no2_actual', 'NO₂ (modelo)'),
-      tile('sensores', 'aqi_europeo', 'Índice europeo de aire'),
+      tile('sensores', 'temperatura_actual', 'Temperatura actual (Westminster)', null, true),
+      tile('aire_laqn', 'indice_aire_westminster', 'Índice DAQI medido en estaciones LAQN', null, true),
+      tile('sensores', 'humedad_actual', 'Humedad relativa'),
+      tile('sensores', 'viento_actual', 'Velocidad del viento'),
+      tile('sensores', 'pm25_actual', 'PM2.5 (modelo atmosférico CAMS)'),
+      tile('sensores', 'no2_actual', 'NO₂ (modelo atmosférico CAMS)'),
+      tile('sensores', 'aqi_europeo', 'Índice Europeo de Aire (modelo)'),
+      tile('aire_laqn', 'boroughs_con_estacion_n', 'Boroughs con estación LAQN activa hoy'),
+      tile('aire_laqn', 'puesto_aire_westminster', 'Puesto de Westminster en red LAQN'),
     ]));
+
     const pm = LAGO.sensores && LAGO.sensores.series.pm25_diario;
-    if (pm) am.appendChild(bloque('PM2.5, media diaria de la última semana',
-      G.linea(pm.puntos, 'PM2.5')));
     const pron = LAGO.sensores && LAGO.sensores.series.pronostico_max;
-    if (pron) am.appendChild(bloque('Temperatura máxima, próximos días',
-      G.linea(pron.puntos, 'Máxima')));
+    am.appendChild(dosColumnas(
+      pm ? bloque('Partículas finas PM2.5 · Media diaria reciente', 'Open-Meteo Air Quality (µg/m³)',
+        G.linea(pm.puntos, 'PM2.5')) : null,
+      pron ? bloque('Pronóstico de temperatura máxima diaria', 'Open-Meteo · Modelo numérico (°C)',
+        G.linea(pron.puntos, 'Máxima')) : null
+    ));
+    if (LAGO.aire_laqn && LAGO.aire_laqn.nota) {
+      am.appendChild(aviso('<strong>Diferencia entre sensor físico y modelo</strong> ' + LAGO.aire_laqn.nota));
+    }
     main.appendChild(am);
 
-    // --- Escucha ---
-    const es = seccion('escucha', 'Escucha social',
-      'Mide atención en Wikipedia, no visitantes. Los picos suelen seguir a hechos ' +
-      'noticiosos, no a llegadas de turistas.');
+    // =========================================================================
+    // 11 · ESCUCHA DIGITAL Y ATENCIÓN PÚBLICA
+    // =========================================================================
+    const es = seccion('escucha', 'INTERÉS PÚBLICO · WIKIMEDIA REST API', 'Escucha social (Wikimedia Pageviews)',
+      'Consultas mensuales a los artículos enciclopédicos de cada borough. Mide atención informativa global, ' +
+      'no afluencia física de visitantes.');
     es.appendChild(rejilla([
-      tile('escucha', 'vistas_ultimo_mes', 'Vistas del último mes'),
-      tile('escucha', 'vistas_pico_mes', 'Mes de mayor atención'),
-      tile('escucha', 'puesto_entre_boroughs', 'Puesto entre boroughs comparados'),
+      tile('escucha', 'vistas_ultimo_mes', 'Lecturas en el último mes (Westminster)', null, true),
+      tile('escucha', 'puesto_entre_boroughs', 'Puesto de atención entre boroughs', null, true),
+      tile('escucha', 'vistas_pico_mes', 'Pico mensual en el último año'),
     ]));
+
     const we = LAGO.escucha && LAGO.escucha.series.wiki_westminster;
-    if (we) es.appendChild(bloque('Vistas mensuales del artículo «City of Westminster»',
-      G.linea(we.puntos, 'Vistas')));
-    if (LAGO.escucha) {
+    let bloqueCompEscucha = null;
+    if (LAGO.escucha && LAGO.escucha.series) {
       const ult = Object.entries(LAGO.escucha.series)
         .map(([k, v]) => [k.replace('wiki_', '').replace(/_/g, ' '),
           v.puntos[v.puntos.length - 1][1], k === 'wiki_westminster'])
         .sort((a, b) => b[1] - a[1]);
-      es.appendChild(bloque('Atención en el último mes, por lugar', G.barras(ult, { anchoEtiqueta: 180 })));
+      bloqueCompEscucha = bloque('Comparativa de atención en el último mes', 'Wikimedia REST API · Inglés',
+        G.barras(ult, { anchoEtiqueta: 175 }));
     }
+    es.appendChild(dosColumnas(
+      we ? bloque('Serie mensual de lecturas · Artículo «City of Westminster»', '12 meses completos',
+        G.linea(we.puntos, 'Vistas')) : null,
+      bloqueCompEscucha
+    ));
     main.appendChild(es);
 
-    // --- Fuentes y método ---
-    const fu = seccion('fuentes', 'Fuentes y método',
-      'El catálogo cuenta también lo que no sirvió, y por qué. Es la parte del rastreo ' +
-      'que le ahorra días a quien venga después.');
+    // =========================================================================
+    // 12 · FUENTES, CATÁLOGO Y AUDITORÍA DE DATOS
+    // =========================================================================
+    const fu = seccion('fuentes', 'TRAZABILIDAD Y GOBERNANZA · CATÁLOGO COMPLETO', 'Catálogo de fuentes y método',
+      'Un catálogo honesto documenta también las fuentes que cayeron (504/400), las candidatas y las excluidas por ' +
+      'privacidad. Eso ahorra días de ingeniería a quien audite o continúe el sistema.');
     const cata = LAGO.catalogo;
     if (cata) {
-      const pastillas = document.createElement('p');
+      const pastillas = document.createElement('div');
+      pastillas.style.marginBottom = '6px';
       pastillas.innerHTML = Object.entries(cata.por_estado)
-        .map(([e, n]) => `<span class="pastilla ${e}">${e} · ${n}</span>`).join('');
-      fu.appendChild(bloque(`${cata.n} fuentes rastreadas`, pastillas));
-      fu.appendChild(bloque('El catálogo completo', tabla(
-        ['Fuente', 'Entidad', 'Estado', 'Licencia', '¿Personas?', 'Probado'],
-        cata.datasets.map(d => [
-          `<a href="${d.url}" target="_blank" rel="noopener noreferrer">${d.nombre}</a>`,
-          d.entidad, `<span class="pastilla ${d.estado}">${d.estado}</span>`,
-          d.licencia, d.personas, d.probado]))));
+        .map(([est, n]) => `<span class="pastilla ${est}">${est}: ${n}</span>`).join('');
+      fu.appendChild(bloque(`Resumen de auditoría: ${cata.n} fuentes rastreadas en total`, 'Verificadas por script antes del despliegue', pastillas));
+      fu.appendChild(bloque('Inventario completo del catálogo de datos', 'Incluye estado de enlace, licencia cerrada y evaluación de datos personales',
+        tabla(
+          ['Fuente / Conjunto de datos', 'Entidad', 'Estado', 'Licencia', '¿Personas?', 'Probado el'],
+          cata.datasets.map(d => [
+            `<a href="${d.url}" target="_blank" rel="noopener noreferrer"><strong>${d.nombre}</strong></a>` +
+            (d.nota ? `<br><small style="color:var(--suave)">${d.nota}</small>` : ''),
+            d.entidad,
+            `<span class="pastilla ${d.estado}">${d.estado}</span>`,
+            `<code>${d.licencia}</code>`,
+            d.personas,
+            `<code>${d.probado}</code>`
+          ]))));
       fu.appendChild(aviso(
-        '<strong>Dos campos que el catálogo de Lima no lleva.</strong> Cada ficha de aquí ' +
-        'trae <code>probado</code> (el día en que el enlace respondió) y <code>personas</code> ' +
-        '(si el conjunto trae datos de personas y cuáles). El primero dice cuándo volver a ' +
-        'mirar; el segundo decide casi todo lo que viene en la protección. ' +
-        'Entidad y licencia salen de una lista cerrada desde la primera ficha.'));
+        '<strong>Dos garantías adicionales frente al Cerebro Lima</strong> Cada ficha de este catálogo exige ' +
+        '<code>probado</code> (fecha ISO en que el endpoint respondió 200) y <code>personas</code> ' +
+        '(declaración explícita de si existen datos personales o cuasi-identificadores como el postcode británico). ' +
+        'El verificador automático bloquea el despliegue si falta cualquiera de los dos.'));
     }
     main.appendChild(fu);
   }
