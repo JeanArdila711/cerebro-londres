@@ -76,7 +76,7 @@ fuentes = [{
     "id": "correlaciones_derivado",
     "nombre": "Correlaciones entre métricas de boroughs (derivado del lago)",
     "entidad": "Cerebro Londres",
-    "url": "https://github.com/",
+    "url": "https://github.com/JeanArdila711/cerebro-londres",
     "resolucion": "borough",
     "vigencia": atlas["probado"],
     "probado": C.hoy(),
