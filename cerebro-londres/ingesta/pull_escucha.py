@@ -7,7 +7,7 @@ del lago, con la misma forma de contrato. Sin llaves, solo biblioteca estándar.
 Un título que coincide no es la cosa: se exige que el artículo sea `standard`
 (no una desambiguación) y se usa el título canónico que devuelve la API.
 """
-import sys, urllib.parse
+import json, sys, urllib.parse
 sys.path.insert(0, __file__.rsplit("/", 1)[0])
 import comun as C
 
@@ -23,11 +23,25 @@ LUGARES = {
     "soho":               "Soho, London",
     "trafalgar_square":   "Trafalgar Square",
 }
-# Pares de comparación: otros boroughs centrales, para que la cifra tenga contra qué
+
+# Comparación: los 33 boroughs, no 4 — el profesor marcó que «si comparan
+# boroughs, que sean los 33». Título canónico de Wikipedia en inglés por
+# patrón («London Borough of X»), con las excepciones reales: los tres Royal
+# Borough, la City y Westminster (que ya está en LUGARES, no se repite aquí).
+ROYAL = {"Kensington and Chelsea", "Kingston upon Thames", "Greenwich"}
+BOROUGHS_33 = json.loads((C.LAGO / "demografia.json").read_text(encoding="utf-8"))["listas"]["boroughs"]
+
+
+def _titulo_wikipedia(nombre):
+    if nombre == "City of London":
+        return "City of London"
+    prefijo = "Royal Borough of " if nombre in ROYAL else "London Borough of "
+    return prefijo + nombre
+
+
 PARES = {
-    "camden":             "London Borough of Camden",
-    "kensington_chelsea": "Royal Borough of Kensington and Chelsea",
-    "southwark":          "London Borough of Southwark",
+    b["nombre"].lower().replace(" ", "_").replace(",", ""): _titulo_wikipedia(b["nombre"])
+    for b in BOROUGHS_33 if b["nombre"] != "Westminster"
 }
 
 
@@ -69,11 +83,21 @@ fuentes = [{
 series, cifras, fallos = {}, {}, []
 
 for clave, titulo in {**LUGARES, **PARES}.items():
-    canon = canonico(titulo)
+    try:
+        canon = canonico(titulo)
+    except RuntimeError as e:
+        print(f"  ! «{titulo}»: {str(e)[:70]}", file=sys.stderr)
+        fallos.append(titulo)
+        continue
     if not canon:
         fallos.append(titulo)
         continue
-    puntos, url = vistas(canon)
+    try:
+        puntos, url = vistas(canon)
+    except RuntimeError as e:
+        print(f"  ! «{titulo}»: {str(e)[:70]}", file=sys.stderr)
+        fallos.append(titulo)
+        continue
     if not puntos:
         fallos.append(titulo)
         continue
@@ -101,7 +125,8 @@ ranking = sorted(
 puesto = [k for k, _ in ranking].index("wiki_westminster") + 1
 cifras["puesto_entre_boroughs"] = C.cifra(
     puesto, f"puesto de {len(ranking)}", "wikimedia_pageviews", ultimo[0],
-    "Entre Westminster, Camden, Kensington and Chelsea y Southwark")
+    f"Entre los {len(ranking)} de 33 boroughs con artículo de Wikipedia resuelto "
+    f"({len(fallos)} cayeron o no tienen artículo propio bajo este patrón de título)")
 
 ruta = C.escribir(
     "escucha", fuentes, cifras, series,

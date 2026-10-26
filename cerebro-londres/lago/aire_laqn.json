@@ -1,6 +1,6 @@
 {
  "tema": "aire_laqn",
- "probado": "2026-10-02",
+ "probado": "2026-10-26",
  "fuentes": [
   {
    "id": "laqn_daily",
@@ -8,8 +8,8 @@
    "entidad": "Imperial College London",
    "url": "https://www.londonair.org.uk/",
    "resolucion": "estación, agregado por borough",
-   "vigencia": "2026-10-01",
-   "probado": "2026-10-02",
+   "vigencia": "2026-10-25",
+   "probado": "2026-10-26",
    "estado": "vivo",
    "licencia": "sin-confirmar",
    "personas": "no",
@@ -20,42 +20,42 @@
  ],
  "cifras": {
   "boroughs_con_estacion_n": {
-   "valor": 18,
+   "valor": 14,
    "unidad": "boroughs",
    "fuente": "laqn_daily",
-   "vigencia": "2026-10-01",
+   "vigencia": "2026-10-25",
    "nota": "De 33; el resto no tiene estación LAQN activa hoy",
    "estado": "integrado"
   },
   "borough_peor_aire": {
-   "valor": "Ealing",
+   "valor": "Lewisham",
    "unidad": "borough",
    "fuente": "laqn_daily",
-   "vigencia": "2026-10-01",
-   "nota": "índice DAQI medio 3.0 (1 bajo, 10 muy alto); 1 lecturas",
+   "vigencia": "2026-10-25",
+   "nota": "índice DAQI medio 3.0 (1 bajo, 10 muy alto); 1 estaciones con dato",
    "estado": "integrado"
   },
   "borough_mejor_aire": {
    "valor": "Newham",
    "unidad": "borough",
    "fuente": "laqn_daily",
-   "vigencia": "2026-10-01",
+   "vigencia": "2026-10-25",
    "nota": "índice medio 1.0",
    "estado": "integrado"
   },
   "indice_aire_westminster": {
-   "valor": 1.38,
+   "valor": 1.67,
    "unidad": "índice DAQI (1 bajo · 10 muy alto)",
    "fuente": "laqn_daily",
-   "vigencia": "2026-10-01",
-   "nota": "3 estaciones, 8 lecturas de especies",
+   "vigencia": "2026-10-25",
+   "nota": "3 estaciones, 3 con dato ese día (máximo por contaminante de cada una)",
    "estado": "integrado"
   },
   "puesto_aire_westminster": {
-   "valor": 5,
-   "unidad": "puesto de 18",
+   "valor": 8,
+   "unidad": "puesto de 14",
    "fuente": "laqn_daily",
-   "vigencia": "2026-10-01",
+   "vigencia": "2026-10-25",
    "nota": "1 = el peor aire de los boroughs con estación",
    "estado": "integrado"
   }
@@ -64,7 +64,7 @@
  "listas": {
   "boroughs": [
    {
-    "nombre": "Ealing",
+    "nombre": "Lewisham",
     "estaciones_n": 1,
     "lecturas_n": 1,
     "indice_medio": 3.0,
@@ -72,143 +72,111 @@
     "puesto": 1
    },
    {
-    "nombre": "Lewisham",
-    "estaciones_n": 1,
+    "nombre": "Bexley",
+    "estaciones_n": 4,
     "lecturas_n": 4,
-    "indice_medio": 1.5,
+    "indice_medio": 2.0,
     "indice_peor": 3,
     "puesto": 2
    },
    {
-    "nombre": "Southwark",
-    "estaciones_n": 1,
-    "lecturas_n": 2,
-    "indice_medio": 1.5,
+    "nombre": "Brent",
+    "estaciones_n": 3,
+    "lecturas_n": 3,
+    "indice_medio": 2.0,
     "indice_peor": 2,
     "puesto": 3
    },
    {
-    "nombre": "Wandsworth",
-    "estaciones_n": 5,
-    "lecturas_n": 12,
-    "indice_medio": 1.42,
-    "indice_peor": 3,
+    "nombre": "Kensington and Chelsea",
+    "estaciones_n": 1,
+    "lecturas_n": 1,
+    "indice_medio": 2.0,
+    "indice_peor": 2,
     "puesto": 4
    },
    {
-    "nombre": "Westminster",
+    "nombre": "Richmond",
     "estaciones_n": 3,
-    "lecturas_n": 8,
-    "indice_medio": 1.38,
-    "indice_peor": 2,
+    "lecturas_n": 3,
+    "indice_medio": 2.0,
+    "indice_peor": 3,
     "puesto": 5
    },
    {
-    "nombre": "Richmond",
-    "estaciones_n": 2,
-    "lecturas_n": 6,
-    "indice_medio": 1.33,
-    "indice_peor": 3,
+    "nombre": "Wandsworth",
+    "estaciones_n": 5,
+    "lecturas_n": 5,
+    "indice_medio": 2.0,
+    "indice_peor": 2,
     "puesto": 6
-   },
-   {
-    "nombre": "Haringey",
-    "estaciones_n": 2,
-    "lecturas_n": 4,
-    "indice_medio": 1.25,
-    "indice_peor": 2,
-    "puesto": 7
-   },
-   {
-    "nombre": "Bexley",
-    "estaciones_n": 3,
-    "lecturas_n": 10,
-    "indice_medio": 1.2,
-    "indice_peor": 2,
-    "puesto": 8
-   },
-   {
-    "nombre": "Merton",
-    "estaciones_n": 3,
-    "lecturas_n": 6,
-    "indice_medio": 1.17,
-    "indice_peor": 2,
-    "puesto": 9
-   },
-   {
-    "nombre": "Kensington and Chelsea",
-    "estaciones_n": 2,
-    "lecturas_n": 7,
-    "indice_medio": 1.14,
-    "indice_peor": 2,
-    "puesto": 10
-   },
-   {
-    "nombre": "Tower Hamlets",
-    "estaciones_n": 6,
-    "lecturas_n": 15,
-    "indice_medio": 1.13,
-    "indice_peor": 2,
-    "puesto": 11
-   },
-   {
-    "nombre": "Camden",
-    "estaciones_n": 2,
-    "lecturas_n": 8,
-    "indice_medio": 1.12,
-    "indice_peor": 2,
-    "puesto": 12
-   },
-   {
-    "nombre": "Brent",
-    "estaciones_n": 3,
-    "lecturas_n": 9,
-    "indice_medio": 1.11,
-    "indice_peor": 2,
-    "puesto": 13
    },
    {
     "nombre": "Greenwich",
     "estaciones_n": 9,
-    "lecturas_n": 18,
-    "indice_medio": 1.11,
-    "indice_peor": 2,
-    "puesto": 14
+    "lecturas_n": 9,
+    "indice_medio": 1.67,
+    "indice_peor": 3,
+    "puesto": 7
    },
    {
-    "nombre": "Croydon",
+    "nombre": "Westminster",
     "estaciones_n": 3,
+    "lecturas_n": 3,
+    "indice_medio": 1.67,
+    "indice_peor": 2,
+    "puesto": 8
+   },
+   {
+    "nombre": "Tower Hamlets",
+    "estaciones_n": 5,
     "lecturas_n": 5,
-    "indice_medio": 1.0,
-    "indice_peor": 1,
-    "puesto": 15
+    "indice_medio": 1.6,
+    "indice_peor": 3,
+    "puesto": 9
    },
    {
     "nombre": "Enfield",
-    "estaciones_n": 4,
-    "lecturas_n": 6,
-    "indice_medio": 1.0,
-    "indice_peor": 1,
-    "puesto": 16
-   },
-   {
-    "nombre": "Lambeth",
     "estaciones_n": 2,
-    "lecturas_n": 3,
-    "indice_medio": 1.0,
-    "indice_peor": 1,
-    "puesto": 17
+    "lecturas_n": 2,
+    "indice_medio": 1.5,
+    "indice_peor": 2,
+    "puesto": 10
    },
    {
-    "nombre": "Newham",
-    "estaciones_n": 1,
+    "nombre": "Merton",
+    "estaciones_n": 4,
+    "lecturas_n": 4,
+    "indice_medio": 1.5,
+    "indice_peor": 2,
+    "puesto": 11
+   },
+   {
+    "nombre": "Croydon",
+    "estaciones_n": 2,
     "lecturas_n": 2,
     "indice_medio": 1.0,
     "indice_peor": 1,
-    "puesto": 18
+    "puesto": 12
+   },
+   {
+    "nombre": "Lambeth",
+    "estaciones_n": 1,
+    "lecturas_n": 1,
+    "indice_medio": 1.0,
+    "indice_peor": 1,
+    "puesto": 13
+   },
+   {
+    "nombre": "Newham",
+    "estaciones_n": 2,
+    "lecturas_n": 2,
+    "indice_medio": 1.0,
+    "indice_peor": 1,
+    "puesto": 14
    }
   ]
  },
  "territorio": "Greater London (boroughs con estación activa)",
- "nota": "Un día de aire mayormente limpio en Londres: la mayoría de boroughs quedó entre 1,0 y 1,5 de índice medio (escala 1-10). 4 boroughs tienen menos de 4 lecturas (Ealing, Southwark, Lambeth, Newham), así que su promedio es poco confiable: una sola especie medida en un sitio puede mover el número entero. No se ocultan, pero se leen con cuidado."
+ "nota": "Índice por estación: el máximo entre sus contaminantes, no el promedio entre ellos (así se define el DAQI). El índice de un borough es el promedio de esos máximos entre sus estaciones. 3 boroughs tienen una sola estación con dato (Lewisham, Kensington and Chelsea, Lambeth), así que su índice depende de un único punto de la red. No se ocultan, pero se leen con cuidado."
 }

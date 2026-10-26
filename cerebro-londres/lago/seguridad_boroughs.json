@@ -1,6 +1,6 @@
 {
  "tema": "seguridad_boroughs",
- "probado": "2026-10-02",
+ "probado": "2026-10-26",
  "fuentes": [
   {
    "id": "lds_mps_delito_borough",
@@ -9,13 +9,13 @@
    "url": "https://data.london.gov.uk/dataset/recorded_crime_summary",
    "resolucion": "borough (BOCU), mensual",
    "vigencia": "202509 a 202608",
-   "probado": "2026-10-02",
+   "probado": "2026-10-26",
    "estado": "vivo",
    "licencia": "OGL-2.0",
    "personas": "no",
    "proteccion": "abierto, solo agregados",
    "uso": "sección Seguridad · comparar los 33 boroughs",
-   "nota": "Cuenta delitos registrados, no víctimas. Cruzado por nombre de BOCU contra los boroughs del ONS; City of London queda fuera porque tiene su propia policía, no la Metropolitana."
+   "nota": "Cuenta delitos registrados, no víctimas. Cruzado por nombre de BOCU contra los boroughs del ONS; City of London queda fuera porque tiene su propia policía, no la Metropolitana. La tasa por 1.000 habitantes divide sobre población RESIDENTE: en boroughs con mucha población flotante (Westminster el primero, por el centro comercial y turístico) la tasa por residente sobreestima el riesgo frente a quien solo pasa por ahí."
   }
  ],
  "cifras": {
@@ -23,7 +23,7 @@
    "valor": 32,
    "unidad": "boroughs",
    "fuente": "lds_mps_delito_borough",
-   "vigencia": "2026-10-02",
+   "vigencia": "2026-10-26",
    "nota": "De los 33 de Greater London; falta City of London",
    "estado": "integrado"
   },
@@ -40,7 +40,7 @@
    "unidad": "delitos por 1.000 habitantes",
    "fuente": "lds_mps_delito_borough",
    "vigencia": "202608",
-   "nota": "Delitos de 12 meses sobre población mid-year",
+   "nota": "Delitos de 12 meses sobre población RESIDENTE mid-year, no sobre la población flotante (trabajadores, turistas, tránsito) que a diario multiplica varias veces la gente presente en Westminster: la tasa real por persona-presente es más baja que esta",
    "estado": "integrado"
   },
   "puesto_tasa_westminster": {

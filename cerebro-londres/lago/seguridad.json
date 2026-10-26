@@ -1,6 +1,6 @@
 {
  "tema": "seguridad",
- "probado": "2026-09-21",
+ "probado": "2026-10-26",
  "fuentes": [
   {
    "id": "police_uk",
@@ -8,8 +8,8 @@
    "entidad": "Home Office",
    "url": "https://data.police.uk/docs/method/crime-street/",
    "resolucion": "borough (polígono)",
-   "vigencia": "2025-09–2026-07",
-   "probado": "2026-09-21",
+   "vigencia": "2025-10–2026-08",
+   "probado": "2026-10-26",
    "estado": "vivo",
    "licencia": "OGL-3.0",
    "personas": "la API devuelve registros por delito con ubicación aproximada; al lago solo entran conteos agregados, nunca el registro individual",
@@ -20,34 +20,34 @@
  ],
  "cifras": {
   "delitos_ultimo_mes": {
-   "valor": 9421,
+   "valor": 8664,
    "unidad": "delitos registrados",
    "fuente": "police_uk",
-   "vigencia": "2026-07",
+   "vigencia": "2026-08",
    "nota": "Delitos registrados en City of Westminster",
    "estado": "integrado"
   },
   "delitos_12m": {
-   "valor": 90008,
+   "valor": 100071,
    "unidad": "delitos registrados",
    "fuente": "police_uk",
-   "vigencia": "2025-09–2026-07",
-   "nota": "Suma de los 10 meses descargados",
+   "vigencia": "2025-10–2026-08",
+   "nota": "Suma de los 11 meses descargados",
    "estado": "integrado"
   },
   "categoria_mas_frecuente": {
    "valor": "theft-from-the-person",
    "unidad": "categoría",
    "fuente": "police_uk",
-   "vigencia": "2025-09–2026-07",
-   "nota": "18,334 casos",
+   "vigencia": "2025-10–2026-08",
+   "nota": "20,598 casos",
    "estado": "integrado"
   },
   "pct_sin_resultado": {
-   "valor": 15.1,
+   "valor": 14.9,
    "unidad": "%",
    "fuente": "police_uk",
-   "vigencia": "2025-09–2026-07",
+   "vigencia": "2025-10–2026-08",
    "nota": "Delitos sin resultado judicial registrado en el momento de la descarga",
    "estado": "integrado"
   }
@@ -58,16 +58,16 @@
    "unidad": "delitos registrados",
    "puntos": [
     [
-     "2025-09",
-     9438
-    ],
-    [
      "2025-10",
      9826
     ],
     [
      "2025-11",
      10554
+    ],
+    [
+     "2025-12",
+     10837
     ],
     [
      "2026-01",
@@ -96,6 +96,10 @@
     [
      "2026-07",
      9421
+    ],
+    [
+     "2026-08",
+     8664
     ]
    ]
   }
@@ -104,43 +108,43 @@
   "por_categoria": [
    [
     "theft-from-the-person",
-    18334
+    20598
    ],
    [
     "other-theft",
-    16729
+    18668
    ],
    [
     "anti-social-behaviour",
-    13548
+    14955
    ],
    [
     "violent-crime",
-    13215
+    14507
    ],
    [
     "shoplifting",
-    9627
+    11044
    ],
    [
     "public-order",
-    4161
+    4547
    ],
    [
     "robbery",
-    2898
+    3157
    ],
    [
     "drugs",
-    2760
+    3098
    ],
    [
     "burglary",
-    2467
+    2776
    ],
    [
     "vehicle-crime",
-    2439
+    2632
    ],
    [
     "criminal-damage-arson",
@@ -148,71 +152,70 @@
    ],
    [
     "bicycle-theft",
-    1297
+    1446
    ],
    [
     "other-crime",
-    495
+    561
    ],
    [
     "possession-of-weapons",
-    407
+    451
    ]
   ],
   "por_resultado": [
    [
     "Investigation complete; no suspect identified",
-    48808
+    54882
    ],
    [
     "sin resultado registrado",
-    13548
+    14955
    ],
    [
     "Unable to prosecute suspect",
-    9874
+    11314
    ],
    [
     "Under investigation",
-    8346
+    7852
    ],
    [
     "Status update unavailable",
-    4178
+    5011
    ],
    [
     "Awaiting court outcome",
-    2544
-   ],
-   [
-    "Local resolution",
-    1128
+    2758
    ],
    [
     "Court result unavailable",
-    916
+    1284
+   ],
+   [
+    "Local resolution",
+    1267
    ],
    [
     "Formal action is not in the public interest",
-    180
-   ],
-   [
-    "Action to be taken by another organisation",
-    155
-   ],
-   [
-    "Offender given penalty notice",
-    143
+    199
    ],
    [
     "Offender given a caution",
-    141
+    179
+   ],
+   [
+    "Action to be taken by another organisation",
+    158
+   ],
+   [
+    "Offender given penalty notice",
+    148
    ]
   ]
  },
  "distrito_foco": "City of Westminster",
  "meses_sin_dato": [
-  "2025-12",
-  "2026-08"
+  "2026-09"
  ]
 }

@@ -33,22 +33,71 @@ def slug(nombre):
     return re.sub(r"[^a-z0-9-]", "", nombre.lower().replace(" ", "-"))
 
 
+# Proyección del British National Grid (EPSG:27700): meridiano central 2°O,
+# paralelo de origen 49°N, factor de escala 0,9996012717, falso origen
+# (400000, -100000). Serie de Redfearn para la Transverse Mercator, la misma
+# que publica el Ordnance Survey. El profesor pidió un plano métrico, no
+# grados: un shoelace en lon/lat distorsiona el área porque un grado de
+# longitud no mide lo mismo que uno de latitud.
+#
+# ponytail: se proyecta directo desde WGS84 (elipsoide GRS80/WGS84), sin el
+# Helmert de 7 parámetros hacia el datum OSGB36. Ese ajuste solo traslada y
+# rota ~unos cientos de metros en toda Gran Bretaña — el área de un polígono
+# no cambia con una traslación ni una rotación, así que para «calcular área
+# en EPSG:27700 en vez de grados» esto ya resuelve el problema real. Si algún
+# día se necesitan coordenadas que calcen con mapas oficiales en OSGB36,
+# agregar el Helmert antes de la proyección.
+_A, _F = 6378137.0, 1 / 298.257223563          # WGS84
+_B = _A * (1 - _F)
+_E2 = (_A ** 2 - _B ** 2) / _A ** 2
+_N = (_A - _B) / (_A + _B)
+_F0 = 0.9996012717
+_PHI0, _LAMBDA0 = math.radians(49), math.radians(-2)
+_N0, _E0 = -100000.0, 400000.0
+
+
+def _a_grid(lat, lon):
+    """lat/lon en grados (WGS84) → (easting, northing) en metros, estilo EPSG:27700."""
+    phi, lam = math.radians(lat), math.radians(lon)
+    sin_phi, cos_phi, tan_phi = math.sin(phi), math.cos(phi), math.tan(phi)
+    nu = _A * _F0 / math.sqrt(1 - _E2 * sin_phi ** 2)
+    rho = _A * _F0 * (1 - _E2) / (1 - _E2 * sin_phi ** 2) ** 1.5
+    eta2 = nu / rho - 1
+
+    dphi, sphi = phi - _PHI0, phi + _PHI0
+    Ma = (1 + _N + 5 / 4 * _N ** 2 + 5 / 4 * _N ** 3) * dphi
+    Mb = (3 * _N + 3 * _N ** 2 + 21 / 8 * _N ** 3) * math.sin(dphi) * math.cos(sphi)
+    Mc = (15 / 8 * _N ** 2 + 15 / 8 * _N ** 3) * math.sin(2 * dphi) * math.cos(2 * sphi)
+    Md = 35 / 24 * _N ** 3 * math.sin(3 * dphi) * math.cos(3 * sphi)
+    M = _B * _F0 * (Ma - Mb + Mc - Md)
+
+    I_ = M + _N0
+    II_ = nu / 2 * sin_phi * cos_phi
+    III_ = nu / 24 * sin_phi * cos_phi ** 3 * (5 - tan_phi ** 2 + 9 * eta2)
+    IIIA_ = nu / 720 * sin_phi * cos_phi ** 5 * (61 - 58 * tan_phi ** 2 + tan_phi ** 4)
+    IV_ = nu * cos_phi
+    V_ = nu / 6 * cos_phi ** 3 * (nu / rho - tan_phi ** 2)
+    VI_ = nu / 120 * cos_phi ** 5 * (5 - 18 * tan_phi ** 2 + tan_phi ** 4
+                                      + 14 * eta2 - 58 * tan_phi ** 2 * eta2)
+
+    dlam = lam - _LAMBDA0
+    northing = I_ + II_ * dlam ** 2 + III_ * dlam ** 4 + IIIA_ * dlam ** 6
+    easting = _E0 + IV_ * dlam + V_ * dlam ** 3 + VI_ * dlam ** 5
+    return easting, northing
+
+
 def area_km2(geom):
-    """Área de un polígono en coordenadas geográficas, por la fórmula del área
-    esférica (shoelace corregido por la latitud). Suficiente para densidad."""
-    R = 6371.0088
+    """Área de un polígono proyectado a metros (EPSG:27700-like), shoelace plano."""
     partes = geom["coordinates"] if geom["type"] == "MultiPolygon" else [geom["coordinates"]]
     total = 0.0
     for poligono in partes:
         for i, anillo in enumerate(poligono):
-            s = 0.0
-            for j in range(len(anillo) - 1):
-                x1, y1 = math.radians(anillo[j][0]), math.radians(anillo[j][1])
-                x2, y2 = math.radians(anillo[j + 1][0]), math.radians(anillo[j + 1][1])
-                s += (x2 - x1) * (2 + math.sin(y1) + math.sin(y2))
-            a = abs(s * R * R / 2.0)
+            puntos = [_a_grid(lat, lon) for lon, lat in anillo]
+            s = sum(x1 * y2 - x2 * y1
+                     for (x1, y1), (x2, y2) in zip(puntos, puntos[1:]))
+            a = abs(s) / 2.0
             total += a if i == 0 else -a          # los anillos interiores restan
-    return round(total, 2)
+    return round(total / 1_000_000, 2)             # m² → km²
 
 
 demo = json.loads((C.LAGO / "demografia.json").read_text(encoding="utf-8"))

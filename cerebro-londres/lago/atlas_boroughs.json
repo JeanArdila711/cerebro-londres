@@ -1,6 +1,6 @@
 {
  "tema": "atlas_boroughs",
- "probado": "2026-09-21",
+ "probado": "2026-10-26",
  "fuentes": [
   {
    "id": "atlas_derivado",
@@ -9,7 +9,7 @@
    "url": "https://github.com/",
    "resolucion": "borough",
    "vigencia": "2025",
-   "probado": "2026-09-21",
+   "probado": "2026-10-26",
    "estado": "vivo",
    "licencia": "derivado",
    "personas": "no",
@@ -47,7 +47,7 @@
    "valor": 2,
    "unidad": "puesto de 33",
    "fuente": "atlas_derivado",
-   "vigencia": "2026-07",
+   "vigencia": "2026-08",
    "nota": "De mayor a menor precio medio de vivienda",
    "estado": "integrado"
   },
@@ -56,23 +56,23 @@
    "unidad": "borough",
    "fuente": "atlas_derivado",
    "vigencia": "2025",
-   "nota": "16,966 hab/km²",
+   "nota": "16,906 hab/km²",
    "estado": "integrado"
   },
   "borough_mas_caro": {
    "valor": "Kensington and Chelsea",
    "unidad": "borough",
    "fuente": "atlas_derivado",
-   "vigencia": "2026-07",
-   "nota": "£1,232,640 de media",
+   "vigencia": "2026-08",
+   "nota": "£1,204,072 de media",
    "estado": "integrado"
   },
   "borough_mas_barato": {
    "valor": "Barking and Dagenham",
    "unidad": "borough",
    "fuente": "atlas_derivado",
-   "vigencia": "2026-07",
-   "nota": "£375,604 de media",
+   "vigencia": "2026-08",
+   "nota": "£369,881 de media",
    "estado": "integrado"
   }
  },
@@ -83,298 +83,298 @@
     "codigo": "E09000008",
     "nombre": "Croydon",
     "poblacion": 410085,
-    "area_km2": 86.22,
-    "precio_medio_gbp": 390041,
-    "precio_mes": "2026-07",
-    "densidad_hab_km2": 4756
+    "area_km2": 86.51,
+    "precio_medio_gbp": 396718,
+    "precio_mes": "2026-08",
+    "densidad_hab_km2": 4740
    },
    {
     "codigo": "E09000003",
     "nombre": "Barnet",
     "poblacion": 408087,
-    "area_km2": 86.51,
-    "precio_medio_gbp": 600560,
-    "precio_mes": "2026-07",
-    "densidad_hab_km2": 4717
+    "area_km2": 86.8,
+    "precio_medio_gbp": 592892,
+    "precio_mes": "2026-08",
+    "densidad_hab_km2": 4701
    },
    {
     "codigo": "E09000009",
     "nombre": "Ealing",
     "poblacion": 387072,
-    "area_km2": 55.37,
-    "precio_medio_gbp": 585216,
-    "precio_mes": "2026-07",
-    "densidad_hab_km2": 6991
+    "area_km2": 55.55,
+    "precio_medio_gbp": 589875,
+    "precio_mes": "2026-08",
+    "densidad_hab_km2": 6968
    },
    {
     "codigo": "E09000025",
     "nombre": "Newham",
     "poblacion": 376542,
-    "area_km2": 36.06,
-    "precio_medio_gbp": 390349,
-    "precio_mes": "2026-07",
-    "densidad_hab_km2": 10442
+    "area_km2": 36.18,
+    "precio_medio_gbp": 388045,
+    "precio_mes": "2026-08",
+    "densidad_hab_km2": 10407
    },
    {
     "codigo": "E09000005",
     "nombre": "Brent",
     "poblacion": 352201,
-    "area_km2": 43.08,
-    "precio_medio_gbp": 546135,
-    "precio_mes": "2026-07",
-    "densidad_hab_km2": 8176
+    "area_km2": 43.22,
+    "precio_medio_gbp": 555687,
+    "precio_mes": "2026-08",
+    "densidad_hab_km2": 8149
    },
    {
     "codigo": "E09000032",
     "nombre": "Wandsworth",
     "poblacion": 339859,
-    "area_km2": 34.15,
-    "precio_medio_gbp": 686076,
-    "precio_mes": "2026-07",
-    "densidad_hab_km2": 9952
+    "area_km2": 34.26,
+    "precio_medio_gbp": 694210,
+    "precio_mes": "2026-08",
+    "densidad_hab_km2": 9920
    },
    {
     "codigo": "E09000006",
     "nombre": "Bromley",
     "poblacion": 336048,
-    "area_km2": 149.59,
-    "precio_medio_gbp": 511670,
-    "precio_mes": "2026-07",
-    "densidad_hab_km2": 2246
+    "area_km2": 150.11,
+    "precio_medio_gbp": 520253,
+    "precio_mes": "2026-08",
+    "densidad_hab_km2": 2239
    },
    {
     "codigo": "E09000030",
     "nombre": "Tower Hamlets",
     "poblacion": 334240,
-    "area_km2": 19.7,
-    "precio_medio_gbp": 447796,
-    "precio_mes": "2026-07",
-    "densidad_hab_km2": 16966
+    "area_km2": 19.77,
+    "precio_medio_gbp": 447950,
+    "precio_mes": "2026-08",
+    "densidad_hab_km2": 16906
    },
    {
     "codigo": "E09000010",
     "nombre": "Enfield",
     "poblacion": 329400,
-    "area_km2": 81.87,
-    "precio_medio_gbp": 470988,
-    "precio_mes": "2026-07",
-    "densidad_hab_km2": 4023
+    "area_km2": 82.15,
+    "precio_medio_gbp": 474855,
+    "precio_mes": "2026-08",
+    "densidad_hab_km2": 4010
    },
    {
     "codigo": "E09000017",
     "nombre": "Hillingdon",
     "poblacion": 326671,
-    "area_km2": 115.34,
-    "precio_medio_gbp": 470875,
-    "precio_mes": "2026-07",
-    "densidad_hab_km2": 2832
+    "area_km2": 115.71,
+    "precio_medio_gbp": 482137,
+    "precio_mes": "2026-08",
+    "densidad_hab_km2": 2823
    },
    {
     "codigo": "E09000026",
     "nombre": "Redbridge",
     "poblacion": 321829,
-    "area_km2": 56.18,
-    "precio_medio_gbp": 481297,
-    "precio_mes": "2026-07",
-    "densidad_hab_km2": 5729
+    "area_km2": 56.38,
+    "precio_medio_gbp": 484378,
+    "precio_mes": "2026-08",
+    "densidad_hab_km2": 5708
    },
    {
     "codigo": "E09000022",
     "nombre": "Lambeth",
     "poblacion": 314298,
-    "area_km2": 26.71,
-    "precio_medio_gbp": 536623,
-    "precio_mes": "2026-07",
-    "densidad_hab_km2": 11767
+    "area_km2": 26.79,
+    "precio_medio_gbp": 540198,
+    "precio_mes": "2026-08",
+    "densidad_hab_km2": 11732
    },
    {
     "codigo": "E09000028",
     "nombre": "Southwark",
     "poblacion": 312366,
-    "area_km2": 28.75,
-    "precio_medio_gbp": 572478,
-    "precio_mes": "2026-07",
-    "densidad_hab_km2": 10865
+    "area_km2": 28.85,
+    "precio_medio_gbp": 569160,
+    "precio_mes": "2026-08",
+    "densidad_hab_km2": 10827
    },
    {
     "codigo": "E09000011",
     "nombre": "Greenwich",
     "poblacion": 301225,
-    "area_km2": 47.13,
-    "precio_medio_gbp": 462589,
-    "precio_mes": "2026-07",
-    "densidad_hab_km2": 6391
+    "area_km2": 47.29,
+    "precio_medio_gbp": 462868,
+    "precio_mes": "2026-08",
+    "densidad_hab_km2": 6370
    },
    {
     "codigo": "E09000023",
     "nombre": "Lewisham",
     "poblacion": 301037,
-    "area_km2": 35.06,
-    "precio_medio_gbp": 488658,
-    "precio_mes": "2026-07",
-    "densidad_hab_km2": 8586
+    "area_km2": 35.18,
+    "precio_medio_gbp": 486416,
+    "precio_mes": "2026-08",
+    "densidad_hab_km2": 8557
    },
    {
     "codigo": "E09000018",
     "nombre": "Hounslow",
     "poblacion": 299486,
-    "area_km2": 55.76,
-    "precio_medio_gbp": 525435,
-    "precio_mes": "2026-07",
-    "densidad_hab_km2": 5371
+    "area_km2": 55.94,
+    "precio_medio_gbp": 528051,
+    "precio_mes": "2026-08",
+    "densidad_hab_km2": 5354
    },
    {
     "codigo": "E09000031",
     "nombre": "Waltham Forest",
     "poblacion": 283713,
-    "area_km2": 38.7,
-    "precio_medio_gbp": 529102,
-    "precio_mes": "2026-07",
-    "densidad_hab_km2": 7331
+    "area_km2": 38.83,
+    "precio_medio_gbp": 532212,
+    "precio_mes": "2026-08",
+    "densidad_hab_km2": 7307
    },
    {
     "codigo": "E09000016",
     "nombre": "Havering",
     "poblacion": 280787,
-    "area_km2": 111.93,
-    "precio_medio_gbp": 448648,
-    "precio_mes": "2026-07",
-    "densidad_hab_km2": 2509
+    "area_km2": 112.33,
+    "precio_medio_gbp": 444572,
+    "precio_mes": "2026-08",
+    "densidad_hab_km2": 2500
    },
    {
     "codigo": "E09000015",
     "nombre": "Harrow",
     "poblacion": 272612,
-    "area_km2": 50.31,
-    "precio_medio_gbp": 526493,
-    "precio_mes": "2026-07",
-    "densidad_hab_km2": 5419
+    "area_km2": 50.48,
+    "precio_medio_gbp": 532173,
+    "precio_mes": "2026-08",
+    "densidad_hab_km2": 5400
    },
    {
     "codigo": "E09000012",
     "nombre": "Hackney",
     "poblacion": 266241,
-    "area_km2": 18.98,
-    "precio_medio_gbp": 605729,
-    "precio_mes": "2026-07",
-    "densidad_hab_km2": 14027
+    "area_km2": 19.05,
+    "precio_medio_gbp": 619408,
+    "precio_mes": "2026-08",
+    "densidad_hab_km2": 13976
    },
    {
     "codigo": "E09000014",
     "nombre": "Haringey",
     "poblacion": 266218,
-    "area_km2": 29.5,
-    "precio_medio_gbp": 638690,
-    "precio_mes": "2026-07",
-    "densidad_hab_km2": 9024
+    "area_km2": 29.6,
+    "precio_medio_gbp": 633221,
+    "precio_mes": "2026-08",
+    "densidad_hab_km2": 8994
    },
    {
     "codigo": "E09000004",
     "nombre": "Bexley",
     "poblacion": 257103,
-    "area_km2": 60.37,
-    "precio_medio_gbp": 413343,
-    "precio_mes": "2026-07",
-    "densidad_hab_km2": 4259
+    "area_km2": 60.58,
+    "precio_medio_gbp": 414833,
+    "precio_mes": "2026-08",
+    "densidad_hab_km2": 4244
    },
    {
     "codigo": "E09000002",
     "nombre": "Barking and Dagenham",
     "poblacion": 238295,
-    "area_km2": 35.97,
-    "precio_medio_gbp": 375604,
-    "precio_mes": "2026-07",
-    "densidad_hab_km2": 6625
+    "area_km2": 36.1,
+    "precio_medio_gbp": 369881,
+    "precio_mes": "2026-08",
+    "densidad_hab_km2": 6601
    },
    {
     "codigo": "E09000019",
     "nombre": "Islington",
     "poblacion": 224551,
-    "area_km2": 14.8,
-    "precio_medio_gbp": 674592,
-    "precio_mes": "2026-07",
-    "densidad_hab_km2": 15172
+    "area_km2": 14.85,
+    "precio_medio_gbp": 654286,
+    "precio_mes": "2026-08",
+    "densidad_hab_km2": 15121
    },
    {
     "codigo": "E09000024",
     "nombre": "Merton",
     "poblacion": 218891,
-    "area_km2": 37.5,
-    "precio_medio_gbp": 615890,
-    "precio_mes": "2026-07",
-    "densidad_hab_km2": 5837
+    "area_km2": 37.62,
+    "precio_medio_gbp": 623791,
+    "precio_mes": "2026-08",
+    "densidad_hab_km2": 5818
    },
    {
     "codigo": "E09000007",
     "nombre": "Camden",
     "poblacion": 216658,
-    "area_km2": 21.71,
-    "precio_medio_gbp": 815159,
-    "precio_mes": "2026-07",
-    "densidad_hab_km2": 9980
+    "area_km2": 21.79,
+    "precio_medio_gbp": 798486,
+    "precio_mes": "2026-08",
+    "densidad_hab_km2": 9943
    },
    {
     "codigo": "E09000029",
     "nombre": "Sutton",
     "poblacion": 213972,
-    "area_km2": 43.7,
-    "precio_medio_gbp": 452654,
-    "precio_mes": "2026-07",
-    "densidad_hab_km2": 4896
+    "area_km2": 43.85,
+    "precio_medio_gbp": 458954,
+    "precio_mes": "2026-08",
+    "densidad_hab_km2": 4880
    },
    {
     "codigo": "E09000033",
     "nombre": "Westminster",
     "poblacion": 212367,
-    "area_km2": 21.38,
-    "precio_medio_gbp": 876788,
-    "precio_mes": "2026-07",
-    "densidad_hab_km2": 9933
+    "area_km2": 21.45,
+    "precio_medio_gbp": 887206,
+    "precio_mes": "2026-08",
+    "densidad_hab_km2": 9901
    },
    {
     "codigo": "E09000027",
     "nombre": "Richmond upon Thames",
     "poblacion": 196713,
-    "area_km2": 57.13,
-    "precio_medio_gbp": 803249,
-    "precio_mes": "2026-07",
-    "densidad_hab_km2": 3443
+    "area_km2": 57.32,
+    "precio_medio_gbp": 813931,
+    "precio_mes": "2026-08",
+    "densidad_hab_km2": 3432
    },
    {
     "codigo": "E09000013",
     "nombre": "Hammersmith and Fulham",
     "poblacion": 190216,
-    "area_km2": 16.33,
-    "precio_medio_gbp": 738048,
-    "precio_mes": "2026-07",
-    "densidad_hab_km2": 11648
+    "area_km2": 16.39,
+    "precio_medio_gbp": 754825,
+    "precio_mes": "2026-08",
+    "densidad_hab_km2": 11606
    },
    {
     "codigo": "E09000021",
     "nombre": "Kingston upon Thames",
     "poblacion": 172761,
-    "area_km2": 37.15,
-    "precio_medio_gbp": 591555,
-    "precio_mes": "2026-07",
-    "densidad_hab_km2": 4650
+    "area_km2": 37.27,
+    "precio_medio_gbp": 597587,
+    "precio_mes": "2026-08",
+    "densidad_hab_km2": 4635
    },
    {
     "codigo": "E09000020",
     "nombre": "Kensington and Chelsea",
     "poblacion": 145734,
-    "area_km2": 12.1,
-    "precio_medio_gbp": 1232640,
-    "precio_mes": "2026-07",
-    "densidad_hab_km2": 12044
+    "area_km2": 12.14,
+    "precio_medio_gbp": 1204072,
+    "precio_mes": "2026-08",
+    "densidad_hab_km2": 12004
    },
    {
     "codigo": "E09000001",
     "nombre": "City of London",
     "poblacion": 15631,
-    "area_km2": 2.87,
-    "precio_medio_gbp": 710652,
-    "precio_mes": "2026-07",
-    "densidad_hab_km2": 5446
+    "area_km2": 2.88,
+    "precio_medio_gbp": 726633,
+    "precio_mes": "2026-08",
+    "densidad_hab_km2": 5427
    }
   ]
  },

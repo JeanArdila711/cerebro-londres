@@ -63,6 +63,12 @@ for nombre, delitos in bocus_boroughs.items():
         "nombre": nombre,
         "delitos_12m": delitos,
         "poblacion": pob,
+        # OJO: tasa sobre población RESIDENTE (mid-year), no sobre quien está
+        # físicamente en el borough. Westminster es el caso extremo del
+        # sistema: miles de trabajadores, turistas y gente de paso a diario
+        # que no cuenta en este denominador. La tasa mide delitos por
+        # residente, no delitos por persona presente — se advierte en la
+        # nota de la fuente, no solo aquí en el código.
         "tasa_x1000": round(delitos / pob * 1000, 2),
     })
 boroughs.sort(key=lambda b: -b["tasa_x1000"])
@@ -96,7 +102,10 @@ fuentes = [{
     "uso": "sección Seguridad · comparar los 33 boroughs",
     "nota": ("Cuenta delitos registrados, no víctimas. Cruzado por nombre de BOCU contra "
              "los boroughs del ONS; City of London queda fuera porque tiene su propia "
-             "policía, no la Metropolitana."),
+             "policía, no la Metropolitana. La tasa por 1.000 habitantes divide sobre "
+             "población RESIDENTE: en boroughs con mucha población flotante (Westminster "
+             "el primero, por el centro comercial y turístico) la tasa por residente "
+             "sobreestima el riesgo frente a quien solo pasa por ahí."),
 }]
 
 cifras = {
@@ -105,7 +114,11 @@ cifras = {
     "delitos_12m_westminster": C.cifra(foco["delitos_12m"], "delitos registrados", "lds_mps_delito_borough",
                                         ultimos12[-1], "Últimos 12 meses en Westminster"),
     "tasa_westminster": C.cifra(foco["tasa_x1000"], "delitos por 1.000 habitantes", "lds_mps_delito_borough",
-                                 ultimos12[-1], "Delitos de 12 meses sobre población mid-year"),
+                                 ultimos12[-1],
+                                 "Delitos de 12 meses sobre población RESIDENTE mid-year, no sobre la "
+                                 "población flotante (trabajadores, turistas, tránsito) que a diario "
+                                 "multiplica varias veces la gente presente en Westminster: la tasa real "
+                                 "por persona-presente es más baja que esta"),
     "puesto_tasa_westminster": C.cifra(foco["puesto_tasa"], f"puesto de {len(boroughs)}", "lds_mps_delito_borough",
                                         ultimos12[-1], "1 = la tasa más alta de los boroughs con dato"),
     "borough_tasa_mas_alta": C.cifra(mas_alta["nombre"], "borough", "lds_mps_delito_borough", ultimos12[-1],

@@ -45,22 +45,26 @@ for la in autoridades:
     # colapsaba un día de aire limpio a «todos en 1», un empate que no dice
     # nada — el mismo error que el taller marca con la exposición a tsunami
     # de Lima, en cero en las 14 zonas y aun así con una «zona más expuesta».
-    lecturas = []
+    # DAQI real: por ESTACIÓN se toma el MÁXIMO entre sus contaminantes (así
+    # define el índice el propio DAQI — una estación con NO2 alto y PM10 bajo
+    # es «alta», no el promedio de las dos). Promediar especies entre sí
+    # mezclaba contaminantes no comparables y diluía el peor caso real.
+    maximos_por_sitio = []
     for s in sitios:
         especies = s.get("Species")
         especies = especies if isinstance(especies, list) else ([especies] if especies else [])
-        for e in especies:
-            v = e.get("@AirQualityIndex")
-            if v and v.isdigit():
-                lecturas.append(int(v))
-    if not lecturas:
+        valores = [int(e["@AirQualityIndex"]) for e in especies
+                   if e.get("@AirQualityIndex") and e["@AirQualityIndex"].isdigit()]
+        if valores:
+            maximos_por_sitio.append(max(valores))
+    if not maximos_por_sitio:
         continue
     boroughs.append({
         "nombre": la["@LocalAuthorityName"],
         "estaciones_n": len(sitios),
-        "lecturas_n": len(lecturas),
-        "indice_medio": round(sum(lecturas) / len(lecturas), 2),
-        "indice_peor": max(lecturas),
+        "lecturas_n": len(maximos_por_sitio),
+        "indice_medio": round(sum(maximos_por_sitio) / len(maximos_por_sitio), 2),
+        "indice_peor": max(maximos_por_sitio),
     })
 
 print(f"  boroughs con al menos una estación activa y con dato: {len(boroughs)} de 33")
@@ -96,27 +100,28 @@ cifras = {
     "boroughs_con_estacion_n": C.cifra(len(boroughs), "boroughs", "laqn_daily", FECHA,
                                         "De 33; el resto no tiene estación LAQN activa hoy"),
     "borough_peor_aire": C.cifra(peor["nombre"], "borough", "laqn_daily", FECHA,
-                                  f"índice DAQI medio {peor['indice_medio']} (1 bajo, 10 muy alto); {peor['lecturas_n']} lecturas"),
+                                  f"índice DAQI medio {peor['indice_medio']} (1 bajo, 10 muy alto); {peor['lecturas_n']} estaciones con dato"),
     "borough_mejor_aire": C.cifra(mejor["nombre"], "borough", "laqn_daily", FECHA,
                                    f"índice medio {mejor['indice_medio']}"),
 }
 if foco:
     cifras["indice_aire_westminster"] = C.cifra(foco["indice_medio"], "índice DAQI (1 bajo · 10 muy alto)",
                                                   "laqn_daily", FECHA,
-                                                  f"{foco['estaciones_n']} estaciones, {foco['lecturas_n']} lecturas de especies")
+                                                  f"{foco['estaciones_n']} estaciones, {foco['lecturas_n']} con dato ese día (máximo por contaminante de cada una)")
     cifras["puesto_aire_westminster"] = C.cifra(foco["puesto"], f"puesto de {len(boroughs)}", "laqn_daily", FECHA,
                                                  "1 = el peor aire de los boroughs con estación")
 
 listas = {"boroughs": boroughs}
 
-pocas_lecturas = [b["nombre"] for b in boroughs if b["lecturas_n"] < 4]
+pocas_lecturas = [b["nombre"] for b in boroughs if b["lecturas_n"] < 2]
 ruta = C.escribir(
     "aire_laqn", fuentes, cifras, listas=listas,
     territorio="Greater London (boroughs con estación activa)",
-    nota=(f"Un día de aire mayormente limpio en Londres: la mayoría de boroughs quedó entre 1,0 y 1,5 "
-          f"de índice medio (escala 1-10). {len(pocas_lecturas)} boroughs tienen menos de 4 lecturas "
-          f"({', '.join(pocas_lecturas)}), así que su promedio es poco confiable: una sola especie "
-          "medida en un sitio puede mover el número entero. No se ocultan, pero se leen con cuidado."),
+    nota=(f"Índice por estación: el máximo entre sus contaminantes, no el promedio entre ellos "
+          f"(así se define el DAQI). El índice de un borough es el promedio de esos máximos entre "
+          f"sus estaciones. {len(pocas_lecturas)} boroughs tienen una sola estación con dato "
+          f"({', '.join(pocas_lecturas) or 'ninguno'}), así que su índice depende de un único punto "
+          "de la red. No se ocultan, pero se leen con cuidado."),
 )
 print(f"  peor aire: {peor['nombre']} ({peor['indice_medio']}) · mejor: {mejor['nombre']} ({mejor['indice_medio']})")
 if foco:

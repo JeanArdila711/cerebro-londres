@@ -1,6 +1,6 @@
 {
  "tema": "correlaciones",
- "probado": "2026-09-21",
+ "probado": "2026-10-26",
  "fuentes": [
   {
    "id": "correlaciones_derivado",
@@ -8,8 +8,8 @@
    "entidad": "Cerebro Londres",
    "url": "https://github.com/",
    "resolucion": "borough",
-   "vigencia": "2026-09-21",
-   "probado": "2026-09-21",
+   "vigencia": "2026-10-26",
+   "probado": "2026-10-26",
    "estado": "vivo",
    "licencia": "derivado",
    "personas": "no",
@@ -23,7 +23,7 @@
    "valor": 4,
    "unidad": "métricas",
    "fuente": "correlaciones_derivado",
-   "vigencia": "2026-09-21",
+   "vigencia": "2026-10-26",
    "nota": "Columnas numéricas comparadas",
    "estado": "integrado"
   },
@@ -31,7 +31,7 @@
    "valor": 6,
    "unidad": "pares",
    "fuente": "correlaciones_derivado",
-   "vigencia": "2026-09-21",
+   "vigencia": "2026-10-26",
    "nota": "Todas las combinaciones de 4 métricas tomadas de a dos",
    "estado": "integrado"
   },
@@ -39,7 +39,7 @@
    "valor": 0.3,
    "unidad": "pares",
    "fuente": "correlaciones_derivado",
-   "vigencia": "2026-09-21",
+   "vigencia": "2026-10-26",
    "nota": "Cuántos pares cabría esperar «significativos» al 5 % aunque nada tuviera que ver con nada. Se publica al lado de los hallazgos, no en una nota al pie.",
    "estado": "integrado"
   },
@@ -47,7 +47,7 @@
    "valor": 3,
    "unidad": "pares",
    "fuente": "correlaciones_derivado",
-   "vigencia": "2026-09-21",
+   "vigencia": "2026-10-26",
    "nota": "Pares con |r| ≥ 0,5",
    "estado": "integrado"
   },
@@ -55,7 +55,7 @@
    "valor": -0.726,
    "unidad": "coeficiente r",
    "fuente": "correlaciones_derivado",
-   "vigencia": "2026-09-21",
+   "vigencia": "2026-10-26",
    "nota": "Área (km²) ↔ Densidad (hab/km²) · asociación, no efecto",
    "estado": "integrado"
   }
@@ -78,9 +78,9 @@
     "b": "precio_medio_gbp",
     "etiqueta_a": "Población",
     "etiqueta_b": "Precio medio de vivienda (£)",
-    "r": -0.546,
+    "r": -0.555,
     "n": 33,
-    "t": -3.63,
+    "t": -3.72,
     "fuerte": true
    },
    {
@@ -98,9 +98,9 @@
     "b": "precio_medio_gbp",
     "etiqueta_a": "Área (km²)",
     "etiqueta_b": "Precio medio de vivienda (£)",
-    "r": -0.43,
+    "r": -0.428,
     "n": 33,
-    "t": -2.65,
+    "t": -2.63,
     "fuerte": false
    },
    {
@@ -108,9 +108,9 @@
     "b": "precio_medio_gbp",
     "etiqueta_a": "Densidad (hab/km²)",
     "etiqueta_b": "Precio medio de vivienda (£)",
-    "r": 0.323,
+    "r": 0.31,
     "n": 33,
-    "t": 1.9,
+    "t": 1.82,
     "fuerte": false
    },
    {
