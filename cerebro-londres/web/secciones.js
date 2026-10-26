@@ -434,6 +434,45 @@ window.SECCIONES = (function () {
     }
 
     // =========================================================================
+    // 04b · SOCIEDAD: CENSO, SINHOGARISMO Y EDUCACIÓN
+    // =========================================================================
+    if (LAGO.censo || LAGO.sinhogarismo || LAGO.educacion) {
+      const so = seccion('sociedad', 'CENSO 2021 · MHCLG · DFE', 'Censo, sinhogarismo y educación',
+        'Tres huecos que cerramos después de revisar las fuentes candidatas del catálogo: detalle censal ' +
+        'por tipo de residencia, personas sin hogar en alojamiento temporal y ausentismo escolar persistente.');
+      so.appendChild(rejilla([
+        tile('censo', 'poblacion_censo2021_westminster', 'Residentes habituales (Censo 2021)'),
+        tile('censo', 'en_establecimiento_colectivo_censo2021_westminster', 'En establecimiento colectivo', null, true),
+        tile('censo', 'puesto_poblacion_censo2021_westminster', 'Puesto por población (de 33)'),
+        tile('sinhogarismo', 'hogares_en_ta_westminster', 'Hogares en alojamiento temporal', null, true),
+        tile('sinhogarismo', 'hogares_en_bb_westminster', 'De ellos, en B&B', null, true),
+        tile('sinhogarismo', 'puesto_ta_westminster', 'Puesto en hogares en TA (de 33)'),
+        tile('educacion', 'ausentismo_persistente_westminster', 'Ausentismo escolar persistente', null, true),
+        tile('educacion', 'puesto_ausentismo_westminster', 'Puesto en ausentismo (de 32)'),
+        tile('educacion', 'ausentismo_persistente_londres', 'Promedio de Londres'),
+      ]));
+
+      const rankTA = LAGO.sinhogarismo && LAGO.sinhogarismo.listas.boroughs;
+      const rankAus = LAGO.educacion && LAGO.educacion.listas.boroughs;
+      so.appendChild(dosColumnas(
+        (rankTA && rankTA.length) ? bloque('Hogares en alojamiento temporal por borough', 'MHCLG · tablas detalladas trimestrales',
+          G.barras(rankTA.slice(0, 14).map(b => [b.nombre, b.hogares_en_ta, b.codigo === 'E09000033']),
+            { anchoEtiqueta: 165 })) : null,
+        (rankAus && rankAus.length) ? bloque('Ausentismo escolar persistente por borough', 'DfE · Explore Education Statistics API',
+          G.barras(rankAus.slice(0, 14).map(b => [b.nombre, b.ausentismo_persistente_pct, b.codigo === 'E09000033']),
+            { anchoEtiqueta: 165, formato: v => v + '%' })) : null
+      ));
+
+      if (LAGO.sinhogarismo && LAGO.sinhogarismo.nota) {
+        so.appendChild(aviso('<strong>Hogares, no personas · MHCLG</strong> ' + LAGO.sinhogarismo.nota));
+      }
+      if (LAGO.educacion && LAGO.educacion.nota) {
+        so.appendChild(aviso('<strong>Acumulado de curso, no la semana aislada · DfE</strong> ' + LAGO.educacion.nota));
+      }
+      main.appendChild(so);
+    }
+
+    // =========================================================================
     // 05 · SEGURIDAD CIUDADANA
     // =========================================================================
     const s = seccion('seguridad', 'REGISTRO POLICIAL · MPS & POLICE.UK', 'Seguridad y delitos registrados',

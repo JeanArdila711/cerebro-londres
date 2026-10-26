@@ -1,0 +1,326 @@
+{
+ "tema": "censo",
+ "probado": "2026-10-26",
+ "fuentes": [
+  {
+   "id": "ons_censo2021",
+   "nombre": "Censo 2021 · TS001, residentes habituales por autoridad local (Nomis NM_2021_1)",
+   "entidad": "ONS",
+   "url": "https://www.nomisweb.co.uk/census/2021",
+   "resolucion": "autoridad local",
+   "vigencia": "Censo 2021 (21-mar-2021)",
+   "probado": "2026-10-26",
+   "estado": "vivo",
+   "licencia": "OGL-3.0",
+   "personas": "no: conteos agregados con control de divulgación",
+   "proteccion": "abierto, agregados",
+   "uso": "sección Sociedad · censo",
+   "nota": "El censo de Inglaterra y Gales es decenal: 2021 es el más reciente, no hay uno más nuevo para comparar. A diferencia de demografia.py (estimación de mitad de año, actualizada cada año), este es el único dato con el desglose hogar vs. establecimiento colectivo (residencias, cárceles, cuarteles, halls universitarios) por borough."
+  }
+ ],
+ "cifras": {
+  "poblacion_censo2021_westminster": {
+   "valor": 204236,
+   "unidad": "residentes",
+   "fuente": "ons_censo2021",
+   "vigencia": "2021-03-21",
+   "nota": "Cifra censal, distinta de la estimación de mitad de año de demografia.json",
+   "estado": "integrado"
+  },
+  "en_hogar_censo2021_westminster": {
+   "valor": 199943,
+   "unidad": "residentes",
+   "fuente": "ons_censo2021",
+   "vigencia": "2021-03-21",
+   "nota": "",
+   "estado": "integrado"
+  },
+  "en_establecimiento_colectivo_censo2021_westminster": {
+   "valor": 4293,
+   "unidad": "residentes",
+   "fuente": "ons_censo2021",
+   "vigencia": "2021-03-21",
+   "nota": "2.1% del total: residencias, hoteles, cárceles, cuarteles, halls universitarios",
+   "estado": "integrado"
+  },
+  "puesto_poblacion_censo2021_westminster": {
+   "valor": 28,
+   "unidad": "puesto de 33",
+   "fuente": "ons_censo2021",
+   "vigencia": "2021-03-21",
+   "nota": "1 = el borough más poblado en el censo 2021",
+   "estado": "integrado"
+  }
+ },
+ "series": {},
+ "listas": {
+  "boroughs": [
+   {
+    "codigo": "E09000008",
+    "nombre": "Croydon",
+    "total": 390719,
+    "en_hogar": 387377,
+    "en_establecimiento_colectivo": 3342,
+    "puesto_poblacion": 1
+   },
+   {
+    "codigo": "E09000003",
+    "nombre": "Barnet",
+    "total": 389344,
+    "en_hogar": 385950,
+    "en_establecimiento_colectivo": 3394,
+    "puesto_poblacion": 2
+   },
+   {
+    "codigo": "E09000009",
+    "nombre": "Ealing",
+    "total": 367115,
+    "en_hogar": 362907,
+    "en_establecimiento_colectivo": 4208,
+    "puesto_poblacion": 3
+   },
+   {
+    "codigo": "E09000025",
+    "nombre": "Newham",
+    "total": 351036,
+    "en_hogar": 348410,
+    "en_establecimiento_colectivo": 2626,
+    "puesto_poblacion": 4
+   },
+   {
+    "codigo": "E09000005",
+    "nombre": "Brent",
+    "total": 339816,
+    "en_hogar": 335806,
+    "en_establecimiento_colectivo": 4010,
+    "puesto_poblacion": 5
+   },
+   {
+    "codigo": "E09000006",
+    "nombre": "Bromley",
+    "total": 329992,
+    "en_hogar": 328202,
+    "en_establecimiento_colectivo": 1790,
+    "puesto_poblacion": 6
+   },
+   {
+    "codigo": "E09000010",
+    "nombre": "Enfield",
+    "total": 329984,
+    "en_hogar": 328106,
+    "en_establecimiento_colectivo": 1878,
+    "puesto_poblacion": 7
+   },
+   {
+    "codigo": "E09000032",
+    "nombre": "Wandsworth",
+    "total": 327506,
+    "en_hogar": 322998,
+    "en_establecimiento_colectivo": 4508,
+    "puesto_poblacion": 8
+   },
+   {
+    "codigo": "E09000022",
+    "nombre": "Lambeth",
+    "total": 317654,
+    "en_hogar": 313264,
+    "en_establecimiento_colectivo": 4390,
+    "puesto_poblacion": 9
+   },
+   {
+    "codigo": "E09000030",
+    "nombre": "Tower Hamlets",
+    "total": 310306,
+    "en_hogar": 303679,
+    "en_establecimiento_colectivo": 6627,
+    "puesto_poblacion": 10
+   },
+   {
+    "codigo": "E09000026",
+    "nombre": "Redbridge",
+    "total": 310260,
+    "en_hogar": 308491,
+    "en_establecimiento_colectivo": 1769,
+    "puesto_poblacion": 11
+   },
+   {
+    "codigo": "E09000028",
+    "nombre": "Southwark",
+    "total": 307637,
+    "en_hogar": 302498,
+    "en_establecimiento_colectivo": 5139,
+    "puesto_poblacion": 12
+   },
+   {
+    "codigo": "E09000017",
+    "nombre": "Hillingdon",
+    "total": 305909,
+    "en_hogar": 300420,
+    "en_establecimiento_colectivo": 5489,
+    "puesto_poblacion": 13
+   },
+   {
+    "codigo": "E09000023",
+    "nombre": "Lewisham",
+    "total": 300553,
+    "en_hogar": 297876,
+    "en_establecimiento_colectivo": 2677,
+    "puesto_poblacion": 14
+   },
+   {
+    "codigo": "E09000011",
+    "nombre": "Greenwich",
+    "total": 289068,
+    "en_hogar": 284650,
+    "en_establecimiento_colectivo": 4418,
+    "puesto_poblacion": 15
+   },
+   {
+    "codigo": "E09000018",
+    "nombre": "Hounslow",
+    "total": 288181,
+    "en_hogar": 286381,
+    "en_establecimiento_colectivo": 1800,
+    "puesto_poblacion": 16
+   },
+   {
+    "codigo": "E09000031",
+    "nombre": "Waltham Forest",
+    "total": 278426,
+    "en_hogar": 276688,
+    "en_establecimiento_colectivo": 1738,
+    "puesto_poblacion": 17
+   },
+   {
+    "codigo": "E09000014",
+    "nombre": "Haringey",
+    "total": 264238,
+    "en_hogar": 262070,
+    "en_establecimiento_colectivo": 2168,
+    "puesto_poblacion": 18
+   },
+   {
+    "codigo": "E09000016",
+    "nombre": "Havering",
+    "total": 262052,
+    "en_hogar": 260555,
+    "en_establecimiento_colectivo": 1497,
+    "puesto_poblacion": 19
+   },
+   {
+    "codigo": "E09000015",
+    "nombre": "Harrow",
+    "total": 261203,
+    "en_hogar": 259007,
+    "en_establecimiento_colectivo": 2196,
+    "puesto_poblacion": 20
+   },
+   {
+    "codigo": "E09000012",
+    "nombre": "Hackney",
+    "total": 259146,
+    "en_hogar": 256633,
+    "en_establecimiento_colectivo": 2513,
+    "puesto_poblacion": 21
+   },
+   {
+    "codigo": "E09000004",
+    "nombre": "Bexley",
+    "total": 246472,
+    "en_hogar": 245266,
+    "en_establecimiento_colectivo": 1206,
+    "puesto_poblacion": 22
+   },
+   {
+    "codigo": "E09000002",
+    "nombre": "Barking and Dagenham",
+    "total": 218869,
+    "en_hogar": 217949,
+    "en_establecimiento_colectivo": 920,
+    "puesto_poblacion": 23
+   },
+   {
+    "codigo": "E09000019",
+    "nombre": "Islington",
+    "total": 216589,
+    "en_hogar": 211332,
+    "en_establecimiento_colectivo": 5257,
+    "puesto_poblacion": 24
+   },
+   {
+    "codigo": "E09000024",
+    "nombre": "Merton",
+    "total": 215186,
+    "en_hogar": 214115,
+    "en_establecimiento_colectivo": 1071,
+    "puesto_poblacion": 25
+   },
+   {
+    "codigo": "E09000007",
+    "nombre": "Camden",
+    "total": 210136,
+    "en_hogar": 202702,
+    "en_establecimiento_colectivo": 7434,
+    "puesto_poblacion": 26
+   },
+   {
+    "codigo": "E09000029",
+    "nombre": "Sutton",
+    "total": 209639,
+    "en_hogar": 208425,
+    "en_establecimiento_colectivo": 1214,
+    "puesto_poblacion": 27
+   },
+   {
+    "codigo": "E09000033",
+    "nombre": "Westminster",
+    "total": 204236,
+    "en_hogar": 199943,
+    "en_establecimiento_colectivo": 4293,
+    "puesto_poblacion": 28
+   },
+   {
+    "codigo": "E09000027",
+    "nombre": "Richmond upon Thames",
+    "total": 195278,
+    "en_hogar": 193417,
+    "en_establecimiento_colectivo": 1861,
+    "puesto_poblacion": 29
+   },
+   {
+    "codigo": "E09000013",
+    "nombre": "Hammersmith and Fulham",
+    "total": 183157,
+    "en_hogar": 180589,
+    "en_establecimiento_colectivo": 2568,
+    "puesto_poblacion": 30
+   },
+   {
+    "codigo": "E09000021",
+    "nombre": "Kingston upon Thames",
+    "total": 168063,
+    "en_hogar": 164689,
+    "en_establecimiento_colectivo": 3374,
+    "puesto_poblacion": 31
+   },
+   {
+    "codigo": "E09000020",
+    "nombre": "Kensington and Chelsea",
+    "total": 143375,
+    "en_hogar": 141067,
+    "en_establecimiento_colectivo": 2308,
+    "puesto_poblacion": 32
+   },
+   {
+    "codigo": "E09000001",
+    "nombre": "City of London (Local Authority)",
+    "total": 8583,
+    "en_hogar": 8373,
+    "en_establecimiento_colectivo": 210,
+    "puesto_poblacion": 33
+   }
+  ]
+ },
+ "territorio": "City of Westminster",
+ "nota": "Westminster: 204,236 residentes habituales en el censo 2021, puesto 28 de 33 boroughs por población, de los cuales 2.1% vive en establecimientos colectivos (el más alto de Londres junto con boroughs universitarios: hoteles, residencias y cuarteles pesan más en el centro)."
+}

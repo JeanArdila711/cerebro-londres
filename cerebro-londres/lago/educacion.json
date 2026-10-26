@@ -1,0 +1,260 @@
+{
+ "tema": "educacion",
+ "probado": "2026-10-26",
+ "fuentes": [
+  {
+   "id": "dfe_absentismo",
+   "nombre": "Pupil attendance in schools · Persistent absence in schools (DfE, Explore Education Statistics API)",
+   "entidad": "DfE",
+   "url": "https://explore-education-statistics.service.gov.uk/find-statistics/pupil-attendance-in-schools",
+   "resolucion": "autoridad local, semanal acumulado",
+   "vigencia": "2026 Week 30",
+   "probado": "2026-10-26",
+   "estado": "vivo",
+   "licencia": "OGL-3.0",
+   "personas": "no",
+   "proteccion": "agregados; celdas con cohorte chica se suprimen en origen (ej. City of London)",
+   "uso": "sección Sociedad · educación",
+   "nota": "«Ausentismo persistente» = alumnos con 10% o más de sesiones perdidas en lo que va del curso, acumulado semana a semana: no es una tasa de la semana aislada, compara bien entre boroughs en la misma semana, no entre semanas distintas del calendario. Incluye primaria, secundaria y especial juntas (filtro «All schools»). City of London queda suprimido por tamaño de cohorte, no por falta de dato."
+  }
+ ],
+ "cifras": {
+  "ausentismo_persistente_westminster": {
+   "valor": 21.29,
+   "unidad": "%",
+   "fuente": "dfe_absentismo",
+   "vigencia": "2026 Week 30",
+   "nota": "Alumnos con 10% o más de sesiones perdidas en lo que va del curso",
+   "estado": "integrado"
+  },
+  "ausentismo_persistente_londres": {
+   "valor": 19.38,
+   "unidad": "%",
+   "fuente": "dfe_absentismo",
+   "vigencia": "2026 Week 30",
+   "nota": "Promedio de la región de Londres",
+   "estado": "integrado"
+  },
+  "ausentismo_persistente_inglaterra": {
+   "valor": 19.05,
+   "unidad": "%",
+   "fuente": "dfe_absentismo",
+   "vigencia": "2026 Week 30",
+   "nota": "Promedio nacional",
+   "estado": "integrado"
+  },
+  "puesto_ausentismo_westminster": {
+   "valor": 4,
+   "unidad": "puesto de 32",
+   "fuente": "dfe_absentismo",
+   "vigencia": "2026 Week 30",
+   "nota": "1 = el borough con más ausentismo persistente",
+   "estado": "integrado"
+  }
+ },
+ "series": {},
+ "listas": {
+  "boroughs": [
+   {
+    "codigo": "E09000007",
+    "nombre": "Camden",
+    "ausentismo_persistente_pct": 24.11,
+    "puesto": 1
+   },
+   {
+    "codigo": "E09000019",
+    "nombre": "Islington",
+    "ausentismo_persistente_pct": 22.5,
+    "puesto": 2
+   },
+   {
+    "codigo": "E09000017",
+    "nombre": "Hillingdon",
+    "ausentismo_persistente_pct": 21.44,
+    "puesto": 3
+   },
+   {
+    "codigo": "E09000033",
+    "nombre": "Westminster",
+    "ausentismo_persistente_pct": 21.29,
+    "puesto": 4
+   },
+   {
+    "codigo": "E09000025",
+    "nombre": "Newham",
+    "ausentismo_persistente_pct": 21.19,
+    "puesto": 5
+   },
+   {
+    "codigo": "E09000020",
+    "nombre": "Kensington and Chelsea",
+    "ausentismo_persistente_pct": 20.63,
+    "puesto": 6
+   },
+   {
+    "codigo": "E09000022",
+    "nombre": "Lambeth",
+    "ausentismo_persistente_pct": 20.55,
+    "puesto": 7
+   },
+   {
+    "codigo": "E09000008",
+    "nombre": "Croydon",
+    "ausentismo_persistente_pct": 20.29,
+    "puesto": 8
+   },
+   {
+    "codigo": "E09000014",
+    "nombre": "Haringey",
+    "ausentismo_persistente_pct": 19.75,
+    "puesto": 9
+   },
+   {
+    "codigo": "E09000031",
+    "nombre": "Waltham Forest",
+    "ausentismo_persistente_pct": 19.75,
+    "puesto": 10
+   },
+   {
+    "codigo": "E09000010",
+    "nombre": "Enfield",
+    "ausentismo_persistente_pct": 19.61,
+    "puesto": 11
+   },
+   {
+    "codigo": "E09000012",
+    "nombre": "Hackney",
+    "ausentismo_persistente_pct": 19.47,
+    "puesto": 12
+   },
+   {
+    "codigo": "E09000002",
+    "nombre": "Barking and Dagenham",
+    "ausentismo_persistente_pct": 19.09,
+    "puesto": 13
+   },
+   {
+    "codigo": "E09000013",
+    "nombre": "Hammersmith and Fulham",
+    "ausentismo_persistente_pct": 18.98,
+    "puesto": 14
+   },
+   {
+    "codigo": "E09000026",
+    "nombre": "Redbridge",
+    "ausentismo_persistente_pct": 18.96,
+    "puesto": 15
+   },
+   {
+    "codigo": "E09000018",
+    "nombre": "Hounslow",
+    "ausentismo_persistente_pct": 18.57,
+    "puesto": 16
+   },
+   {
+    "codigo": "E09000030",
+    "nombre": "Tower Hamlets",
+    "ausentismo_persistente_pct": 18.56,
+    "puesto": 17
+   },
+   {
+    "codigo": "E09000011",
+    "nombre": "Greenwich",
+    "ausentismo_persistente_pct": 18.5,
+    "puesto": 18
+   },
+   {
+    "codigo": "E09000009",
+    "nombre": "Ealing",
+    "ausentismo_persistente_pct": 18.28,
+    "puesto": 19
+   },
+   {
+    "codigo": "E09000005",
+    "nombre": "Brent",
+    "ausentismo_persistente_pct": 18.24,
+    "puesto": 20
+   },
+   {
+    "codigo": "E09000028",
+    "nombre": "Southwark",
+    "ausentismo_persistente_pct": 18.21,
+    "puesto": 21
+   },
+   {
+    "codigo": "E09000032",
+    "nombre": "Wandsworth",
+    "ausentismo_persistente_pct": 17.68,
+    "puesto": 22
+   },
+   {
+    "codigo": "E09000023",
+    "nombre": "Lewisham",
+    "ausentismo_persistente_pct": 17.32,
+    "puesto": 23
+   },
+   {
+    "codigo": "E09000016",
+    "nombre": "Havering",
+    "ausentismo_persistente_pct": 17.1,
+    "puesto": 24
+   },
+   {
+    "codigo": "E09000004",
+    "nombre": "Bexley",
+    "ausentismo_persistente_pct": 16.94,
+    "puesto": 25
+   },
+   {
+    "codigo": "E09000015",
+    "nombre": "Harrow",
+    "ausentismo_persistente_pct": 16.72,
+    "puesto": 26
+   },
+   {
+    "codigo": "E09000006",
+    "nombre": "Bromley",
+    "ausentismo_persistente_pct": 16.1,
+    "puesto": 27
+   },
+   {
+    "codigo": "E09000003",
+    "nombre": "Barnet",
+    "ausentismo_persistente_pct": 15.68,
+    "puesto": 28
+   },
+   {
+    "codigo": "E09000021",
+    "nombre": "Kingston upon Thames",
+    "ausentismo_persistente_pct": 15.5,
+    "puesto": 29
+   },
+   {
+    "codigo": "E09000024",
+    "nombre": "Merton",
+    "ausentismo_persistente_pct": 15.33,
+    "puesto": 30
+   },
+   {
+    "codigo": "E09000029",
+    "nombre": "Sutton",
+    "ausentismo_persistente_pct": 15.25,
+    "puesto": 31
+   },
+   {
+    "codigo": "E09000027",
+    "nombre": "Richmond upon Thames",
+    "ausentismo_persistente_pct": 13.55,
+    "puesto": 32
+   }
+  ],
+  "suprimidos": [
+   {
+    "codigo": "E09000001",
+    "nombre": "City of London"
+   }
+  ]
+ },
+ "territorio": "City of Westminster",
+ "nota": "Westminster: 21.29% de ausentismo persistente, puesto 4 de 32 boroughs con dato (2026 Week 30), frente a 19.38% de Londres y 19.05% de Inglaterra."
+}

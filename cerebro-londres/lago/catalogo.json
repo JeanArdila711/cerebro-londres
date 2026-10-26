@@ -1,9 +1,9 @@
 {
  "tema": "catalogo",
  "probado": "2026-10-26",
- "n": 175,
+ "n": 178,
  "por_estado": {
-  "integrado": 20,
+  "integrado": 23,
   "declarado": 15,
   "candidato": 126,
   "caido": 5,
@@ -117,6 +117,22 @@
    "tema": "correlaciones"
   },
   {
+   "id": "dfe_absentismo",
+   "nombre": "Pupil attendance in schools · Persistent absence in schools (DfE, Explore Education Statistics API)",
+   "entidad": "DfE",
+   "url": "https://explore-education-statistics.service.gov.uk/find-statistics/pupil-attendance-in-schools",
+   "resolucion": "autoridad local, semanal acumulado",
+   "vigencia": "2026 Week 30",
+   "probado": "2026-10-26",
+   "estado": "integrado",
+   "licencia": "OGL-3.0",
+   "personas": "no",
+   "proteccion": "agregados; celdas con cohorte chica se suprimen en origen (ej. City of London)",
+   "uso": "sección Sociedad · educación",
+   "nota": "«Ausentismo persistente» = alumnos con 10% o más de sesiones perdidas en lo que va del curso, acumulado semana a semana: no es una tasa de la semana aislada, compara bien entre boroughs en la misma semana, no entre semanas distintas del calendario. Incluye primaria, secundaria y especial juntas (filtro «All schools»). City of London queda suprimido por tamaño de cohorte, no por falta de dato.",
+   "tema": "educacion"
+  },
+  {
    "id": "dft_naptan",
    "nombre": "NaPTAN · National Public Transport Access Nodes (área 490, Londres)",
    "entidad": "DfT",
@@ -211,6 +227,38 @@
    "uso": "sección Municipio · financiación local",
    "nota": "Archivo .ods, no CSV. Dentro hay dos conjuntos con el mismo nombre de tabla: «Table_10» es un formulario en blanco de recolección, no un resultado; «Table_8a» dentro de Tables_1-9 es la tabla publicada de verdad.",
    "tema": "finanzas"
+  },
+  {
+   "id": "mhclg_homelessness",
+   "nombre": "Statutory homelessness in England · Detailed local authority level tables (January to March 2026)",
+   "entidad": "MHCLG",
+   "url": "https://www.gov.uk/government/statistical-data-sets/live-tables-on-homelessness",
+   "resolucion": "autoridad local, trimestral",
+   "vigencia": "January to March 2026",
+   "probado": "2026-10-26",
+   "estado": "integrado",
+   "licencia": "OGL-3.0",
+   "personas": "no: conteos agregados por autoridad local",
+   "proteccion": "agregados; el registro individual (H-CLIC) no es público",
+   "uso": "sección Sociedad · sinhogarismo",
+   "nota": "El registro individual no es público: estas son las tablas detalladas trimestrales, conteos agregados por autoridad local, mismo patrón de colección de gov.uk que Council Tax y IMD. «Hogares en TA» cuenta HOGARES, no personas (un hogar puede tener varios menores). B&B es el peor alojamiento temporal: estancia de hotel, a veces con niños, normalmente de corta duración legal.",
+   "tema": "sinhogarismo"
+  },
+  {
+   "id": "ons_censo2021",
+   "nombre": "Censo 2021 · TS001, residentes habituales por autoridad local (Nomis NM_2021_1)",
+   "entidad": "ONS",
+   "url": "https://www.nomisweb.co.uk/census/2021",
+   "resolucion": "autoridad local",
+   "vigencia": "Censo 2021 (21-mar-2021)",
+   "probado": "2026-10-26",
+   "estado": "integrado",
+   "licencia": "OGL-3.0",
+   "personas": "no: conteos agregados con control de divulgación",
+   "proteccion": "abierto, agregados",
+   "uso": "sección Sociedad · censo",
+   "nota": "El censo de Inglaterra y Gales es decenal: 2021 es el más reciente, no hay uno más nuevo para comparar. A diferencia de demografia.py (estimación de mitad de año, actualizada cada año), este es el único dato con el desglose hogar vs. establecimiento colectivo (residencias, cárceles, cuarteles, halls universitarios) por borough.",
+   "tema": "censo"
   },
   {
    "id": "ons_geography",

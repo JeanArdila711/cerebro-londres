@@ -39,19 +39,22 @@ def hoy():
     return datetime.date.today().isoformat()
 
 
-def get(url, intentos=4, espera=3, crudo=None, datos=None, pausa=0.4):
+def get(url, intentos=4, espera=3, crudo=None, datos=None, pausa=0.4, cabeceras=None):
     """GET (o POST si `datos`) con reintentos y respeto por el 429. Devuelve texto.
 
     Los reintentos no son adorno. El 2026-09-21, sobre estas mismas fuentes:
     Wikimedia Pageviews devolvió 429 al pedir nueve artículos seguidos, y Overpass
     dio error de timeout en tres espejos. Un script sin espera no baja estos datos.
+
+    `cabeceras` se suma a UA: algunas APIs (como la de DfE) rechazan con 403 un
+    POST sin `Content-Type: application/json` explícito.
     """
     cuerpo = datos.encode() if isinstance(datos, str) else datos
     ultimo = None
     for n in range(intentos):
         try:
             time.sleep(pausa)                       # cortesía con la fuente
-            peticion = urllib.request.Request(url, data=cuerpo, headers=UA)
+            peticion = urllib.request.Request(url, data=cuerpo, headers={**UA, **(cabeceras or {})})
             with urllib.request.urlopen(peticion, timeout=90) as r:
                 texto = r.read().decode("utf-8", "replace")
             if crudo:
@@ -78,6 +81,11 @@ def get(url, intentos=4, espera=3, crudo=None, datos=None, pausa=0.4):
 
 def get_json(url, **kw):
     return json.loads(get(url, **kw))
+
+
+def get_json_post(url, cuerpo_json, **kw):
+    """POST con cuerpo JSON y Content-Type explícito (algunas APIs lo exigen, p. ej. DfE)."""
+    return json.loads(get(url, datos=json.dumps(cuerpo_json), cabeceras={"Content-Type": "application/json"}, **kw))
 
 
 def get_bin(url, intentos=4, espera=3, crudo=None, pausa=0.4):

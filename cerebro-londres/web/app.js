@@ -23,7 +23,8 @@
     'demografia', 'salud', 'economia', 'finanzas', 'privacion',
     'seguridad', 'seguridad_boroughs', 'turismo', 'patrimonio',
     'escucha', 'sensores', 'aire_laqn', 'geo', 'infraestructura',
-    'transporte_boroughs', 'riesgo', 'atlas_boroughs', 'correlaciones', 'catalogo'
+    'transporte_boroughs', 'riesgo', 'atlas_boroughs', 'correlaciones', 'catalogo',
+    'censo', 'sinhogarismo', 'educacion'
   ];
 
   // Control de tema (Papel técnico por defecto / Modo nocturno conmutable)

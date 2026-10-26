@@ -1,0 +1,359 @@
+{
+ "tema": "sinhogarismo",
+ "probado": "2026-10-26",
+ "fuentes": [
+  {
+   "id": "mhclg_homelessness",
+   "nombre": "Statutory homelessness in England · Detailed local authority level tables (January to March 2026)",
+   "entidad": "MHCLG",
+   "url": "https://www.gov.uk/government/statistical-data-sets/live-tables-on-homelessness",
+   "resolucion": "autoridad local, trimestral",
+   "vigencia": "January to March 2026",
+   "probado": "2026-10-26",
+   "estado": "vivo",
+   "licencia": "OGL-3.0",
+   "personas": "no: conteos agregados por autoridad local",
+   "proteccion": "agregados; el registro individual (H-CLIC) no es público",
+   "uso": "sección Sociedad · sinhogarismo",
+   "nota": "El registro individual no es público: estas son las tablas detalladas trimestrales, conteos agregados por autoridad local, mismo patrón de colección de gov.uk que Council Tax y IMD. «Hogares en TA» cuenta HOGARES, no personas (un hogar puede tener varios menores). B&B es el peor alojamiento temporal: estancia de hotel, a veces con niños, normalmente de corta duración legal."
+  }
+ ],
+ "cifras": {
+  "hogares_con_deber_westminster": {
+   "valor": 600,
+   "unidad": "hogares",
+   "fuente": "mhclg_homelessness",
+   "vigencia": "January to March 2026",
+   "nota": "De 716 evaluaciones iniciales en el trimestre",
+   "estado": "integrado"
+  },
+  "hogares_en_ta_westminster": {
+   "valor": 5019,
+   "unidad": "hogares",
+   "fuente": "mhclg_homelessness",
+   "vigencia": "January to March 2026",
+   "nota": "Hogares en alojamiento temporal al cierre del trimestre, no un acumulado",
+   "estado": "integrado"
+  },
+  "hogares_en_bb_westminster": {
+   "valor": 906,
+   "unidad": "hogares",
+   "fuente": "mhclg_homelessness",
+   "vigencia": "January to March 2026",
+   "nota": "18.1% de los hogares en TA de Westminster están en B&B, el alojamiento de peor calidad",
+   "estado": "integrado"
+  },
+  "puesto_ta_westminster": {
+   "valor": 2,
+   "unidad": "puesto de 33",
+   "fuente": "mhclg_homelessness",
+   "vigencia": "January to March 2026",
+   "nota": "1 = el borough con más hogares en alojamiento temporal (cifra absoluta, no por habitante)",
+   "estado": "integrado"
+  }
+ },
+ "series": {},
+ "listas": {
+  "boroughs": [
+   {
+    "codigo": "E09000025",
+    "nombre": "Newham",
+    "evaluaciones_iniciales": 906,
+    "hogares_con_deber": 809,
+    "hogares_en_ta": 7561,
+    "hogares_en_bb": 122,
+    "puesto_ta": 1
+   },
+   {
+    "codigo": "E09000033",
+    "nombre": "Westminster",
+    "evaluaciones_iniciales": 716,
+    "hogares_con_deber": 600,
+    "hogares_en_ta": 5019,
+    "hogares_en_bb": 906,
+    "puesto_ta": 2
+   },
+   {
+    "codigo": "E09000032",
+    "nombre": "Wandsworth",
+    "evaluaciones_iniciales": 819,
+    "hogares_con_deber": 576,
+    "hogares_en_ta": 4314,
+    "hogares_en_bb": 39,
+    "puesto_ta": 3
+   },
+   {
+    "codigo": "E09000022",
+    "nombre": "Lambeth",
+    "evaluaciones_iniciales": 728,
+    "hogares_con_deber": 693,
+    "hogares_en_ta": 4253,
+    "hogares_en_bb": 1,
+    "puesto_ta": 4
+   },
+   {
+    "codigo": "E09000028",
+    "nombre": "Southwark",
+    "evaluaciones_iniciales": 612,
+    "hogares_con_deber": 586,
+    "hogares_en_ta": 4197,
+    "hogares_en_bb": 51,
+    "puesto_ta": 5
+   },
+   {
+    "codigo": "E09000012",
+    "nombre": "Hackney",
+    "evaluaciones_iniciales": 589,
+    "hogares_con_deber": 581,
+    "hogares_en_ta": 3684,
+    "hogares_en_bb": 354,
+    "puesto_ta": 6
+   },
+   {
+    "codigo": "E09000008",
+    "nombre": "Croydon",
+    "evaluaciones_iniciales": 1200,
+    "hogares_con_deber": 1180,
+    "hogares_en_ta": 3241,
+    "hogares_en_bb": 5,
+    "puesto_ta": 7
+   },
+   {
+    "codigo": "E09000030",
+    "nombre": "Tower Hamlets",
+    "evaluaciones_iniciales": 677,
+    "hogares_con_deber": 608,
+    "hogares_en_ta": 3096,
+    "hogares_en_bb": 200,
+    "puesto_ta": 8
+   },
+   {
+    "codigo": "E09000010",
+    "nombre": "Enfield",
+    "evaluaciones_iniciales": 607,
+    "hogares_con_deber": 570,
+    "hogares_en_ta": 3084,
+    "hogares_en_bb": 10,
+    "puesto_ta": 9
+   },
+   {
+    "codigo": "E09000003",
+    "nombre": "Barnet",
+    "evaluaciones_iniciales": 807,
+    "hogares_con_deber": 753,
+    "hogares_en_ta": 3031,
+    "hogares_en_bb": 105,
+    "puesto_ta": 10
+   },
+   {
+    "codigo": "E09000009",
+    "nombre": "Ealing",
+    "evaluaciones_iniciales": 627,
+    "hogares_con_deber": 616,
+    "hogares_en_ta": 2963,
+    "hogares_en_bb": 99,
+    "puesto_ta": 11
+   },
+   {
+    "codigo": "E09000026",
+    "nombre": "Redbridge",
+    "evaluaciones_iniciales": 638,
+    "hogares_con_deber": 609,
+    "hogares_en_ta": 2818,
+    "hogares_en_bb": 382,
+    "puesto_ta": 12
+   },
+   {
+    "codigo": "E09000014",
+    "nombre": "Haringey",
+    "evaluaciones_iniciales": 633,
+    "hogares_con_deber": 459,
+    "hogares_en_ta": 2712,
+    "hogares_en_bb": 68,
+    "puesto_ta": 13
+   },
+   {
+    "codigo": "E09000005",
+    "nombre": "Brent",
+    "evaluaciones_iniciales": 1044,
+    "hogares_con_deber": 836,
+    "hogares_en_ta": 2444,
+    "hogares_en_bb": 67,
+    "puesto_ta": 14
+   },
+   {
+    "codigo": "E09000023",
+    "nombre": "Lewisham",
+    "evaluaciones_iniciales": 593,
+    "hogares_con_deber": 573,
+    "hogares_en_ta": 2317,
+    "hogares_en_bb": 3,
+    "puesto_ta": 15
+   },
+   {
+    "codigo": "E09000019",
+    "nombre": "Islington",
+    "evaluaciones_iniciales": 669,
+    "hogares_con_deber": 661,
+    "hogares_en_ta": 2030,
+    "hogares_en_bb": 1,
+    "puesto_ta": 16
+   },
+   {
+    "codigo": "E09000011",
+    "nombre": "Greenwich",
+    "evaluaciones_iniciales": 595,
+    "hogares_con_deber": 584,
+    "hogares_en_ta": 1886,
+    "hogares_en_bb": 79,
+    "puesto_ta": 17
+   },
+   {
+    "codigo": "E09000020",
+    "nombre": "Kensington & Chelsea",
+    "evaluaciones_iniciales": 368,
+    "hogares_con_deber": 327,
+    "hogares_en_ta": 1810,
+    "hogares_en_bb": 142,
+    "puesto_ta": 18
+   },
+   {
+    "codigo": "E09000006",
+    "nombre": "Bromley",
+    "evaluaciones_iniciales": 227,
+    "hogares_con_deber": 190,
+    "hogares_en_ta": 1625,
+    "hogares_en_bb": 0,
+    "puesto_ta": 19
+   },
+   {
+    "codigo": "E09000017",
+    "nombre": "Hillingdon",
+    "evaluaciones_iniciales": 816,
+    "hogares_con_deber": 809,
+    "hogares_en_ta": 1577,
+    "hogares_en_bb": 35,
+    "puesto_ta": 20
+   },
+   {
+    "codigo": "E09000031",
+    "nombre": "Waltham Forest",
+    "evaluaciones_iniciales": 517,
+    "hogares_con_deber": 501,
+    "hogares_en_ta": 1544,
+    "hogares_en_bb": 131,
+    "puesto_ta": 21
+   },
+   {
+    "codigo": "E09000015",
+    "nombre": "Harrow",
+    "evaluaciones_iniciales": 320,
+    "hogares_con_deber": 269,
+    "hogares_en_ta": 1485,
+    "hogares_en_bb": 55,
+    "puesto_ta": 22
+   },
+   {
+    "codigo": "E09000013",
+    "nombre": "Hammersmith & Fulham",
+    "evaluaciones_iniciales": 360,
+    "hogares_con_deber": 357,
+    "hogares_en_ta": 1453,
+    "hogares_en_bb": 102,
+    "puesto_ta": 23
+   },
+   {
+    "codigo": "E09000007",
+    "nombre": "Camden",
+    "evaluaciones_iniciales": 521,
+    "hogares_con_deber": 404,
+    "hogares_en_ta": 1356,
+    "hogares_en_bb": 285,
+    "puesto_ta": 24
+   },
+   {
+    "codigo": "E09000016",
+    "nombre": "Havering",
+    "evaluaciones_iniciales": 533,
+    "hogares_con_deber": 487,
+    "hogares_en_ta": 1320,
+    "hogares_en_bb": 88,
+    "puesto_ta": 25
+   },
+   {
+    "codigo": "E09000029",
+    "nombre": "Sutton",
+    "evaluaciones_iniciales": 278,
+    "hogares_con_deber": 202,
+    "hogares_en_ta": 1099,
+    "hogares_en_bb": 40,
+    "puesto_ta": 26
+   },
+   {
+    "codigo": "E09000002",
+    "nombre": "Barking & Dagenham",
+    "evaluaciones_iniciales": 317,
+    "hogares_con_deber": 301,
+    "hogares_en_ta": 1004,
+    "hogares_en_bb": 51,
+    "puesto_ta": 27
+   },
+   {
+    "codigo": "E09000021",
+    "nombre": "Kingston upon Thames",
+    "evaluaciones_iniciales": 132,
+    "hogares_con_deber": 115,
+    "hogares_en_ta": 848,
+    "hogares_en_bb": 64,
+    "puesto_ta": 28
+   },
+   {
+    "codigo": "E09000024",
+    "nombre": "Merton",
+    "evaluaciones_iniciales": 195,
+    "hogares_con_deber": 187,
+    "hogares_en_ta": 721,
+    "hogares_en_bb": 22,
+    "puesto_ta": 29
+   },
+   {
+    "codigo": "E09000027",
+    "nombre": "Richmond upon Thames",
+    "evaluaciones_iniciales": 410,
+    "hogares_con_deber": 200,
+    "hogares_en_ta": 689,
+    "hogares_en_bb": 10,
+    "puesto_ta": 30
+   },
+   {
+    "codigo": "E09000018",
+    "nombre": "Hounslow",
+    "evaluaciones_iniciales": 629,
+    "hogares_con_deber": 587,
+    "hogares_en_ta": 521,
+    "hogares_en_bb": 47,
+    "puesto_ta": 31
+   },
+   {
+    "codigo": "E09000004",
+    "nombre": "Bexley",
+    "evaluaciones_iniciales": 416,
+    "hogares_con_deber": 263,
+    "hogares_en_ta": 275,
+    "hogares_en_bb": 3,
+    "puesto_ta": 32
+   },
+   {
+    "codigo": "E09000001",
+    "nombre": "City of London",
+    "evaluaciones_iniciales": 15,
+    "hogares_con_deber": 14,
+    "hogares_en_ta": 40,
+    "hogares_en_bb": 6,
+    "puesto_ta": 33
+   }
+  ]
+ },
+ "territorio": "City of Westminster",
+ "nota": "Westminster: 5019 hogares en alojamiento temporal, puesto 2 de 33 boroughs (January to March 2026), de los cuales 906 (18.1%) en B&B. La cifra es absoluta, no por habitante: un borough grande siempre tiende a salir peor rankeado que uno chico con la misma tasa."
+}
