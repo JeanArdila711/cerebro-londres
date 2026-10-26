@@ -6,7 +6,7 @@
    "id": "atlas_derivado",
    "nombre": "Atlas de los 33 boroughs (tabla derivada del lago)",
    "entidad": "Cerebro Londres",
-   "url": "https://github.com/JeanArdila711/cerebro-londres",
+   "url": "https://landregistry.data.gov.uk/app/ukhpi",
    "resolucion": "borough",
    "vigencia": "2025",
    "probado": "2026-10-26",

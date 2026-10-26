@@ -148,7 +148,7 @@ def puesto(clave, mayor_primero=True):
 
 fuentes = [
     {"id": "atlas_derivado", "nombre": "Atlas de los 33 boroughs (tabla derivada del lago)",
-     "entidad": "Cerebro Londres", "url": "https://github.com/JeanArdila711/cerebro-londres", "resolucion": "borough",
+     "entidad": "Cerebro Londres", "url": "https://landregistry.data.gov.uk/app/ukhpi", "resolucion": "borough",
      "vigencia": str(anio), "probado": C.hoy(), "estado": "vivo", "licencia": "derivado",
      "personas": "no", "proteccion": "abierto", "uso": "sección Atlas · coropleta del mapa",
      "nota": ("Columnas: poblacion (ONS mid-year, vía Nomis), area_km2 (calculada sobre el "
