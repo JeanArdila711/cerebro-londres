@@ -136,8 +136,11 @@
   });
 
   function navegacion() {
+    const menuNav = $('#menu');
     const enlaces = [...document.querySelectorAll('#menu a')];
     const todasSecs = [...document.querySelectorAll('main .sec')];
+    let ultimoEnlaceActivo = null;
+
     enlaces.forEach(a => a.addEventListener('click', e => {
       e.preventDefault();
       const s = document.getElementById(a.dataset.sec);
@@ -152,10 +155,20 @@
       });
       if (!mejorSec) return;
       const idActiva = mejorSec.id;
+      let nuevoActivo = null;
       enlaces.forEach(a => {
         const grupo = (a.dataset.grupo || a.dataset.sec || '').split(',');
-        a.classList.toggle('activa', grupo.includes(idActiva));
+        const esActiva = grupo.includes(idActiva);
+        a.classList.toggle('activa', esActiva);
+        if (esActiva) nuevoActivo = a;
       });
+      if (nuevoActivo && nuevoActivo !== ultimoEnlaceActivo) {
+        ultimoEnlaceActivo = nuevoActivo;
+        if (menuNav && menuNav.scrollWidth > menuNav.clientWidth + 4) {
+          const destino = nuevoActivo.offsetLeft - (menuNav.clientWidth / 2) + (nuevoActivo.offsetWidth / 2);
+          menuNav.scrollLeft = Math.max(0, destino);
+        }
+      }
       const h1 = mejorSec.querySelector('h1');
       if (h1) $('#migas').textContent = h1.textContent.trim();
     }, { threshold: [0, .25, .5, .75, 1] });
@@ -245,6 +258,8 @@
       }
     });
     $('#btnBuscar').addEventListener('click', abrir);
+    const btnCerrarBusc = $('#buscadorCerrar');
+    if (btnCerrarBusc) btnCerrarBusc.addEventListener('click', cerrar);
     box.addEventListener('click', e => {
       if (e.target === box) cerrar();
     });

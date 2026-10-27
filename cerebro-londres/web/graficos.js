@@ -39,9 +39,9 @@ window.GRAFICOS = (function () {
     }
   }
 
-  function marco(alto = 210) {
+  function marco(alto = 210, ancho = 680) {
     const s = document.createElementNS(ns, 'svg');
-    s.setAttribute('viewBox', `0 0 680 ${alto}`);
+    s.setAttribute('viewBox', `0 0 ${ancho} ${alto}`);
     s.setAttribute('preserveAspectRatio', 'xMidYMid meet');
     s.setAttribute('width', '100%');
     s.setAttribute('role', 'img');
@@ -61,10 +61,11 @@ window.GRAFICOS = (function () {
     caja.className = 'svgCaja';
     if (!puntos || puntos.length < 2) return caja;
 
+    const esMovil = window.matchMedia && window.matchMedia('(max-width: 640px)').matches;
     const formatear = opciones.formato || fmt;
-    const A = 210;
-    const M = { i: 12, d: 14, s: 24, f: 28 };
-    const W = 680;
+    const A = esMovil ? 205 : 210;
+    const M = esMovil ? { i: 10, d: 12, s: 24, f: 26 } : { i: 12, d: 14, s: 24, f: 28 };
+    const W = esMovil ? 460 : 680;
     const vals = puntos.map(p => Number(p[1]));
     const min = Math.min(...vals);
     const max = Math.max(...vals);
@@ -87,7 +88,7 @@ window.GRAFICOS = (function () {
     pintarLector(ultimo, 'último registro');
     caja.appendChild(lector);
 
-    const s = marco(A);
+    const s = marco(A, W);
     s.setAttribute('aria-label', `${titulo}: de ${primero[0]} a ${ultimo[0]}`);
 
     // Guías horizontales (máximo, media, mínimo)
@@ -167,7 +168,7 @@ window.GRAFICOS = (function () {
     // Interacción con puntero en rAF (lecturas primero, escrituras después — web-efectos-puntero)
     let rafId = 0;
     let clientX = 0;
-    s.addEventListener('pointermove', ev => {
+    const actualizarPuntoCursor = ev => {
       clientX = ev.clientX;
       if (rafId) return;
       rafId = requestAnimationFrame(() => {
@@ -190,7 +191,9 @@ window.GRAFICOS = (function () {
         nodoPulso.setAttribute('cy', cy);
         pintarLector(p, `observación ${idx + 1}/${puntos.length}`);
       });
-    });
+    };
+    s.addEventListener('pointermove', actualizarPuntoCursor);
+    s.addEventListener('pointerdown', actualizarPuntoCursor);
 
     s.addEventListener('pointerleave', () => {
       if (rafId) { cancelAnimationFrame(rafId); rafId = 0; }
@@ -213,18 +216,20 @@ window.GRAFICOS = (function () {
     caja.className = 'svgCaja';
     if (!filas || !filas.length) return caja;
 
-    const W = 680;
+    const esMovil = window.matchMedia && window.matchMedia('(max-width: 640px)').matches;
+    const W = esMovil ? 470 : 680;
     const n = filas.length;
-    const h = 24;
+    const h = esMovil ? 27 : 24;
     const A = n * h + 10;
     const max = opciones.maxGlobal || Math.max(...filas.map(f => Number(f[1]) || 0)) || 1;
-    const anchoEtiqueta = opciones.anchoEtiqueta || 205;
-    const margenValor = 88;
+    const anchoEtiqueta = esMovil ? Math.round((opciones.anchoEtiqueta || 205) * 0.77) : (opciones.anchoEtiqueta || 205);
+    const margenValor = esMovil ? 78 : 88;
+    const maxChars = esMovil ? 23 : 29;
     const anchoUtil = W - anchoEtiqueta - margenValor;
     const formateador = opciones.formato || fmt;
     const sinMov = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    const s = marco(A);
+    const s = marco(A, W);
     s.setAttribute('viewBox', `0 0 ${W} ${A}`);
     s.setAttribute('aria-label', opciones.titulo || 'Comparación por categoría');
 
@@ -237,7 +242,7 @@ window.GRAFICOS = (function () {
       const anchoFinal = Math.max((val / max) * anchoUtil, 2);
       const g = el('g', { class: 'filaBarra', style: `--row-i:${Math.min(i, 18)}` });
 
-      const textoEtiqueta = String(f[0]).length > 29 ? String(f[0]).slice(0, 28) + '…' : String(f[0]);
+      const textoEtiqueta = String(f[0]).length > maxChars ? String(f[0]).slice(0, maxChars - 1) + '…' : String(f[0]);
       g.appendChild(el('text', {
         class: esFoco ? 'rotuloFoco' : 'rotulo',
         x: 0,
@@ -372,15 +377,16 @@ window.GRAFICOS = (function () {
     const caja = document.createElement('div');
     caja.className = 'svgCaja dispersionCaja';
 
-    const W = 680;
-    const A = 265;
-    const M = { i: 56, d: 24, s: 26, f: 38 };
+    const esMovil = window.matchMedia && window.matchMedia('(max-width: 640px)').matches;
+    const W = esMovil ? 480 : 680;
+    const A = esMovil ? 255 : 265;
+    const M = esMovil ? { i: 56, d: 18, s: 26, f: 38 } : { i: 56, d: 24, s: 26, f: 38 };
 
     const lector = document.createElement('div');
     lector.className = 'svgTooltip';
     caja.appendChild(lector);
 
-    const s = marco(A);
+    const s = marco(A, W);
     caja.appendChild(s);
 
     // Elementos estructurales persistentes para interpolar sin destruir el DOM
@@ -539,7 +545,7 @@ window.GRAFICOS = (function () {
             class: pt.foco ? 'puntoActivo' : 'puntoBorough',
             cx: dest.cx.toFixed(1),
             cy: dest.cy.toFixed(1),
-            r: pt.foco ? 5.5 : 4.2
+            r: pt.foco ? (esMovil ? 6.5 : 5.5) : (esMovil ? 5 : 4.2)
           });
           gPt.appendChild(circ);
           if (pt.foco) {
@@ -550,7 +556,7 @@ window.GRAFICOS = (function () {
           const registro = { g: gPt, circ, pulso, txt, cx: dest.cx, cy: dest.cy, pt };
           posicionarNodo(registro, dest.cx, dest.cy);
 
-          gPt.addEventListener('pointerenter', () => {
+          const seleccionarNodo = () => {
             const xStr = registro.cx.toFixed(1);
             const yStr = registro.cy.toFixed(1);
             miraH.setAttribute('y1', yStr);
@@ -562,7 +568,9 @@ window.GRAFICOS = (function () {
             if (estadoActual) {
               pintarLector(estadoActual, registro.pt, registro.pt.foco ? 'foco Westminster' : registro.pt.codigo || 'borough');
             }
-          });
+          };
+          gPt.addEventListener('pointerenter', seleccionarNodo);
+          gPt.addEventListener('pointerdown', seleccionarNodo);
 
           capaNodos.appendChild(gPt);
           mapaNodos[id] = registro;

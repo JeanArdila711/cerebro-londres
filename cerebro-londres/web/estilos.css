@@ -69,13 +69,7 @@
 
 html {
   -webkit-text-size-adjust: 100%;
-  scroll-behavior: smooth;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
+  scroll-padding-top: 102px;
 }
 
 body {
@@ -812,6 +806,8 @@ nav#menu a.navGemelo::after {
   background: var(--panel2);
   padding: 3px 6px;
   border: 1px solid var(--linea);
+  white-space: nowrap;
+  flex: 0 0 auto;
 }
 
 /* ==========================================================================
@@ -826,6 +822,7 @@ main {
 .sec {
   padding: 44px 0 36px;
   border-bottom: 1.5px solid var(--linea-fuerte);
+  scroll-margin-top: 102px;
 }
 
 .secCabecera {
@@ -1200,6 +1197,8 @@ main {
   width: 100%;
   border-collapse: collapse;
   font-size: 0.85rem;
+  overflow-wrap: normal;
+  word-break: normal;
 }
 
 .tabla th,
@@ -2376,6 +2375,19 @@ svg .nodoDispFoco {
   letter-spacing: 0.06em;
 }
 
+.buscadorCerrarBtn {
+  background: none;
+  border: 0;
+  padding: 0;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+}
+
+.txtCerrarMovil {
+  display: none;
+}
+
 .buscador input {
   width: 100%;
   padding: 15px 16px;
@@ -2623,5 +2635,761 @@ svg .nodoDispFoco {
       opacity: 0;
       transform: translateY(8px) scale(0.98);
     }
+  }
+}
+
+/* Columnas activas en tablas ordenadas (siempre visibles incluso con reduced-motion) */
+.tabla th.colActiva {
+  color: var(--acento);
+  border-bottom-color: var(--acento);
+}
+
+.tabla td.colActiva {
+  font-weight: 700;
+  color: var(--tinta-fuerte);
+  background: color-mix(in srgb, var(--acento) 5%, transparent);
+}
+
+/* ==========================================================================
+   14. SISTEMA DE ADAPTACIÓN MÓVIL (<= 768px y <= 440px)
+   Mantiene la versión Desktop 100% intacta y optimiza jerarquía, objetivos
+   táctiles, cartografía, gráficos SVG y tablas en pantallas móviles.
+   ========================================================================== */
+@media (max-width: 768px) {
+  html {
+    scroll-padding-top: 96px;
+  }
+
+  main,
+  .sec,
+  .bloque,
+  .envoltorio,
+  .mapaMarco,
+  .mapaControles,
+  .mapaGrupoControl,
+  .mapaBotones,
+  .comparadorCaja,
+  .atlasConsola {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  /* 14.1 Compuerta de Acceso (#gate) */
+  .gate {
+    padding: 14px;
+    background-size: 32px 32px;
+  }
+
+  .gateCaja {
+    box-shadow: 5px 5px 0 var(--linea-fuerte);
+  }
+
+  .placaHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    padding: 10px 16px;
+    font-size: 0.66rem;
+    line-height: 1.3;
+  }
+
+  .placaCuerpo {
+    padding: 20px 18px 18px;
+  }
+
+  .gateCaja input {
+    font-size: 16px;
+    min-height: 44px;
+  }
+
+  .gateCaja button {
+    min-height: 44px;
+    width: 100%;
+  }
+
+  .placaPie {
+    padding: 12px 18px 16px;
+  }
+
+  /* 14.2 Cabecera Superior y Barra de Capítulos */
+  .topInner {
+    padding: 7px 12px;
+    gap: 8px;
+    min-height: 48px;
+  }
+
+  .marca {
+    gap: 8px;
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .marcaEnlace {
+    gap: 8px;
+    min-width: 0;
+  }
+
+  .placaMini {
+    height: 30px;
+    padding: 0 7px;
+    font-size: 0.7rem;
+    border-bottom-width: 3px;
+  }
+
+  .marcaTexto strong {
+    font-size: 1rem;
+    white-space: nowrap;
+  }
+
+  .consolaDer {
+    height: 32px;
+    box-shadow: 1.5px 1.5px 0 var(--linea-fuerte);
+  }
+
+  .consolaItem {
+    padding: 0 8px;
+    font-size: 0.71rem;
+    gap: 5px;
+  }
+
+  .consolaItem.estado,
+  .btnBuscar kbd {
+    display: none;
+  }
+
+  nav#menu {
+    top: 53px;
+  }
+
+  .menuInner {
+    padding: 0 8px;
+  }
+
+  nav#menu a {
+    padding: 11px 13px 10px;
+    font-size: 0.76rem;
+    min-height: 40px;
+  }
+
+  /* 14.3 Masthead Editorial de Portada */
+  .mastheadInner {
+    padding: 14px 12px 20px;
+  }
+
+  .mastheadMeta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    padding-bottom: 10px;
+    margin-bottom: 14px;
+    font-size: 0.66rem;
+    line-height: 1.35;
+  }
+
+  .mastheadGrid {
+    gap: 16px;
+  }
+
+  .mastheadColIzq {
+    gap: 12px;
+  }
+
+  .mastheadEyebrow {
+    font-size: 0.7rem;
+    margin-bottom: 4px;
+  }
+
+  .mastheadTitulo {
+    font-size: clamp(1.62rem, 6.4vw, 2.15rem);
+    line-height: 1.08;
+  }
+
+  .mastheadManifiesto {
+    padding-left: 12px;
+  }
+
+  .mastheadManifiesto p {
+    font-size: 0.88rem;
+    line-height: 1.52;
+  }
+
+  .mastheadCintas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7px 12px;
+    padding-top: 10px;
+    font-size: 0.67rem;
+  }
+
+  .mastheadMapaCard {
+    box-shadow: 3px 3px 0 var(--linea-fuerte);
+  }
+
+  .mastheadMapaTop {
+    flex-wrap: wrap;
+    gap: 4px 8px;
+    padding: 8px 10px;
+    font-size: 0.63rem;
+  }
+
+  .mastheadMapaLienzo {
+    min-height: 175px;
+  }
+
+  .mastheadMapaPie {
+    padding: 8px 10px;
+    font-size: 0.7rem;
+  }
+
+  /* 14.4 Secciones, Retícula de Baldosas y Bloques */
+  main {
+    padding: 0 12px 52px;
+  }
+
+  .sec {
+    padding: 28px 0 24px;
+    scroll-margin-top: 96px;
+  }
+
+  .secCabecera {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    padding-top: 10px;
+    margin-bottom: 16px;
+  }
+
+  .secIndice {
+    font-size: 0.69rem;
+    margin-bottom: 4px;
+  }
+
+  .sec h1 {
+    font-size: clamp(1.42rem, 5.8vw, 1.85rem);
+  }
+
+  .secSub {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .tile {
+    padding: 15px 16px 14px;
+  }
+
+  .tileFichaTag {
+    opacity: 0.92;
+    padding: 4px 6px;
+    font-size: 0.63rem;
+  }
+
+  .dosColumnas {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-top: 14px;
+  }
+
+  .bloque {
+    padding: 15px 14px;
+    margin-top: 14px;
+  }
+
+  .bloqueHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+  }
+
+  .bloque h3 {
+    font-size: 0.86rem;
+    line-height: 1.3;
+  }
+
+  .bloqueMeta {
+    font-size: 0.69rem;
+    line-height: 1.35;
+  }
+
+  .aviso {
+    padding: 13px 14px;
+    font-size: 0.84rem;
+    line-height: 1.52;
+    margin-top: 14px;
+  }
+
+  /* 14.5 Gráficos SVG, Lector .svgTooltip y Dispersión */
+  .svgTooltip {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3px;
+    padding: 7px 10px;
+    font-size: 0.71rem;
+    line-height: 1.35;
+  }
+
+  svg .rotulo {
+    font-size: 11px;
+  }
+
+  svg .rotuloFoco {
+    font-size: 11.5px;
+  }
+
+  .dispControles {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .dispBotones {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    width: 100%;
+  }
+
+  .btnCruceDisp {
+    min-height: 36px;
+    padding: 7px 9px;
+    font-size: 0.69rem;
+    text-align: left;
+  }
+
+  .dispSubLectura {
+    font-size: 0.81rem;
+  }
+
+  /* 14.6 Cartografía & Gemelo Digital 3D */
+  .mapaMarco {
+    box-shadow: 3px 3px 0 var(--linea-fuerte);
+    margin-bottom: 18px;
+    scroll-margin-top: 96px;
+  }
+
+  .mapaControles {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 10px 12px;
+  }
+
+  .mapaGrupoControl {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+    width: 100%;
+  }
+
+  .mapaBotones {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 6px;
+    padding-bottom: 2px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .mapaBotones::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mapaBotones button {
+    flex: 0 0 auto;
+    min-height: 34px;
+    padding: 6px 11px;
+    font-size: 0.72rem;
+    white-space: nowrap;
+  }
+
+  .mapaSubBarra {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 10px 12px;
+  }
+
+  .mapaCapasCheck {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 10px;
+    width: 100%;
+  }
+
+  .mapaCapasCheck label {
+    font-size: 0.71rem;
+    line-height: 1.25;
+    min-height: 24px;
+  }
+
+  .mapaCapasCheck input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    flex: 0 0 auto;
+  }
+
+  .mapaLeyenda {
+    gap: 6px 10px;
+    padding-top: 8px;
+    border-top: 1px dashed var(--linea);
+  }
+
+  /* Lienzo del mapa despejado arriba + HUD acoplado debajo sin tapar Londres */
+  .mapaLienzoWrap {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+  }
+
+  #mapa {
+    width: 100%;
+    height: 360px;
+    flex: 0 0 360px;
+  }
+
+  #mapa .maplibregl-ctrl-attrib {
+    font-size: 9.5px;
+    line-height: 1.2;
+    padding: 2px 5px;
+    background: rgba(255, 255, 255, 0.78);
+  }
+
+  .mapaCoordenadas {
+    top: 8px;
+    left: 8px;
+    bottom: auto;
+    right: auto;
+    max-width: calc(100% - 56px);
+    padding: 4px 7px;
+    font-size: 0.61rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .mapaHUD {
+    position: relative;
+    top: auto;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    width: 100%;
+    max-height: none;
+    overflow: visible;
+    border: 0;
+    border-top: 3px solid var(--acento);
+    box-shadow: none;
+    background: var(--panel);
+    backdrop-filter: none;
+    padding: 12px 14px;
+    order: 2;
+  }
+
+  .hudTitulo {
+    font-size: 1.12rem;
+  }
+
+  .hudMetricas {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px 10px;
+  }
+
+  /* 14.7 Comparador Bilateral y Consola del Atlas */
+  .comparadorControles {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .comparadorSelectGrupo {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 8px;
+    width: 100%;
+    align-items: center;
+  }
+
+  .comparadorBadgeWest {
+    justify-self: start;
+  }
+
+  .comparadorVs {
+    justify-self: end;
+  }
+
+  .selectBorough {
+    grid-column: 1 / -1;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    min-height: 40px;
+    padding: 8px 10px;
+    font-size: 16px;
+  }
+
+  .comparadorAtajos {
+    width: 100%;
+    gap: 6px;
+  }
+
+  .comparadorAtajos .filtroLabel {
+    width: 100%;
+    margin-bottom: 2px;
+  }
+
+  .btnRivalAtajo {
+    flex: 1 1 auto;
+    min-height: 34px;
+    padding: 6px 9px;
+    text-align: center;
+  }
+
+  .comparadorGrid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .atlasToolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 10px 12px;
+  }
+
+  .atlasModoGrupo {
+    display: flex;
+    width: 100%;
+  }
+
+  .btnModoAtlas {
+    flex: 1 1 50%;
+    min-height: 38px;
+    padding: 7px 6px;
+    font-size: 0.72rem;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .atlasOrdenGrupo {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+    width: 100%;
+  }
+
+  .atlasMetricasBtns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    width: 100%;
+  }
+
+  .btnMetricaAtlas {
+    min-height: 35px;
+    padding: 6px 8px;
+    text-align: center;
+  }
+
+  .atlasCorteFranja {
+    font-size: 0.65rem;
+    text-align: center;
+    padding: 6px 8px;
+  }
+
+  .btnToggleAtlas {
+    padding: 11px 10px;
+    font-size: 0.69rem;
+    line-height: 1.3;
+    text-align: center;
+  }
+
+  /* 14.8 Tablas Estadísticas (Scroll horizontal limpio sin partir sílabas) */
+  .tabla {
+    min-width: 540px;
+    font-size: 0.8rem;
+  }
+
+  .tabla th,
+  .tabla td {
+    padding: 8px 9px;
+  }
+
+  .tabla thead th,
+  .tabla td.num,
+  .tabla code,
+  .tabla .pastilla {
+    white-space: nowrap;
+  }
+
+  .tabla tr.filaCorteTabla td {
+    white-space: normal;
+    text-align: left;
+    padding-left: 12px;
+  }
+
+  /* 14.9 Acordeón de Fuentes */
+  .acordeonFuentes {
+    box-shadow: 3px 3px 0 var(--linea-fuerte);
+    scroll-margin-top: 96px;
+  }
+
+  .acordeonResumen {
+    padding: 14px;
+    gap: 12px;
+  }
+
+  .acordeonTituloFila {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .acordeonAccion {
+    width: 100%;
+    justify-content: center;
+    min-height: 40px;
+  }
+
+  .acordeonCuerpo {
+    padding: 14px 12px 18px;
+  }
+
+  .filtroFuentes {
+    padding: 10px;
+    gap: 6px;
+  }
+
+  .filtroFuentes .filtroLabel {
+    width: 100%;
+    margin-bottom: 2px;
+  }
+
+  .btnFiltroFuente {
+    flex: 1 1 auto;
+    min-height: 34px;
+    padding: 6px 9px;
+    text-align: center;
+  }
+
+  /* 14.10 Modales (#ficha y #buscador) y Pie de Página */
+  .ficha {
+    padding: 10px;
+  }
+
+  .fichaCaja {
+    width: 100%;
+    max-height: 88vh;
+    padding: 18px 16px;
+    box-shadow: 4px 4px 0 var(--linea-fuerte);
+  }
+
+  .fichaCabecera {
+    gap: 8px;
+  }
+
+  #fichaCerrar {
+    min-height: 34px;
+    padding: 6px 10px;
+    white-space: nowrap;
+  }
+
+  .buscador {
+    padding: 6vh 10px 16px;
+  }
+
+  .buscadorCaja {
+    width: 100%;
+    box-shadow: 4px 4px 0 var(--linea-fuerte);
+  }
+
+  .buscadorCabecera {
+    padding: 8px 12px;
+    gap: 8px;
+  }
+
+  .kbdEscDesktop {
+    display: none;
+  }
+
+  .txtCerrarMovil {
+    display: inline-block;
+    padding: 4px 8px;
+    background: var(--acento);
+    color: #ffffff;
+    font: 600 0.68rem/1 var(--font-mono);
+  }
+
+  .buscador input {
+    font-size: 16px;
+    padding: 13px 12px;
+  }
+
+  #buscadorLista {
+    max-height: 60vh;
+  }
+
+  #buscadorLista button {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3px;
+    padding: 11px 12px;
+  }
+
+  .pieInner {
+    padding: 28px 14px 44px;
+    gap: 18px;
+  }
+}
+
+/* Ajustes finos para teléfonos compactos (<= 440px, p. ej. iPhone 375px / 390px) */
+@media (max-width: 440px) {
+  .topInner {
+    padding: 6px 10px;
+    gap: 6px;
+  }
+
+  .placaMini {
+    height: 26px;
+    padding: 0 5px;
+    font-size: 0.64rem;
+    border-bottom-width: 2.5px;
+  }
+
+  .marcaEnlace {
+    gap: 6px;
+  }
+
+  .marcaTexto strong {
+    font-size: 0.89rem;
+  }
+
+  .consolaDer {
+    height: 29px;
+  }
+
+  .consolaItem {
+    padding: 0 6px;
+    font-size: 0.66rem;
+    gap: 4px;
+  }
+
+  .rejilla,
+  .rejilla.rejillaPanorama {
+    grid-template-columns: 1fr;
+  }
+
+  .dispBotones {
+    grid-template-columns: 1fr;
+  }
+
+  .mapaCapasCheck {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .hudMetricas {
+    grid-template-columns: 1fr 1fr;
   }
 }
