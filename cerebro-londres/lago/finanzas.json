@@ -4,6 +4,12 @@
  "fuentes": [
   {
    "id": "mhclg_council_tax",
+   "ficha": "F23",
+   "semaforo": {
+    "origen": "estado",
+    "personas": "agregado",
+    "acceso": "api"
+   },
    "nombre": "Council Tax levels set by local authorities in England 2026 to 2027 · Table 8a",
    "entidad": "MHCLG",
    "url": "https://www.gov.uk/government/statistics/council-tax-levels-set-by-local-authorities-in-england-2026-to-2027",
@@ -12,7 +18,7 @@
    "probado": "2026-10-02",
    "estado": "vivo",
    "licencia": "OGL-3.0",
-   "personas": "no",
+   "personas": "no: conteos agregados por zona",
    "proteccion": "abierto",
    "uso": "sección Municipio · financiación local",
    "nota": "Archivo .ods, no CSV. Dentro hay dos conjuntos con el mismo nombre de tabla: «Table_10» es un formulario en blanco de recolección, no un resultado; «Table_8a» dentro de Tables_1-9 es la tabla publicada de verdad."

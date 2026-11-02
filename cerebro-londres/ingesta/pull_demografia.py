@@ -92,7 +92,7 @@ cifras = {
         "Población RESIDENTE mid-year; no cuenta trabajadores, turistas ni tránsito diario, "
         "que multiplican varias veces la gente presente en Westminster a diario"),
     "puesto_poblacion": C.cifra(
-        puesto, "puesto de 33", "ons_mye_nomis", str(anio),
+        puesto, f"puesto de {len(boroughs)}", "ons_mye_nomis", str(anio),
         "Entre los 33 boroughs de Greater London, de mayor a menor"),
     "poblacion_greater_london": C.cifra(
         total_londres, "personas", "ons_mye_nomis", str(anio),

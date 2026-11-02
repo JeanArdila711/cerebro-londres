@@ -1,0 +1,10 @@
+{
+ "laqn_daily": "This information has been obtained from the Environmental Research Group of Imperial College London, using data from the London Air Quality Network (https://www.londonair.org.uk). This information is licensed under the terms of the Open Government Licence.",
+ "ons_geography": "Contains public sector information licensed under the Open Government Licence v3.0. Contains OS data © Crown copyright and database right 2024/2025.",
+ "osm_overpass": "© OpenStreetMap contributors, bajo la licencia ODbL 1.0 (openstreetmap.org/copyright).",
+ "osm_transporte": "© OpenStreetMap contributors, bajo la licencia ODbL 1.0 (openstreetmap.org/copyright).",
+ "open_meteo_clima": "Weather data by Open-Meteo.com, bajo CC BY 4.0.",
+ "open_meteo_aire": "Air quality data by Open-Meteo.com, bajo CC BY 4.0, a partir del modelo CAMS.",
+ "tfl_airquality": "Powered by TfL Open Data.",
+ "wikimedia_pageviews": "Wikimedia Analytics, bajo CC0: no exige atribución; se cita por transparencia."
+}

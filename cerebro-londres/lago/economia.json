@@ -4,6 +4,12 @@
  "fuentes": [
   {
    "id": "ukhpi",
+   "ficha": "F05",
+   "semaforo": {
+    "origen": "estado",
+    "personas": "no",
+    "acceso": "api"
+   },
    "nombre": "UK House Price Index (HM Land Registry, linked data)",
    "entidad": "HM Land Registry",
    "url": "https://landregistry.data.gov.uk/app/ukhpi",

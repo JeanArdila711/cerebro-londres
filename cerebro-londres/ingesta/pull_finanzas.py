@@ -69,7 +69,7 @@ fuentes = [{
     "probado": C.hoy(),
     "estado": "vivo",
     "licencia": "OGL-3.0",
-    "personas": "no",
+    "personas": "no: conteos agregados por zona",
     "proteccion": "abierto",
     "uso": "sección Municipio · financiación local",
     "nota": ("Archivo .ods, no CSV. Dentro hay dos conjuntos con el mismo nombre de tabla: "
@@ -82,7 +82,7 @@ cifras = {
                                         "2026-2027", "Incluye precepto de cuidado social y parroquial"),
     "cambio_interanual_westminster": C.cifra(foco["cambio_interanual_pct"], "% frente a 2025-26", "mhclg_council_tax",
                                               "2026-2027", ""),
-    "puesto_council_tax_westminster": C.cifra(foco["puesto"], "puesto de 33", "mhclg_council_tax", "2026-2027",
+    "puesto_council_tax_westminster": C.cifra(foco["puesto"], f"puesto de {len(boroughs)}", "mhclg_council_tax", "2026-2027",
                                                "1 = el Council Tax más alto de los 33 boroughs"),
     "borough_mas_caro": C.cifra(mas_cara["nombre"], "borough", "mhclg_council_tax", "2026-2027",
                                  f"£{mas_cara['council_tax_banda_d']:,.2f}"),

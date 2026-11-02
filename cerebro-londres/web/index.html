@@ -33,6 +33,7 @@
         <button type="submit">Abrir expediente</button>
       </div>
       <p id="gateMsg" class="gateMsg" role="status" aria-live="polite"></p>
+      <p class="gateNota"><strong>Equipo:</strong> Jean Carlo Ardila · David Cossio · Juan Pablo Posso</p>
     </div>
     <div class="placaPie">
       <p class="gateNota"><strong>Compuerta real (HMAC-SHA256):</strong> El lago de datos vive fuera de la carpeta pública y se sirve únicamente con sesión firmada. Casi todo viene de fuentes abiertas, pero proteger la frontera de reexposición también es parte del ejercicio.</p>
@@ -55,7 +56,7 @@
           <span class="migasKicker">SECCIÓN ACTIVA</span>
           <span class="migas" id="migas">Panorama</span>
         </div>
-        <div class="telemetriaVivo" id="telemetriaVivo" title="Hora oficial en Londres y clima actual del lago">
+        <div class="telemetriaVivo" id="telemetriaVivo" title="Hora de Londres (reloj del navegador) y última temperatura guardada en el lago">
           <span class="pulsoDot" aria-hidden="true"></span>
           <span id="relojLondres">LON --:--</span>
           <span class="sepTele" aria-hidden="true">·</span>
@@ -88,6 +89,7 @@
       <a href="#atlas" data-sec="atlas" data-grupo="atlas,correlaciones">Atlas y correlaciones</a>
       <a href="#ambiente" data-sec="ambiente" data-grupo="ambiente,escucha">Ambiente y escucha</a>
       <a href="#fuentes" data-sec="fuentes" data-grupo="fuentes">Fuentes y método</a>
+      <a href="#preguntas" data-sec="preguntas" data-grupo="preguntas">Preguntas</a>
     </div>
     <div class="barraLectura" aria-hidden="true"><div class="barraLecturaFill" id="barraLecturaFill"></div></div>
   </nav>
@@ -96,8 +98,9 @@
     <div class="mastheadInner">
       <div class="mastheadMeta">
         <span>EXPEDIENTE MUNICIPAL · TÓPICOS DE SISTEMAS DE INFORMACIÓN</span>
-        <span>ESCALAS: 33 BOROUGHS (LAD25) · 18 WARDS (WD24) · 123 LSOA</span>
-        <span id="mastheadCosecha">AUDITORÍA: 185 COMPROBACIONES</span>
+        <span>ESCALAS: <span data-lago="atlas_boroughs.boroughs_n"></span> BOROUGHS (LAD25) · <span data-lago="geo.wards_westminster_n"></span> WARDS (WD24) · <span data-lago="privacion.lsoa_westminster_n"></span> LSOA <span data-fx="atlas_boroughs,geo,privacion"></span></span>
+        <span>EQUIPO: JEAN CARLO ARDILA · DAVID COSSIO · JUAN PABLO POSSO</span>
+        <span id="mastheadCosecha">VERIFICADO CON verificar.py ANTES DE PUBLICAR</span>
       </div>
       <div class="mastheadGrid">
         <div class="mastheadColIzq">
@@ -106,19 +109,20 @@
             <h1 class="mastheadTitulo">Dossier de Inteligencia Territorial y Gobernanza de Datos</h1>
           </div>
           <div class="mastheadManifiesto">
-            <p>Diseñado para responder las preguntas de un concejal de Westminster sin esconder las costuras del dato. <strong>Ninguna cifra está escrita a mano:</strong> todas viajan desde el lago verificado con su unidad, su vigencia y su ficha de auditoría a un clic.</p>
+            <p>Diseñado para que residentes, autoridades locales e inversionistas lean el estado de Westminster sin esconder las costuras del dato. <strong>Las cifras no se teclean:</strong> viajan desde el lago verificado con su unidad, su vigencia y su ficha de auditoría a un clic.</p>
+            <p class="proxyLeyenda"><span class="chipFuente chipProxy">Fxx ≈ aprox.</span> marca un dato aproximado, no medido: valor de modelo, atención o mapeo voluntario. Un clic dice por qué.</p>
           </div>
           <div class="mastheadCintas">
             <span><strong>CÓDIGO GSS:</strong> E09000033</span>
-            <span><strong>SUPERFICIE:</strong> 21,5 km²</span>
-            <span><strong>DIVISIÓN ELECTORAL:</strong> 18 WARDS</span>
-            <span><strong>CENSO MICRO:</strong> 123 LSOA</span>
+            <span><strong>SUPERFICIE:</strong> <span data-lago="area_westminster"></span> km²</span>
+            <span><strong>DIVISIÓN ELECTORAL:</strong> <span data-lago="geo.wards_westminster_n"></span> WARDS</span>
+            <span><strong>CENSO MICRO:</strong> <span data-lago="privacion.lsoa_westminster_n"></span> LSOA</span>
           </div>
         </div>
 
-        <aside class="mastheadMapaCard" aria-label="Plano táctico interactivo de los 18 wards de Westminster">
+        <aside class="mastheadMapaCard" aria-label="Plano táctico interactivo de los wards de Westminster">
           <div class="mastheadMapaTop">
-            <span class="mastheadMapaKicker">PLANO TÁCTICO · 18 WARDS (WD24)</span>
+            <span class="mastheadMapaKicker">PLANO TÁCTICO · <span data-lago="geo.wards_westminster_n"></span> WARDS (WD24) <span data-fx="geo"></span></span>
             <span class="mastheadMapaHint">CLIC PARA VOLAR EN 3D ↗</span>
           </div>
           <div class="mastheadMapaLienzo" id="miniMapaWestminster">
@@ -139,6 +143,7 @@
     <div class="pieInner">
       <div class="pieCol">
         <p class="pieTitulo">CITY OF WESTMINSTER · CEREBRO LONDRES</p>
+        <p class="pieNota"><strong>Equipo:</strong> Jean Carlo Ardila · David Cossio · Juan Pablo Posso</p>
         <p id="pieProbado" class="pieProbado"></p>
         <p class="pieNota">Réplica crítica del Cerebro Lima para el taller de Tópicos de Sistemas de Información. Cada baldosa abre su ficha de procedencia, vigencia, licencia y evaluación de privacidad.</p>
       </div>

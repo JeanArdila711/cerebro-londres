@@ -4,6 +4,12 @@
  "fuentes": [
   {
    "id": "dfe_absentismo",
+   "ficha": "F29",
+   "semaforo": {
+    "origen": "estado",
+    "personas": "agregado",
+    "acceso": "api"
+   },
    "nombre": "Pupil attendance in schools · Persistent absence in schools (DfE, Explore Education Statistics API)",
    "entidad": "DfE",
    "url": "https://explore-education-statistics.service.gov.uk/find-statistics/pupil-attendance-in-schools",
@@ -12,7 +18,7 @@
    "probado": "2026-10-26",
    "estado": "vivo",
    "licencia": "OGL-3.0",
-   "personas": "no",
+   "personas": "no: conteos agregados por zona",
    "proteccion": "agregados; celdas con cohorte chica se suprimen en origen (ej. City of London)",
    "uso": "sección Sociedad · educación",
    "nota": "«Ausentismo persistente» = alumnos con 10% o más de sesiones perdidas en lo que va del curso, acumulado semana a semana: no es una tasa de la semana aislada, compara bien entre boroughs en la misma semana, no entre semanas distintas del calendario. Incluye primaria, secundaria y especial juntas (filtro «All schools»). City of London queda suprimido por tamaño de cohorte, no por falta de dato."

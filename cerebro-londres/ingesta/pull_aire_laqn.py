@@ -16,9 +16,13 @@ OJO, límite real: solo 21 de los 33 boroughs tienen al menos una estación
 activa hoy (de 258 estaciones históricas, 185 están cerradas). No es un
 error del script: la red simplemente no cubre toda la ciudad por igual.
 
-Licencia: no se encontró el texto en el sitio pese a buscarlo en varias
-páginas. Queda «sin confirmar», no se supone abierta solo porque el dato
-parece público y gratuito.
+Licencia (leída el 2026-11-01 en los dos PDFs de la fuente): la documentación de
+la API dice «The use of the API is subject to the Open Government License
+version 2» y trae el texto de atribución; la página londonair.org.uk/LondonAir/API
+lo repite. El PDF «Terms and Conditions version 1.1» del King's College London ERG
+no menciona la OGL y, en su cláusula 9, prohíbe dar el dato a terceros o
+modificarlo. Se registra OGL-2.0 (lo que declara la documentación) y la
+contradicción queda escrita en la nota de la fuente.
 """
 import datetime, json, sys
 sys.path.insert(0, __file__.rsplit("/", 1)[0])
@@ -87,13 +91,20 @@ fuentes = [{
     "vigencia": FECHA,
     "probado": C.hoy(),
     "estado": "vivo",
-    "licencia": "sin-confirmar",
+    "licencia": "OGL-2.0",
     "personas": "no",
     "proteccion": "abierto",
     "uso": "sección Ambiente · aire medido, no modelado",
-    "nota": ("Red real de estaciones, financiada por los boroughs, no un modelo. Solo "
-             "21-22 boroughs tienen estación activa en un día dado: es un límite real "
-             "de la red, no un fallo de esta ingesta. Licencia no confirmada."),
+    "nota": ("Red real de estaciones, financiada por los boroughs, no un modelo. Entre 14 y "
+             "22 boroughs (según el día) tienen estación activa: es un límite real de la red"
+             ", no un fallo de esta ingesta. Licencia: OGL v2 según la documentación de la A"
+             "PI (api.erg.ic.ac.uk, sección «Terms and conditions»), que además trae el text"
+             "o de atribución; el PDF de términos v1.1 del King's College London ERG no la m"
+             "enciona y restringe redistribuir o modificar el dato (cláusula 9), así que el "
+             "uso es solo agregado y detrás de la sesión. Atribución: This information has b"
+             "een obtained from the Environmental Research Group of Imperial College London,"
+             " using data from the London Air Quality Network (https://www.londonair.org.uk)"
+             ". This information is licensed under the terms of the Open Government Licence."),
 }]
 
 cifras = {

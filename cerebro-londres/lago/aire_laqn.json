@@ -4,6 +4,13 @@
  "fuentes": [
   {
    "id": "laqn_daily",
+   "ficha": "F19",
+   "semaforo": {
+    "origen": "academia",
+    "personas": "no",
+    "acceso": "api"
+   },
+   "atribucion": "This information has been obtained from the Environmental Research Group of Imperial College London, using data from the London Air Quality Network (https://www.londonair.org.uk). This information is licensed under the terms of the Open Government Licence.",
    "nombre": "London Air Quality Network · Daily Monitoring Index",
    "entidad": "Imperial College London",
    "url": "https://www.londonair.org.uk/",
@@ -11,11 +18,11 @@
    "vigencia": "2026-10-25",
    "probado": "2026-10-26",
    "estado": "vivo",
-   "licencia": "sin-confirmar",
+   "licencia": "OGL-2.0",
    "personas": "no",
    "proteccion": "abierto",
    "uso": "sección Ambiente · aire medido, no modelado",
-   "nota": "Red real de estaciones, financiada por los boroughs, no un modelo. Solo 21-22 boroughs tienen estación activa en un día dado: es un límite real de la red, no un fallo de esta ingesta. Licencia no confirmada."
+   "nota": "Red real de estaciones, financiada por los boroughs, no un modelo. Entre 14 y 22 boroughs (según el día) tienen estación activa: es un límite real de la red, no un fallo de esta ingesta. Licencia: OGL v2 según la documentación de la API (api.erg.ic.ac.uk, sección «Terms and conditions»), que además trae el texto de atribución; el PDF de términos v1.1 del King's College London ERG no la menciona y restringe redistribuir o modificar el dato (cláusula 9), así que el uso es solo agregado y detrás de la sesión. Atribución: This information has been obtained from the Environmental Research Group of Imperial College London, using data from the London Air Quality Network (https://www.londonair.org.uk). This information is licensed under the terms of the Open Government Licence."
   }
  ],
  "cifras": {

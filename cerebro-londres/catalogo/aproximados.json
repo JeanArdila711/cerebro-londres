@@ -1,0 +1,8 @@
+{
+  "wikimedia_pageviews": "Mide atención, no personas: son vistas de un artículo de Wikipedia, no visitantes físicos del borough.",
+  "open_meteo_clima": "Valor de modelo meteorológico interpolado al centroide del borough, no una estación física.",
+  "open_meteo_aire": "Valor de modelo (CAMS) en el centroide del borough, no una lectura de la red de monitoreo.",
+  "tfl_airquality": "Pronóstico cualitativo para toda la ciudad, no una medición del día.",
+  "osm_overpass": "Conteo de mapeo voluntario: puede faltar lo que nadie ha dibujado, así que es una cota inferior.",
+  "osm_transporte": "Conteo de mapeo voluntario: puede faltar lo que nadie ha dibujado, así que es una cota inferior."
+}

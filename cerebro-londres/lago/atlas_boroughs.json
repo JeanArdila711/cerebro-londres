@@ -4,6 +4,7 @@
  "fuentes": [
   {
    "id": "atlas_derivado",
+   "ficha": "F02+F05+F07",
    "nombre": "Atlas de los 33 boroughs (tabla derivada del lago)",
    "entidad": "Cerebro Londres",
    "url": "https://landregistry.data.gov.uk/app/ukhpi",

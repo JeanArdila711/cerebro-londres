@@ -61,7 +61,7 @@
   "proteccion": "abierto",
   "uso": "descartada; se usa la capa de diciembre de 2024",
   "tema": "geo",
-  "nota": "La capa de wards de 2025 está publicada como MapServer, no como FeatureServer, y la consulta /query devuelve 400 'Invalid URL'. La de diciembre de 2024 sí es FeatureServer y responde. Consecuencia real: las dos escalas del sistema no son de la misma cosecha (boroughs 2025, wards 2024)."
+  "nota": "La ruta MapServer de la capa de wards 2025 devuelve 400 'Invalid URL' en /query. Resuelto después: la misma capa como FeatureServer (WD_DEC_2025_UK_BGC) sí responde y alimenta wards_londres (704 wards, F07). Los 18 wards de Westminster siguen en la cosecha de 2024-12."
  },
  {
   "id": "nomis_pop_smallarea",
@@ -93,7 +93,8 @@
   "proteccion": "solo agregados",
   "uso": "candidata para ampliar la Escucha social",
   "tema": "escucha",
-  "nota": "Responde 200. No se integró porque 'London' como término arrastra cobertura mundial que no habla del borough, y filtrar bien exige un trabajo de términos que no cabía en esta vuelta. La escucha se resuelve con Wikipedia, que es acotable por artículo."
+  "nota": "Responde 200. No se integró porque 'London' como término arrastra cobertura mundial que no habla del borough, y filtrar bien exige un trabajo de términos que no cabía en esta vuelta. La escucha se resuelve con Wikipedia, que es acotable por artículo.",
+  "ficha": "F38"
  },
  {
   "id": "nasa_gibs",
@@ -1258,7 +1259,8 @@
   "licencia_verificada": false,
   "veredicto": "candidato",
   "estado": "candidato",
-  "proteccion": "por decidir"
+  "proteccion": "por decidir",
+  "ficha": "F30"
  },
  {
   "id": "mhclg_revenue_outturn",
@@ -1371,14 +1373,14 @@
   "resolucion": "contrato",
   "vigencia": "continua",
   "licencia": "OGL-3.0",
-  "personas": "no: contratos entre organizaciones",
+  "personas": "sí: el campo contactPoint de un registro real traía nombre, correo y celular de una persona (una funcionaria de un NHS Trust)",
   "semaforo": {
    "origen": "estado",
-   "personas": "no",
+   "personas": "identificable",
    "acceso": "api"
   },
   "uso": "contratación pública (el equivalente al SEACE de Lima)",
-  "nota": "Formato OCDS. Hay que filtrar compradores de Londres.",
+  "nota": "Excluida el 2026-09-25: la licencia (OGL-3.0) permite reutilizarla, pero un registro real de la API traía datos de una persona en contactPoint y la API no filtra por geografía de forma confiable para limitarse a Londres. Formato OCDS.",
   "rastreo": "2026-09-25",
   "evidencia": {
    "url": "https://www.contractsfinder.service.gov.uk/",
@@ -1391,9 +1393,10 @@
   },
   "licencia_verificada": true,
   "licencia_evidencia": "Open Government Licence v3.0",
-  "veredicto": "integrado",
-  "estado": "candidato",
-  "proteccion": "abierto"
+  "veredicto": "excluido",
+  "estado": "excluido",
+  "proteccion": "no se publica",
+  "ficha": "F18"
  },
  {
   "id": "find_a_tender",
@@ -3089,7 +3092,7 @@
    "acceso": "api"
   },
   "uso": "escala fina del mapa",
-  "nota": "704 wards en los 33 boroughs (LAD25CD E09) el 2026-09-25. Es FeatureServer y responde a /query: resuelve la ficha ons_wards_2025, que anotaba que la capa de mayo de 2025 solo existía como MapServer.",
+  "nota": "704 wards en los 33 boroughs (LAD25CD E09) el 2026-09-25. Es FeatureServer y responde a /query: resuelve la ficha ons_wards_2025, que anotaba que la capa de mayo de 2025 solo existía como MapServer. Integrada: es la capa wards_londres de F07 (ingesta/pull_territorio.py).",
   "rastreo": "2026-09-25",
   "evidencia": {
    "url": "https://www.ons.gov.uk/methodology/geography/licences",

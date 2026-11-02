@@ -4,6 +4,12 @@
  "fuentes": [
   {
    "id": "planning_flood",
+   "ficha": "F27",
+   "semaforo": {
+    "origen": "estado",
+    "personas": "no",
+    "acceso": "api"
+   },
    "nombre": "Planning Data · flood risk zones (Environment Agency Flood Map for Planning)",
    "entidad": "MHCLG",
    "url": "https://www.planning.data.gov.uk/dataset/flood-risk-zone",

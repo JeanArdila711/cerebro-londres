@@ -4,6 +4,7 @@
  "fuentes": [
   {
    "id": "correlaciones_derivado",
+   "ficha": "F02+F05+F07",
    "nombre": "Correlaciones entre métricas de boroughs (derivado del lago)",
    "entidad": "Cerebro Londres",
    "url": "https://github.com/JeanArdila711/cerebro-londres",

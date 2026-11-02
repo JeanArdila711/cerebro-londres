@@ -4,6 +4,12 @@
  "fuentes": [
   {
    "id": "ons_censo2021",
+   "ficha": "F13",
+   "semaforo": {
+    "origen": "estado",
+    "personas": "agregado",
+    "acceso": "api"
+   },
    "nombre": "Censo 2021 · TS001, residentes habituales por autoridad local (Nomis NM_2021_1)",
    "entidad": "ONS",
    "url": "https://www.nomisweb.co.uk/census/2021",

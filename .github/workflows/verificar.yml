@@ -1,0 +1,47 @@
+# Ciclo de vida del lago: verificar en cada cambio y reconstruirlo cada mes.
+# - verificar: corre en cada push y pull request; falla si el lago, el catálogo o el Excel se contradicen.
+# - reconstruir: el día 1 de cada mes (o a mano) baja las fuentes otra vez en un entorno limpio y corre la verificación.
+#   No hace commit: si una fuente cambió o cayó, el trabajo falla y el correo de GitHub es el aviso.
+name: verificar
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 6 1 * *"
+
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: cerebro-londres
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verificar el lago
+        run: python3 verificacion/verificar.py
+      - name: Cruzar el Excel con el lago
+        run: |
+          pip install openpyxl
+          python3 verificacion/cruzar_excel.py
+
+  reconstruir:
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: cerebro-londres
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Reconstruir el lago desde las fuentes
+        run: bash ingesta/todo.sh
+      - name: Verificar el lago reconstruido
+        run: python3 verificacion/verificar.py

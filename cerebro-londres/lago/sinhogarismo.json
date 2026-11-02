@@ -4,6 +4,12 @@
  "fuentes": [
   {
    "id": "mhclg_homelessness",
+   "ficha": "F24",
+   "semaforo": {
+    "origen": "estado",
+    "personas": "agregado",
+    "acceso": "api"
+   },
    "nombre": "Statutory homelessness in England · Detailed local authority level tables (January to March 2026)",
    "entidad": "MHCLG",
    "url": "https://www.gov.uk/government/statistical-data-sets/live-tables-on-homelessness",

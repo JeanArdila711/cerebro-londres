@@ -33,6 +33,7 @@ texto = C.get(CSV_URL, crudo="mps_borough_crime.csv")
 filas = list(csv.DictReader(io.StringIO(texto)))
 meses = sorted(k for k in filas[0] if k.isdigit())
 ultimos12 = meses[-12:]
+mes = lambda m: f"{m[:4]}-{m[4:]}"   # 202608 -> 2026-08
 print(f"  {len(filas)} filas · {len(meses)} meses ({meses[0]} a {meses[-1]}) · últimos 12: {ultimos12[0]}-{ultimos12[-1]}")
 
 if len(meses) < 12:
@@ -93,11 +94,11 @@ fuentes = [{
     "entidad": "Metropolitan Police Service",
     "url": "https://data.london.gov.uk/dataset/recorded_crime_summary",
     "resolucion": "borough (BOCU), mensual",
-    "vigencia": f"{ultimos12[0]} a {ultimos12[-1]}",
+    "vigencia": f"{mes(ultimos12[0])} a {mes(ultimos12[-1])}",
     "probado": C.hoy(),
     "estado": "vivo",
     "licencia": "OGL-2.0",
-    "personas": "no",
+    "personas": "no: conteos agregados por zona",
     "proteccion": "abierto, solo agregados",
     "uso": "sección Seguridad · comparar los 33 boroughs",
     "nota": ("Cuenta delitos registrados, no víctimas. Cruzado por nombre de BOCU contra "
@@ -112,31 +113,43 @@ cifras = {
     "boroughs_con_dato_n": C.cifra(len(boroughs), "boroughs", "lds_mps_delito_borough", C.hoy(),
                                     "De los 33 de Greater London; falta City of London"),
     "delitos_12m_westminster": C.cifra(foco["delitos_12m"], "delitos registrados", "lds_mps_delito_borough",
-                                        ultimos12[-1], "Últimos 12 meses en Westminster"),
+                                        mes(ultimos12[-1]), "Últimos 12 meses en Westminster"),
     "tasa_westminster": C.cifra(foco["tasa_x1000"], "delitos por 1.000 habitantes", "lds_mps_delito_borough",
-                                 ultimos12[-1],
+                                 mes(ultimos12[-1]),
                                  "Delitos de 12 meses sobre población RESIDENTE mid-year, no sobre la "
                                  "población flotante (trabajadores, turistas, tránsito) que a diario "
                                  "multiplica varias veces la gente presente en Westminster: la tasa real "
                                  "por persona-presente es más baja que esta"),
     "puesto_tasa_westminster": C.cifra(foco["puesto_tasa"], f"puesto de {len(boroughs)}", "lds_mps_delito_borough",
-                                        ultimos12[-1], "1 = la tasa más alta de los boroughs con dato"),
-    "borough_tasa_mas_alta": C.cifra(mas_alta["nombre"], "borough", "lds_mps_delito_borough", ultimos12[-1],
+                                        mes(ultimos12[-1]), "1 = la tasa más alta de los boroughs con dato"),
+    "borough_tasa_mas_alta": C.cifra(mas_alta["nombre"], "borough", "lds_mps_delito_borough", mes(ultimos12[-1]),
                                       f"{mas_alta['tasa_x1000']} por 1.000 habitantes"),
-    "borough_tasa_mas_baja": C.cifra(mas_baja["nombre"], "borough", "lds_mps_delito_borough", ultimos12[-1],
+    "borough_tasa_mas_baja": C.cifra(mas_baja["nombre"], "borough", "lds_mps_delito_borough", mes(ultimos12[-1]),
                                       f"{mas_baja['tasa_x1000']} por 1.000 habitantes"),
-    "categoria_top_westminster": C.cifra(categoria_top[0], "categoría", "lds_mps_delito_borough", ultimos12[-1],
+    "categoria_top_westminster": C.cifra(categoria_top[0], "categoría", "lds_mps_delito_borough", mes(ultimos12[-1]),
                                           f"{categoria_top[1]:,} casos en 12 meses"),
 }
 
+# Umbral de celdas pequeñas: una categoría con menos de C.UMBRAL_CELDA casos no se lista sola. Se agrupa con la
+# categoría más pequeña que sí llega al umbral, de modo que la suma sigue cuadrando con el total publicado y la
+# celda chica no se recupera restando.
+categorias_publicables = sorted(por_categoria_foco.items(), key=lambda x: x[1])
+agrupadas = 0
+while len(categorias_publicables) > 1 and categorias_publicables[0][1] < C.UMBRAL_CELDA:
+    (g1, n1), (g2, n2) = categorias_publicables[:2]
+    categorias_publicables = sorted([(f"{g2} + {g1}", n1 + n2)] + categorias_publicables[2:], key=lambda x: x[1])
+    agrupadas += 1
+categorias_publicables.sort(key=lambda x: -x[1])
+
 listas = {
     "boroughs": boroughs,
-    "por_categoria_westminster": [{"categoria": g, "n": n} for g, n in sorted(por_categoria_foco.items(), key=lambda x: -x[1])],
+    "por_categoria_westminster": [{"categoria": g, "n": n} for g, n in categorias_publicables],
 }
 
 ruta = C.escribir(
     "seguridad_boroughs", fuentes, cifras, listas=listas,
     territorio="Greater London (32 de 33 boroughs; sin City of London)",
+    celdas_agrupadas={"umbral": C.UMBRAL_CELDA, "por_categoria_westminster": agrupadas},
     nota=(f"Sin asignar a ningún borough (Aviation Policing + Unknown): {sin_asignar} delitos en 12 meses, "
           "no se reparten entre boroughs. La tasa usa la población mid-year ya integrada en demografia.json: "
           "mismo año de referencia, mismo criterio para los 32."),

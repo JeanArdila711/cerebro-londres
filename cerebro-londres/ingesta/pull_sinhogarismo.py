@@ -109,7 +109,7 @@ cifras = {
         foco["hogares_en_bb"], "hogares", "mhclg_homelessness", PERIODO,
         f"{pct_bb}% de los hogares en TA de Westminster están en B&B, el alojamiento de peor calidad"),
     "puesto_ta_westminster": C.cifra(
-        foco["puesto_ta"], "puesto de 33", "mhclg_homelessness", PERIODO,
+        foco["puesto_ta"], f"puesto de {len(boroughs)}", "mhclg_homelessness", PERIODO,
         "1 = el borough con más hogares en alojamiento temporal (cifra absoluta, no por habitante)"),
 }
 

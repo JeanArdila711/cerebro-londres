@@ -4,6 +4,12 @@
  "fuentes": [
   {
    "id": "fingertips_vida",
+   "ficha": "F25",
+   "semaforo": {
+    "origen": "estado",
+    "personas": "agregado",
+    "acceso": "api"
+   },
    "nombre": "OHID Fingertips · Life expectancy at birth (indicador 90366)",
    "entidad": "OHID",
    "url": "https://fingertips.phe.org.uk/profile/health-profiles",
@@ -12,7 +18,7 @@
    "probado": "2026-10-02",
    "estado": "vivo",
    "licencia": "OGL-3.0",
-   "personas": "no",
+   "personas": "no: conteos agregados por zona",
    "proteccion": "abierto, solo agregados",
    "uso": "sección Salud · esperanza de vida por borough",
    "nota": "Primera fuente de salud del lago. Periodo trienal (2023-25) para suavizar ruido estadístico en áreas pequeñas. El endpoint de metadatos del perfil responde 500; el indicador se encontró leyendo la cabecera del volcado masivo del grupo «Life expectancy and causes of death»."
@@ -53,10 +59,10 @@
   },
   "puesto_esperanza_vida_westminster": {
    "valor": 3,
-   "unidad": "puesto de 33",
+   "unidad": "puesto de 32",
    "fuente": "fingertips_vida",
    "vigencia": "2023 - 25",
-   "nota": "1 = la esperanza de vida promedio más alta de los 33 boroughs",
+   "nota": "1 = la esperanza de vida promedio más alta de los 32 boroughs con dato",
    "estado": "integrado"
   },
   "borough_mas_esperanza_vida": {

@@ -4,15 +4,21 @@
  "fuentes": [
   {
    "id": "lds_mps_delito_borough",
+   "ficha": "F17",
+   "semaforo": {
+    "origen": "estado",
+    "personas": "agregado",
+    "acceso": "api"
+   },
    "nombre": "MPS Recorded Crime: Geographic Breakdown · nivel borough (London Datastore)",
    "entidad": "Metropolitan Police Service",
    "url": "https://data.london.gov.uk/dataset/recorded_crime_summary",
    "resolucion": "borough (BOCU), mensual",
-   "vigencia": "202509 a 202608",
+   "vigencia": "2025-09 a 2026-08",
    "probado": "2026-10-26",
    "estado": "vivo",
    "licencia": "OGL-2.0",
-   "personas": "no",
+   "personas": "no: conteos agregados por zona",
    "proteccion": "abierto, solo agregados",
    "uso": "sección Seguridad · comparar los 33 boroughs",
    "nota": "Cuenta delitos registrados, no víctimas. Cruzado por nombre de BOCU contra los boroughs del ONS; City of London queda fuera porque tiene su propia policía, no la Metropolitana. La tasa por 1.000 habitantes divide sobre población RESIDENTE: en boroughs con mucha población flotante (Westminster el primero, por el centro comercial y turístico) la tasa por residente sobreestima el riesgo frente a quien solo pasa por ahí."
@@ -31,7 +37,7 @@
    "valor": 74464,
    "unidad": "delitos registrados",
    "fuente": "lds_mps_delito_borough",
-   "vigencia": "202608",
+   "vigencia": "2026-08",
    "nota": "Últimos 12 meses en Westminster",
    "estado": "integrado"
   },
@@ -39,7 +45,7 @@
    "valor": 350.64,
    "unidad": "delitos por 1.000 habitantes",
    "fuente": "lds_mps_delito_borough",
-   "vigencia": "202608",
+   "vigencia": "2026-08",
    "nota": "Delitos de 12 meses sobre población RESIDENTE mid-year, no sobre la población flotante (trabajadores, turistas, tránsito) que a diario multiplica varias veces la gente presente en Westminster: la tasa real por persona-presente es más baja que esta",
    "estado": "integrado"
   },
@@ -47,7 +53,7 @@
    "valor": 1,
    "unidad": "puesto de 32",
    "fuente": "lds_mps_delito_borough",
-   "vigencia": "202608",
+   "vigencia": "2026-08",
    "nota": "1 = la tasa más alta de los boroughs con dato",
    "estado": "integrado"
   },
@@ -55,7 +61,7 @@
    "valor": "Westminster",
    "unidad": "borough",
    "fuente": "lds_mps_delito_borough",
-   "vigencia": "202608",
+   "vigencia": "2026-08",
    "nota": "350.64 por 1.000 habitantes",
    "estado": "integrado"
   },
@@ -63,7 +69,7 @@
    "valor": "Richmond upon Thames",
    "unidad": "borough",
    "fuente": "lds_mps_delito_borough",
-   "vigencia": "202608",
+   "vigencia": "2026-08",
    "nota": "58.14 por 1.000 habitantes",
    "estado": "integrado"
   },
@@ -71,7 +77,7 @@
    "valor": "THEFT",
    "unidad": "categoría",
    "fuente": "lds_mps_delito_borough",
-   "vigencia": "202608",
+   "vigencia": "2026-08",
    "nota": "43,351 casos en 12 meses",
    "estado": "integrado"
   }
@@ -346,15 +352,15 @@
     "n": 489
    },
    {
-    "categoria": "POSSESSION OF WEAPONS",
-    "n": 463
-   },
-   {
-    "categoria": "FRAUD AND FORGERY",
-    "n": 2
+    "categoria": "POSSESSION OF WEAPONS + FRAUD AND FORGERY",
+    "n": 465
    }
   ]
  },
  "territorio": "Greater London (32 de 33 boroughs; sin City of London)",
- "nota": "Sin asignar a ningún borough (Aviation Policing + Unknown): 7 delitos en 12 meses, no se reparten entre boroughs. La tasa usa la población mid-year ya integrada en demografia.json: mismo año de referencia, mismo criterio para los 32."
+ "nota": "Sin asignar a ningún borough (Aviation Policing + Unknown): 7 delitos en 12 meses, no se reparten entre boroughs. La tasa usa la población mid-year ya integrada en demografia.json: mismo año de referencia, mismo criterio para los 32.",
+ "celdas_agrupadas": {
+  "umbral": 5,
+  "por_categoria_westminster": 1
+ }
 }

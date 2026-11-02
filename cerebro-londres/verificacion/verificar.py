@@ -94,6 +94,22 @@ for ruta in sorted(glob.glob(os.path.join(RAIZ, "lago", "*.json"))):
     check(f"{rel}: toda fuente declara si trae datos de personas",
           all(str(f.get("personas", "")).strip() for f in fuentes),
           [f.get("id") for f in fuentes if not str(f.get("personas", "")).strip()])
+    # Cada fuente lleva el ID del Excel del taller (F01…) o la suma de los que la alimentan
+    check(f"{rel}: toda fuente con ID Fxx del taller",
+          all(re.fullmatch(r"F\d{2}(\+F\d{2})*", str(f.get("ficha", ""))) and f.get("ficha") == C.IDS_TALLER.get(f.get("id"))
+              for f in fuentes),
+          [f.get("id") for f in fuentes if f.get("ficha") != C.IDS_TALLER.get(f.get("id"))])
+    # Semáforo de la guía en toda fuente externa que sigue viva: el mismo de las rastreadas
+    SEM = {"origen": {"estado", "academia", "empresa", "colab", "sin-confirmar"}, "personas": {"no", "agregado", "libre", "identificable"},
+           "acceso": {"api", "pdf", "bloquea", "llave"}}
+    sin_sem = [f.get("id") for f in fuentes if f.get("licencia") != "derivado" and f.get("estado") != "caido"
+               and not (isinstance(f.get("semaforo"), dict)
+                        and all(f["semaforo"].get(k) in v for k, v in SEM.items()))]
+    check(f"{rel}: toda fuente externa lleva su semáforo (origen · personas · acceso)", not sin_sem, sin_sem)
+    # Lo aproximado (modelo, atención, mapeo voluntario) se rotula: el PROXY del enunciado
+    check(f"{rel}: fuentes aproximadas rotuladas como tales",
+          all(f.get("aproximado") == C.APROXIMADOS.get(f.get("id")) for f in fuentes),
+          [f.get("id") for f in fuentes if f.get("aproximado") != C.APROXIMADOS.get(f.get("id"))])
     # Lista cerrada: el enunciado avisa que Lima escribió la licencia de 34 maneras
     fuera = sorted({f.get("licencia") for f in fuentes} - LICENCIAS)
     check(f"{rel}: licencias dentro de la lista cerrada", not fuera, fuera)
@@ -182,6 +198,28 @@ if os.path.exists(cat):
     check("el catálogo cuenta también lo que no sirvió",
           any(f.get("estado") in ("caido", "excluido", "candidato") for f in ds),
           "un catálogo donde todo funcionó es un catálogo incompleto")
+
+# Umbral de celdas pequeñas: ninguna celda de conteo de casos por debajo de C.UMBRAL_CELDA
+# (solo conteos de casos o personas: un mirador o un hotel en OpenStreetMap es un lugar, no una persona)
+LISTAS_DE_CONTEO = [("seguridad", "por_categoria"), ("seguridad", "por_resultado"), ("seguridad_boroughs", "por_categoria_westminster")]
+sb = json.load(open(os.path.join(RAIZ, "lago", "seguridad_boroughs.json"), encoding="utf-8"))
+check("las categorías de Westminster (F17) suman el total de 12 meses: agrupar no deja una celda recuperable restando",
+      sum(x["n"] for x in sb["listas"]["por_categoria_westminster"]) == sb["cifras"]["delitos_12m_westminster"]["valor"],
+      (sum(x["n"] for x in sb["listas"]["por_categoria_westminster"]), sb["cifras"]["delitos_12m_westminster"]["valor"]))
+chicas = []
+for tema, clave in LISTAS_DE_CONTEO:
+    ruta = os.path.join(RAIZ, "lago", f"{tema}.json")
+    for fila in json.load(open(ruta, encoding="utf-8"))["listas"].get(clave, []):
+        n = fila["n"] if isinstance(fila, dict) else fila[1]
+        if isinstance(n, int) and n < C.UMBRAL_CELDA:
+            chicas.append((tema, clave, fila))
+check(f"ninguna celda de conteo publicada por debajo del umbral de {C.UMBRAL_CELDA}", not chicas, chicas)
+
+# Cada fuente rotulada como aproximada existe de verdad en el lago (la lista no se pudre sola)
+en_lago = {f.get("id") for r in glob.glob(os.path.join(RAIZ, "lago", "*.json"))
+           for f in json.load(open(r, encoding="utf-8")).get("fuentes", [])}
+check("toda fuente aproximada de catalogo/aproximados.json está en el lago",
+      set(C.APROXIMADOS) <= en_lago, sorted(set(C.APROXIMADOS) - en_lago))
 
 print(f"\n{fallos} fallos")
 sys.exit(1 if fallos else 0)

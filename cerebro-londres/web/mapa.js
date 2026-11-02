@@ -66,6 +66,13 @@ window.MAPA = (function () {
     }
   };
 
+  // Tema del lago que alimenta cada capa del mapa: de ahí sale el chip con el ID Fxx.
+  const TEMA_METRICA = {
+    precio: 'economia', densidad: 'atlas_boroughs', tax: 'finanzas',
+    delitos: 'seguridad_boroughs', imd: 'privacion', vida: 'salud'
+  };
+  const FX = (...a) => (window.SECCIONES && window.SECCIONES.fx) ? window.SECCIONES.fx(...a) : '';
+
   function cuantiles(valores, n) {
     const v = valores.filter(x => typeof x === 'number' && !isNaN(x)).sort((a, b) => a - b);
     if (!v.length) return [1, 2, 3, 4];
@@ -257,7 +264,10 @@ window.MAPA = (function () {
 
       if (k) k.textContent = etiquetaKicker || 'TELEMETRÍA TERRITORIAL · BOROUGH';
       t.textContent = p.nombre || 'Westminster';
-      if (s) s.textContent = `${p.codigo || 'E09000033'} · ${p.area_km2 ? fmtDec(p.area_km2) + ' km²' : 'Greater London'} · ${p.poblacion ? fmtInt(p.poblacion) + ' hab' : ''}`;
+      if (s) {
+        s.textContent = `${p.codigo || 'E09000033'} · ${p.area_km2 ? fmtDec(p.area_km2) + ' km²' : 'Greater London'} · ${p.poblacion ? fmtInt(p.poblacion) + ' hab' : ''} `;
+        s.insertAdjacentHTML('beforeend', FX('atlas_boroughs'));
+      }
 
       const defs = [
         { k: 'precio',   nom: 'Precio vivienda', val: p.precio,       fmt: fmtGBP },
@@ -271,7 +281,7 @@ window.MAPA = (function () {
       if (!m.querySelector('.hudDato')) {
         m.innerHTML = defs.map(d =>
           `<div class="hudDato" data-hk="${d.k}">` +
-            `<span>${d.nom}</span><strong>—</strong>` +
+            `<span>${d.nom} ${FX(TEMA_METRICA[d.k])}</span><strong>—</strong>` +
           `</div>`
         ).join('');
       }
@@ -344,7 +354,7 @@ window.MAPA = (function () {
       svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
       svg.setAttribute('class', 'miniMapaSvg');
       svg.setAttribute('role', 'img');
-      svg.setAttribute('aria-label', 'Mapa interactivo de los 18 wards electorales de Westminster');
+      svg.setAttribute('aria-label', `Mapa interactivo de los ${wardsGeo.features.length} wards electorales de Westminster`);
 
       // Retícula técnica de fondo (paralelos y meridianos de referencia)
       const gGrid = document.createElementNS(ns, 'g');
@@ -407,7 +417,10 @@ window.MAPA = (function () {
             const hudS = document.getElementById('hudSub');
             if (hudK) hudK.textContent = 'WARD ELECTORAL · VUELO DESDE PORTADA';
             if (hudT) hudT.textContent = nom;
-            if (hudS) hudS.textContent = `${cod} · City of Westminster (E09000033)`;
+            if (hudS) {
+              hudS.textContent = `${cod} · City of Westminster (E09000033) `;
+              hudS.insertAdjacentHTML('beforeend', FX('geo'));
+            }
           }
         };
 
@@ -427,7 +440,7 @@ window.MAPA = (function () {
       svg.addEventListener('pointerleave', () => {
         if (lectura) {
           lectura.innerHTML =
-            `<span><strong>City of Westminster</strong> · 18 wards electorales</span>` +
+            `<span><strong>City of Westminster</strong> · ${wardsGeo.features.length} wards electorales</span>` +
             `<code>E09000033</code>`;
         }
       });
@@ -493,7 +506,7 @@ window.MAPA = (function () {
       const ley = document.getElementById('mapaLeyenda');
       if (ley) {
         ley.innerHTML =
-          `<span class="leyendaItem"><strong>${conf.titulo}:</strong></span>` +
+          `<span class="leyendaItem"><strong>${conf.titulo}:</strong> ${FX(TEMA_METRICA[claveMetrica] || 'economia')}</span>` +
           `<span class="leyendaItem"><i class="leyendaSw" style="background:${esc[0]}"></i> &lt;${conf.fmt(cortes[0])}</span>` +
           `<span class="leyendaItem"><i class="leyendaSw" style="background:${esc[1]}"></i> Q2</span>` +
           `<span class="leyendaItem"><i class="leyendaSw" style="background:${esc[2]}"></i> Q3</span>` +
@@ -756,7 +769,8 @@ window.MAPA = (function () {
             `<div style="font-family:var(--font-mono);font-size:10px;color:var(--acento);letter-spacing:.05em">PATRIMONIO GRADO I · HISTORIC ENGLAND</div>` +
             `<strong style="font-family:var(--font-display);font-size:14px">${p.nombre}</strong><br>` +
             `<span style="font-size:12px;color:var(--suave)">Ref. oficial: <code>${p.referencia}</code></span><br>` +
-            (p.url ? `<a href="${p.url}" target="_blank" rel="noopener noreferrer" style="font-size:12px;color:var(--acento2);font-weight:600">Ver ficha en Historic England ↗</a>` : '')
+            (p.url ? `<a href="${p.url}" target="_blank" rel="noopener noreferrer" style="font-size:12px;color:var(--acento2);font-weight:600">Ver ficha en Historic England ↗</a> ` : '') +
+            FX('patrimonio')
           )
           .addTo(mapa);
       });
@@ -770,7 +784,7 @@ window.MAPA = (function () {
           .setHTML(
             `<div style="font-family:var(--font-mono);font-size:10px;color:var(--acento2);letter-spacing:.05em">ENVIRONMENT AGENCY · RIESGO HÍDRICO</div>` +
             `<strong style="font-family:var(--font-display);font-size:14px">Zona de Inundación Nivel ${p.nivel}</strong><br>` +
-            `<span style="font-size:12px">Modelo: ${p.tipo} · Ref: <code>${p.referencia}</code></span>`
+            `<span style="font-size:12px">Modelo: ${p.tipo} · Ref: <code>${p.referencia}</code></span> ` + FX('riesgo')
           )
           .addTo(mapa);
       });
@@ -785,7 +799,7 @@ window.MAPA = (function () {
         // Verificar si también hizo clic dentro de un ward de Westminster
         const wardsHit = mapa.queryRenderedFeatures(e.point, { layers: ['wards-relleno-hover'] });
         const wardInfo = wardsHit && wardsHit.length
-          ? `<div style="margin-top:6px;padding-top:6px;border-top:1px dashed var(--linea);font-family:var(--font-mono);font-size:11px;color:var(--acento)">Ward electoral: <strong>${wardsHit[0].properties.nombre}</strong> (${wardsHit[0].properties.codigo})</div>`
+          ? `<div style="margin-top:6px;padding-top:6px;border-top:1px dashed var(--linea);font-family:var(--font-mono);font-size:11px;color:var(--acento)">Ward electoral: <strong>${wardsHit[0].properties.nombre}</strong> (${wardsHit[0].properties.codigo}) ${FX('geo')}</div>`
           : '';
 
         new maplibregl.Popup({ closeButton: false })
@@ -794,7 +808,8 @@ window.MAPA = (function () {
             `<div style="font-family:var(--font-mono);font-size:10px;color:var(--acento);letter-spacing:.05em">${p.codigo} · GREATER LONDON</div>` +
             `<strong style="font-family:var(--font-display);font-size:16px">${p.nombre}</strong><br>` +
             `<span style="font-size:12px">${conf.titulo}: <strong>${valPrincipal}</strong></span><br>` +
-            `<span style="font-size:11px;color:var(--suave)">Población: ${fmtInt(p.poblacion)} · Densidad: ${fmtInt(p.densidad)} hab/km²</span>` +
+            `<span style="font-size:11px;color:var(--suave)">Población: ${fmtInt(p.poblacion)} · Densidad: ${fmtInt(p.densidad)} hab/km²</span> ` +
+            FX('atlas_boroughs') + (TEMA_METRICA[metricaActual] === 'atlas_boroughs' ? '' : FX(TEMA_METRICA[metricaActual])) +
             wardInfo
           )
           .addTo(mapa);

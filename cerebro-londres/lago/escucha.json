@@ -4,6 +4,14 @@
  "fuentes": [
   {
    "id": "wikimedia_pageviews",
+   "ficha": "F01",
+   "aproximado": "Mide atención, no personas: son vistas de un artículo de Wikipedia, no visitantes físicos del borough.",
+   "semaforo": {
+    "origen": "colab",
+    "personas": "no",
+    "acceso": "api"
+   },
+   "atribucion": "Wikimedia Analytics, bajo CC0: no exige atribución; se cita por transparencia.",
    "nombre": "Wikimedia Pageviews API",
    "entidad": "Wikimedia",
    "url": "https://wikimedia.org/api/rest_v1/metrics/pageviews/",

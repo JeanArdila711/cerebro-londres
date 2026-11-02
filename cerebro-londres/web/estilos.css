@@ -1162,6 +1162,59 @@ main {
   color: var(--suave);
 }
 
+/* Chip de fuente: el ID del taller (F01…) que abre la ficha de procedencia */
+.chipFuente {
+  display: inline-block;
+  margin-left: 4px;
+  padding: 1px 6px;
+  font: 600 0.68rem/1.4 var(--font-mono);
+  color: var(--acento2);
+  background: transparent;
+  border: 1px solid currentColor;
+  border-radius: 3px;
+  cursor: pointer;
+  vertical-align: baseline;
+}
+
+/* Dato aproximado (PROXY): el chip se pinta en ámbar y dice «aprox.» */
+.chipFuente.chipProxy {
+  color: var(--alerta);
+  background: var(--alerta-fondo);
+}
+
+.tileProxy {
+  display: inline-block;
+  padding: 0 5px;
+  margin-right: 2px;
+  font-weight: 700;
+  color: var(--alerta);
+  border: 1px solid var(--alerta);
+  background: var(--alerta-fondo);
+  border-radius: 3px;
+}
+
+.atribucion {
+  margin: 18px 0 0;
+  padding-top: 8px;
+  border-top: 1px solid var(--linea);
+  font: 400 0.7rem/1.5 var(--font-mono);
+  color: var(--suave);
+}
+
+.proxyLeyenda {
+  margin-top: 8px;
+  font: 400 0.72rem/1.5 var(--font-mono);
+  color: var(--suave);
+}
+
+.proxyLeyenda .chipFuente { pointer-events: none; }
+
+.chipFuente:hover,
+.chipFuente:focus-visible {
+  background: var(--acento2);
+  color: var(--fondo, #fff);
+}
+
 /* Notas de Gobernanza / Límites del Sistema (reemplazo editorial de .aviso) */
 .aviso {
   position: relative;
@@ -1664,6 +1717,8 @@ main {
 }
 
 @media (max-width: 640px) {
+  .chipFuente { padding: 4px 8px; }
+
   .mapaHUD {
     top: auto;
     bottom: 34px;

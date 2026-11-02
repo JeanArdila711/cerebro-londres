@@ -4,6 +4,14 @@
  "fuentes": [
   {
    "id": "osm_transporte",
+   "ficha": "F08",
+   "aproximado": "Conteo de mapeo voluntario: puede faltar lo que nadie ha dibujado, así que es una cota inferior.",
+   "semaforo": {
+    "origen": "colab",
+    "personas": "no",
+    "acceso": "api"
+   },
+   "atribucion": "© OpenStreetMap contributors, bajo la licencia ODbL 1.0 (openstreetmap.org/copyright).",
    "nombre": "OpenStreetMap · Overpass API (transporte)",
    "entidad": "OSM",
    "url": "https://wiki.openstreetmap.org/wiki/Overpass_API",
@@ -19,6 +27,7 @@
   },
   {
    "id": "tfl_stoppoint",
+   "ficha": "F11",
    "nombre": "TfL Unified API · StopPoint",
    "entidad": "TfL",
    "url": "https://api-portal.tfl.gov.uk/api-details#api=StopPoint",

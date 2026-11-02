@@ -114,7 +114,7 @@ fuentes = [{
     "probado": C.hoy(),
     "estado": "vivo",
     "licencia": "OGL-3.0",
-    "personas": "no",
+    "personas": "no: conteos agregados por zona",
     "proteccion": "agregados; celdas con cohorte chica se suprimen en origen (ej. City of London)",
     "uso": "sección Sociedad · educación",
     "nota": ("«Ausentismo persistente» = alumnos con 10% o más de sesiones perdidas en lo que va "

@@ -74,7 +74,7 @@ fuentes = [{
     "probado": C.hoy(),
     "estado": "vivo",
     "licencia": "OGL-3.0",
-    "personas": "no",
+    "personas": "no: conteos agregados por zona",
     "proteccion": "abierto, solo agregados",
     "uso": "sección Territorio · privación relativa por zona",
     "nota": ("Rango relativo entre LSOA de Inglaterra, no una medida absoluta. Reemplaza "
@@ -86,8 +86,8 @@ cifras = {
                                    "Unidades censales de Westminster con dato de privación"),
     "score_medio_westminster": C.cifra(round(score_medio_foco, 2), "puntaje IMD", "imd_2025", C.hoy(),
                                         "Promedio simple de los LSOA de Westminster; más alto = más privado"),
-    "puesto_privacion_westminster": C.cifra(foco_rank["puesto_privacion"], "puesto de 32", "imd_2025", C.hoy(),
-                                             "1 = el borough en promedio más privado de los 32 con dato"),
+    "puesto_privacion_westminster": C.cifra(foco_rank["puesto_privacion"], f"puesto de {len(ranking)}", "imd_2025", C.hoy(),
+                                             f"1 = el borough en promedio más privado de los {len(ranking)} con dato"),
     "lsoa_mas_privado": C.cifra(mas_privado[C_LSOA_NM], "LSOA", "imd_2025", C.hoy(),
                                  f"Rank nacional {mas_privado[C_RANK]} de ~33.000, decil {mas_privado[C_DECILE]}"),
     "lsoa_menos_privado": C.cifra(menos_privado[C_LSOA_NM], "LSOA", "imd_2025", C.hoy(),
@@ -105,8 +105,8 @@ listas = {
 ruta = C.escribir(
     "privacion", fuentes, cifras, listas=listas,
     territorio=FOCO_SALIDA,
-    nota=(f"Westminster: puesto {foco_rank['puesto_privacion']} de 32 boroughs con dato por score promedio "
-          "(falta City of London, sin boroughs code E09 propio en este archivo tampoco). Un promedio "
+    nota=(f"Westminster: puesto {foco_rank['puesto_privacion']} de {len(ranking)} boroughs con dato por score promedio "
+          "(incluye City of London). Un promedio "
           "esconde la dispersión interna: Westminster tiene LSOA entre el decil más privado y el menos "
           "privado del país al mismo tiempo, visible en la lista lsoa_westminster."),
 )

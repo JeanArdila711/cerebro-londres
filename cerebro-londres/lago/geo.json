@@ -4,6 +4,13 @@
  "fuentes": [
   {
    "id": "ons_geography",
+   "ficha": "F07",
+   "semaforo": {
+    "origen": "estado",
+    "personas": "no",
+    "acceso": "api"
+   },
+   "atribucion": "Contains public sector information licensed under the Open Government Licence v3.0. Contains OS data © Crown copyright and database right 2024/2025.",
    "nombre": "ONS Open Geography Portal · Local Authority Districts (December 2025) and Wards (December 2024), generalised",
    "entidad": "ONS",
    "url": "https://geoportal.statistics.gov.uk/",

@@ -84,7 +84,7 @@ cifras = {
     "paradas_londres_n": C.cifra(len(filas) - sin_borough, "paradas", "dft_naptan", C.hoy(),
                                   "Activas y clasificadas en uno de los 33 boroughs"),
     "paradas_westminster": C.cifra(foco["paradas_n"], "paradas", "dft_naptan", C.hoy(), ""),
-    "puesto_paradas_westminster": C.cifra(foco["puesto"], "puesto de 33", "dft_naptan", C.hoy(),
+    "puesto_paradas_westminster": C.cifra(foco["puesto"], f"puesto de {len(boroughs)}", "dft_naptan", C.hoy(),
                                            "1 = el borough con más paradas"),
     "borough_mas_paradas": C.cifra(mas_paradas["nombre"], "borough", "dft_naptan", C.hoy(),
                                     f"{mas_paradas['paradas_n']} paradas"),

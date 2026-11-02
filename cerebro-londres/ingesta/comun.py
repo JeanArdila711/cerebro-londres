@@ -12,6 +12,32 @@ from io import BytesIO
 
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
 LAGO = RAIZ / "lago"
+
+# ID de cada fuente en el Excel del taller (F01, F02…). Una sola tabla, versionada:
+# la ficha del frontend muestra este ID y el Excel usa el mismo.
+IDS_TALLER = json.loads((RAIZ / "catalogo" / "ids_taller.json").read_text(encoding="utf-8"))
+# Fuentes que entregan una aproximación (modelo, atención, mapeo voluntario) y no una medición:
+# slug -> por qué. La UI las rotula «aprox.» (el PROXY del enunciado).
+APROXIMADOS = json.loads((RAIZ / "catalogo" / "aproximados.json").read_text(encoding="utf-8"))
+
+# Semáforo de la guía (origen · personas · acceso) de cada fuente externa integrada, igual que el de las rastreadas.
+SEMAFORO = json.loads((RAIZ / "catalogo" / "semaforo.json").read_text(encoding="utf-8"))
+# Atribución exacta que exige la licencia cuando no basta la frase estándar de la OGL (se muestra en cada vista).
+ATRIBUCIONES = json.loads((RAIZ / "catalogo" / "atribuciones.json").read_text(encoding="utf-8"))
+# Umbral de celdas pequeñas: una celda de conteo de casos o personas por debajo de este número no se publica.
+UMBRAL_CELDA = 5
+
+
+def con_ficha(f):
+    """La fuente con su ID del taller justo después de `id`. Falla si no tiene uno."""
+    if f["id"] not in IDS_TALLER:
+        raise ValueError(f"fuente {f['id']!r} sin ID Fxx en catalogo/ids_taller.json")
+    extra = {}
+    for clave, tabla in (("aproximado", APROXIMADOS), ("semaforo", SEMAFORO), ("atribucion", ATRIBUCIONES)):
+        if f["id"] in tabla:
+            extra[clave] = tabla[f["id"]]
+    return {"id": f["id"], "ficha": IDS_TALLER[f["id"]], **extra,
+            **{k: v for k, v in f.items() if k not in ("id", "ficha", "aproximado", "semaforo", "atribucion")}}
 CRUDO = LAGO / "raw"
 UA = {"User-Agent": "taller-sistemas-de-informacion/1.0 (curso universitario)"}
 
@@ -135,6 +161,7 @@ def serie(puntos, unidad, fuente):
 
 def escribir(tema, fuentes, cifras=None, series=None, listas=None, **extra):
     """Escribe lago/<tema>.json con la forma del contrato y lo valida de entrada."""
+    fuentes = [con_ficha(f) for f in fuentes]
     for f in fuentes:
         if f.get("licencia") not in LICENCIAS:
             raise ValueError(f"licencia fuera de la lista cerrada: {f.get('licencia')!r} en {f.get('id')}")

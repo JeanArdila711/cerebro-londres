@@ -4,6 +4,14 @@
  "fuentes": [
   {
    "id": "open_meteo_clima",
+   "ficha": "F06",
+   "aproximado": "Valor de modelo meteorológico interpolado al centroide del borough, no una estación física.",
+   "semaforo": {
+    "origen": "sin-confirmar",
+    "personas": "no",
+    "acceso": "api"
+   },
+   "atribucion": "Weather data by Open-Meteo.com, bajo CC BY 4.0.",
    "nombre": "Open-Meteo · Weather Forecast API",
    "entidad": "Open-Meteo",
    "url": "https://open-meteo.com/en/docs",
@@ -19,6 +27,14 @@
   },
   {
    "id": "open_meteo_aire",
+   "ficha": "F10",
+   "aproximado": "Valor de modelo (CAMS) en el centroide del borough, no una lectura de la red de monitoreo.",
+   "semaforo": {
+    "origen": "sin-confirmar",
+    "personas": "no",
+    "acceso": "api"
+   },
+   "atribucion": "Air quality data by Open-Meteo.com, bajo CC BY 4.0, a partir del modelo CAMS.",
    "nombre": "Open-Meteo · Air Quality API (CAMS)",
    "entidad": "Open-Meteo",
    "url": "https://open-meteo.com/en/docs/air-quality-api",
@@ -34,6 +50,14 @@
   },
   {
    "id": "tfl_airquality",
+   "ficha": "F09",
+   "aproximado": "Pronóstico cualitativo para toda la ciudad, no una medición del día.",
+   "semaforo": {
+    "origen": "estado",
+    "personas": "no",
+    "acceso": "api"
+   },
+   "atribucion": "Powered by TfL Open Data.",
    "nombre": "TfL · AirQuality API",
    "entidad": "TfL",
    "url": "https://api-portal.tfl.gov.uk/api-details#api=AirQuality",

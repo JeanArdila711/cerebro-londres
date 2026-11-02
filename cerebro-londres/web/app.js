@@ -74,11 +74,14 @@
     const ok = res.filter(r => r.status === 'fulfilled').length;
     if (estadoTxt) estadoTxt.textContent = `lago: ${ok}/${TEMAS.length} temas`;
 
-    // Telemetría viva de Londres en la cabecera (hora oficial Europe/London + temperatura del lago)
+    // Cabecera: la hora de Londres es el reloj del navegador (esa sí es en vivo); la temperatura es la
+    // última lectura guardada en el lago (Open-Meteo), con su vigencia visible y su chip de fuente.
     const temp = LAGO.sensores && LAGO.sensores.cifras && LAGO.sensores.cifras.temperatura_actual;
     const elClima = $('#climaLondres');
     if (elClima && temp && temp.valor != null) {
-      elClima.textContent = `${temp.valor} ${temp.unidad || '°C'}`;
+      const vig = String(temp.vigencia || '').replace('T', ' ');
+      elClima.textContent = `${temp.valor} ${temp.unidad || '°C'}` + (vig ? ` · lectura ${vig}` : '');
+      elClima.title = `Última lectura guardada en el lago, no en vivo. Vigencia: ${vig || 'sin fecha'}`;
     }
     const elReloj = $('#relojLondres');
     if (elReloj) {
@@ -97,7 +100,7 @@
       setInterval(pintarHora, 30000);
     }
 
-    const probados = Object.values(LAGO).map(j => j && j.probado).filter(Boolean).sort();
+    const probados = Object.entries(LAGO).filter(([k]) => k !== 'catalogo').map(([, j]) => j && j.probado).filter(Boolean).sort();
     if (probados.length) {
       const a = probados[0], b = probados[probados.length - 1];
       $('#pieProbado').textContent = 'AUDITORÍA DE VIGENCIA · Lago probado entre ' + a + (b !== a ? ' y ' + b : '') +
@@ -105,6 +108,11 @@
     }
 
     try { SECCIONES.render(LAGO); } catch (e) { console.error('secciones', e); }
+    // Chip de fuente de la temperatura (fx() usa LAGO, que SECCIONES.render ya recibió)
+    try {
+      const chipTemp = temp && temp.fuente ? SECCIONES.fx(['sensores', temp.fuente]) : '';
+      if (elClima && chipTemp) elClima.insertAdjacentHTML('afterend', ' ' + chipTemp);
+    } catch (e) { console.error('chip clima', e); }
     try { MAPA.init(LAGO); } catch (e) { console.error('mapa', e); }
     navegacion(); buscador(); ficha();
     if (location.hash) {
@@ -211,9 +219,13 @@
       });
       document.querySelectorAll('.tile').forEach(t => {
         const sec = t.closest('.sec');
+        // La baldosa lleva el ID Fxx como texto en su línea de vigencia: el resultado lo repite
+        const vig = t.querySelector('.vig');
+        const idf = vig && /F\d{2}(\+F\d{2})*/.exec(vig.textContent);
+        const chip = idf ? { textContent: idf[0] + (t.querySelector('.tileProxy') ? ' ≈ aprox.' : '') } : null;
         items.push({
           t: t.querySelector('.l').textContent + ' · ' + t.querySelector('.v').textContent.trim(),
-          s: sec ? sec.querySelector('h1').textContent : '',
+          s: (sec ? sec.querySelector('h1').textContent : '') + (chip ? ' · ' + chip.textContent : ''),
           go: () => { t.scrollIntoView({ behavior: 'smooth', block: 'center' }); t.focus(); }
         });
       });

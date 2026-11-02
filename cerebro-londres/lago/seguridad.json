@@ -4,6 +4,12 @@
  "fuentes": [
   {
    "id": "police_uk",
+   "ficha": "F04",
+   "semaforo": {
+    "origen": "estado",
+    "personas": "identificable",
+    "acceso": "api"
+   },
    "nombre": "data.police.uk · Street-level crimes API",
    "entidad": "Home Office",
    "url": "https://data.police.uk/docs/method/crime-street/",
@@ -15,7 +21,7 @@
    "personas": "la API devuelve registros por delito con ubicación aproximada; al lago solo entran conteos agregados, nunca el registro individual",
    "proteccion": "solo agregados",
    "uso": "sección Seguridad",
-   "nota": "Ubicaciones desplazadas a puntos ancla por la propia fuente. Cuenta delitos REGISTRADOS, no delitos ocurridos: los cambios pueden venir de la denuncia o del registro, no del hecho."
+   "nota": "Ubicaciones desplazadas a puntos ancla por la propia fuente. Cuenta delitos REGISTRADOS, no delitos ocurridos: los cambios pueden venir de la denuncia o del registro, no del hecho. Westminster se consulta con un polígono aproximado, no con el límite oficial del borough, y puede faltar algún mes: su total no es comparable con el desglose por borough de la MPS (tema seguridad_boroughs)."
   }
  ],
  "cifras": {

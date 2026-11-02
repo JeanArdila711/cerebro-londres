@@ -4,6 +4,12 @@
  "fuentes": [
   {
    "id": "imd_2025",
+   "ficha": "F12",
+   "semaforo": {
+    "origen": "estado",
+    "personas": "agregado",
+    "acceso": "api"
+   },
    "nombre": "English Indices of Deprivation 2025 · File 7 (MHCLG)",
    "entidad": "MHCLG",
    "url": "https://www.gov.uk/government/statistics/english-indices-of-deprivation-2025",
@@ -12,7 +18,7 @@
    "probado": "2026-10-02",
    "estado": "vivo",
    "licencia": "OGL-3.0",
-   "personas": "no",
+   "personas": "no: conteos agregados por zona",
    "proteccion": "abierto, solo agregados",
    "uso": "sección Territorio · privación relativa por zona",
    "nota": "Rango relativo entre LSOA de Inglaterra, no una medida absoluta. Reemplaza al IoD2019 que el London Datastore todavía enlaza con ese nombre."
@@ -37,10 +43,10 @@
   },
   "puesto_privacion_westminster": {
    "valor": 12,
-   "unidad": "puesto de 32",
+   "unidad": "puesto de 33",
    "fuente": "imd_2025",
    "vigencia": "2026-10-02",
-   "nota": "1 = el borough en promedio más privado de los 32 con dato",
+   "nota": "1 = el borough en promedio más privado de los 33 con dato",
    "estado": "integrado"
   },
   "lsoa_mas_privado": {
@@ -1127,5 +1133,5 @@
   ]
  },
  "territorio": "City of Westminster",
- "nota": "Westminster: puesto 12 de 32 boroughs con dato por score promedio (falta City of London, sin boroughs code E09 propio en este archivo tampoco). Un promedio esconde la dispersión interna: Westminster tiene LSOA entre el decil más privado y el menos privado del país al mismo tiempo, visible en la lista lsoa_westminster."
+ "nota": "Westminster: puesto 12 de 33 boroughs con dato por score promedio (incluye City of London). Un promedio esconde la dispersión interna: Westminster tiene LSOA entre el decil más privado y el menos privado del país al mismo tiempo, visible en la lista lsoa_westminster."
 }

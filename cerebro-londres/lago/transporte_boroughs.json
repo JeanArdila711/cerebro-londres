@@ -4,6 +4,12 @@
  "fuentes": [
   {
    "id": "dft_naptan",
+   "ficha": "F28",
+   "semaforo": {
+    "origen": "estado",
+    "personas": "no",
+    "acceso": "api"
+   },
    "nombre": "NaPTAN · National Public Transport Access Nodes (área 490, Londres)",
    "entidad": "DfT",
    "url": "https://www.gov.uk/government/publications/national-public-transport-access-node-schema",

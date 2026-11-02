@@ -74,7 +74,7 @@ cifras = {
         foco["en_establecimiento_colectivo"], "residentes", "ons_censo2021", "2021-03-21",
         f"{pct_colectivo}% del total: residencias, hoteles, cárceles, cuarteles, halls universitarios"),
     "puesto_poblacion_censo2021_westminster": C.cifra(
-        foco["puesto_poblacion"], "puesto de 33", "ons_censo2021", "2021-03-21",
+        foco["puesto_poblacion"], f"puesto de {len(boroughs)}", "ons_censo2021", "2021-03-21",
         "1 = el borough más poblado en el censo 2021"),
 }
 

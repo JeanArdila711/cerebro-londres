@@ -85,7 +85,9 @@ fuentes = [{
     "uso": "sección Seguridad",
     "nota": ("Ubicaciones desplazadas a puntos ancla por la propia fuente. Cuenta delitos "
              "REGISTRADOS, no delitos ocurridos: los cambios pueden venir de la denuncia "
-             "o del registro, no del hecho."),
+             "o del registro, no del hecho. Westminster se consulta con un polígono aproximado, "
+             "no con el límite oficial del borough, y puede faltar algún mes: su total no es "
+             "comparable con el desglose por borough de la MPS (tema seguridad_boroughs)."),
 }]
 
 cifras = {

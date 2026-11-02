@@ -4,6 +4,12 @@
  "fuentes": [
   {
    "id": "ons_mye_nomis",
+   "ficha": "F02",
+   "semaforo": {
+    "origen": "estado",
+    "personas": "no",
+    "acceso": "api"
+   },
    "nombre": "ONS · Population estimates - local authority based by five year age band (Nomis NM_31_1)",
    "entidad": "ONS",
    "url": "https://www.nomisweb.co.uk/datasets/pestsyoala",

@@ -1,0 +1,107 @@
+{
+ "wikimedia_pageviews": {
+  "origen": "colab",
+  "personas": "no",
+  "acceso": "api"
+ },
+ "ons_mye_nomis": {
+  "origen": "estado",
+  "personas": "no",
+  "acceso": "api"
+ },
+ "osm_overpass": {
+  "origen": "colab",
+  "personas": "no",
+  "acceso": "api"
+ },
+ "police_uk": {
+  "origen": "estado",
+  "personas": "identificable",
+  "acceso": "api"
+ },
+ "ukhpi": {
+  "origen": "estado",
+  "personas": "no",
+  "acceso": "api"
+ },
+ "open_meteo_clima": {
+  "origen": "sin-confirmar",
+  "personas": "no",
+  "acceso": "api"
+ },
+ "ons_geography": {
+  "origen": "estado",
+  "personas": "no",
+  "acceso": "api"
+ },
+ "osm_transporte": {
+  "origen": "colab",
+  "personas": "no",
+  "acceso": "api"
+ },
+ "tfl_airquality": {
+  "origen": "estado",
+  "personas": "no",
+  "acceso": "api"
+ },
+ "open_meteo_aire": {
+  "origen": "sin-confirmar",
+  "personas": "no",
+  "acceso": "api"
+ },
+ "imd_2025": {
+  "origen": "estado",
+  "personas": "agregado",
+  "acceso": "api"
+ },
+ "ons_censo2021": {
+  "origen": "estado",
+  "personas": "agregado",
+  "acceso": "api"
+ },
+ "lds_mps_delito_borough": {
+  "origen": "estado",
+  "personas": "agregado",
+  "acceso": "api"
+ },
+ "laqn_daily": {
+  "origen": "academia",
+  "personas": "no",
+  "acceso": "api"
+ },
+ "mhclg_council_tax": {
+  "origen": "estado",
+  "personas": "agregado",
+  "acceso": "api"
+ },
+ "mhclg_homelessness": {
+  "origen": "estado",
+  "personas": "agregado",
+  "acceso": "api"
+ },
+ "fingertips_vida": {
+  "origen": "estado",
+  "personas": "agregado",
+  "acceso": "api"
+ },
+ "planning_flood": {
+  "origen": "estado",
+  "personas": "no",
+  "acceso": "api"
+ },
+ "dft_naptan": {
+  "origen": "estado",
+  "personas": "no",
+  "acceso": "api"
+ },
+ "dfe_absentismo": {
+  "origen": "estado",
+  "personas": "agregado",
+  "acceso": "api"
+ },
+ "planning_listed": {
+  "origen": "estado",
+  "personas": "no",
+  "acceso": "api"
+ }
+}

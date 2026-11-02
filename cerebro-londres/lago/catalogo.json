@@ -1,13 +1,13 @@
 {
  "tema": "catalogo",
- "probado": "2026-10-26",
+ "probado": "2026-11-01",
  "n": 178,
  "por_estado": {
   "integrado": 23,
   "declarado": 15,
-  "candidato": 126,
+  "candidato": 125,
   "caido": 5,
-  "excluido": 9
+  "excluido": 10
  },
  "entidades": [
   "ALVA",
@@ -86,6 +86,7 @@
  "datasets": [
   {
    "id": "atlas_derivado",
+   "ficha": "F02+F05+F07",
    "nombre": "Atlas de los 33 boroughs (tabla derivada del lago)",
    "entidad": "Cerebro Londres",
    "url": "https://landregistry.data.gov.uk/app/ukhpi",
@@ -102,6 +103,7 @@
   },
   {
    "id": "correlaciones_derivado",
+   "ficha": "F02+F05+F07",
    "nombre": "Correlaciones entre métricas de boroughs (derivado del lago)",
    "entidad": "Cerebro Londres",
    "url": "https://github.com/JeanArdila711/cerebro-londres",
@@ -118,6 +120,12 @@
   },
   {
    "id": "dfe_absentismo",
+   "ficha": "F29",
+   "semaforo": {
+    "origen": "estado",
+    "personas": "agregado",
+    "acceso": "api"
+   },
    "nombre": "Pupil attendance in schools · Persistent absence in schools (DfE, Explore Education Statistics API)",
    "entidad": "DfE",
    "url": "https://explore-education-statistics.service.gov.uk/find-statistics/pupil-attendance-in-schools",
@@ -126,7 +134,7 @@
    "probado": "2026-10-26",
    "estado": "integrado",
    "licencia": "OGL-3.0",
-   "personas": "no",
+   "personas": "no: conteos agregados por zona",
    "proteccion": "agregados; celdas con cohorte chica se suprimen en origen (ej. City of London)",
    "uso": "sección Sociedad · educación",
    "nota": "«Ausentismo persistente» = alumnos con 10% o más de sesiones perdidas en lo que va del curso, acumulado semana a semana: no es una tasa de la semana aislada, compara bien entre boroughs en la misma semana, no entre semanas distintas del calendario. Incluye primaria, secundaria y especial juntas (filtro «All schools»). City of London queda suprimido por tamaño de cohorte, no por falta de dato.",
@@ -134,6 +142,12 @@
   },
   {
    "id": "dft_naptan",
+   "ficha": "F28",
+   "semaforo": {
+    "origen": "estado",
+    "personas": "no",
+    "acceso": "api"
+   },
    "nombre": "NaPTAN · National Public Transport Access Nodes (área 490, Londres)",
    "entidad": "DfT",
    "url": "https://www.gov.uk/government/publications/national-public-transport-access-node-schema",
@@ -150,6 +164,12 @@
   },
   {
    "id": "fingertips_vida",
+   "ficha": "F25",
+   "semaforo": {
+    "origen": "estado",
+    "personas": "agregado",
+    "acceso": "api"
+   },
    "nombre": "OHID Fingertips · Life expectancy at birth (indicador 90366)",
    "entidad": "OHID",
    "url": "https://fingertips.phe.org.uk/profile/health-profiles",
@@ -158,7 +178,7 @@
    "probado": "2026-10-02",
    "estado": "integrado",
    "licencia": "OGL-3.0",
-   "personas": "no",
+   "personas": "no: conteos agregados por zona",
    "proteccion": "abierto, solo agregados",
    "uso": "sección Salud · esperanza de vida por borough",
    "nota": "Primera fuente de salud del lago. Periodo trienal (2023-25) para suavizar ruido estadístico en áreas pequeñas. El endpoint de metadatos del perfil responde 500; el indicador se encontró leyendo la cabecera del volcado masivo del grupo «Life expectancy and causes of death».",
@@ -166,6 +186,12 @@
   },
   {
    "id": "imd_2025",
+   "ficha": "F12",
+   "semaforo": {
+    "origen": "estado",
+    "personas": "agregado",
+    "acceso": "api"
+   },
    "nombre": "English Indices of Deprivation 2025 · File 7 (MHCLG)",
    "entidad": "MHCLG",
    "url": "https://www.gov.uk/government/statistics/english-indices-of-deprivation-2025",
@@ -174,7 +200,7 @@
    "probado": "2026-10-02",
    "estado": "integrado",
    "licencia": "OGL-3.0",
-   "personas": "no",
+   "personas": "no: conteos agregados por zona",
    "proteccion": "abierto, solo agregados",
    "uso": "sección Territorio · privación relativa por zona",
    "nota": "Rango relativo entre LSOA de Inglaterra, no una medida absoluta. Reemplaza al IoD2019 que el London Datastore todavía enlaza con ese nombre.",
@@ -182,6 +208,13 @@
   },
   {
    "id": "laqn_daily",
+   "ficha": "F19",
+   "semaforo": {
+    "origen": "academia",
+    "personas": "no",
+    "acceso": "api"
+   },
+   "atribucion": "This information has been obtained from the Environmental Research Group of Imperial College London, using data from the London Air Quality Network (https://www.londonair.org.uk). This information is licensed under the terms of the Open Government Licence.",
    "nombre": "London Air Quality Network · Daily Monitoring Index",
    "entidad": "Imperial College London",
    "url": "https://www.londonair.org.uk/",
@@ -189,24 +222,30 @@
    "vigencia": "2026-10-25",
    "probado": "2026-10-26",
    "estado": "integrado",
-   "licencia": "sin-confirmar",
+   "licencia": "OGL-2.0",
    "personas": "no",
    "proteccion": "abierto",
    "uso": "sección Ambiente · aire medido, no modelado",
-   "nota": "Red real de estaciones, financiada por los boroughs, no un modelo. Solo 21-22 boroughs tienen estación activa en un día dado: es un límite real de la red, no un fallo de esta ingesta. Licencia no confirmada.",
+   "nota": "Red real de estaciones, financiada por los boroughs, no un modelo. Entre 14 y 22 boroughs (según el día) tienen estación activa: es un límite real de la red, no un fallo de esta ingesta. Licencia: OGL v2 según la documentación de la API (api.erg.ic.ac.uk, sección «Terms and conditions»), que además trae el texto de atribución; el PDF de términos v1.1 del King's College London ERG no la menciona y restringe redistribuir o modificar el dato (cláusula 9), así que el uso es solo agregado y detrás de la sesión. Atribución: This information has been obtained from the Environmental Research Group of Imperial College London, using data from the London Air Quality Network (https://www.londonair.org.uk). This information is licensed under the terms of the Open Government Licence.",
    "tema": "aire_laqn"
   },
   {
    "id": "lds_mps_delito_borough",
+   "ficha": "F17",
+   "semaforo": {
+    "origen": "estado",
+    "personas": "agregado",
+    "acceso": "api"
+   },
    "nombre": "MPS Recorded Crime: Geographic Breakdown · nivel borough (London Datastore)",
    "entidad": "Metropolitan Police Service",
    "url": "https://data.london.gov.uk/dataset/recorded_crime_summary",
    "resolucion": "borough (BOCU), mensual",
-   "vigencia": "202509 a 202608",
+   "vigencia": "2025-09 a 2026-08",
    "probado": "2026-10-26",
    "estado": "integrado",
    "licencia": "OGL-2.0",
-   "personas": "no",
+   "personas": "no: conteos agregados por zona",
    "proteccion": "abierto, solo agregados",
    "uso": "sección Seguridad · comparar los 33 boroughs",
    "nota": "Cuenta delitos registrados, no víctimas. Cruzado por nombre de BOCU contra los boroughs del ONS; City of London queda fuera porque tiene su propia policía, no la Metropolitana. La tasa por 1.000 habitantes divide sobre población RESIDENTE: en boroughs con mucha población flotante (Westminster el primero, por el centro comercial y turístico) la tasa por residente sobreestima el riesgo frente a quien solo pasa por ahí.",
@@ -214,6 +253,12 @@
   },
   {
    "id": "mhclg_council_tax",
+   "ficha": "F23",
+   "semaforo": {
+    "origen": "estado",
+    "personas": "agregado",
+    "acceso": "api"
+   },
    "nombre": "Council Tax levels set by local authorities in England 2026 to 2027 · Table 8a",
    "entidad": "MHCLG",
    "url": "https://www.gov.uk/government/statistics/council-tax-levels-set-by-local-authorities-in-england-2026-to-2027",
@@ -222,7 +267,7 @@
    "probado": "2026-10-02",
    "estado": "integrado",
    "licencia": "OGL-3.0",
-   "personas": "no",
+   "personas": "no: conteos agregados por zona",
    "proteccion": "abierto",
    "uso": "sección Municipio · financiación local",
    "nota": "Archivo .ods, no CSV. Dentro hay dos conjuntos con el mismo nombre de tabla: «Table_10» es un formulario en blanco de recolección, no un resultado; «Table_8a» dentro de Tables_1-9 es la tabla publicada de verdad.",
@@ -230,6 +275,12 @@
   },
   {
    "id": "mhclg_homelessness",
+   "ficha": "F24",
+   "semaforo": {
+    "origen": "estado",
+    "personas": "agregado",
+    "acceso": "api"
+   },
    "nombre": "Statutory homelessness in England · Detailed local authority level tables (January to March 2026)",
    "entidad": "MHCLG",
    "url": "https://www.gov.uk/government/statistical-data-sets/live-tables-on-homelessness",
@@ -246,6 +297,12 @@
   },
   {
    "id": "ons_censo2021",
+   "ficha": "F13",
+   "semaforo": {
+    "origen": "estado",
+    "personas": "agregado",
+    "acceso": "api"
+   },
    "nombre": "Censo 2021 · TS001, residentes habituales por autoridad local (Nomis NM_2021_1)",
    "entidad": "ONS",
    "url": "https://www.nomisweb.co.uk/census/2021",
@@ -262,6 +319,13 @@
   },
   {
    "id": "ons_geography",
+   "ficha": "F07",
+   "semaforo": {
+    "origen": "estado",
+    "personas": "no",
+    "acceso": "api"
+   },
+   "atribucion": "Contains public sector information licensed under the Open Government Licence v3.0. Contains OS data © Crown copyright and database right 2024/2025.",
    "nombre": "ONS Open Geography Portal · Local Authority Districts (December 2025) and Wards (December 2024), generalised",
    "entidad": "ONS",
    "url": "https://geoportal.statistics.gov.uk/",
@@ -278,6 +342,12 @@
   },
   {
    "id": "ons_mye_nomis",
+   "ficha": "F02",
+   "semaforo": {
+    "origen": "estado",
+    "personas": "no",
+    "acceso": "api"
+   },
    "nombre": "ONS · Population estimates - local authority based by five year age band (Nomis NM_31_1)",
    "entidad": "ONS",
    "url": "https://www.nomisweb.co.uk/datasets/pestsyoala",
@@ -294,6 +364,14 @@
   },
   {
    "id": "open_meteo_aire",
+   "ficha": "F10",
+   "aproximado": "Valor de modelo (CAMS) en el centroide del borough, no una lectura de la red de monitoreo.",
+   "semaforo": {
+    "origen": "sin-confirmar",
+    "personas": "no",
+    "acceso": "api"
+   },
+   "atribucion": "Air quality data by Open-Meteo.com, bajo CC BY 4.0, a partir del modelo CAMS.",
    "nombre": "Open-Meteo · Air Quality API (CAMS)",
    "entidad": "Open-Meteo",
    "url": "https://open-meteo.com/en/docs/air-quality-api",
@@ -310,6 +388,14 @@
   },
   {
    "id": "open_meteo_clima",
+   "ficha": "F06",
+   "aproximado": "Valor de modelo meteorológico interpolado al centroide del borough, no una estación física.",
+   "semaforo": {
+    "origen": "sin-confirmar",
+    "personas": "no",
+    "acceso": "api"
+   },
+   "atribucion": "Weather data by Open-Meteo.com, bajo CC BY 4.0.",
    "nombre": "Open-Meteo · Weather Forecast API",
    "entidad": "Open-Meteo",
    "url": "https://open-meteo.com/en/docs",
@@ -326,6 +412,14 @@
   },
   {
    "id": "osm_overpass",
+   "ficha": "F03",
+   "aproximado": "Conteo de mapeo voluntario: puede faltar lo que nadie ha dibujado, así que es una cota inferior.",
+   "semaforo": {
+    "origen": "colab",
+    "personas": "no",
+    "acceso": "api"
+   },
+   "atribucion": "© OpenStreetMap contributors, bajo la licencia ODbL 1.0 (openstreetmap.org/copyright).",
    "nombre": "OpenStreetMap · Overpass API",
    "entidad": "OSM",
    "url": "https://wiki.openstreetmap.org/wiki/Overpass_API",
@@ -342,6 +436,14 @@
   },
   {
    "id": "osm_transporte",
+   "ficha": "F08",
+   "aproximado": "Conteo de mapeo voluntario: puede faltar lo que nadie ha dibujado, así que es una cota inferior.",
+   "semaforo": {
+    "origen": "colab",
+    "personas": "no",
+    "acceso": "api"
+   },
+   "atribucion": "© OpenStreetMap contributors, bajo la licencia ODbL 1.0 (openstreetmap.org/copyright).",
    "nombre": "OpenStreetMap · Overpass API (transporte)",
    "entidad": "OSM",
    "url": "https://wiki.openstreetmap.org/wiki/Overpass_API",
@@ -358,6 +460,12 @@
   },
   {
    "id": "planning_flood",
+   "ficha": "F27",
+   "semaforo": {
+    "origen": "estado",
+    "personas": "no",
+    "acceso": "api"
+   },
    "nombre": "Planning Data · flood risk zones (Environment Agency Flood Map for Planning)",
    "entidad": "MHCLG",
    "url": "https://www.planning.data.gov.uk/dataset/flood-risk-zone",
@@ -374,6 +482,12 @@
   },
   {
    "id": "planning_listed",
+   "ficha": "F40",
+   "semaforo": {
+    "origen": "estado",
+    "personas": "no",
+    "acceso": "api"
+   },
    "nombre": "Planning Data · listed buildings (Historic England)",
    "entidad": "MHCLG",
    "url": "https://www.planning.data.gov.uk/dataset/listed-building",
@@ -390,6 +504,12 @@
   },
   {
    "id": "police_uk",
+   "ficha": "F04",
+   "semaforo": {
+    "origen": "estado",
+    "personas": "identificable",
+    "acceso": "api"
+   },
    "nombre": "data.police.uk · Street-level crimes API",
    "entidad": "Home Office",
    "url": "https://data.police.uk/docs/method/crime-street/",
@@ -401,11 +521,19 @@
    "personas": "la API devuelve registros por delito con ubicación aproximada; al lago solo entran conteos agregados, nunca el registro individual",
    "proteccion": "solo agregados",
    "uso": "sección Seguridad",
-   "nota": "Ubicaciones desplazadas a puntos ancla por la propia fuente. Cuenta delitos REGISTRADOS, no delitos ocurridos: los cambios pueden venir de la denuncia o del registro, no del hecho.",
+   "nota": "Ubicaciones desplazadas a puntos ancla por la propia fuente. Cuenta delitos REGISTRADOS, no delitos ocurridos: los cambios pueden venir de la denuncia o del registro, no del hecho. Westminster se consulta con un polígono aproximado, no con el límite oficial del borough, y puede faltar algún mes: su total no es comparable con el desglose por borough de la MPS (tema seguridad_boroughs).",
    "tema": "seguridad"
   },
   {
    "id": "tfl_airquality",
+   "ficha": "F09",
+   "aproximado": "Pronóstico cualitativo para toda la ciudad, no una medición del día.",
+   "semaforo": {
+    "origen": "estado",
+    "personas": "no",
+    "acceso": "api"
+   },
+   "atribucion": "Powered by TfL Open Data.",
    "nombre": "TfL · AirQuality API",
    "entidad": "TfL",
    "url": "https://api-portal.tfl.gov.uk/api-details#api=AirQuality",
@@ -422,6 +550,12 @@
   },
   {
    "id": "ukhpi",
+   "ficha": "F05",
+   "semaforo": {
+    "origen": "estado",
+    "personas": "no",
+    "acceso": "api"
+   },
    "nombre": "UK House Price Index (HM Land Registry, linked data)",
    "entidad": "HM Land Registry",
    "url": "https://landregistry.data.gov.uk/app/ukhpi",
@@ -438,6 +572,14 @@
   },
   {
    "id": "wikimedia_pageviews",
+   "ficha": "F01",
+   "aproximado": "Mide atención, no personas: son vistas de un artículo de Wikipedia, no visitantes físicos del borough.",
+   "semaforo": {
+    "origen": "colab",
+    "personas": "no",
+    "acceso": "api"
+   },
+   "atribucion": "Wikimedia Analytics, bajo CC0: no exige atribución; se cita por transparencia.",
    "nombre": "Wikimedia Pageviews API",
    "entidad": "Wikimedia",
    "url": "https://wikimedia.org/api/rest_v1/metrics/pageviews/",
@@ -1080,42 +1222,8 @@
    "licencia_verificada": false,
    "veredicto": "candidato",
    "estado": "candidato",
-   "proteccion": "por decidir"
-  },
-  {
-   "id": "contracts_finder",
-   "nombre": "Contracts Finder · API OCDS",
-   "entidad": "UK Government",
-   "familia": "La plata pública",
-   "tema": "municipio",
-   "url": "https://www.contractsfinder.service.gov.uk/apidocumentation/home",
-   "prueba": "https://www.contractsfinder.service.gov.uk/Published/Notices/OCDS/Search?limit=1",
-   "resolucion": "contrato",
-   "vigencia": "continua",
-   "licencia": "OGL-3.0",
-   "personas": "no: contratos entre organizaciones",
-   "semaforo": {
-    "origen": "estado",
-    "personas": "no",
-    "acceso": "api"
-   },
-   "uso": "contratación pública (el equivalente al SEACE de Lima)",
-   "nota": "Formato OCDS. Hay que filtrar compradores de Londres.",
-   "rastreo": "2026-09-25",
-   "evidencia": {
-    "url": "https://www.contractsfinder.service.gov.uk/",
-    "patron": "Open Government Licence v3\\.0"
-   },
-   "probado": "2026-09-25",
-   "respuesta": {
-    "codigo": 200,
-    "detalle": ""
-   },
-   "licencia_verificada": true,
-   "licencia_evidencia": "Open Government Licence v3.0",
-   "veredicto": "integrado",
-   "estado": "candidato",
-   "proteccion": "abierto"
+   "proteccion": "por decidir",
+   "ficha": "F30"
   },
   {
    "id": "copernicus_dataspace",
@@ -1544,7 +1652,8 @@
    "proteccion": "solo agregados",
    "uso": "candidata para ampliar la Escucha social",
    "tema": "escucha",
-   "nota": "Responde 200. No se integró porque 'London' como término arrastra cobertura mundial que no habla del borough, y filtrar bien exige un trabajo de términos que no cabía en esta vuelta. La escucha se resuelve con Wikipedia, que es acotable por artículo."
+   "nota": "Responde 200. No se integró porque 'London' como término arrastra cobertura mundial que no habla del borough, y filtrar bien exige un trabajo de términos que no cabía en esta vuelta. La escucha se resuelve con Wikipedia, que es acotable por artículo.",
+   "ficha": "F38"
   },
   {
    "id": "google_news_rss",
@@ -4409,7 +4518,7 @@
     "acceso": "api"
    },
    "uso": "escala fina del mapa",
-   "nota": "704 wards en los 33 boroughs (LAD25CD E09) el 2026-09-25. Es FeatureServer y responde a /query: resuelve la ficha ons_wards_2025, que anotaba que la capa de mayo de 2025 solo existía como MapServer.",
+   "nota": "704 wards en los 33 boroughs (LAD25CD E09) el 2026-09-25. Es FeatureServer y responde a /query: resuelve la ficha ons_wards_2025, que anotaba que la capa de mayo de 2025 solo existía como MapServer. Integrada: es la capa wards_londres de F07 (ingesta/pull_territorio.py).",
    "rastreo": "2026-09-25",
    "evidencia": {
     "url": "https://www.ons.gov.uk/methodology/geography/licences",
@@ -5215,10 +5324,11 @@
    "proteccion": "abierto",
    "uso": "descartada; se usa la capa de diciembre de 2024",
    "tema": "geo",
-   "nota": "La capa de wards de 2025 está publicada como MapServer, no como FeatureServer, y la consulta /query devuelve 400 'Invalid URL'. La de diciembre de 2024 sí es FeatureServer y responde. Consecuencia real: las dos escalas del sistema no son de la misma cosecha (boroughs 2025, wards 2024)."
+   "nota": "La ruta MapServer de la capa de wards 2025 devuelve 400 'Invalid URL' en /query. Resuelto después: la misma capa como FeatureServer (WD_DEC_2025_UK_BGC) sí responde y alimenta wards_londres (704 wards, F07). Los 18 wards de Westminster siguen en la cosecha de 2024-12."
   },
   {
    "id": "tfl_stoppoint",
+   "ficha": "F11",
    "nombre": "TfL Unified API · StopPoint",
    "entidad": "TfL",
    "url": "https://api-portal.tfl.gov.uk/api-details#api=StopPoint",
@@ -5248,6 +5358,42 @@
    "uso": "descartada",
    "tema": "infraestructura",
    "nota": "404 Resource not found: la forma por caja envolvente no existe en la API, aunque aparece en ejemplos de terceros. La forma correcta es lat/lon/radius. Queda anotada para que nadie vuelva a perder el rato con ella."
+  },
+  {
+   "id": "contracts_finder",
+   "nombre": "Contracts Finder · API OCDS",
+   "entidad": "UK Government",
+   "familia": "La plata pública",
+   "tema": "municipio",
+   "url": "https://www.contractsfinder.service.gov.uk/apidocumentation/home",
+   "prueba": "https://www.contractsfinder.service.gov.uk/Published/Notices/OCDS/Search?limit=1",
+   "resolucion": "contrato",
+   "vigencia": "continua",
+   "licencia": "OGL-3.0",
+   "personas": "sí: el campo contactPoint de un registro real traía nombre, correo y celular de una persona (una funcionaria de un NHS Trust)",
+   "semaforo": {
+    "origen": "estado",
+    "personas": "identificable",
+    "acceso": "api"
+   },
+   "uso": "contratación pública (el equivalente al SEACE de Lima)",
+   "nota": "Excluida el 2026-09-25: la licencia (OGL-3.0) permite reutilizarla, pero un registro real de la API traía datos de una persona en contactPoint y la API no filtra por geografía de forma confiable para limitarse a Londres. Formato OCDS.",
+   "rastreo": "2026-09-25",
+   "evidencia": {
+    "url": "https://www.contractsfinder.service.gov.uk/",
+    "patron": "Open Government Licence v3\\.0"
+   },
+   "probado": "2026-09-25",
+   "respuesta": {
+    "codigo": 200,
+    "detalle": ""
+   },
+   "licencia_verificada": true,
+   "licencia_evidencia": "Open Government Licence v3.0",
+   "veredicto": "excluido",
+   "estado": "excluido",
+   "proteccion": "no se publica",
+   "ficha": "F18"
   },
   {
    "id": "dft_stats19",

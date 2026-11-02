@@ -4,6 +4,12 @@
  "fuentes": [
   {
    "id": "planning_listed",
+   "ficha": "F40",
+   "semaforo": {
+    "origen": "estado",
+    "personas": "no",
+    "acceso": "api"
+   },
    "nombre": "Planning Data · listed buildings (Historic England)",
    "entidad": "MHCLG",
    "url": "https://www.planning.data.gov.uk/dataset/listed-building",
