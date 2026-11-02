@@ -264,6 +264,23 @@ como aparece en cada fuente, con la página donde se leyó y la fecha de consult
 Dos herramientas por tramo, sobre los **mismos datos**. «Sin verificar» quiere decir que la
 fila sale de la documentación de la herramienta y no de una corrida nuestra.
 
+**Cómo se probaron las herramientas de vistas (1 nov 2026).** Un solo archivo alimenta a todas:
+`explorar/datos_comunes.py` une, por borough, la tabla del atlas (población, densidad, precio
+medio) con la tasa de delitos de F17 sobre el polígono oficial de ONS y escribe
+`explorar/atlas_boroughs.geojson` (33 boroughs, 32 con tasa; City of London no la trae F17;
+solo agregados, ningún dato personal). Ese archivo se subió tal cual a **kepler.gl** y se leyó
+desde **Streamlit** (`explorar/streamlit_atlas.py`); las capturas están en `explorar/capturas/`.
+MapLibre es la vista que ya está en producción: lee el mismo lago (`atlas_boroughs.json`) y los
+mismos polígonos, no ese archivo derivado. Las licencias, los requisitos y la versión se leyeron
+en los repositorios y la documentación oficial (2 nov 2026, UTC); lo que no se pudo confirmar
+queda como «sin verificar».
+
+| Esfuerzo para el mismo mapa por borough | Código | Instalación | Cuenta |
+|---|---|---|---|
+| **kepler.gl** (demo web) | 0 líneas: subir el archivo y pulsar «Add Data» | ninguna | no |
+| **Streamlit + pydeck** | 33 líneas de Python (`streamlit_atlas.py`) | 34 paquetes, 390 MB de entorno, 2 min 24 s en esta red | no |
+| **MapLibre** (la web) | 983 líneas en `web/mapa.js` (más lo que sirve la compuerta) | 5 archivos servidos desde `web/vendor/` (3,4 MB) | no |
+
 | Tramo | Herramienta | Qué pidió para empezar | Licencia | Dónde quedan los datos | ¿Se rehace con un comando? | Estado del proyecto | Qué resolvió | Qué no pudo | ¿Quedó? ¿Por qué? |
 |---|---|---|---|---|---|---|---|---|---|
 | Ingesta | **urllib** (estándar) | nada | PSF | en `lago/` | sí, `bash ingesta/todo.sh` | biblioteca estándar | Baja y limpia las fuentes sin instalar nada; también lee `.ods` con `zipfile` | No versiona esquemas ni registra cargas | **Sí.** Cero dependencias en el camino crítico |
@@ -274,17 +291,21 @@ fila sale de la documentación de la herramienta y no de una corrida nuestra.
 | Verificación | Frictionless | `pip install frictionless` · 39 paquetes | MIT | — | sí | activo | Valida esquema tabular estándar | Nuestro lago **no es tabular**: es JSON anidado con cifras y series | **No.** La forma del contrato no le encaja |
 | Territorio | **ONS Open Geography** | nada | OGL-3.0 | `territorio/*.geojson` | sí | activo | Los 33 boroughs oficiales, el polígono exacto del foco y los 704 wards de Londres | La ruta MapServer de los wards 2025 da 400 (se halló la FeatureServer) | **Sí**: boroughs y wards de Londres de 2025, wards de Westminster de 2024 |
 | Territorio | OSM/Overpass para límites | nada | ODbL | — | sí | activo | Da el área y sirvió para **verificar** que la relación 51781 es Westminster (`ref:gss=E09000033`) | ODbL contagiaría la licencia a los límites derivados | **No para los límites**, sí para los puntos |
-| Vistas | **HTML/JS + MapLibre** | nada | BSD-3 (MapLibre) | en nuestro repositorio y la función | sí | activo (MapLibre GL 4.7.1) | Se puede cerrar de verdad, abre en móvil, cada cifra llega a su ficha | Todo hay que escribirlo | **Sí.** Es el único que deja cerrar la puerta |
+| Vistas | **HTML/JS + MapLibre** | nada: sin cuenta ni llave (mapa base de OpenFreeMap) | BSD-3-Clause | en nuestro repositorio y en la función; la librería se sirve desde nuestro sitio y el navegador pide a OpenFreeMap solo el mapa base | sí | activo. Usamos 6.16.0 (25 oct 2026). Estábamos en 4.7.1, afectada por el aviso GHSA-jrc7-96c5-q579 (crítico; parche en 6.4.1) | Se puede cerrar de verdad, abre en móvil, cada cifra llega a su ficha con chip Fxx, badge de aproximado y atribución | Todo hay que escribirlo (983 líneas solo en `mapa.js`). Desde la 6.x solo se publica como módulo ESM: hubo que servirla desde el repositorio y cargar nuestros scripts después de ella | **Sí.** Es el único que deja cerrar la puerta |
+| Vistas | **kepler.gl** (demo web) | abrir `kepler.gl/demo`; sin cuenta ni llave | MIT | **en el navegador**: la documentación oficial dice «Data lives only in your machine/browser». Al subir y añadir el archivo solo vimos GET de teselas de CARTO e íconos | no: la carga es manual | el demo corre 3.3.0-alpha.19 (visto en pantalla); la última estable es 3.2.6 (16 mar 2026) | Los 33 boroughs con colores por cuantiles en una subida y un clic, sin código: eligió solo `tasa_delitos_x1000` | No se cierra con clave (al exportar, los datos viajan dentro del archivo que alojemos); sin chips de fuente, ficha, semáforo ni aviso de aproximado; no se rehace con un comando; el mapa base es de CARTO | **No como producto.** Sí como herramienta para *mirar* un archivo nuevo en un minuto |
+| Vistas | **Streamlit + pydeck** | `pip install streamlit pydeck`: 34 paquetes, 390 MB; Python 3.11 o más | Apache-2.0 | en local, en el proceso de Python. En Community Cloud, el código y los archivos del repo en su infraestructura: repo público = app pública; para cerrarla hay que invitar por correo y solo se permite una app privada | sí, `streamlit run explorar/streamlit_atlas.py` | activo, 1.66.1 (21 oct 2026) | Mapa por borough con selector de cuatro variables en 33 líneas | No trae coropleta: la escala de color se escribió a mano. Sin leyenda. Pide un proceso de Python siempre encendido, distinto de nuestras funciones; sin chips de fuente ni aviso de aproximado. Envía estadísticas de uso por defecto (se apagan con `gatherUsageStats=false`; sin verificar qué contienen) | **No.** Más trabajo que kepler.gl y menos control que MapLibre |
 | Vistas | Tableau Public | cuenta | propietaria | **en el perfil público de Tableau** | no | activo | Gráficos rápidos y bonitos | Los libros y los datos publicados los puede descargar cualquiera: no hay compuerta posible | **No.** Choca con la decisión de protección |
 | Vistas | Flourish | cuenta | propietaria | **en Flourish; lo publicado en el plan gratuito es público** | no | activo | Gráficos animados mucho mejores que los nuestros | En el plan gratuito no se puede cerrar y lleva su atribución | **No.** Mismo choque |
-| Vistas | Observable Framework | Node (sin verificar) | sin verificar | los cargadores precalculan **instantáneas dentro del sitio publicado** | sin verificar | no publica versión nueva desde marzo de 2026 (sin verificar) | Muy buen manejo de gráficos y mapas con datos | Las instantáneas serían un archivo estático más: los datos volverían a la carpeta pública | **No, por poco.** Es la que casi elegimos |
+| Vistas | Observable Framework | Node 18 o más; `npx @observablehq/framework@latest create`; sin cuenta | ISC | los cargadores precalculan **instantáneas estáticas** (`dist/_file/`) dentro del sitio que se publique: cualquier visitante puede leerlas | sí, con `npm run build` | v1.13.4 (2 mar 2026); la anterior es de abril de 2025. Leída en el repo oficial, **no corrida por nosotros** | Muy buen manejo de gráficos y mapas con datos | Las instantáneas serían un archivo estático más: los datos volverían a la carpeta pública | **No, por poco.** Es la que casi elegimos |
 | Protección | **compuerta propia** (HMAC) | nada | — | `lago/` fuera de `web/` | sí | — | 200/401/404 en la terminal; la clave nunca llega al navegador | El freno por IP no es fuerte en serverless, y el código lo dice | **Sí** |
 | Protección | clave en el JavaScript | nada | — | en la carpeta pública | — | — | Nada | `curl` se lleva el lago y la clave de paso | **No.** Es la compuerta de mentira |
 
 **Lo que perdimos al descartar.** Al quedarnos con `urllib` perdimos el registro automático de
 cargas de dlt: hoy no sabemos *cuándo* cambió una cifra, solo *cuál* es. Al descartar Flourish
-y Observable perdimos gráficos mejores que los nuestros. Las pérdidas son reales y se cambiaron
-por lo mismo: control sobre dónde quedan los datos.
+y Observable perdimos gráficos mejores que los nuestros; al descartar kepler.gl perdimos rapidez
+(da el mapa en un minuto y nosotros escribimos 983 líneas). A cambio tenemos ficha, chips y
+compuerta, que ninguna de las dos trae. Las pérdidas son reales y se cambiaron por lo mismo:
+control sobre dónde quedan los datos.
 
 ## Protección
 
@@ -306,6 +327,15 @@ por lo mismo: control sobre dónde quedan los datos.
   rastreadas (origen · personas · acceso, en `catalogo/semaforo.json`); se ve en la ficha y
   `cruzar_excel.py` lo contrasta con el Excel (origen, personas y acceso). Open-Meteo (F06, F10)
   figura con origen «sin-confirmar»: no sabemos qué tipo de organización lo publica y no lo suponemos.
+- **Cadena de suministro de la web.** La página no ejecuta código de terceros: MapLibre se sirve
+  desde `web/vendor/maplibre-gl/` con su licencia, el origen y los hashes (`VERSION.txt`), y
+  `verificar.py` falla si un archivo cambia, si vuelve un `<script>` o `<link>` externo (salvo las
+  tipografías de Google) o si la versión baja de la 6.4.1. Lo motivó un hallazgo propio: la 4.7.1
+  que cargábamos de unpkg estaba afectada por GHSA-jrc7-96c5-q579 (XSS en el control de
+  atribución, parche en 6.4.1) y la página no verificaba lo que descargaba. Nuestro estilo de
+  mapa viene de un tercero, así que el texto de atribución no era nuestro. Quedan fuera las
+  tipografías de Google, cuyo CSS cambia por navegador y no admite integridad, y el mapa base de
+  OpenFreeMap, que es dato y no código.
 - **Qué protegemos, y de quién:** no protegemos secretos de Estado; casi todo es público.
   Protegemos (a) el trabajo mientras está en curso y (b), sobre todo, la **decisión de no
   reexponer datos de personas** que en origen vienen con ubicación. La compuerta sirve para

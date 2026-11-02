@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet">
+<link href="/vendor/maplibre-gl/maplibre-gl.css" rel="stylesheet">
 <link rel="stylesheet" href="/estilos.css">
 </head>
 <body>
@@ -181,10 +181,23 @@
   </div>
 </div>
 
-<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
-<script src="/graficos.js"></script>
-<script src="/secciones.js"></script>
-<script src="/mapa.js"></script>
-<script src="/app.js"></script>
+<script type="module">
+/* MapLibre 6.x solo se publica como módulo ESM y se sirve desde /vendor (ver VERSION.txt allí).
+   Los scripts de la página son clásicos y usan `maplibregl` como global: se cargan DESPUÉS de que
+   el módulo esté listo, en orden, para que ninguna vista arranque sin mapa. Si el módulo falla,
+   igual se cargan y mapa.js muestra su aviso en vez de dejar la página muerta. */
+try {
+  window.maplibregl = await import('/vendor/maplibre-gl/maplibre-gl.mjs');
+} catch (e) {
+  console.error('MapLibre no cargó', e);
+}
+for (const src of ['/graficos.js', '/secciones.js', '/mapa.js', '/app.js']) {
+  await new Promise((ok, mal) => {
+    const s = document.createElement('script');
+    s.src = src; s.onload = ok; s.onerror = () => mal(new Error('no cargó ' + src));
+    document.body.appendChild(s);
+  });
+}
+</script>
 </body>
 </html>

@@ -14,3 +14,6 @@ prueba/
 node_modules/
 .DS_Store
 .vercel
+
+# MapLibre se sirve desde aquí (ver web/vendor/maplibre-gl/VERSION.txt); el .gitignore global del autor ignora vendor/
+!web/vendor/

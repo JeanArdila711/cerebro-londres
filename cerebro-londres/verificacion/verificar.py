@@ -221,5 +221,22 @@ en_lago = {f.get("id") for r in glob.glob(os.path.join(RAIZ, "lago", "*.json"))
 check("toda fuente aproximada de catalogo/aproximados.json está en el lago",
       set(C.APROXIMADOS) <= en_lago, sorted(set(C.APROXIMADOS) - en_lago))
 
+# Cadena de suministro de la web: ningún script ni estilo externo (salvo las tipografías de Google, cuyo CSS cambia
+# por navegador), y MapLibre se sirve desde web/vendor, con los hashes del manifiesto y una versión ya parchada
+# (la rama 4.x tiene el aviso GHSA-jrc7-96c5-q579; el parche es la 6.4.1)
+import hashlib
+html = open(os.path.join(RAIZ, "web", "index.html"), encoding="utf-8").read()
+externos = [e for e in re.findall(r"<(?:script|link)\b[^>]*?(?:src|href)=\"https?://[^>]*>", html)
+            if "fonts.googleapis.com" not in e and "rel=\"preconnect\"" not in e]
+check("la web no carga scripts ni estilos de terceros (solo las tipografías de Google)", not externos, [e[:90] for e in externos])
+vend = os.path.join(RAIZ, "web", "vendor", "maplibre-gl")
+manifiesto = open(os.path.join(vend, "VERSION.txt"), encoding="utf-8").read()
+sumas = re.findall(r"^([0-9a-f]{64})  (\S+)$", manifiesto, re.M)
+malas = [f for h, f in sumas if not os.path.exists(os.path.join(vend, f)) or hashlib.sha256(open(os.path.join(vend, f), "rb").read()).hexdigest() != h]
+check("los archivos de web/vendor/maplibre-gl coinciden con su manifiesto (5 archivos)", len(sumas) == 5 and not malas, malas)
+ver = tuple(int(x) for x in re.search(r"MapLibre GL JS (\d+)\.(\d+)\.(\d+)", manifiesto).groups())
+check("MapLibre servido es 6.4.1 o posterior (parche de GHSA-jrc7-96c5-q579)", ver >= (6, 4, 1), ver)
+check("index.html carga MapLibre desde /vendor y no desde un CDN", "/vendor/maplibre-gl/maplibre-gl.mjs" in html and "unpkg" not in html)
+
 print(f"\n{fallos} fallos")
 sys.exit(1 if fallos else 0)
