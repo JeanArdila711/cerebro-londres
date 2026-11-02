@@ -59,7 +59,7 @@
   "licencia": "OGL-3.0",
   "personas": "no",
   "proteccion": "abierto",
-  "uso": "descartada; se usa la capa de diciembre de 2024",
+  "uso": "ruta MapServer descartada; la misma capa por FeatureServer (WD_DEC_2025_UK_BGC) alimenta wards_londres (F07)",
   "tema": "geo",
   "nota": "La ruta MapServer de la capa de wards 2025 devuelve 400 'Invalid URL' en /query. Resuelto después: la misma capa como FeatureServer (WD_DEC_2025_UK_BGC) sí responde y alimenta wards_londres (704 wards, F07). Los 18 wards de Westminster siguen en la cosecha de 2024-12."
  },
