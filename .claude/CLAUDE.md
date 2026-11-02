@@ -9,3 +9,4 @@
 - Las cifras de la UI se leen del lago (`cifra(tema, clave)`), no se escriben en el HTML ni en el JS.
 - Probar login local con `curl` da falsos 401: la cookie lleva `Secure`. Usar un navegador.
 - Nunca leer ni imprimir `.env`; solo `.env.example`.
+- **`web/vendor/` se versiona** aunque `~/.gitignore_global` ignore `vendor/` (excepción `!web/vendor/` en el `.gitignore` del proyecto). Para actualizar MapLibre, seguir `web/vendor/maplibre-gl/VERSION.txt` (manifiesto sha256; `verificar.py` lo comprueba).

@@ -692,7 +692,7 @@ window.SECCIONES = (function () {
     const vigGeo = c => (cifra('geo', c) || {}).vigencia || '—';
     const nGradoI = (((LAGO.patrimonio || {}).listas || {}).grado_i || []).length;
     const te = seccion('territorio', 'CARTOGRAFÍA DOBLE ESCALA · ONS & NAPTAN', 'Gemelo digital territorial y red urbana',
-      'Modelo espacial multicapa: alterne entre las 6 variables metropolitanas (' + nBoroughs + ' boroughs), inspeccione los ' + nWards + ' wards ' +
+      'Modelo espacial multicapa: alterne entre las ' + ((window.MAPA || {}).nMetricas || '—') + ' variables metropolitanas (' + nBoroughs + ' boroughs), inspeccione los ' + nWards + ' wards ' +
       'de Westminster o active la extrusión volumétrica 3D para recorrer la estructura urbana y los ' + nGradoI + ' edificios Grado I. ' + fx('geo', 'patrimonio'));
 
     const marcoMapa = document.createElement('div');

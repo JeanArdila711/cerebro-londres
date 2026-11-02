@@ -966,6 +966,7 @@ window.MAPA = (function () {
 
   return {
     init,
+    nMetricas: Object.keys(METRICAS).length,
     lugares: () => lugares,
     irA: l => {
       document.getElementById('territorio').scrollIntoView({ behavior: 'smooth' });

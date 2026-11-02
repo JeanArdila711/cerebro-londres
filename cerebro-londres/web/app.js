@@ -115,11 +115,15 @@
     } catch (e) { console.error('chip clima', e); }
     try { MAPA.init(LAGO); } catch (e) { console.error('mapa', e); }
     navegacion(); buscador(); ficha();
+    // El ancla solo manda en carga nueva y solo si apunta a una sección; en recargas manda el scroll guardado.
+    const el = !esRecarga && location.hash ? document.getElementById(location.hash.slice(1)) : null;
+    const ancla = el && el.classList.contains('sec') ? el : null;
     if (location.hash) {
       history.replaceState(null, '', location.pathname + location.search);
     }
     requestAnimationFrame(() => {
-      window.scrollTo({ top: scrollGuardado > 0 ? scrollGuardado : 0, left: 0, behavior: 'instant' });
+      if (ancla) ancla.scrollIntoView({ behavior: 'instant' });
+      else window.scrollTo({ top: scrollGuardado > 0 ? scrollGuardado : 0, left: 0, behavior: 'instant' });
     });
   }
 
